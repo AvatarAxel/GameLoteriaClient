@@ -32,7 +32,7 @@ namespace View
         {
             Application.Current.Shutdown();
         }
-        public void ReponseAuthenticated(bool result)
+        public void NombreEjemplo(bool result)
         {
             if (result)
             {
