@@ -262,7 +262,6 @@
                     </StackPanel>
 
                 </StackPanel>
-                <TextBox x:Name="ResultadoTextBox" HorizontalAlignment="Left" Margin="582,337,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
             </Grid>
 
