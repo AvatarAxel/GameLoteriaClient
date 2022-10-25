@@ -26,7 +26,7 @@ namespace View.ServiceReference {
     public interface IAuthenticationServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthenticationService/ReponseAuthenticated", ReplyAction="http://tempuri.org/IAuthenticationService/ReponseAuthenticatedResponse")]
-        void ReponseAuthenticated(bool result);
+        void ReponseAuthenticated(string username, string email, string password01);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
