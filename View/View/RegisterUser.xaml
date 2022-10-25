@@ -13,6 +13,7 @@
         <PasswordBox x:Name="txtPassword2" HorizontalAlignment="Left" Margin="126,199,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Content="Acceptar" HorizontalAlignment="Left" Margin="344,157,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="Birtheday" HorizontalAlignment="Left" Margin="126,254,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Calendar x:Name="calendarBirthday" HorizontalAlignment="Left" Margin="450,233,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

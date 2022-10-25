@@ -26,31 +26,42 @@ namespace View
             InitializeComponent();
         }
 
-        public void ReponseAuthenticated(bool result)
+        public void NombreEjemplo(bool result)
         {
-            if(result == true)
+            if(result)
             {
-
+                MessageBox.Show("Siii", "Siiiuuu", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             }
             else
             {
-
+                MessageBox.Show("Nooo", "Noooooo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             }
+        }
+
+        public void RegistrerUser(bool status)
+        {
+            throw new NotImplementedException();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            //this.Birtheday.Text = calendarBirthday.Opacity.ToString();
+            //this.Birtheday.Text = calendarBirthday.SelectedDates.ToString();
+            this.Birtheday.Text = calendarBirthday.SelectedDate.ToString();
+
+            ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
             InstanceContext context = new InstanceContext(this);
             ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
-            string username;
-            username = txtUsername.Text;
-            string email;
-            email = txtEmail.Text;
-            string password01;
-            password01 = txtPassword1.Password;
-            string password02;
-            password02 = txtPassword2.Password;
-            client.ReponseAuthenticated(username, email, password01);
+            playerDTO.username = txtUsername.Text;
+            playerDTO.Email = txtEmail.Text;
+            playerDTO.Password = txtPassword1.Password;
+            String Birthday = calendarBirthday.SelectedDate.ToString();
+            this.Birtheday.Text = Birthday;
+            DateTime dateTime = DateTime.Parse(Birthday);
+            playerDTO.Birthday = dateTime;
+            //playerDTO.Birthday = calendarBirthday.GetValue.ToString();
+            client.RegistrerUserBD(playerDTO);
         }
     }
 }

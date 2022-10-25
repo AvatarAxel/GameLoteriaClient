@@ -33,24 +33,33 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthenticationService_IsAuthenticated_InputMessage">
     <wsdl:part name="parameters" element="tns:IsAuthenticated" />
   </wsdl:message>
-  <wsdl:message name="IAuthenticationService_ReponseAuthenticated_OutputCallbackMessage">
+  <wsdl:message name="IAuthenticationService_RegistrerUserBD_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrerUserBD" />
+  </wsdl:message>
+  <wsdl:message name="IAuthenticationService_ReponseAuthenticated_InputMessage">
     <wsdl:part name="parameters" element="tns:ReponseAuthenticated" />
   </wsdl:message>
-  <wsdl:message name="IAuthenticationService_ReponseAuthenticated_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReponseAuthenticatedResponse" />
+  <wsdl:message name="IAuthenticationService_NombreEjemplo_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NombreEjemplo" />
   </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="IsAuthenticated">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/IsAuthenticated" message="tns:IAuthenticationService_IsAuthenticated_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RegistrerUserBD">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/RegistrerUserBD" message="tns:IAuthenticationService_RegistrerUserBD_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReponseAuthenticated">
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ReponseAuthenticated" message="tns:IAuthenticationService_ReponseAuthenticated_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/ReponseAuthenticatedResponse" message="tns:IAuthenticationService_ReponseAuthenticated_InputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/ReponseAuthenticated" message="tns:IAuthenticationService_ReponseAuthenticated_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NombreEjemplo">
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/NombreEjemplo" message="tns:IAuthenticationService_NombreEjemplo_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -62,11 +71,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="RegistrerUserBD">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/RegistrerUserBD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ReponseAuthenticated">
       <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ReponseAuthenticated" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="NombreEjemplo">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/NombreEjemplo" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
