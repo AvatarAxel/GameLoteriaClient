@@ -24,11 +24,11 @@ namespace View
         {
             InitializeComponent();
         }
-        private void btnMinimize_Click(Object sender, RoutedEventArgs e)
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
-        private void btnClose_Click(Object sender, RoutedEventArgs e)
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
@@ -45,7 +45,7 @@ namespace View
                 MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtUser.Text))
             {

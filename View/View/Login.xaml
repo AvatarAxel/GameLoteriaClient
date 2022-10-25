@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
+        xmlns:p="clr-namespace:View.Properties"
         mc:Ignorable="d"
-        Title="LoginView" Height="550" Width="800"
+        Title="Login" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -67,7 +68,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="1"
-                            Click="btnMinimize_Click">
+                            Click="BtnMinimize_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -101,7 +102,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
-                            Click="btnClose_Click">
+                            Click="BtnClose_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -216,7 +217,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
                             Margin="0,50,0,0"
-                            Click="btnLogin_Click">
+                            Click="BtnLogin_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
