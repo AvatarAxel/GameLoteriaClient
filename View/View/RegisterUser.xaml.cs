@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -45,23 +46,44 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            //this.Birtheday.Text = calendarBirthday.Opacity.ToString();
-            //this.Birtheday.Text = calendarBirthday.SelectedDates.ToString();
-            this.Birtheday.Text = calendarBirthday.SelectedDate.ToString();
-
+            if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
+                || string.IsNullOrEmpty(txtPassword1.Password) || string.IsNullOrEmpty(txtPassword2.Password))
+            {
+                MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            FieldValidation fieldValidation = new FieldValidation();
+            if (!fieldValidation.passwordValidation(txtPassword1.Password, txtPassword2.Password))
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            if (!fieldValidation.ValidationEmailFormat(txtEmail.Text)) 
+            {
+                MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            String Birthday = calendarBirthday.SelectedDate.ToString();
+            if (string.IsNullOrEmpty(Birthday)) 
+            {
+                MessageBox.Show("Por favor elija su fecha de nacimiento", "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
             InstanceContext context = new InstanceContext(this);
             ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
             playerDTO.username = txtUsername.Text;
             playerDTO.Email = txtEmail.Text;
-            playerDTO.Password = txtPassword1.Password;
-            String Birthday = calendarBirthday.SelectedDate.ToString();
-            this.Birtheday.Text = Birthday;
+            playerDTO.Password = txtPassword1.Password;            
             DateTime dateTime = DateTime.Parse(Birthday);
             playerDTO.Birthday = dateTime;
-            //playerDTO.Birthday = calendarBirthday.GetValue.ToString();
-            client.RegistrerUserBD(playerDTO);
+            try
+            {
+                client.RegistrerUserBD(playerDTO);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Por favor elija su fecha de nacimiento", "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
