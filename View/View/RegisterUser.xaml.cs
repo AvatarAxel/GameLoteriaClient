@@ -39,27 +39,7 @@ namespace View
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
-                || string.IsNullOrEmpty(txtPassword01.Password) || string.IsNullOrEmpty(txtPassword02.Password))
-            {
-                MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            FieldValidation fieldValidation = new FieldValidation();
-            if (!fieldValidation.passwordValidation(txtPassword01.Password, txtPassword02.Password))
-            {
-                MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
-            {
-                MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            String Birthday = calendarBirthday.SelectedDate.ToString();
-            if (string.IsNullOrEmpty(Birthday))
-            {
-                MessageBox.Show("Por favor elija su fecha de nacimiento", "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (validationFields()) {
                 return;
             }
             ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
@@ -70,7 +50,7 @@ namespace View
             playerDTO.Email = txtEmail.Text;
             string hashedPassword = encryption.HashPassword256(txtPassword01.Password);
             playerDTO.Password = hashedPassword;
-            MessageBox.Show(hashedPassword, "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+            String Birthday = calendarBirthday.SelectedDate.ToString();
             DateTime dateTime = DateTime.Parse(Birthday);
             playerDTO.Birthday = dateTime;
             try
@@ -81,6 +61,36 @@ namespace View
             {
                 MessageBox.Show("Sin conexión, inténtelo más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }            
+        }
+
+        public bool validationFields() 
+        { 
+            bool validation = false;
+            if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
+                || string.IsNullOrEmpty(txtPassword01.Password) || string.IsNullOrEmpty(txtPassword02.Password))
+            {
+                MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
+                return validation;
+            }
+            FieldValidation fieldValidation = new FieldValidation();
+            if (!fieldValidation.passwordValidation(txtPassword01.Password, txtPassword02.Password))
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
+                return validation;
+            }
+            if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
+            {
+                MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                return validation;
+            }
+            String Birthday = calendarBirthday.SelectedDate.ToString();
+            if (string.IsNullOrEmpty(Birthday))
+            {
+                MessageBox.Show("Por favor elija su fecha de nacimiento", "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                return validation;
+            }
+            validation = true;
+            return validation;
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
