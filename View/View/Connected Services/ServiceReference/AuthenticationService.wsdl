@@ -36,37 +36,31 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IAuthenticationService_IsAuthenticated_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsAuthenticated" />
+  <wsdl:message name="IAuthenticationService_AuthenticationLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticationLogin" />
   </wsdl:message>
   <wsdl:message name="IAuthenticationService_RegistrerUserBD_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrerUserBD" />
   </wsdl:message>
-  <wsdl:message name="IAuthenticationService_ReponseAuthenticated_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReponseAuthenticated" />
-  </wsdl:message>
-  <wsdl:message name="IAuthenticationService_NombreEjemplo_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NombreEjemplo" />
+  <wsdl:message name="IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseAuthenticated" />
   </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
-    <wsdl:operation name="IsAuthenticated">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/IsAuthenticated" message="tns:IAuthenticationService_IsAuthenticated_InputMessage" />
+    <wsdl:operation name="AuthenticationLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLogin" message="tns:IAuthenticationService_AuthenticationLogin_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RegistrerUserBD">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/RegistrerUserBD" message="tns:IAuthenticationService_RegistrerUserBD_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ReponseAuthenticated">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/ReponseAuthenticated" message="tns:IAuthenticationService_ReponseAuthenticated_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="NombreEjemplo">
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/NombreEjemplo" message="tns:IAuthenticationService_NombreEjemplo_OutputCallbackMessage" />
+    <wsdl:operation name="ResponseAuthenticated">
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" message="tns:IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
     <wsp:PolicyReference URI="#NetTcpBinding_IAuthenticationService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="IsAuthenticated">
-      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/IsAuthenticated" style="document" />
+    <wsdl:operation name="AuthenticationLogin">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/AuthenticationLogin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -77,14 +71,8 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="ReponseAuthenticated">
-      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ReponseAuthenticated" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="NombreEjemplo">
-      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/NombreEjemplo" style="document" />
+    <wsdl:operation name="ResponseAuthenticated">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -96,7 +84,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-LUFR1L2J\aavp0</Upn>
+          <Upn>DESKTOP-43QTE47\michi</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

@@ -31,20 +31,7 @@ namespace View
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-        public void NombreEjemplo(bool result)
-        {
-            if (result)
-            {
-                MainWindow mainWindow = new MainWindow();
-                Close();
-                mainWindow.Show();                
-            }
-            else 
-            {                
-                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
+        }        
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtUser.Text))
@@ -60,8 +47,22 @@ namespace View
                 username = txtUser.Text;
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
-                client.IsAuthenticated(username, txtPassword.Password);
+                client.AuthenticationLogin(username, hashedPassword);
             }    
+        }
+
+        public void ResponseAuthenticated(bool status)
+        {
+            if (status)
+            {
+                MainWindow mainWindow = new MainWindow();
+                Close();
+                mainWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
