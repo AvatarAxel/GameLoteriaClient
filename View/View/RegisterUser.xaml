@@ -5,19 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="RegisterUser" Height="450" Width="800" 
+        Title="RegisterUser" Height="550" Width="800" 
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
         AllowsTransparency="True">
 
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/Back.jpg"/>
+            <ImageBrush ImageSource="/Images/Back.jpg"
+                        Stretch="None"/>
         </Border.Background>
         <Border
         CornerRadius="10"
-        BorderThickness="1"
+        BorderThickness="2"
         Opacity=".95">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -29,7 +31,7 @@
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                     <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.75"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -37,14 +39,14 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="REGISTER"
+                    <TextBlock Text="REGISTER USER"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -61,8 +63,8 @@
                         FontFamily="Monserrat"
                         Cursor="Hand"
                         Grid.Column="1"                        
-                        HorizontalAlignment="Center" 
-                        Width="25" Click="btnMinimize_Click">
+                        HorizontalAlignment="Right" 
+                        Width="25" Click="BtnMinimize_Click">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED"/>
@@ -93,7 +95,7 @@
                         FontSize="16"
                         FontFamily="Monserrat"
                         Cursor="Hand"
-                        Grid.Column="2" Click="btnClose_Click">
+                        Grid.Column="2" Click="BtnClose_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -118,21 +120,24 @@
                     </Button>
                 </Grid>
                 <StackPanel Width="250"
-                            Grid.Row="2"
+                            Grid.Row="1"
                             Orientation="Vertical"
-                            Margin="0,20,0,0">
-                    <TextBlock Text="REGISTER"
+                            Margin="0,35,0,0">
+                    
+                    <TextBlock Text="REGISTER USER"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
+                    
                     <TextBlock Text="Email"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
                                Margin="0,20,0,0"/>
+                    
                     <TextBox x:Name="txtEmail"
                              FontSize="13"
                              FontWeight="Medium"
@@ -141,14 +146,15 @@
                              Foreground="White"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"
-                             />
+                             BorderThickness="0,0,0,1" />
+                    
                     <TextBlock Text="Username"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
-                               Margin="0,20,0,0"/>
+                               Margin="0,26,0,0"/>
+                    
                     <TextBox x:Name="txtUsername"
                              FontSize="13"
                              FontWeight="Medium"
@@ -157,31 +163,16 @@
                              Foreground="White"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"
-                             />
-                    <TextBlock Text="password"
+                             BorderThickness="0,0,0,1"/>
+                    
+                    <TextBlock Text="Password"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
-                               Margin="0,20,0,0"/>
-                    <PasswordBox x:Name="txtPassword01"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Monserrat"
-                             Background="Transparent"
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"
-                             />
-                    <TextBlock Text="Confirm password"
-                               Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Monserrat"
-                               Margin="0,20,0,0"/>
-                    <PasswordBox x:Name="txtPassword02"
+                               Margin="0,26,0,0"/>
+                    
+                    <PasswordBox x:Name="txtPassword"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Monserrat"
@@ -190,12 +181,31 @@
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"/>
+                    
+                    <TextBlock Text="Confirm password"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Monserrat"
+                               Margin="0,26,0,0"/>
+                    
+                    <PasswordBox x:Name="txtValidatePassword"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Monserrat"
+                             Background="Transparent"
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,1"/>
+                    
                     <TextBlock Text="Birthday"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
-                               Margin="0,20,0,0"/>
+                               Margin="0,26,0,0"/>
+                    
                     <DatePicker x:Name="calendarBirthday"
                              FontSize="13"
                              FontWeight="Medium"
@@ -213,7 +223,7 @@
                         FontFamily="Monserrat"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Margin="0,50,0,0" Click="btnRegister_Click">
+                        Margin="0,50,0,0" Click="BtnRegister_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">

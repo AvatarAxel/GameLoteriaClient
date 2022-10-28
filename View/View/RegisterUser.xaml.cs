@@ -37,7 +37,7 @@ namespace View
             }
         }
 
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
             if (validationFields()) {
                 return;
@@ -48,7 +48,7 @@ namespace View
             Encryption encryption = new Encryption();
             playerDTO.username = txtUsername.Text;
             playerDTO.Email = txtEmail.Text;
-            string hashedPassword = encryption.HashPassword256(txtPassword01.Password);
+            string hashedPassword = encryption.HashPassword256(txtPassword.Password);
             playerDTO.Password = hashedPassword;
             String Birthday = calendarBirthday.SelectedDate.ToString();
             DateTime dateTime = DateTime.Parse(Birthday);
@@ -67,13 +67,13 @@ namespace View
         { 
             bool validation = false;
             if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
-                || string.IsNullOrEmpty(txtPassword01.Password) || string.IsNullOrEmpty(txtPassword02.Password))
+                || string.IsNullOrEmpty(txtPassword.Password) || string.IsNullOrEmpty(txtValidatePassword.Password))
             {
                 MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
                 return validation;
             }
             FieldValidation fieldValidation = new FieldValidation();
-            if (!fieldValidation.passwordValidation(txtPassword01.Password, txtPassword02.Password))
+            if (!fieldValidation.PasswordValidation(txtPassword.Password, txtValidatePassword.Password))
             {
                 MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
                 return validation;
@@ -93,12 +93,12 @@ namespace View
             return validation;
         }
 
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
