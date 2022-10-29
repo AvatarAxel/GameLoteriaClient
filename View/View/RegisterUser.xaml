@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
+        xmlns:l="clr-namespace:View.Properties"
         Title="RegisterUser" Height="450" Width="800" 
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -62,7 +63,7 @@
                         Cursor="Hand"
                         Grid.Column="1"                        
                         HorizontalAlignment="Center" 
-                        Width="25" Click="btnMinimize_Click">
+                        Width="25" Click="BtnMinimize_Click">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED"/>
@@ -93,7 +94,7 @@
                         FontSize="16"
                         FontFamily="Monserrat"
                         Cursor="Hand"
-                        Grid.Column="2" Click="btnClose_Click">
+                        Grid.Column="2" Click="BtnClose_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -121,13 +122,13 @@
                             Grid.Row="2"
                             Orientation="Vertical"
                             Margin="0,20,0,0">
-                    <TextBlock Text="REGISTER"
+                    <TextBlock Text="{x:Static l:Resources.RegistersUser}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Email"
+                    <TextBlock Text="{x:Static l:Resources.Email}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -143,7 +144,7 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              />
-                    <TextBlock Text="Username"
+                    <TextBlock Text="{x:Static l:Resources.Username}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -159,13 +160,13 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              />
-                    <TextBlock Text="password"
+                    <TextBlock Text="{x:Static l:Resources.Password}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
                                Margin="0,20,0,0"/>
-                    <PasswordBox x:Name="txtPassword01"
+                    <PasswordBox x:Name="txtPassword"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Monserrat"
@@ -175,13 +176,13 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              />
-                    <TextBlock Text="Confirm password"
+                    <TextBlock Text="{x:Static l:Resources.PasswordConfirm}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
                                Margin="0,20,0,0"/>
-                    <PasswordBox x:Name="txtPassword02"
+                    <PasswordBox x:Name="txtPasswordValidation"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Monserrat"
@@ -190,7 +191,7 @@
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"/>
-                    <TextBlock Text="Birthday"
+                    <TextBlock Text="{x:Static l:Resources.DateOfBirth}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -205,15 +206,15 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"/>
                     <Button
-                        x:Name="btnRegister"                        
+                        x:Name="BtnRegister"                        
                         BorderThickness="0"
-                        Content="Register"
+                        Content="{x:Static l:Resources.Register}"
                         Foreground="White"
                         FontSize="16"
                         FontFamily="Monserrat"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Margin="0,50,0,0" Click="btnRegister_Click">
+                        Margin="0,50,0,0" Click="BtnRegister_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">

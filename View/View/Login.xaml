@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:View"
         xmlns:p="clr-namespace:View.Properties"
         mc:Ignorable="d"
+        xmlns:l="clr-namespace:View.Properties"
         Title="Login" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -52,7 +53,7 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="LOG IN"
+                    <TextBlock Text="{x:Static l:Resources.Login}"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -136,14 +137,14 @@
                     <Image Source="/Images/Logo.png"
                            Width="100" Height="100"/>
 
-                    <TextBlock Text="Game Loteria"
+                    <TextBlock Text="{x:Static l:Resources.GameLoteria}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Welcome to the game"
+                    <TextBlock Text="{x:Static l:Resources.WelcomeToTheGame}"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -153,7 +154,7 @@
                                Margin="0,5,0,0"/>
 
 
-                    <TextBlock Text="Username"
+                    <TextBlock Text="{x:Static l:Resources.Username}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -181,7 +182,7 @@
                         </TextBox.Background>
                     </TextBox>
 
-                    <TextBlock Text="Password"
+                    <TextBlock Text="{x:Static l:Resources.Password}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -202,25 +203,23 @@
                              Padding="20,0,0,0">
 
                         <PasswordBox.Background>
-                            <!--ImageSource="/Images/logo.png"--> 
+                            <!--ImageSource="/Images/logo.png"-->
                             <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
                         </PasswordBox.Background>
                     </PasswordBox>
-
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"
-                            Content="LOG IN"
+                            Content="{x:Static l:Resources.Login}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
-                            Cursor="Hand"                           
-                            Margin="0,50,0,0"
-                            Click="BtnLogin_Click">
+                            Cursor="Hand"
+                            Click="BtnLogin_Click" Height="55">
 
                         <Button.Style>
-                            <Style TargetType="Button">
+                            <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#462AD8"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
@@ -231,7 +230,7 @@
                         </Button.Style>
 
                         <Button.Template>
-                            <ControlTemplate TargetType="Button">
+                            <ControlTemplate TargetType="{x:Type Button}">
                                 <Border Width="150" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
@@ -241,18 +240,49 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                    <Button x:Name="btnRegister"                          
+                        BorderThickness="0"
+                        Content="{x:Static l:Resources.Register}"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Click="BtnRegister_Click" Height="55">
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="0,15,0,0">
 
-                        <TextBlock Text="Forgot Password?"
+                        <TextBlock Text="{x:Static l:Resources.ForgetThePassword}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"/>
 
-                        <TextBlock Text="Reset"
+                        <TextBlock Text="{x:Static l:Resources.Reset}"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
@@ -263,6 +293,10 @@
                     </StackPanel>
 
                 </StackPanel>
+                <ComboBox Name="cbLanguage" HorizontalAlignment="Left" Margin="549,389,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem Content="{x:Static l:Resources.English}"/>
+                    <ComboBoxItem Content="{x:Static l:Resources.Spanish}"/>
+                </ComboBox>
 
             </Grid>
 

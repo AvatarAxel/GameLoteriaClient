@@ -118,192 +118,192 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceptar</value>
   </data>
   <data name="AcceptSetting" xml:space="preserve">
-    <value>Accept setting</value>
+    <value>Aceptar configuraciones</value>
   </data>
   <data name="AddFriend" xml:space="preserve">
-    <value>Add</value>
+    <value>Agregar</value>
   </data>
   <data name="AmountOfMoneyBet" xml:space="preserve">
-    <value>amount of money bet</value>
+    <value>Cantidad del dinero de apuesta</value>
   </data>
   <data name="BetAmount" xml:space="preserve">
-    <value>Bet amount</value>
+    <value>Monto de apuesta</value>
   </data>
   <data name="Black" xml:space="preserve">
-    <value>Black</value>
+    <value>Negro</value>
   </data>
   <data name="Brown" xml:space="preserve">
-    <value>Brown</value>
+    <value>Café</value>
   </data>
   <data name="ChangeBeanColor" xml:space="preserve">
-    <value>Change bean color</value>
+    <value>Cambiar color de frijol</value>
   </data>
   <data name="ChangeCardBorder" xml:space="preserve">
-    <value>change card border</value>
+    <value>Cambiar borde de carta</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change password</value>
+    <value>Cambiar contraseña </value>
   </data>
   <data name="CheckTheCode" xml:space="preserve">
-    <value>Check the code</value>
+    <value>Verificar código</value>
   </data>
   <data name="CheckYourEmail" xml:space="preserve">
-    <value>Check your email or spam folder</value>
+    <value>Validar correo electrónico</value>
   </data>
   <data name="CreateGame" xml:space="preserve">
-    <value>Create game</value>
+    <value>Crear juego</value>
   </data>
   <data name="DateOfBirth" xml:space="preserve">
-    <value>Date of birth</value>
+    <value>Fecha de nacimiento</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="English" xml:space="preserve">
-    <value>English</value>
+    <value>Inglés</value>
   </data>
   <data name="EnterNewPassword" xml:space="preserve">
-    <value>Enter new password</value>
+    <value>Introducir nueva contraseña</value>
   </data>
   <data name="EnterPassword" xml:space="preserve">
-    <value>Enter password</value>
+    <value>Introducir contraseña</value>
   </data>
   <data name="EnterTheCode" xml:space="preserve">
-    <value>Enter the code</value>
+    <value>Introducir el código</value>
   </data>
   <data name="Fast" xml:space="preserve">
-    <value>Fast</value>
+    <value>Rapido</value>
   </data>
   <data name="ForgetThePassword" xml:space="preserve">
-    <value>Forget the password?</value>
+    <value>¿Cambiar la contraseña?</value>
   </data>
   <data name="Friend" xml:space="preserve">
-    <value>Friend</value>
+    <value>Amigo</value>
   </data>
   <data name="FriendList" xml:space="preserve">
-    <value>Friend list</value>
+    <value>Lista de amigos</value>
   </data>
   <data name="GameLoteria" xml:space="preserve">
-    <value>Game Loteria</value>
+    <value>Juego de la lotería</value>
   </data>
   <data name="GameType" xml:space="preserve">
-    <value>Game type</value>
+    <value>Tipo de juego</value>
   </data>
   <data name="Idiom" xml:space="preserve">
-    <value>Idiom</value>
+    <value>Idioma</value>
   </data>
   <data name="JoinAGame" xml:space="preserve">
-    <value>Join a game</value>
+    <value>Uniser al juego </value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="LogOut" xml:space="preserve">
-    <value>Log out</value>
+    <value>Registrarse</value>
   </data>
   <data name="NumberOfPlayers" xml:space="preserve">
-    <value>Number of players</value>
+    <value>Número de jugadores</value>
   </data>
   <data name="Orbed" xml:space="preserve">
-    <value>Orbed</value>
+    <value>Redondeado</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Contraseña</value>
   </data>
   <data name="PasswordConfirm" xml:space="preserve">
-    <value>Password Confirm</value>
+    <value>Confirmar contraseña</value>
   </data>
   <data name="Passwords" xml:space="preserve">
-    <value>Passwords</value>
+    <value>Contraseñas</value>
   </data>
   <data name="PlayAsAGuest" xml:space="preserve">
-    <value>Play as a guest</value>
+    <value>Jugar como invitado</value>
   </data>
   <data name="Private" xml:space="preserve">
-    <value>Private</value>
+    <value>Privada</value>
   </data>
   <data name="Public" xml:space="preserve">
-    <value>Public</value>
+    <value>Publica</value>
   </data>
   <data name="RecentPeople" xml:space="preserve">
-    <value>Recent people</value>
+    <value>Personas recientes</value>
   </data>
   <data name="Red" xml:space="preserve">
-    <value>Red</value>
+    <value>Rojo</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Registrar</value>
   </data>
   <data name="RegistersUser" xml:space="preserve">
-    <value>Register user</value>
+    <value>Registrar usuario</value>
   </data>
   <data name="Regular" xml:space="preserve">
-    <value>regular</value>
+    <value>Regular</value>
   </data>
   <data name="RemoveFriend" xml:space="preserve">
-    <value>Remove</value>
+    <value>Remover</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Reinicar</value>
   </data>
   <data name="SelectACard" xml:space="preserve">
-    <value>Select a card</value>
+    <value>Seleccionar una carta</value>
   </data>
   <data name="SendVerificationCode" xml:space="preserve">
-    <value>Send verification code</value>
+    <value>Mandar código de verificación</value>
   </data>
   <data name="Setting" xml:space="preserve">
-    <value>Setting</value>
+    <value>Configuración</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Sign In</value>
+    <value>Iniciar sesión </value>
   </data>
   <data name="Slow" xml:space="preserve">
-    <value>Slow</value>
+    <value>Lento</value>
   </data>
   <data name="Sound" xml:space="preserve">
-    <value>Sound</value>
+    <value>Sonido</value>
   </data>
   <data name="SoundOfVoices" xml:space="preserve">
-    <value>Sound of voices</value>
+    <value>Sonido de voces</value>
   </data>
   <data name="Spanish" xml:space="preserve">
-    <value>Spanish</value>
+    <value>Español</value>
   </data>
   <data name="SpeedGame" xml:space="preserve">
-    <value>Speed game</value>
+    <value>Velocidad del juego </value>
   </data>
   <data name="Square" xml:space="preserve">
-    <value>Square</value>
+    <value>Cuadrada</value>
   </data>
   <data name="StartGame" xml:space="preserve">
-    <value>Start game</value>
+    <value>Empezar juego</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Loteria</value>
   </data>
   <data name="TitleEmailVerification" xml:space="preserve">
-    <value>Email verification</value>
+    <value>Verificar correo electrónico</value>
   </data>
   <data name="TitleMain" xml:space="preserve">
-    <value>Main</value>
+    <value>Principal</value>
   </data>
   <data name="TitleModifyProfile" xml:space="preserve">
-    <value>Modify profile</value>
+    <value>Modificar perfil</value>
   </data>
   <data name="TitleSettingGame" xml:space="preserve">
-    <value>Setting game</value>
+    <value>Condiguración del juego</value>
   </data>
   <data name="TitleSynchronizing" xml:space="preserve">
-    <value>Synchronizing</value>
+    <value>Sincronización</value>
   </data>
   <data name="Username" xml:space="preserve">
-    <value>Username</value>
+    <value>Nombre de usuario</value>
   </data>
   <data name="WelcomeToTheGame" xml:space="preserve">
-    <value>Welcome to the game</value>
+    <value>Bienvenido al juego</value>
   </data>
 </root>

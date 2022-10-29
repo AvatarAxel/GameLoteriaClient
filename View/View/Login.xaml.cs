@@ -24,6 +24,7 @@ namespace View
         {
             InitializeComponent();
         }
+
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -31,7 +32,7 @@ namespace View
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }        
+        }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtUser.Text))
@@ -63,6 +64,23 @@ namespace View
             {
                 MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbLanguage.SelectedIndex == 0)
+                Properties.Settings.Default.languageCode = "en";
+            else 
+                Properties.Settings.Default.languageCode = "es";
+           
+            Properties.Settings.Default.Save();
+        }
+
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new RegisterUser();
+            window.Show();
+            this.Close();
         }
     }
 }

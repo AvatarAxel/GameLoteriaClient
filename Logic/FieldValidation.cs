@@ -10,9 +10,9 @@ namespace Logic
 {
     public class FieldValidation
     {
-        public bool passwordValidation(string password01, string password02)
+        public bool passwordValidation(string password, string ValidatePassword)
         {
-            if (password01.Equals(password02)) 
+            if (password.Equals(ValidatePassword)) 
             { 
                 return true;
             }
