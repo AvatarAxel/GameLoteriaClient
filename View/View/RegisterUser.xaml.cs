@@ -39,7 +39,7 @@ namespace View
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidationFields()) {
+            if (validationFields()) {
                 return;
             }
             ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
@@ -63,7 +63,7 @@ namespace View
             }            
         }
 
-        public bool ValidationFields() 
+        public bool validationFields() 
         { 
             bool validation = false;
             if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
