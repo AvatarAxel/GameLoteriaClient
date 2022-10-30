@@ -293,7 +293,7 @@
                     </StackPanel>
 
                 </StackPanel>
-                <ComboBox Name="cbLanguage" HorizontalAlignment="Left" Margin="549,389,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox Name="cbLanguage" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="91" SelectionChanged="ComboBox_SelectionChanged" Height="19">
                     <ComboBoxItem Content="{x:Static l:Resources.English}"/>
                     <ComboBoxItem Content="{x:Static l:Resources.Spanish}"/>
                 </ComboBox>
@@ -303,4 +303,4 @@
         </Border>
 
     </Border>
-</Window>
+</Window> 

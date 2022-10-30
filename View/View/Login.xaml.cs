@@ -82,5 +82,10 @@ namespace View
             window.Show();
             this.Close();
         }
+
+        public void ResponseEmail(string verificationCode)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

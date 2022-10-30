@@ -42,8 +42,14 @@
   <wsdl:message name="IAuthenticationService_RegistrerUserBD_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrerUserBD" />
   </wsdl:message>
+  <wsdl:message name="IAuthenticationService_ValidationEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidationEmail" />
+  </wsdl:message>
   <wsdl:message name="IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseAuthenticated" />
+  </wsdl:message>
+  <wsdl:message name="IAuthenticationService_ResponseEmail_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseEmail" />
   </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
@@ -52,8 +58,14 @@
     <wsdl:operation name="RegistrerUserBD">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/RegistrerUserBD" message="tns:IAuthenticationService_RegistrerUserBD_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ValidationEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/ValidationEmail" message="tns:IAuthenticationService_ValidationEmail_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ResponseAuthenticated">
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" message="tns:IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEmail">
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ResponseEmail" message="tns:IAuthenticationService_ResponseEmail_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -71,8 +83,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ValidationEmail">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ValidationEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ResponseAuthenticated">
       <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEmail">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ResponseEmail" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -84,7 +108,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-43QTE47\michi</Upn>
+          <Upn>LAPTOP-LUFR1L2J\aavp0</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

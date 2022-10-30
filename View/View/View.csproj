@@ -81,6 +81,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.en.resx</DependentUpon>
     </Compile>
+    <Compile Include="VE_VerificationEmail.xaml.cs">
+      <DependentUpon>VE_VerificationEmail.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +104,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RegisterUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VE_VerificationEmail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +165,10 @@
       <Project>{79a6be37-d0f7-4598-89ca-5e9a1da06b7e}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Logic.csproj">
+      <Project>{79a6be37-d0f7-4598-89ca-5e9a1da06b7e}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
@@ -177,12 +188,5 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Logic\Logic.csproj">
-      <Project>{79a6be37-d0f7-4598-89ca-5e9a1da06b7e}</Project>
-      <Name>Logic</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
