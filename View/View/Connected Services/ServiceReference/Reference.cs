@@ -35,7 +35,7 @@ namespace View.ServiceReference {
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string usernameField;
+        private string UsernameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -100,14 +100,14 @@ namespace View.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string username {
+        public string Username {
             get {
-                return this.usernameField;
+                return this.UsernameField;
             }
             set {
-                if ((object.ReferenceEquals(this.usernameField, value) != true)) {
-                    this.usernameField = value;
-                    this.RaisePropertyChanged("username");
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -188,6 +188,89 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task RegistrerUserBDAsync(View.ServiceReference.PlayerDTO player) {
             return base.Channel.RegistrerUserBDAsync(player);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IChatService", CallbackContract=typeof(View.ServiceReference.IChatServiceCallback))]
+    public interface IChatService {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/JoinChat")]
+        void JoinChat(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/JoinChat")]
+        System.Threading.Tasks.Task JoinChatAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
+        void SendMessage(string message, string userChat);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(string message, string userChat);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/ExitChat")]
+        void ExitChat(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/ExitChat")]
+        System.Threading.Tasks.Task ExitChatAsync(string userName);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/ReciveMessage")]
+        void ReciveMessage(string player, string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatServiceChannel : View.ServiceReference.IChatService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChatServiceClient : System.ServiceModel.DuplexClientBase<View.ServiceReference.IChatService>, View.ServiceReference.IChatService {
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void JoinChat(string username) {
+            base.Channel.JoinChat(username);
+        }
+        
+        public System.Threading.Tasks.Task JoinChatAsync(string username) {
+            return base.Channel.JoinChatAsync(username);
+        }
+        
+        public void SendMessage(string message, string userChat) {
+            base.Channel.SendMessage(message, userChat);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(string message, string userChat) {
+            return base.Channel.SendMessageAsync(message, userChat);
+        }
+        
+        public void ExitChat(string userName) {
+            base.Channel.ExitChat(userName);
+        }
+        
+        public System.Threading.Tasks.Task ExitChatAsync(string userName) {
+            return base.Channel.ExitChatAsync(userName);
         }
     }
 }

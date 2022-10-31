@@ -29,24 +29,24 @@ namespace View
         {
             if (status)
             {
-                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (validationFields()) {
+            if (!ValidationFields()) {
                 return;
             }
             ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
             InstanceContext context = new InstanceContext(this);
             ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
             Encryption encryption = new Encryption();
-            playerDTO.username = txtUsername.Text;
+            playerDTO.Username = txtUsername.Text;
             playerDTO.Email = txtEmail.Text;
             string hashedPassword = encryption.HashPassword256(txtPassword.Password);
             playerDTO.Password = hashedPassword;
@@ -63,7 +63,7 @@ namespace View
             }            
         }
 
-        public bool validationFields() 
+        public bool ValidationFields() 
         { 
             bool validation = false;
             if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
@@ -73,7 +73,7 @@ namespace View
                 return validation;
             }
             FieldValidation fieldValidation = new FieldValidation();
-            if (!fieldValidation.passwordValidation(txtPassword.Password, txtPasswordValidation.Password))
+            if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
                 MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
                 return validation;
