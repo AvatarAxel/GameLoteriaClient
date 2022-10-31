@@ -5,11 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Chat" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="txtMessage" HorizontalAlignment="Left" Margin="28,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="662"/>
-        <Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="705,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.328,-0.248" Width="67" Height="18" Click="BtnSend_Click"/>
-        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Margin="705,382,0,0" VerticalAlignment="Top" Width="67" Click="BtnExit_Click"/>
-        <TextBlock x:Name="txtBlockChat" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="744" Height="302"/>
-    </Grid>
+        Title="Chat" Height="480" Width="290"
+        Background="Transparent">
+    <Border CornerRadius="12"
+            BorderThickness="2"
+            Opacity="0.95">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#462AD8" Offset="0"/>
+                <GradientStop Color="#DA34AE" Offset="0.75"/>
+                <GradientStop Color="#8A16C1" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="115*"/>
+                <ColumnDefinition Width="131*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtMessage" HorizontalAlignment="Left" Margin="38,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210"
+                 FontSize="13"
+                 FontWeight="Medium"
+                 FontFamily="Montserrat"
+                 Foreground="White"
+                 CaretBrush="LightGray"
+                 BorderBrush="DarkGray"
+                 BorderThickness="0,0,0,2"
+                 Height="28" Grid.ColumnSpan="2">
+                <TextBox.Background>
+                    <ImageBrush
+                    Stretch="None"
+                    AlignmentX="Left"
+                    />
+                </TextBox.Background>
+            </TextBox>
+            <Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="19,375,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.328,-0.248" Width="106" Click="BtnSend_Click"
+                BorderThickness="0"
+                Foreground="White"
+                FontSize="12"
+                Height="50"
+                Cursor="Hand"
+                >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="100" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Margin="138,375,0,0" VerticalAlignment="Top" Width="104" Click="BtnExit_Click" RenderTransformOrigin="0.5,0.5"
+            BorderThickness="0"
+                Foreground="White"
+                FontSize="12"
+                Height="50"
+                Cursor="Hand" Grid.ColumnSpan="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="100" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <TextBox x:Name="txtChat" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="303" Grid.ColumnSpan="2"
+                     FontFamily="Montserrat"/>
+        </Grid>
+    </Border>
 </Window>

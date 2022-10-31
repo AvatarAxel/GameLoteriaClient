@@ -20,7 +20,8 @@ namespace View
     {
         public Chat()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            txtChat.IsEnabled = false;
         }
 
         private string username;
@@ -30,7 +31,14 @@ namespace View
             username = playerUsername;
             InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
-            client.JoinChat(username);
+            try 
+            {
+                client.JoinChat(username);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
@@ -38,24 +46,38 @@ namespace View
             InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
             string message = txtMessage.Text;
-            if (!string.IsNullOrEmpty(message)) 
+            if (!string.IsNullOrEmpty(message))
             {
-                client.SendMessage(message, username);
+                try
+                {
+                    client.SendMessage(message, username);
+                    txtMessage.Clear();
+                }
+                catch (EndpointNotFoundException) 
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         public void ReciveMessage(string player, string message)
         {
-            txtBlockChat.Text = player + ": " + message;            
+            txtChat.Text += player + ": " + message+ "\r\n";
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
-            client.ExitChat(username);
+            try 
+            {
+                client.ExitChat(username);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Application.Current.Shutdown();
-
         }
     }
 }
