@@ -52,6 +52,15 @@ namespace View
             }    
         }
 
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            
+            RegisterUser registerUser = new RegisterUser();
+            registerUser.Show();
+            Close();
+
+        }
+
         public void ResponseAuthenticated(bool status)
         {
             if (status)
@@ -74,13 +83,6 @@ namespace View
                 Properties.Settings.Default.languageCode = "es";
            
             Properties.Settings.Default.Save();
-        }
-
-        private void BtnRegister_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new RegisterUser();
-            window.Show();
-            this.Close();
         }
 
         public void ResponseEmail(string verificationCode)

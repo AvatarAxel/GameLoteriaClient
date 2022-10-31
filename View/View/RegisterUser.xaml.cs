@@ -30,6 +30,9 @@ namespace View
             if (status)
             {
                 MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
             }
             else
             {
@@ -44,12 +47,13 @@ namespace View
                 string emailUser = txtEmail.Text;
                 VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
                 goToPopUpWindow.MailSentByThePlayer(emailUser);
-                goToPopUpWindow.ShowDialog(); //Show();
+                goToPopUpWindow.ShowDialog();
 
                 ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
                 InstanceContext context = new InstanceContext(this);
                 ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
                 Encryption encryption = new Encryption();
+
                 playerDTO.Username = txtUsername.Text;
                 playerDTO.Email = txtEmail.Text;
                 string hashedPassword = encryption.HashPassword256(txtPassword.Password);
@@ -57,7 +61,6 @@ namespace View
                 String Birthday = calendarBirthday.SelectedDate.ToString();
                 DateTime dateTime = DateTime.Parse(Birthday);
                 playerDTO.Birthday = dateTime;
-                
 
                 try
                 {
@@ -105,7 +108,9 @@ namespace View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Login login = new Login();
+            login.Show();
+            Close();
         }
 
         public void RegistrerUser(bool status)

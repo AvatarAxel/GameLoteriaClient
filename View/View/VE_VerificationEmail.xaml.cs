@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for VE_VerificationEmail.xaml
-    /// </summary>
+
     public partial class VE_VerificationEmail : Window, ServiceReference.IAuthenticationServiceCallback
     {
         private string codeVerificationComparation;
@@ -46,16 +44,27 @@ namespace View
 
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
-            string verificarionUser = txtVerification.Text;
-            if (codeVerificationComparation.Equals(verificarionUser))
+            if (string.IsNullOrEmpty(txtVerification.Text))
             {
-                MessageBox.Show("Todo chido", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-                Close();
+                MessageBox.Show("No seas imbecil pon algo en el campo", "Baboso", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                string verificarionUser = txtVerification.Text;
+
+                if (codeVerificationComparation.Equals(verificarionUser))
+                {
+                    MessageBox.Show("Todo chido", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                
             }
+
         }
     }
 }
