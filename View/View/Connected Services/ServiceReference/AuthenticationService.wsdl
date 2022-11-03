@@ -29,6 +29,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -51,6 +80,18 @@
   <wsdl:message name="IAuthenticationService_ResponseEmail_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseEmail" />
   </wsdl:message>
+  <wsdl:message name="IChatService_JoinChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_ExitChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_ReciveMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveMessage" />
+  </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLogin" message="tns:IAuthenticationService_AuthenticationLogin_InputMessage" />
@@ -66,6 +107,20 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseEmail">
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ResponseEmail" message="tns:IAuthenticationService_ResponseEmail_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatService">
+    <wsdl:operation name="JoinChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/JoinChat" message="tns:IChatService_JoinChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/SendMessage" message="tns:IChatService_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExitChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/ExitChat" message="tns:IChatService_ExitChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/ReciveMessage" message="tns:IChatService_ReciveMessage_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -102,13 +157,50 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatService" type="tns:IChatService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="JoinChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/JoinChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExitChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/ExitChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveMessage">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/ReciveMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="AuthenticationService">
     <wsdl:port name="NetTcpBinding_IAuthenticationService" binding="tns:NetTcpBinding_IAuthenticationService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-LUFR1L2J\aavp0</Upn>
+          <Upn>DESKTOP-43QTE47\michi</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatService" binding="tns:NetTcpBinding_IChatService">
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-43QTE47\michi</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

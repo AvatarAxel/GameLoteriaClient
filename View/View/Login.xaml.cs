@@ -65,9 +65,13 @@ namespace View
         {
             if (status)
             {
-                MainWindow mainWindow = new MainWindow();
+                /*MainWindow mainWindow = new MainWindow();
                 Close();
-                mainWindow.Show();
+                mainWindow.Show();*/
+                Chat chat = new Chat();
+                chat.ReceiveData(txtUser.Text);
+                Close();
+                chat.Show();
             }
             else
             {
