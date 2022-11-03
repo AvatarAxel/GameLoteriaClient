@@ -37,11 +37,7 @@ namespace View
 
         private void BtnUpdateDat_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPasswordValidation.Password))
-            {
-                MessageBox.Show("Campos vacios, intentelo de nuevo", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
+            if (ValidationFields())
             {
                 string email;
                 string passwordValidation;
@@ -50,14 +46,39 @@ namespace View
                 string hashedPassword;
 
                 VE_VerificationEmail changePassword = new VE_VerificationEmail();
-                changePassword.ShowDialog();
-                
+                changePassword.MailSentByThePlayer(email);
+                changePassword.ShowDialog();          
 
-
+                InstanceContext context = new InstanceContext(this);
+                ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
+
+                //Llamarlo
             }
 
+        }
+
+        public bool ValidationFields()
+        {
+            if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPasswordValidation.Password))
+            {
+                MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            FieldValidation fieldValidation = new FieldValidation();
+            if (!fieldValidation.passwordValidation(txtPassword.Password, txtPasswordValidation.Password))
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
+            {
+                MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+  
+            return true;
         }
     }
 }
