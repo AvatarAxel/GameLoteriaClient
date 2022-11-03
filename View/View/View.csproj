@@ -81,6 +81,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.en.resx</DependentUpon>
     </Compile>
+    <Compile Include="VE_PasswordChange.xaml.cs">
+      <DependentUpon>VE_PasswordChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VE_VerificationEmail.xaml.cs">
       <DependentUpon>VE_VerificationEmail.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RegisterUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VE_PasswordChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

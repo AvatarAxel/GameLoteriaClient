@@ -89,5 +89,19 @@ namespace View
         {
             throw new NotImplementedException();
         }
+
+        private void LbReset_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            VE_PasswordChange passwordChange = new VE_PasswordChange();
+            passwordChange.Show();
+            Close();
+        }
+
+        private void LbPlayingAsGuest_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            Close(); 
+            mainWindow.Show();
+        }
     }
 }
