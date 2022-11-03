@@ -4,21 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         xmlns:l="clr-namespace:View.Properties"
-        Title="RegisterUser" Height="450" Width="800" 
+        Title="RegisterUser" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        Background="Transparent"
         AllowsTransparency="True">
 
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/Back.jpg"/>
+            <ImageBrush ImageSource="/Images/back.jpg"
+                        Stretch="None"/>
         </Border.Background>
         <Border
         CornerRadius="10"
-        BorderThickness="1"
+        BorderThickness="2"
         Opacity=".95">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -30,7 +32,7 @@
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
                     <GradientStop Color="#060531" Offset="0"/>
-                    <GradientStop Color="#1B1448" Offset="0.75"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>

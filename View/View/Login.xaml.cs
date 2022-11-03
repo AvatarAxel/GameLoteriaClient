@@ -52,6 +52,15 @@ namespace View
             }    
         }
 
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            
+            RegisterUser registerUser = new RegisterUser();
+            registerUser.Show();
+            Close();
+
+        }
+
         public void ResponseAuthenticated(bool status)
         {
             if (status)
@@ -77,11 +86,23 @@ namespace View
             Properties.Settings.Default.Save();
         }
 
-        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        public void ResponseEmail(string verificationCode)
         {
-            var window = new RegisterUser();
-            window.Show();
-            this.Close();
+            throw new NotImplementedException();
+        }
+
+        private void LbReset_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            VE_PasswordChange passwordChange = new VE_PasswordChange();
+            passwordChange.Show();
+            Close();
+        }
+
+        private void LbPlayingAsGuest_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            Close(); 
+            mainWindow.Show();
         }
     }
 }

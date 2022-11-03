@@ -24,5 +24,36 @@ namespace View
         {
             InitializeComponent();
         }
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BtnSignOut_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+
+        }
+
+        private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnJoinGame_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

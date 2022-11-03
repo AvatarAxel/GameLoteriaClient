@@ -29,7 +29,10 @@ namespace View
         {
             if (status)
             {
-                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
             }
             else
             {
@@ -39,58 +42,63 @@ namespace View
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidationFields()) {
-                return;
-            }
-            ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
-            InstanceContext context = new InstanceContext(this);
-            ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
-            Encryption encryption = new Encryption();
-            playerDTO.Username = txtUsername.Text;
-            playerDTO.Email = txtEmail.Text;
-            string hashedPassword = encryption.HashPassword256(txtPassword.Password);
-            playerDTO.Password = hashedPassword;
-            String Birthday = calendarBirthday.SelectedDate.ToString();
-            DateTime dateTime = DateTime.Parse(Birthday);
-            playerDTO.Birthday = dateTime;
-            try
-            {
-                client.RegistrerUserBD(playerDTO);
-            }
-            catch(EndpointNotFoundException) 
-            {
-                MessageBox.Show("Sin conexión, inténtelo más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }            
+            if (ValidationFields()) {
+
+                string emailUser = txtEmail.Text;
+                VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
+                goToPopUpWindow.MailSentByThePlayer(emailUser);
+                goToPopUpWindow.ShowDialog();
+
+                ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
+                InstanceContext context = new InstanceContext(this);
+                ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
+                Encryption encryption = new Encryption();
+
+                playerDTO.Username = txtUsername.Text;
+                playerDTO.Email = txtEmail.Text;
+                string hashedPassword = encryption.HashPassword256(txtPassword.Password);
+                playerDTO.Password = hashedPassword;
+                String Birthday = calendarBirthday.SelectedDate.ToString();
+                DateTime dateTime = DateTime.Parse(Birthday);
+                playerDTO.Birthday = dateTime;
+
+                try
+                {
+                    client.RegistrerUserBD(playerDTO);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Sin conexión, inténtelo más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }    
         }
 
         public bool ValidationFields() 
         { 
-            bool validation = false;
             if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
                 || string.IsNullOrEmpty(txtPassword.Password) || string.IsNullOrEmpty(txtPasswordValidation.Password))
             {
                 MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
-                return validation;
+                return false;
             }
             FieldValidation fieldValidation = new FieldValidation();
             if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
                 MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
-                return validation;
+                return false;
             }
             if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
             {
                 MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
-                return validation;
+                return false;
             }
             String Birthday = calendarBirthday.SelectedDate.ToString();
             if (string.IsNullOrEmpty(Birthday))
             {
                 MessageBox.Show("Por favor elija su fecha de nacimiento", "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
-                return validation;
+                return false;
             }
-            validation = true;
-            return validation;
+            return true;
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
@@ -100,7 +108,9 @@ namespace View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Login login = new Login();
+            login.Show();
+            Close();
         }
 
         public void RegistrerUser(bool status)
@@ -108,5 +118,9 @@ namespace View
             throw new NotImplementedException();
         }
 
+        public void ResponseEmail(string verificationCode)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
