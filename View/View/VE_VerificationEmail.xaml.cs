@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.ServiceReference;
 
 namespace View
 {
@@ -37,9 +38,19 @@ namespace View
             throw new NotImplementedException();
         }
 
+        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        {
+            throw new NotImplementedException();
+        }
+
         public void ResponseEmail(string verificationCode)
         {
             codeVerificationComparation = verificationCode;
+        }
+
+        public void ResponseRegister(bool status)
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnAccept_Click(object sender, RoutedEventArgs e)

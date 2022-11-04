@@ -5,6 +5,7 @@
       <xs:element minOccurs="0" name="Birthday" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Coin" type="xs:int" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>

@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.ServiceReference;
 
 namespace View
 {
@@ -23,21 +24,6 @@ namespace View
         public RegisterUser()
         {
             InitializeComponent();
-        }
-
-        public void ResponseAuthenticated(bool status)
-        {
-            if (status)
-            {
-                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-            }
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
@@ -121,6 +107,26 @@ namespace View
         public void ResponseEmail(string verificationCode)
         {
             throw new NotImplementedException();
+        }
+
+        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseRegister(bool status)
+        {
+            if (status)
+            {
+                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            }
         }
     }
 }

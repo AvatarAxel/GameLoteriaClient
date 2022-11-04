@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Logic;
-
+using View.ServiceReference;
 
 namespace View
 {
@@ -61,24 +61,6 @@ namespace View
 
         }
 
-        public void ResponseAuthenticated(bool status)
-        {
-            if (status)
-            {
-                /*MainWindow mainWindow = new MainWindow();
-                Close();
-                mainWindow.Show();*/
-                Chat chat = new Chat();
-                chat.ReceiveData(txtUser.Text);
-                Close();
-                chat.Show();
-            }
-            else
-            {
-                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbLanguage.SelectedIndex == 0)
@@ -106,6 +88,31 @@ namespace View
             MainWindow mainWindow = new MainWindow();
             Close(); 
             mainWindow.Show();
+        }
+
+        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        {
+            if (playerDTO.IsActive)
+            {
+                SingletonPlayer.PlayerClient = new SingletonPlayer() 
+                {
+                    Username = playerDTO.Username,
+                    Email = playerDTO.Email,
+                    Coin = playerDTO.Coin,
+                }; 
+                Chat chat = new Chat();
+                Close();
+                chat.Show();
+            }
+            else
+            {
+                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        public void ResponseRegister(bool status)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -20,18 +21,17 @@ namespace View
         public Chat()
         {
             InitializeComponent();
+            InitializeChat();
             txtChat.IsEnabled = false;
         }
-        private string username;
 
-        public void ReceiveData(string playerUsername) 
+        public void InitializeChat() 
         {
             InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
-            username = playerUsername;            
             try
             {
-                client.JoinChat(username);
+                client.JoinChat(SingletonPlayer.PlayerClient.Username);
             }
             catch (EndpointNotFoundException)
             {
@@ -45,7 +45,7 @@ namespace View
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
             try
             {
-                client.SendMessage(txtMessage.Text, username);
+                client.SendMessage(txtMessage.Text, SingletonPlayer.PlayerClient.Username);
                 txtMessage.Clear();
             }
             catch(EndpointNotFoundException)
