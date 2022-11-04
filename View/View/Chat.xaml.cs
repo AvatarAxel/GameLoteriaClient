@@ -25,6 +25,7 @@ namespace View
             txtChat.IsEnabled = false;
         }
 
+
         public void InitializeChat() 
         {
             InstanceContext context = new InstanceContext(this);

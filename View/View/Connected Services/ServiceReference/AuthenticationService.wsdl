@@ -16,6 +16,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChangePasswordService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -31,6 +39,9 @@
   </wsdl:message>
   <wsdl:message name="IAuthenticationService_ValidationEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidationEmail" />
+  </wsdl:message>
+  <wsdl:message name="IAuthenticationService_UserExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserExist" />
   </wsdl:message>
   <wsdl:message name="IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseAuthenticated" />
@@ -53,6 +64,12 @@
   <wsdl:message name="IChatService_ReciveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveMessage" />
   </wsdl:message>
+  <wsdl:message name="IChangePasswordService_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IChangePasswordService_ResponseChangePassword_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseChangePassword" />
+  </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLogin" message="tns:IAuthenticationService_AuthenticationLogin_InputMessage" />
@@ -62,6 +79,9 @@
     </wsdl:operation>
     <wsdl:operation name="ValidationEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/ValidationEmail" message="tns:IAuthenticationService_ValidationEmail_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/UserExist" message="tns:IAuthenticationService_UserExist_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseAuthenticated">
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" message="tns:IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage" />
@@ -87,6 +107,14 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IChatService/ReciveMessage" message="tns:IChatService_ReciveMessage_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IChangePasswordService">
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChangePasswordService/ChangePassword" message="tns:IChangePasswordService_ChangePassword_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseChangePassword">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChangePasswordService/ResponseChangePassword" message="tns:IChangePasswordService_ResponseChangePassword_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
     <wsp:PolicyReference URI="#NetTcpBinding_IAuthenticationService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -104,6 +132,12 @@
     </wsdl:operation>
     <wsdl:operation name="ValidationEmail">
       <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ValidationEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UserExist">
+      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/UserExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -155,6 +189,22 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChangePasswordService" type="tns:IChangePasswordService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChangePasswordService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/IChangePasswordService/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/IChangePasswordService/ResponseChangePassword" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="AuthenticationService">
     <wsdl:port name="NetTcpBinding_IAuthenticationService" binding="tns:NetTcpBinding_IAuthenticationService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
@@ -163,6 +213,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChatService" binding="tns:NetTcpBinding_IChatService">
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChangePasswordService" binding="tns:NetTcpBinding_IChangePasswordService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>

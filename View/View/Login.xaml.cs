@@ -25,14 +25,46 @@ namespace View
             InitializeComponent();
         }
 
+        public void ResponseEmail(string verificationCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseRegister(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        {
+            if (playerDTO.IsActive)
+            {
+                SingletonPlayer.PlayerClient = new SingletonPlayer()
+                {
+                    Username = playerDTO.Username,
+                    Email = playerDTO.Email,
+                    Coin = playerDTO.Coin,
+                };
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
+
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtUser.Text))
@@ -61,21 +93,6 @@ namespace View
 
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbLanguage.SelectedIndex == 0)
-                Properties.Settings.Default.languageCode = "en";
-            else 
-                Properties.Settings.Default.languageCode = "es";
-           
-            Properties.Settings.Default.Save();
-        }
-
-        public void ResponseEmail(string verificationCode)
-        {
-            throw new NotImplementedException();
-        }
-
         private void LbReset_MouseDown(object sender, MouseButtonEventArgs e)
         {
             VE_PasswordChange passwordChange = new VE_PasswordChange();
@@ -86,33 +103,18 @@ namespace View
         private void LbPlayingAsGuest_MouseDown(object sender, MouseButtonEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            Close(); 
+            Close();
             mainWindow.Show();
         }
 
-        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (playerDTO.IsActive)
-            {
-                SingletonPlayer.PlayerClient = new SingletonPlayer() 
-                {
-                    Username = playerDTO.Username,
-                    Email = playerDTO.Email,
-                    Coin = playerDTO.Coin,
-                }; 
-                Chat chat = new Chat();
-                Close();
-                chat.Show();
-            }
-            else
-            {
-                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-
-        public void ResponseRegister(bool status)
-        {
-            throw new NotImplementedException();
+            if (cbLanguage.SelectedIndex == 0)
+                Properties.Settings.Default.languageCode = "en";
+            else 
+                Properties.Settings.Default.languageCode = "es";
+           
+            Properties.Settings.Default.Save();
         }
     }
 }

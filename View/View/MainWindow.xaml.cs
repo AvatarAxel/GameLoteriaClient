@@ -24,10 +24,12 @@ namespace View
         {
             InitializeComponent();
         }
+
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
+
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -40,7 +42,6 @@ namespace View
             Close();
 
         }
-
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
             VE_StartUpSettings vE_StartUpSettings = new VE_StartUpSettings();

@@ -53,6 +53,13 @@ namespace View
             throw new NotImplementedException();
         }
 
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(txtVerification.Text))

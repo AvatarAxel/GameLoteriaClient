@@ -26,6 +26,48 @@ namespace View
             InitializeComponent();
         }
 
+        public void RegistrerUser(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseEmail(string verificationCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseRegister(bool status)
+        {
+            if (status)
+            {
+                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            }
+        }
+
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
             if (ValidationFields()) {
@@ -34,6 +76,7 @@ namespace View
                 VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
                 goToPopUpWindow.MailSentByThePlayer(emailUser);
                 goToPopUpWindow.ShowDialog();
+
 
                 ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
                 InstanceContext context = new InstanceContext(this);
@@ -85,48 +128,6 @@ namespace View
                 return false;
             }
             return true;
-        }
-
-        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            Close();
-        }
-
-        public void RegistrerUser(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseEmail(string verificationCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseAuthenticated(PlayerDTO playerDTO)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseRegister(bool status)
-        {
-            if (status)
-            {
-                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-            }
         }
     }
 }

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    public partial class VE_PasswordChange : Window
+    public partial class VE_PasswordChange : Window, ServiceReference.IChangePasswordServiceCallback
     {
         public VE_PasswordChange()
         {
@@ -50,11 +50,12 @@ namespace View
                 changePassword.ShowDialog();          
 
                 InstanceContext context = new InstanceContext(this);
-                ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
+                ServiceReference.ChangePasswordServiceClient client = new ServiceReference.ChangePasswordServiceClient(context);//new ServiceReference.AuthenticationServiceClient(context);
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
 
-                //Llamarlo
+                client.ChangePassword(email, hashedPassword);
+
             }
 
         }
@@ -79,6 +80,18 @@ namespace View
             }
   
             return true;
+        }
+
+        public void ResponseChangePassword(bool status)
+        {
+            if (status == true)
+            {
+                MessageBox.Show("Correcto", "Se ha actualizado con exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Me dio amsiedad", "Upsi", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

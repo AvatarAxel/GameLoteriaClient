@@ -58,6 +58,39 @@
                                VerticalAlignment="Center"
                                Margin="10,0,0,0"/>
 
+
+                    <Button
+                        x:Name="btnClose"                        
+                        BorderThickness="0"
+                        Content="x"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Monserrat"
+                        Cursor="Hand"
+                        Grid.Column="2" Click="BtnClose_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger  Property="IsMouseOver" Value ="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
                 </Grid>
 
                 <StackPanel Width="220"
@@ -130,6 +163,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                
 
                 </StackPanel>
 
