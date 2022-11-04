@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para VE_StartUpSettings.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VE_StartUpSettings : Window
     {
-        public MainWindow()
+        public VE_StartUpSettings()
         {
             InitializeComponent();
         }
@@ -33,29 +32,11 @@ namespace View
             Application.Current.Shutdown();
         }
 
-        private void BtnSignOut_Click(object sender, RoutedEventArgs e)
+        private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
-            Login login = new Login();
-            login.Show();
+            Lobby lobby = new Lobby();
+            lobby.Show();
             Close();
-
-        }
-
-        private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
-        {
-            VE_StartUpSettings vE_StartUpSettings = new VE_StartUpSettings();
-            vE_StartUpSettings.Show();
-            Close();
-        }
-
-        private void BtnJoinGame_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnSettings_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
