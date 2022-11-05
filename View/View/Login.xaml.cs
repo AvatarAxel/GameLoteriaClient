@@ -34,6 +34,7 @@ namespace View
                     Username = playerDTO.Username,
                     Email = playerDTO.Email,
                     Coin = playerDTO.Coin,
+                    RegisteredUser = true
                 };
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -70,7 +71,14 @@ namespace View
                 username = txtUser.Text;
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
-                client.AuthenticationLogin(username, hashedPassword);
+                try
+                {
+                    client.AuthenticationLogin(username, hashedPassword);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }    
         }
 
@@ -92,9 +100,19 @@ namespace View
 
         private void LbPlayingAsGuest_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            var random = new Random();
+            var value = random.Next(0, 10000);
+            SingletonPlayer.PlayerClient = new SingletonPlayer()
+            {
+                Username = "Invitdo " + value,
+                Coin = 500,
+                RegisteredUser = false
+            };
+
             MainWindow mainWindow = new MainWindow();
             Close();
             mainWindow.Show();
+            MessageBox.Show("Si entras como invitado NO s te guardar tus monedas ganadas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

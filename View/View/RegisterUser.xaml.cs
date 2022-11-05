@@ -82,7 +82,7 @@ namespace View
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Sin conexión, inténtelo más tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }    
         }

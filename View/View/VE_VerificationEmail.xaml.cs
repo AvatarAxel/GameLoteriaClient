@@ -29,8 +29,15 @@ namespace View
         public void MailSentByThePlayer(string emailPlayer)
         {
             InstanceContext context = new InstanceContext(this);
-            ServiceReference.EmailServiceClient client = new ServiceReference.EmailServiceClient(context);
-            client.ValidationEmail(emailPlayer);
+            ServiceReference.EmailServiceClient client = new ServiceReference.EmailServiceClient(context);            
+            try
+            {
+                client.ValidationEmail(emailPlayer);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void ResponseEmail(string verificationCode)

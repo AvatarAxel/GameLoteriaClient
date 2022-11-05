@@ -11,7 +11,7 @@ namespace Logic
         public string Email { get; set; }
         public int Coin { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
+        public bool RegisteredUser { get; set;}
         public static SingletonPlayer PlayerClient { get; set; }
     }
 }

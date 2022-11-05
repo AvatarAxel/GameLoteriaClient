@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.ServiceReference;
 
 namespace View
 {
@@ -53,8 +54,15 @@ namespace View
                 ServiceReference.ChangePasswordServiceClient client = new ServiceReference.ChangePasswordServiceClient(context);//new ServiceReference.AuthenticationServiceClient(context);
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
-
-                client.ChangePassword(email, hashedPassword);
+                
+                try
+                {
+                    client.ChangePassword(email, hashedPassword);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
             }
 
@@ -87,10 +95,13 @@ namespace View
             if (status == true)
             {
                 MessageBox.Show("Correcto", "Se ha actualizado con exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                Login login = new Login();
+                login.Show();
+                Close();
             }
             else
             {
-                MessageBox.Show("Me dio amsiedad", "Upsi", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("No se pudo actualizar correctamente", "Upsi", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

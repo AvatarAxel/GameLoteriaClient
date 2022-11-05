@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,13 @@ namespace View
 
         private void BtnSignOut_Click(object sender, RoutedEventArgs e)
         {
+            SingletonPlayer.PlayerClient = new SingletonPlayer()
+            {
+                Username = null,
+                Coin = 0,
+                Email = null,
+                RegisteredUser = false
+            };
             Login login = new Login();
             login.Show();
             Close();
@@ -41,9 +49,16 @@ namespace View
         }
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
-            VE_StartUpSettings vE_StartUpSettings = new VE_StartUpSettings();
-            vE_StartUpSettings.Show();
-            Close();
+            if (SingletonPlayer.PlayerClient.RegisteredUser)
+            {
+                VE_StartUpSettings vE_StartUpSettings = new VE_StartUpSettings();
+                vE_StartUpSettings.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("No estas registrado, regustrate!", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void BtnJoinGame_Click(object sender, RoutedEventArgs e)

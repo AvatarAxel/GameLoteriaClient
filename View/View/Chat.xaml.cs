@@ -44,14 +44,18 @@ namespace View
         {
             InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
-            try
+            string message = txtMessage.Text;
+            if (!string.IsNullOrEmpty(message)) 
             {
-                client.SendMessage(txtMessage.Text, SingletonPlayer.PlayerClient.Username);
-                txtMessage.Clear();
-            }
-            catch(EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                try
+                {
+                    client.SendMessage(message, SingletonPlayer.PlayerClient.Username);
+                    txtMessage.Clear();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

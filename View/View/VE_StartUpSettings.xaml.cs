@@ -27,6 +27,9 @@ namespace View
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
 
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
