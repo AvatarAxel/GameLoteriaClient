@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Lógica de interacción para VE_StartUpSettings.xaml
-    /// </summary>
     public partial class VE_StartUpSettings : Window
     {
         public VE_StartUpSettings()

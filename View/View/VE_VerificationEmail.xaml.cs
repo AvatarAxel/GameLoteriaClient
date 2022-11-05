@@ -17,7 +17,7 @@ using View.ServiceReference;
 namespace View
 {
 
-    public partial class VE_VerificationEmail : Window, ServiceReference.IAuthenticationServiceCallback
+    public partial class VE_VerificationEmail : Window, ServiceReference.IEmailServiceCallback
     {
         private string codeVerificationComparation;
 
@@ -29,28 +29,13 @@ namespace View
         public void MailSentByThePlayer(string emailPlayer)
         {
             InstanceContext context = new InstanceContext(this);
-            ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
+            ServiceReference.EmailServiceClient client = new ServiceReference.EmailServiceClient(context);
             client.ValidationEmail(emailPlayer);
-        }
-
-        public void ResponseAuthenticated(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseAuthenticated(PlayerDTO playerDTO)
-        {
-            throw new NotImplementedException();
         }
 
         public void ResponseEmail(string verificationCode)
         {
             codeVerificationComparation = verificationCode;
-        }
-
-        public void ResponseRegister(bool status)
-        {
-            throw new NotImplementedException();
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -64,7 +49,7 @@ namespace View
         {
             if (string.IsNullOrEmpty(txtVerification.Text))
             {
-                MessageBox.Show("No seas imbecil pon algo en el campo", "Baboso", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Pon algo en el campo please uwu", "Asi no >.<", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

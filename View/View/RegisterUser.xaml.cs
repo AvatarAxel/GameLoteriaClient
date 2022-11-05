@@ -19,26 +19,11 @@ using View.ServiceReference;
 
 namespace View
 {
-    public partial class RegisterUser : Window, ServiceReference.IAuthenticationServiceCallback
+    public partial class RegisterUser : Window, ServiceReference.IUserRegistrationServiceCallback
     {
         public RegisterUser()
         {
             InitializeComponent();
-        }
-
-        public void RegistrerUser(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseEmail(string verificationCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseAuthenticated(PlayerDTO playerDTO)
-        {
-            throw new NotImplementedException();
         }
 
         public void ResponseRegister(bool status)
@@ -80,7 +65,7 @@ namespace View
 
                 ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
                 InstanceContext context = new InstanceContext(this);
-                ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
+                ServiceReference.UserRegistrationServiceClient client = new ServiceReference.UserRegistrationServiceClient(context);
                 Encryption encryption = new Encryption();
 
                 playerDTO.Username = txtUsername.Text;

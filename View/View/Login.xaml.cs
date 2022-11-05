@@ -25,16 +25,6 @@ namespace View
             InitializeComponent();
         }
 
-        public void ResponseEmail(string verificationCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseRegister(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ResponseAuthenticated(PlayerDTO playerDTO)
         {
             if (playerDTO.IsActive)
