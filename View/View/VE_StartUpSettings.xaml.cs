@@ -48,7 +48,6 @@ namespace View
                 client.CreateGame(SingletonGameRound.GameRound.CodeGame);
                 Lobby lobby = new Lobby();
                 lobby.Show();
-                SingletonPlayer.PlayerClient.PlayerType = true;
                 Close();
             }
             catch (EndpointNotFoundException)

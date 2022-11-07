@@ -132,7 +132,7 @@
                             Orientation="Vertical"
                             Margin="0,35,0,0">
 
-                    <TextBlock Text="Code verification"
+                    <TextBlock x:Name="lbCodeVerification"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"

@@ -42,9 +42,20 @@ namespace View
                 
                 ExitPlayer();
                 client.EliminateGame(SingletonGameRound.GameRound.CodeGame);
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            else
+            {
+                ExitPlayer();
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
             }
 
-            ExitPlayer();
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -57,10 +68,13 @@ namespace View
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
+                lbCodeVerification.Text = "Code Verification";
                 lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             }
-
-            btnPlay.IsEnabled = false;
+            else
+            {
+                btnPlay.IsEnabled = false;
+            }
 
         }
 

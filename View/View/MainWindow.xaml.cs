@@ -51,7 +51,8 @@ namespace View
             if (SingletonPlayer.PlayerClient.RegisteredUser)
             {
                 VE_StartUpSettings vE_StartUpSettings = new VE_StartUpSettings();
-                vE_StartUpSettings.Show();
+                SingletonPlayer.PlayerClient.PlayerType = true;
+                vE_StartUpSettings.Show();               
                 Close();
             }
             else
