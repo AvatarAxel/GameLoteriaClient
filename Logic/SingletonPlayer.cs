@@ -12,6 +12,7 @@ namespace Logic
         public int Coin { get; set; }
         public string Username { get; set; }
         public bool RegisteredUser { get; set;}
+        public bool PlayerType { get; set; }
         public static SingletonPlayer PlayerClient { get; set; }
     }
 }

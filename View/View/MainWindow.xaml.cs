@@ -35,13 +35,11 @@ namespace View
 
         private void BtnSignOut_Click(object sender, RoutedEventArgs e)
         {
-            SingletonPlayer.PlayerClient = new SingletonPlayer()
-            {
-                Username = null,
-                Coin = 0,
-                Email = null,
-                RegisteredUser = false
-            };
+            SingletonPlayer.PlayerClient.Username = null;
+            SingletonPlayer.PlayerClient.Coin = 0;
+            SingletonPlayer.PlayerClient.Email = null;
+            SingletonPlayer.PlayerClient.RegisteredUser = false;
+
             Login login = new Login();
             login.Show();
             Close();
@@ -63,6 +61,10 @@ namespace View
 
         private void BtnJoinGame_Click(object sender, RoutedEventArgs e)
         {
+            VE_IngresarCodigoGame game = new VE_IngresarCodigoGame();
+            game.Show();
+            Close();
+
 
         }
 

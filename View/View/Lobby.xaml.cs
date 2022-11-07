@@ -22,6 +22,32 @@ namespace View
         public Lobby()
         {
             InitializeComponent();
+            GenerateRandomCode();
+        }
+
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("UwU", "Verificar", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+            public string GenerateRandomCode()
+        {
+            var random = new Random();
+            var value = random.Next(0, 10000);
+
+            string verificationCode = value.ToString();
+
+            return this.lbCodeVerification.Text = verificationCode;
         }
     }
 }
