@@ -8,7 +8,7 @@
         Title="Chat" Height="411" Width="278">
 	<Grid>
 		<TextBox x:Name="txtChat" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" Height="263"/>
-		<TextBox x:Name="txtMessage" HorizontalAlignment="Center" Margin="0,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
+        <TextBox x:Name="txtMessage" HorizontalAlignment="Center" Margin="0,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
 		<Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="87" Click="BtnSend_Click"/>
 
 	</Grid>

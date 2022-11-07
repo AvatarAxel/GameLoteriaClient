@@ -23,19 +23,18 @@ namespace View
         public Login()
         {
             InitializeComponent();
+            SingletonPlayer.PlayerClient = new SingletonPlayer();
         }
 
         public void ResponseAuthenticated(PlayerDTO playerDTO)
         {
             if (playerDTO.IsActive)
             {
-                SingletonPlayer.PlayerClient = new SingletonPlayer()
-                {
-                    Username = playerDTO.Username,
-                    Email = playerDTO.Email,
-                    Coin = playerDTO.Coin,
-                    RegisteredUser = true
-                };
+
+                SingletonPlayer.PlayerClient.Username = playerDTO.Username;
+                SingletonPlayer.PlayerClient.Email = playerDTO.Email;
+                SingletonPlayer.PlayerClient.Coin = playerDTO.Coin;
+                SingletonPlayer.PlayerClient.RegisteredUser = true;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Close();
@@ -102,17 +101,13 @@ namespace View
         {
             var random = new Random();
             var value = random.Next(0, 10000);
-            SingletonPlayer.PlayerClient = new SingletonPlayer()
-            {
-                Username = "Invitdo " + value,
-                Coin = 500,
-                RegisteredUser = false
-            };
-
+            SingletonPlayer.PlayerClient.Username = "Invitado" + value;
+            SingletonPlayer.PlayerClient.Coin = 500;
+            SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
             Close();
             mainWindow.Show();
-            MessageBox.Show("Si entras como invitado NO s te guardar tus monedas ganadas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Si entras como invitado NO se te guardar tus monedas ganadas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

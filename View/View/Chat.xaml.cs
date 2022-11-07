@@ -44,7 +44,7 @@ namespace View
         {
             InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
-            string message = txtMessage.Text;
+            string message = txtMessage.Text;          
             if (!string.IsNullOrEmpty(message)) 
             {
                 try
