@@ -468,6 +468,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/CreateGame")]
         System.Threading.Tasks.Task CreateGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/EliminateGame")]
+        void EliminateGame(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/EliminateGame")]
+        System.Threading.Tasks.Task EliminateGameAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -538,6 +544,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task CreateGameAsync(string verificationCode) {
             return base.Channel.CreateGameAsync(verificationCode);
+        }
+        
+        public void EliminateGame(string verificationCode) {
+            base.Channel.EliminateGame(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task EliminateGameAsync(string verificationCode) {
+            return base.Channel.EliminateGameAsync(verificationCode);
         }
     }
 }

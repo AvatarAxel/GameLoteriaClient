@@ -103,6 +103,9 @@
   <wsdl:message name="IJoinGameService_CreateGame_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateGame" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_EliminateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminateGame" />
+  </wsdl:message>
   <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
@@ -167,6 +170,9 @@
     </wsdl:operation>
     <wsdl:operation name="CreateGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/CreateGame" message="tns:IJoinGameService_CreateGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/EliminateGame" message="tns:IJoinGameService_EliminateGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
@@ -290,6 +296,12 @@
     </wsdl:operation>
     <wsdl:operation name="CreateGame">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/CreateGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EliminateGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/EliminateGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

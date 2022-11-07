@@ -21,6 +21,7 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            SingletonGameRound.GameRound = new SingletonGameRound();
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -61,7 +62,7 @@ namespace View
 
         private void BtnJoinGame_Click(object sender, RoutedEventArgs e)
         {
-            VE_IngresarCodigoGame game = new VE_IngresarCodigoGame();
+            VE_EnterGameCode game = new VE_EnterGameCode();
             game.Show();
             Close();
 

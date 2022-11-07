@@ -140,7 +140,7 @@
                                HorizontalAlignment="Center"/>
 
                     <TextBlock x:Name="lbCodeVerification"
-                               Text="sdsds"
+                               Text=""
                                Foreground="DarkGray"
                                FontSize="24.5"
                                FontWeight="Medium"

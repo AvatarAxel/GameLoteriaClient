@@ -19,9 +19,9 @@ namespace View
     /// <summary>
     /// Interaction logic for VE_IngresarCodigoGame.xaml
     /// </summary>
-    public partial class VE_IngresarCodigoGame : Window, ServiceReference.IJoinGameServiceCallback
+    public partial class VE_EnterGameCode : Window, ServiceReference.IJoinGameServiceCallback
     {
-        public VE_IngresarCodigoGame()
+        public VE_EnterGameCode()
         {
             InitializeComponent();
         }
@@ -47,6 +47,7 @@ namespace View
             {
                 Lobby lobby = new Lobby();
                 lobby.Show();
+                SingletonGameRound.GameRound.CodeGame = txtCode.Text;
                 Close();
             }
             else

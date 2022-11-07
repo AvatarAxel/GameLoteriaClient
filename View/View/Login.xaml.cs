@@ -33,6 +33,7 @@ namespace View
                 SingletonPlayer.PlayerClient.Email = playerDTO.Email;
                 SingletonPlayer.PlayerClient.Coin = playerDTO.Coin;
                 SingletonPlayer.PlayerClient.RegisteredUser = true;
+                SingletonPlayer.PlayerClient.PlayerType = false;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Close();

@@ -87,8 +87,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.en.resx</DependentUpon>
     </Compile>
-    <Compile Include="VE_IngresarCodigoGame.xaml.cs">
-      <DependentUpon>VE_IngresarCodigoGame.xaml</DependentUpon>
+    <Compile Include="VE_EnterGameCode.xaml.cs">
+      <DependentUpon>VE_EnterGameCode.xaml</DependentUpon>
     </Compile>
     <Compile Include="VE_PasswordChange.xaml.cs">
       <DependentUpon>VE_PasswordChange.xaml</DependentUpon>
@@ -130,7 +130,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VE_IngresarCodigoGame.xaml">
+    <Page Include="VE_EnterGameCode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

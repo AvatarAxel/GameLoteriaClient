@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,10 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Logic;
+using View.ServiceReference;
 
 namespace View
 {
-    public partial class VE_StartUpSettings : Window
+    public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback
     {
         public VE_StartUpSettings()
         {
@@ -34,9 +37,34 @@ namespace View
 
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
-            Lobby lobby = new Lobby();
-            lobby.Show();
-            Close();
+
+            InstanceContext context = new InstanceContext(this);
+            ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
+            CodeGame codeGame = new CodeGame();  
+            SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
+
+            try
+            {
+                client.CreateGame(SingletonGameRound.GameRound.CodeGame);
+                Lobby lobby = new Lobby();
+                lobby.Show();
+                SingletonPlayer.PlayerClient.PlayerType = true;
+                Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void ReciveWinner(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CodeExist(bool status)
+        {
+            throw new NotImplementedException();
         }
     }
 }

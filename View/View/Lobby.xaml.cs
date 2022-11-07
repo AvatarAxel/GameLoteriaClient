@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,12 +19,12 @@ namespace View
     /// <summary>
     /// Lógica de interacción para Lobby.xaml
     /// </summary>
-    public partial class Lobby : Window
+    public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback
     {
         public Lobby()
         {
             InitializeComponent();
-            GenerateRandomCode();
+            ConfigureLobby();
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -32,22 +34,52 @@ namespace View
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (SingletonPlayer.PlayerClient.PlayerType)
+            {
+
+                InstanceContext context = new InstanceContext(this);
+                ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
+                
+                ExitPlayer();
+                client.EliminateGame(SingletonGameRound.GameRound.CodeGame);
+            }
+
+            ExitPlayer();
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
+
             MessageBox.Show("UwU", "Verificar", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-            public string GenerateRandomCode()
+        private void ConfigureLobby()
         {
-            var random = new Random();
-            var value = random.Next(0, 10000);
+            if (SingletonPlayer.PlayerClient.PlayerType)
+            {
+                lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
+            }
 
-            string verificationCode = value.ToString();
+            btnPlay.IsEnabled = false;
 
-            return this.lbCodeVerification.Text = verificationCode;
+        }
+
+        public void ReciveWinner(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CodeExist(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExitPlayer()
+        {
+            InstanceContext context = new InstanceContext(this);
+            ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
+
+            client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
         }
     }
 }
