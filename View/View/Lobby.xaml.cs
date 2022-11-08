@@ -68,7 +68,7 @@ namespace View
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
-                lbCodeVerification.Text = "Code Verification";
+                lbCodeVerificationTitle.Text = "Code Verification";
                 lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             }
             else

@@ -60,6 +60,18 @@ namespace View
         {
             throw new NotImplementedException();
         }
+
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
     }
 
 }
