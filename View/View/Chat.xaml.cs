@@ -18,17 +18,19 @@ namespace View
 {
     public partial class Chat : Window, ServiceReference.IChatServiceCallback
     {
+        private InstanceContext context;
         public Chat()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
             InitializeChat();
             txtChat.IsEnabled = false;
         }
+        
 
 
         public void InitializeChat() 
         {
-            InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
             try
             {
@@ -38,11 +40,14 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            finally 
+            {
+                client.Close();
+            }
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-            InstanceContext context = new InstanceContext(this);
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
             string message = txtMessage.Text;
             if (!string.IsNullOrEmpty(message)) 
@@ -55,6 +60,10 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    client.Close();
                 }
             }
         }

@@ -19,9 +19,11 @@ namespace View
 {
     public partial class VE_PasswordChange : Window, ServiceReference.IChangePasswordServiceCallback
     {
+        private InstanceContext context;
         public VE_PasswordChange()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
@@ -50,11 +52,10 @@ namespace View
                 changePassword.MailSentByThePlayer(email);
                 changePassword.ShowDialog();          
 
-                InstanceContext context = new InstanceContext(this);
                 ServiceReference.ChangePasswordServiceClient client = new ServiceReference.ChangePasswordServiceClient(context);//new ServiceReference.AuthenticationServiceClient(context);
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
-                
+
                 try
                 {
                     client.ChangePassword(email, hashedPassword);
@@ -62,6 +63,10 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    client.Close();
                 }
 
             }
@@ -76,7 +81,7 @@ namespace View
                 return false;
             }
             FieldValidation fieldValidation = new FieldValidation();
-            if (!fieldValidation.passwordValidation(txtPassword.Password, txtPasswordValidation.Password))
+            if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
                 MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;

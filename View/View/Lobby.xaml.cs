@@ -21,9 +21,11 @@ namespace View
     /// </summary>
     public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback
     {
+        private InstanceContext context;
         public Lobby()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
             ConfigureLobby();
         }
 
@@ -36,12 +38,21 @@ namespace View
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
-
-                InstanceContext context = new InstanceContext(this);
                 ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
                 
                 ExitPlayer();
-                client.EliminateGame(SingletonGameRound.GameRound.CodeGame);
+                try
+                {
+                    client.EliminateGame(SingletonGameRound.GameRound.CodeGame);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    client.Close();
+                }
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -90,10 +101,19 @@ namespace View
 
         private void ExitPlayer()
         {
-            InstanceContext context = new InstanceContext(this);
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-
-            client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+            try 
+            {
+                client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                client.Close();
+            }
         }
     }
 }

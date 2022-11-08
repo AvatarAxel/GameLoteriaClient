@@ -19,17 +19,18 @@ namespace View
 
     public partial class VE_VerificationEmail : Window, ServiceReference.IEmailServiceCallback
     {
+        InstanceContext context;
         private string codeVerificationComparation;
 
         public VE_VerificationEmail()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
         }
 
         public void MailSentByThePlayer(string emailPlayer)
         {
-            InstanceContext context = new InstanceContext(this);
-            ServiceReference.EmailServiceClient client = new ServiceReference.EmailServiceClient(context);            
+            ServiceReference.EmailServiceClient client = new ServiceReference.EmailServiceClient(context);
             try
             {
                 client.ValidationEmail(emailPlayer);
@@ -37,6 +38,10 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                client.Close();
             }
         }
 

@@ -16,28 +16,30 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for VE_IngresarCodigoGame.xaml
-    /// </summary>
     public partial class VE_EnterGameCode : Window, ServiceReference.IJoinGameServiceCallback
     {
+        private InstanceContext context;
         public VE_EnterGameCode()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
         }
 
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
-            InstanceContext context = new InstanceContext(this);
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
             try
             {
-                 client.JoinGame(SingletonPlayer.PlayerClient.Username, codeVerification);
+                client.JoinGame(SingletonPlayer.PlayerClient.Username, codeVerification);
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                client.Close();
             }
         }
 

@@ -19,9 +19,11 @@ namespace View
 {
     public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback
     {
+        private InstanceContext context;
         public VE_StartUpSettings()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
         }
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
@@ -38,7 +40,6 @@ namespace View
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
 
-            InstanceContext context = new InstanceContext(this);
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
             CodeGame codeGame = new CodeGame();  
             SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
@@ -53,6 +54,10 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                client.Close();
             }
         }
 

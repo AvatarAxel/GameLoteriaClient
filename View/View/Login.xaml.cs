@@ -20,9 +20,12 @@ namespace View
 {
     public partial class Login : Window, ServiceReference.IAuthenticationServiceCallback
     {
+        private InstanceContext context;
+
         public Login()
         {
             SingletonPlayer.PlayerClient = new SingletonPlayer();
+            context = new InstanceContext(this);
         }
 
         public void ResponseAuthenticated(PlayerDTO playerDTO)
@@ -62,7 +65,6 @@ namespace View
             }
             else 
             {
-                InstanceContext context = new InstanceContext(this);
                 ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
                 string username;
                 string hashedPassword;
@@ -76,6 +78,10 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    client.Close();
                 }
             }    
         }
