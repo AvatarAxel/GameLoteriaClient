@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Lógica de interacción para Lobby.xaml
-    /// </summary>
+
     public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
@@ -27,6 +25,7 @@ namespace View
             InitializeComponent();
             context = new InstanceContext(this);
             ConfigureLobby();
+            InitializeChat();
             txtChat.IsEnabled = false;
         }
 
@@ -46,10 +45,6 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            finally
-            {
-                client.Close();
-            }
         }
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
@@ -66,10 +61,6 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                finally
-                {
-                    client.Close();
                 }
 
                 MainWindow mainWindow = new MainWindow();
@@ -112,7 +103,7 @@ namespace View
             throw new NotImplementedException();
         }
 
-        public void CodeExist(bool status)
+        public void ResponseCodeExist(bool status)
         {
             throw new NotImplementedException();
         }
@@ -127,10 +118,6 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                client.Close();
             }
         }
 
@@ -149,16 +136,22 @@ namespace View
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                finally
-                {
-                    client.Close();
-                }
             }
         }
 
         public void ReciveMessage(string player, string message)
         {
             txtChat.Text += player + ":  " + message + "\r\n";
+        }
+
+        public void ResponseCompleteLobby(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseTotalPlayers(int totalPlayers)
+        {
+            throw new NotImplementedException();
         }
     }
 }

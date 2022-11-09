@@ -85,10 +85,6 @@ namespace View
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                finally
-                {
-                    client.Close();
-                }
             }    
         }
 

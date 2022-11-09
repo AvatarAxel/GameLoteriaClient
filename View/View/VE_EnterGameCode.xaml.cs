@@ -37,13 +37,9 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            finally
-            {
-                client.Close();
-            }
         }
 
-        public void CodeExist(bool status)
+        public void ResponseCodeExist(bool status)
         {
             if (status)
             {
@@ -73,6 +69,16 @@ namespace View
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+        }
+
+        public void ResponseCompleteLobby(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseTotalPlayers(int totalPlayers)
+        {
+            throw new NotImplementedException();
         }
     }
 

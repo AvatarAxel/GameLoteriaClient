@@ -34,14 +34,11 @@ namespace View
             try
             {
                 client.ValidationEmail(emailPlayer);
+                client.Close();
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                client.Close();
             }
         }
 

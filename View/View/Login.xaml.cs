@@ -23,7 +23,8 @@ namespace View
         private InstanceContext context;
 
         public Login()
-        {
+        { 
+            InitializeComponent();
             SingletonPlayer.PlayerClient = new SingletonPlayer();
             context = new InstanceContext(this);
         }
@@ -79,10 +80,6 @@ namespace View
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                finally
-                {
-                    client.Close();
-                }
             }    
         }
 
@@ -114,7 +111,7 @@ namespace View
             MainWindow mainWindow = new MainWindow();
             Close();
             mainWindow.Show();
-            MessageBox.Show("Si entras como invitado NO s te guardar tus monedas ganadas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Si entras como invitado NO se te guardar tus monedas ganadas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
