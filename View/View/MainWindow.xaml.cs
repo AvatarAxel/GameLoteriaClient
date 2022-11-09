@@ -21,6 +21,7 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            SingletonGameRound.GameRound = new SingletonGameRound();
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -39,6 +40,7 @@ namespace View
             SingletonPlayer.PlayerClient.Coin = 0;
             SingletonPlayer.PlayerClient.Email = null;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
+
             Login login = new Login();
             login.Show();
             Close();
@@ -49,7 +51,8 @@ namespace View
             if (SingletonPlayer.PlayerClient.RegisteredUser)
             {
                 VE_StartUpSettings vE_StartUpSettings = new VE_StartUpSettings();
-                vE_StartUpSettings.Show();
+                SingletonPlayer.PlayerClient.PlayerType = true;
+                vE_StartUpSettings.Show();               
                 Close();
             }
             else
@@ -60,6 +63,10 @@ namespace View
 
         private void BtnJoinGame_Click(object sender, RoutedEventArgs e)
         {
+            VE_EnterGameCode game = new VE_EnterGameCode();
+            game.Show();
+            Close();
+
 
         }
 

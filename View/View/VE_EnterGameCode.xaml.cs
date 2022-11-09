@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -12,45 +13,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Logic;
-using View.ServiceReference;
 
 namespace View
 {
-    public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback
+    public partial class VE_EnterGameCode : Window, ServiceReference.IJoinGameServiceCallback
     {
         private InstanceContext context;
-        public VE_StartUpSettings()
+        public VE_EnterGameCode()
         {
             InitializeComponent();
             context = new InstanceContext(this);
         }
-        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-        private void BtnClose_Click(Object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
-        }
 
-        private void BtnAccept_Click(Object sender, RoutedEventArgs e)
+        public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
-            int limitPlayer = (int)cmbxNumberPlayer.SelectedItem;
-
+            string codeVerification = txtCode.Text;
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-            CodeGame codeGame = new CodeGame();  
-            SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
-
             try
             {
-                client.CreateGame(SingletonGameRound.GameRound.CodeGame);
-                Lobby lobby = new Lobby();
-                lobby.Show();
-                Close();
+                client.JoinGame(SingletonPlayer.PlayerClient.Username, codeVerification);
             }
             catch (EndpointNotFoundException)
             {
@@ -62,14 +43,37 @@ namespace View
             }
         }
 
+        public void CodeExist(bool status)
+        {
+            if (status)
+            {
+                Lobby lobby = new Lobby();
+                lobby.Show();
+                SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         public void ReciveWinner(string username)
         {
             throw new NotImplementedException();
         }
 
-        public void CodeExist(bool status)
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
+
 }

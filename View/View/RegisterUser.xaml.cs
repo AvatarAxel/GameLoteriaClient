@@ -21,9 +21,11 @@ namespace View
 {
     public partial class RegisterUser : Window, ServiceReference.IUserRegistrationServiceCallback
     {
+        private InstanceContext context;
         public RegisterUser()
         {
             InitializeComponent();
+            context = new InstanceContext(this);
         }
 
         public void ResponseRegister(bool status)
@@ -64,7 +66,6 @@ namespace View
 
 
                 ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
-                InstanceContext context = new InstanceContext(this);
                 ServiceReference.UserRegistrationServiceClient client = new ServiceReference.UserRegistrationServiceClient(context);
                 Encryption encryption = new Encryption();
 
@@ -84,6 +85,10 @@ namespace View
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                finally
+                {
+                    client.Close();
+                }
             }    
         }
 
@@ -96,7 +101,7 @@ namespace View
                 return false;
             }
             FieldValidation fieldValidation = new FieldValidation();
-            if (!fieldValidation.passwordValidation(txtPassword.Password, txtPasswordValidation.Password))
+            if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
                 MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;

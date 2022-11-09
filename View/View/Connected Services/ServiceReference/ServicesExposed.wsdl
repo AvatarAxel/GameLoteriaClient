@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="AuthenticationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicesExposed" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="NetTcpBinding_IAuthenticationService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -33,6 +33,14 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IUserRegistrationService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IJoinGameService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -83,6 +91,27 @@
   <wsdl:message name="IUserRegistrationService_ResponseRegister_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseRegister" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_JoinGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinGame" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_SendWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendWinner" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ExitGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitGame" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_CreateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_EliminateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminateGame" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveWinner" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_CodeExist_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:CodeExist" />
+  </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLogin" message="tns:IAuthenticationService_AuthenticationLogin_InputMessage" />
@@ -127,6 +156,29 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseRegister">
       <wsdl:output wsaw:Action="http://tempuri.org/IUserRegistrationService/ResponseRegister" message="tns:IUserRegistrationService_ResponseRegister_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IJoinGameService">
+    <wsdl:operation name="JoinGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/JoinGame" message="tns:IJoinGameService_JoinGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/SendWinner" message="tns:IJoinGameService_SendWinner_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExitGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ExitGame" message="tns:IJoinGameService_ExitGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/CreateGame" message="tns:IJoinGameService_CreateGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/EliminateGame" message="tns:IJoinGameService_EliminateGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CodeExist">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/CodeExist" message="tns:IJoinGameService_CodeExist_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -221,7 +273,53 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="AuthenticationService">
+  <wsdl:binding name="NetTcpBinding_IJoinGameService" type="tns:IJoinGameService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IJoinGameService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="JoinGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/JoinGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/SendWinner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExitGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ExitGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/CreateGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EliminateGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/EliminateGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveWinner">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ReciveWinner" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CodeExist">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/CodeExist" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicesExposed">
     <wsdl:port name="NetTcpBinding_IAuthenticationService" binding="tns:NetTcpBinding_IAuthenticationService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
@@ -247,6 +345,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserRegistrationService" binding="tns:NetTcpBinding_IUserRegistrationService">
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IJoinGameService" binding="tns:NetTcpBinding_IJoinGameService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>

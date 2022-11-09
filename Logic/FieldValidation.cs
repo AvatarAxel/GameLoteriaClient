@@ -10,7 +10,7 @@ namespace Logic
 {
     public class FieldValidation
     {
-        public bool passwordValidation(string password, string ValidatePassword)
+        public bool PasswordValidation(string password, string ValidatePassword)
         {
             if (password.Equals(ValidatePassword)) 
             { 
@@ -24,6 +24,12 @@ namespace Logic
             {
                 return true;
             }
+            return false;
+        }
+
+        public bool ValidationNameFormat(string username)
+        {
+            
             return false;
         }
     }
