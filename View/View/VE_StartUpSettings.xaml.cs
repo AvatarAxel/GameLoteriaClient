@@ -39,6 +39,7 @@ namespace View
 
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
+            int limitPlayer = (int)cmbxNumberPlayer.SelectedItem;
 
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
             CodeGame codeGame = new CodeGame();  

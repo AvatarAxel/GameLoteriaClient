@@ -206,7 +206,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\engranbre.png" />
+    <Resource Include="Images\Gear.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlayingCards\1.png" />

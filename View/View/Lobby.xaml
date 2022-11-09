@@ -127,12 +127,13 @@
                     </Button>
                 </Grid>
 
-                <StackPanel Width="220"
+                <StackPanel
                             Grid.Row="1"
                             Orientation="Vertical"
-                            Margin="0,35,0,0">
+                            Margin="0,0,0,0">
 
                     <TextBlock x:Name="lbCodeVerificationTitle"
+                               Text=""
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
@@ -145,8 +146,61 @@
                                Foreground="DarkGray"
                                FontSize="24.5"
                                FontWeight="Medium"
-                               FontFamily="Montserrat" Width="72" Height="34"
-                               Margin="0,10,0,0"/>
+                               FontFamily="Montserrat" Width="114" Height="40"
+                               Margin="0,0,0,0"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBox x:Name="txtChat"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="342"
+                             VerticalContentAlignment="Center" 
+                             Width="300"/>
+
+                    <TextBox x:Name="txtMessage" 
+                                     HorizontalAlignment="Center" 
+                                     Margin="0,20,0,0" 
+                                     TextWrapping="Wrap" 
+                                     VerticalAlignment="Top" 
+                                     Width="300"/>
+
+                    <Button x:Name="btnSend"                          
+                            BorderThickness="0"
+                            Content="Enviar"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Click="BtnSend_Click" Height="50" Width="52"
+                            Margin="-370,-30,0,0">
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="50" Height="50"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
 
                     <Button x:Name="btnPlay"                          
                             BorderThickness="0"
@@ -156,7 +210,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Click="BtnPlay_Click" Height="49" Width="160"
-                            Margin="0,330,0,0">
+                            Margin="0,-10,0,0">
 
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -182,8 +236,6 @@
                     </Button>
                 </StackPanel>
             </Grid>
-
         </Border>
-
     </Border>
 </Window>

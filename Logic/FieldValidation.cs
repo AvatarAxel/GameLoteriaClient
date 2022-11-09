@@ -26,5 +26,11 @@ namespace Logic
             }
             return false;
         }
+
+        public bool ValidationNameFormat(string username)
+        {
+            
+            return false;
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace View
     /// <summary>
     /// Lógica de interacción para Lobby.xaml
     /// </summary>
-    public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback
+    public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
         public Lobby()
@@ -27,11 +27,29 @@ namespace View
             InitializeComponent();
             context = new InstanceContext(this);
             ConfigureLobby();
+            txtChat.IsEnabled = false;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        public void InitializeChat()
+        {
+            ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
+            try
+            {
+                client.JoinChat(SingletonPlayer.PlayerClient.Username);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                client.Close();
+            }
         }
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
@@ -114,6 +132,33 @@ namespace View
             {
                 client.Close();
             }
+        }
+
+        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
+            string message = txtMessage.Text;
+            if (!string.IsNullOrEmpty(message))
+            {
+                try
+                {
+                    client.SendMessage(message, SingletonPlayer.PlayerClient.Username);
+                    txtMessage.Clear();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    client.Close();
+                }
+            }
+        }
+
+        public void ReciveMessage(string player, string message)
+        {
+            txtChat.Text += player + ":  " + message + "\r\n";
         }
     }
 }
