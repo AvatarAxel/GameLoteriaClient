@@ -154,12 +154,10 @@
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              Height="342"
-                             VerticalContentAlignment="Center" 
+                             VerticalContentAlignment="Top"
+                             HorizontalContentAlignment="Left"
                              Width="300"/>
 
                     <TextBox x:Name="txtMessage" 

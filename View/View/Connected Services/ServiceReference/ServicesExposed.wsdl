@@ -109,8 +109,14 @@
   <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
-  <wsdl:message name="IJoinGameService_CodeExist_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:CodeExist" />
+  <wsdl:message name="IJoinGameService_ResponseCodeExist_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseCodeExist" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseCompleteLobby" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ResponseTotalPlayers_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseTotalPlayers" />
   </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
@@ -177,8 +183,14 @@
     <wsdl:operation name="ReciveWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CodeExist">
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/CodeExist" message="tns:IJoinGameService_CodeExist_OutputCallbackMessage" />
+    <wsdl:operation name="ResponseCodeExist">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCodeExist" message="tns:IJoinGameService_ResponseCodeExist_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseCompleteLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseTotalPlayers">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseTotalPlayers" message="tns:IJoinGameService_ResponseTotalPlayers_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -312,8 +324,20 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CodeExist">
-      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/CodeExist" style="document" />
+    <wsdl:operation name="ResponseCodeExist">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCodeExist" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseCompleteLobby">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseTotalPlayers">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseTotalPlayers" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

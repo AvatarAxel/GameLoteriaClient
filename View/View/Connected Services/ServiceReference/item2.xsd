@@ -117,6 +117,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="limitPlayers" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -134,10 +135,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CodeExist">
+  <xs:element name="ResponseCodeExist">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResponseCompleteLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResponseTotalPlayers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="totalPlayers" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

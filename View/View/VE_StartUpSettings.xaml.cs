@@ -39,27 +39,36 @@ namespace View
 
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
-            int limitPlayer = (int)cmbxNumberPlayer.SelectedItem;
+            if (ValidationField())
+            {
+                int limitPlayer = cmbxNumberPlayer.SelectedIndex;
 
-            ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-            CodeGame codeGame = new CodeGame();  
-            SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
+                ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
+                CodeGame codeGame = new CodeGame();
+                SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
 
-            try
-            {
-                client.CreateGame(SingletonGameRound.GameRound.CodeGame);
-                Lobby lobby = new Lobby();
-                lobby.Show();
-                Close();
+                try
+                {
+                    client.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
+                    Lobby lobby = new Lobby();
+                    lobby.Show();
+                    Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (EndpointNotFoundException)
+        }
+
+        private bool ValidationField()
+        {
+            if (cmbxNumberPlayer.SelectedIndex == -1 || cmbxAmountOfMoney.SelectedIndex == -1)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Rectifique los campos uwu", "Atencion :3", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
             }
-            finally
-            {
-                client.Close();
-            }
+            return true;
         }
 
         public void ReciveWinner(string username)
@@ -67,7 +76,17 @@ namespace View
             throw new NotImplementedException();
         }
 
-        public void CodeExist(bool status)
+        public void ResponseCodeExist(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseCompleteLobby(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResponseTotalPlayers(int totalPlayers)
         {
             throw new NotImplementedException();
         }

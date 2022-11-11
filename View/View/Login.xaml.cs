@@ -23,8 +23,7 @@ namespace View
         private InstanceContext context;
 
         public Login()
-        {
-<<<<<<< HEAD
+        { 
             InitializeComponent();
             SingletonPlayer.PlayerClient = new SingletonPlayer();
 =======
@@ -90,10 +89,6 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                finally
-                {
-                    client.Close();
                 }
             }    
         }
