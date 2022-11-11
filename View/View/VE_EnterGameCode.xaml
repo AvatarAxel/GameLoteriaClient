@@ -14,7 +14,7 @@
     
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/back.jpg"
+            <ImageBrush ImageSource="/Images/ResourseImage/back.jpg"
                         Stretch="None"/>
         </Border.Background>
         <Border CornerRadius="10"                    
@@ -54,67 +54,26 @@
                                Margin="10,0,0,0"/>
                     <Button x:Name="btnMinimize"                           
                             BorderThickness="0"
-                            Content="-"
-                            Foreground="White"
-                            FontSize="16"
-                            FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="1"
-                            Click="BtnMinimize_Click">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
+                            Click="BtnMinimize_Click"
+                            >
+                        <StackPanel>
+                            <Image Source="/Images/ResourseImage/minimize.png"
+                                   Stretch="UniformToFill" Height="24" Width="24"
+/>
+                        </StackPanel>
                     </Button>
+
                     <Button x:Name="btnClose"                          
                             BorderThickness="0"
-                            Content="X"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
                             Click="BtnClose_Click">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#DA34AE"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
+                        <StackPanel>
+                            <Image Source="/Images/ResourseImage/close.png"
+                                   Stretch="UniformToFill" Height="24" Width="24"/>
+                        </StackPanel>
                     </Button>
                 </Grid>
                 <StackPanel Width="220"
