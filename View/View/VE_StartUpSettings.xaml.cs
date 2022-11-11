@@ -17,7 +17,7 @@ using View.ServiceReference;
 
 namespace View
 {
-    public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback
+    public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
         public VE_StartUpSettings()
@@ -47,9 +47,14 @@ namespace View
                 CodeGame codeGame = new CodeGame();
                 SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
 
+                ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);    
+
+
                 try
                 {
                     client.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
+                    chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
+                   
                     Lobby lobby = new Lobby();
                     lobby.Show();
                     Close();
@@ -73,22 +78,27 @@ namespace View
 
         public void ReciveWinner(string username)
         {
-            throw new NotImplementedException();
+
         }
 
         public void ResponseCodeExist(bool status)
         {
-            throw new NotImplementedException();
+
         }
 
         public void ResponseCompleteLobby(bool status)
         {
-            throw new NotImplementedException();
+
         }
 
         public void ResponseTotalPlayers(int totalPlayers)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void ReciveMessage(string player, string message)
+        {
+
         }
     }
 }

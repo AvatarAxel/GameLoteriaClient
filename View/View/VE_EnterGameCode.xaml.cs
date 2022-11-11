@@ -29,9 +29,11 @@ namespace View
         {
             string codeVerification = txtCode.Text;
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
+            ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);
             try
             {
-                client.JoinGame(SingletonPlayer.PlayerClient.Username, codeVerification);
+                client.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {

@@ -198,22 +198,34 @@ namespace View.ServiceReference {
     public interface IChatService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/JoinChat")]
-        void JoinChat(string username);
+        void JoinChat(string username, string codeVerification);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/JoinChat")]
-        System.Threading.Tasks.Task JoinChatAsync(string username);
+        System.Threading.Tasks.Task JoinChatAsync(string username, string codeVerification);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
-        void SendMessage(string message, string userChat);
+        void SendMessage(string message, string userChat, string codeVerification);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(string message, string userChat);
+        System.Threading.Tasks.Task SendMessageAsync(string message, string userChat, string codeVerification);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/ExitChat")]
-        void ExitChat(string userName);
+        void ExitChat(string userName, string codeVerification);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/ExitChat")]
-        System.Threading.Tasks.Task ExitChatAsync(string userName);
+        System.Threading.Tasks.Task ExitChatAsync(string userName, string codeVerification);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/CreateChat")]
+        void CreateChat(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/CreateChat")]
+        System.Threading.Tasks.Task CreateChatAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/DeleteChat")]
+        void DeleteChat(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/DeleteChat")]
+        System.Threading.Tasks.Task DeleteChatAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -251,28 +263,44 @@ namespace View.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void JoinChat(string username) {
-            base.Channel.JoinChat(username);
+        public void JoinChat(string username, string codeVerification) {
+            base.Channel.JoinChat(username, codeVerification);
         }
         
-        public System.Threading.Tasks.Task JoinChatAsync(string username) {
-            return base.Channel.JoinChatAsync(username);
+        public System.Threading.Tasks.Task JoinChatAsync(string username, string codeVerification) {
+            return base.Channel.JoinChatAsync(username, codeVerification);
         }
         
-        public void SendMessage(string message, string userChat) {
-            base.Channel.SendMessage(message, userChat);
+        public void SendMessage(string message, string userChat, string codeVerification) {
+            base.Channel.SendMessage(message, userChat, codeVerification);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(string message, string userChat) {
-            return base.Channel.SendMessageAsync(message, userChat);
+        public System.Threading.Tasks.Task SendMessageAsync(string message, string userChat, string codeVerification) {
+            return base.Channel.SendMessageAsync(message, userChat, codeVerification);
         }
         
-        public void ExitChat(string userName) {
-            base.Channel.ExitChat(userName);
+        public void ExitChat(string userName, string codeVerification) {
+            base.Channel.ExitChat(userName, codeVerification);
         }
         
-        public System.Threading.Tasks.Task ExitChatAsync(string userName) {
-            return base.Channel.ExitChatAsync(userName);
+        public System.Threading.Tasks.Task ExitChatAsync(string userName, string codeVerification) {
+            return base.Channel.ExitChatAsync(userName, codeVerification);
+        }
+        
+        public void CreateChat(string verificationCode) {
+            base.Channel.CreateChat(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task CreateChatAsync(string verificationCode) {
+            return base.Channel.CreateChatAsync(verificationCode);
+        }
+        
+        public void DeleteChat(string verificationCode) {
+            base.Channel.DeleteChat(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task DeleteChatAsync(string verificationCode) {
+            return base.Channel.DeleteChatAsync(verificationCode);
         }
     }
     

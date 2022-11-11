@@ -27,9 +27,12 @@ namespace Logic
             return false;
         }
 
-        public bool ValidationNameFormat(string username)
+        public bool ValidationUsernameFormat(string username)
         {
-            
+            if ((Regex.IsMatch(username, @"^[^ ][a-zA-Z 0-9]+[^ ]$")))
+            {
+                return true;
+            }
             return false;
         }
     }
