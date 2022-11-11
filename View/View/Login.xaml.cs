@@ -26,28 +26,19 @@ namespace View
         { 
             InitializeComponent();
             SingletonPlayer.PlayerClient = new SingletonPlayer();
-=======
-            SingletonPlayer.PlayerClient = new SingletonPlayer();
             context = new InstanceContext(this);
->>>>>>> PuchetaClinte
         }
 
         public void ResponseAuthenticated(PlayerDTO playerDTO)
         {
             if (playerDTO.IsActive)
             {
-<<<<<<< HEAD
-
-=======
->>>>>>> PuchetaClinte
                 SingletonPlayer.PlayerClient.Username = playerDTO.Username;
                 SingletonPlayer.PlayerClient.Email = playerDTO.Email;
                 SingletonPlayer.PlayerClient.Coin = playerDTO.Coin;
                 SingletonPlayer.PlayerClient.RegisteredUser = true;
-<<<<<<< HEAD
-=======
                 SingletonPlayer.PlayerClient.PlayerType = false;
->>>>>>> PuchetaClinte
+
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Close();
@@ -113,17 +104,9 @@ namespace View
         {
             var random = new Random();
             var value = random.Next(0, 10000);
-<<<<<<< HEAD
-            SingletonPlayer.PlayerClient.Username = "Invitado" + value;
-            SingletonPlayer.PlayerClient.Coin = 500;
-            SingletonPlayer.PlayerClient.RegisteredUser = false;
-=======
             SingletonPlayer.PlayerClient.Username = "Invitdo " + value;
             SingletonPlayer.PlayerClient.Coin = 500;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
-            
-
->>>>>>> PuchetaClinte
             MainWindow mainWindow = new MainWindow();
             Close();
             mainWindow.Show();

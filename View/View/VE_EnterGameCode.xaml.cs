@@ -28,12 +28,12 @@ namespace View
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
+            SingletonGameRound.GameRound.CodeGame = codeVerification;
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-            ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);
             try
             {
                 client.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
@@ -75,12 +75,12 @@ namespace View
 
         public void ResponseCompleteLobby(bool status)
         {
-            throw new NotImplementedException();
+
         }
 
         public void ResponseTotalPlayers(int totalPlayers)
         {
-            throw new NotImplementedException();
+
         }
     }
 
