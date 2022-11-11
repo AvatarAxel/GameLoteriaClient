@@ -89,7 +89,7 @@ namespace View
         }
 
         public bool ValidationFields() 
-        { 
+        {
             if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
                 || string.IsNullOrEmpty(txtPassword.Password) || string.IsNullOrEmpty(txtPasswordValidation.Password))
             {
@@ -105,6 +105,11 @@ namespace View
             if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
             {
                 MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            if (!fieldValidation.ValidationUsernameFormat(txtUsername.Text))
+            {
+                MessageBox.Show("Formato de username invalido", "formato de username invalido", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             String Birthday = calendarBirthday.SelectedDate.ToString();

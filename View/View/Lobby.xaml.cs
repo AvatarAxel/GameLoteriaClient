@@ -25,7 +25,7 @@ namespace View
             InitializeComponent();
             context = new InstanceContext(this);
             ConfigureLobby();
-            InitializeChat();
+            JoinServices();
             txtChat.IsEnabled = false;
         }
 
@@ -34,12 +34,14 @@ namespace View
             WindowState = WindowState.Minimized;
         }
 
-        public void InitializeChat()
+        public void JoinServices()
         {
             ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
+            ServiceReference.JoinGameServiceClient joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
             try
             {
-                client.JoinChat(SingletonPlayer.PlayerClient.Username);
+                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                client.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
@@ -52,11 +54,13 @@ namespace View
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
                 ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-                
+                ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);
+
                 ExitPlayer();
                 try
                 {
                     client.EliminateGame(SingletonGameRound.GameRound.CodeGame);
+                    chatClient.DeleteChat(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
@@ -105,15 +109,18 @@ namespace View
 
         public void ResponseCodeExist(bool status)
         {
-            throw new NotImplementedException();
+
         }
 
         private void ExitPlayer()
         {
             ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-            try 
+            ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);
+
+            try
             {
                 client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
@@ -129,7 +136,7 @@ namespace View
             {
                 try
                 {
-                    client.SendMessage(message, SingletonPlayer.PlayerClient.Username);
+                    client.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                     txtMessage.Clear();
                 }
                 catch (EndpointNotFoundException)
@@ -146,12 +153,12 @@ namespace View
 
         public void ResponseCompleteLobby(bool status)
         {
-            throw new NotImplementedException();
+
         }
 
         public void ResponseTotalPlayers(int totalPlayers)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

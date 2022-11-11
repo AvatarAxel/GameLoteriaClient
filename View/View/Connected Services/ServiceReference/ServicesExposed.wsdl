@@ -70,6 +70,12 @@
   <wsdl:message name="IChatService_ExitChat_InputMessage">
     <wsdl:part name="parameters" element="tns:ExitChat" />
   </wsdl:message>
+  <wsdl:message name="IChatService_CreateChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_DeleteChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteChat" />
+  </wsdl:message>
   <wsdl:message name="IChatService_ReciveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveMessage" />
   </wsdl:message>
@@ -135,6 +141,12 @@
     </wsdl:operation>
     <wsdl:operation name="ExitChat">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatService/ExitChat" message="tns:IChatService_ExitChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/CreateChat" message="tns:IChatService_CreateChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/DeleteChat" message="tns:IChatService_DeleteChat_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReciveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatService/ReciveMessage" message="tns:IChatService_ReciveMessage_OutputCallbackMessage" />
@@ -226,6 +238,18 @@
     </wsdl:operation>
     <wsdl:operation name="ExitChat">
       <soap12:operation soapAction="http://tempuri.org/IChatService/ExitChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CreateChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/CreateChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/DeleteChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
