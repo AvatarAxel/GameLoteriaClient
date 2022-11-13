@@ -19,6 +19,7 @@ namespace View
     public partial class VE_EnterGameCode : Window, ServiceReference.IJoinGameServiceCallback
     {
         private InstanceContext context;
+        private ServiceReference.JoinGameServiceClient client;
         public VE_EnterGameCode()
         {
             InitializeComponent();
@@ -28,12 +29,10 @@ namespace View
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
-            SingletonGameRound.GameRound.CodeGame = codeVerification;
-            ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
+            client = new ServiceReference.JoinGameServiceClient(context);
             try
             {
-                client.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                client.ValidationLobby(codeVerification);
             }
             catch (EndpointNotFoundException)
             {
@@ -43,17 +42,8 @@ namespace View
 
         public void ResponseCodeExist(bool status)
         {
-            if (status)
-            {
-                Lobby lobby = new Lobby();
-                lobby.Show();
-                SingletonGameRound.GameRound.CodeGame = txtCode.Text;
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            if (!status)          
+                MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);            
         }
 
         public void ReciveWinner(string username)
@@ -70,11 +60,24 @@ namespace View
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            client.Close();
             Close();
         }
 
         public void ResponseCompleteLobby(bool status)
         {
+            if (status)
+            {
+                MessageBox.Show("Sala llena uwu", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Lobby lobby = new Lobby();
+                lobby.Show();
+                SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                client.Close();
+                Close();
+            }
 
         }
 

@@ -215,9 +215,6 @@
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +225,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\item.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

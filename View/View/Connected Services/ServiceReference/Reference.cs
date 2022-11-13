@@ -502,6 +502,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/EliminateGame")]
         System.Threading.Tasks.Task EliminateGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ValidationLobby")]
+        void ValidationLobby(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ValidationLobby")]
+        System.Threading.Tasks.Task ValidationLobbyAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -586,6 +592,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task EliminateGameAsync(string verificationCode) {
             return base.Channel.EliminateGameAsync(verificationCode);
+        }
+        
+        public void ValidationLobby(string verificationCode) {
+            base.Channel.ValidationLobby(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task ValidationLobbyAsync(string verificationCode) {
+            return base.Channel.ValidationLobbyAsync(verificationCode);
         }
     }
 }

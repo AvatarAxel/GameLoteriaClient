@@ -20,6 +20,8 @@ namespace View
     public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
+        ServiceReference.ChatServiceClient client;
+        ServiceReference.JoinGameServiceClient joinGameServiceClient;
         public Lobby()
         {
             InitializeComponent();
@@ -34,10 +36,10 @@ namespace View
             WindowState = WindowState.Minimized;
         }
 
-        public void JoinServices()
-        {
-            ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
-            ServiceReference.JoinGameServiceClient joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
+        public void JoinServices()        {
+
+            client = new ServiceReference.ChatServiceClient(context);
+            joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
             try
             {
                 joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
@@ -53,14 +55,12 @@ namespace View
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
-                ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-                ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);
 
                 ExitPlayer();
                 try
                 {
-                    client.EliminateGame(SingletonGameRound.GameRound.CodeGame);
-                    chatClient.DeleteChat(SingletonGameRound.GameRound.CodeGame);
+                    joinGameServiceClient.EliminateGame(SingletonGameRound.GameRound.CodeGame);
+                    client.DeleteChat(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
@@ -114,13 +114,11 @@ namespace View
 
         private void ExitPlayer()
         {
-            ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
-            ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);
 
             try
             {
-                client.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                joinGameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                client.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
