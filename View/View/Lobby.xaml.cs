@@ -55,7 +55,6 @@ namespace View
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
-
                 ExitPlayer();
                 try
                 {
@@ -114,7 +113,6 @@ namespace View
 
         private void ExitPlayer()
         {
-
             try
             {
                 joinGameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);

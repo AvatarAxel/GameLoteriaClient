@@ -60,7 +60,7 @@ namespace View
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            client.Close();
+            //client.Close();
             Close();
         }
 
@@ -72,9 +72,9 @@ namespace View
             }
             else
             {
-                Lobby lobby = new Lobby();
-                lobby.Show();
                 SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                Lobby lobby = new Lobby();
+                lobby.Show();              
                 client.Close();
                 Close();
             }

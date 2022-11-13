@@ -149,17 +149,21 @@
                                FontFamily="Montserrat" Width="114" Height="40"
                                Margin="0,0,0,0"
                                HorizontalAlignment="Center"/>
-
-                    <TextBox x:Name="txtChat"
+                    
+                    <ScrollContentPresenter Height="300" Width="200" 
+                                  >
+                        
+                        <TextBox x:Name="txtChat"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              BorderThickness="0,0,0,2"
-                             Height="342"
+                             Height="300"
                              VerticalContentAlignment="Top"
                              HorizontalContentAlignment="Left"
-                             Width="300"/>
-
+                             Width="200"/>
+                        
+                    </ScrollContentPresenter>
                     <TextBox x:Name="txtMessage" 
                                      HorizontalAlignment="Center" 
                                      Margin="0,20,0,0" 
