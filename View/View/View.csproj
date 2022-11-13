@@ -212,6 +212,15 @@
     <Resource Include="Images\PlayingCards\8.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\ResourseImage\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ResourseImage\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ResourseImage\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
@@ -228,15 +237,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\ResourseImage\minimize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\ResourseImage\close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\ResourseImage\Exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -107,7 +107,11 @@
                                Margin="0,0,0,0"
                                HorizontalAlignment="Center"/>
 
-                    <TextBox x:Name="txtChat"
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Height="300"
+                                  Width="300">
+                        <TextBox x:Name="txtChat"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -116,6 +120,9 @@
                              VerticalContentAlignment="Top"
                              HorizontalContentAlignment="Left"
                              Width="300"/>
+                    </ScrollViewer>
+                    
+
 
                     <TextBox x:Name="txtMessage" 
                                      HorizontalAlignment="Center" 
@@ -123,6 +130,7 @@
                                      TextWrapping="Wrap" 
                                      VerticalAlignment="Top" 
                                      Width="300"/>
+
 
                     <Button x:Name="btnSend"                          
                             BorderThickness="0"
