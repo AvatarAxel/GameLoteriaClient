@@ -116,7 +116,7 @@
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              BorderThickness="0,0,0,2"
-                             Height="342"
+                             Height="300"
                              VerticalContentAlignment="Top"
                              HorizontalContentAlignment="Left"
                              Width="300"/>

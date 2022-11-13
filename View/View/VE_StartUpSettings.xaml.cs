@@ -41,7 +41,7 @@ namespace View
         {
             if (ValidationField())
             {
-                int limitPlayer = cmbxNumberPlayer.SelectedIndex;
+                int limitPlayer = int.Parse( cmbxNumberPlayer.Text);
 
                 ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
                 CodeGame codeGame = new CodeGame();

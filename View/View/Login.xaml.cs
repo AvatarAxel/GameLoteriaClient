@@ -104,13 +104,13 @@ namespace View
         {
             var random = new Random();
             var value = random.Next(0, 10000);
-            SingletonPlayer.PlayerClient.Username = "Invitdo " + value;
+            SingletonPlayer.PlayerClient.Username = "Invitado" + value;
             SingletonPlayer.PlayerClient.Coin = 500;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
             Close();
             mainWindow.Show();
-            MessageBox.Show("Si entras como invitado NO se te guardar tus monedas ganadas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Si entras como invitado NO se te guardaran tus monedas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
