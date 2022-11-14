@@ -43,7 +43,6 @@ namespace View
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
-                client.Close();
                 Close();
             }
             else
