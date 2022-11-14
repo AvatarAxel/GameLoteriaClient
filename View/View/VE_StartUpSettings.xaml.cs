@@ -20,10 +20,14 @@ namespace View
     public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
+        private ServiceReference.JoinGameServiceClient joinGameClient;
+        private ServiceReference.ChatServiceClient chatClient;
         public VE_StartUpSettings()
         {
             InitializeComponent();
             context = new InstanceContext(this);
+            joinGameClient = new ServiceReference.JoinGameServiceClient(context);
+            chatClient = new ChatServiceClient(context);
         }
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
@@ -34,6 +38,15 @@ namespace View
             Application.Current.Shutdown();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            try
+            {
+                joinGameClient.Close();
+                chatClient.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
@@ -43,20 +56,25 @@ namespace View
             {
                 int limitPlayer = int.Parse( cmbxNumberPlayer.Text);
 
-                ServiceReference.JoinGameServiceClient client = new ServiceReference.JoinGameServiceClient(context);
                 CodeGame codeGame = new CodeGame();
                 SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
 
-                ServiceReference.ChatServiceClient chatClient = new ServiceReference.ChatServiceClient(context);    
-
-
                 try
                 {
-                    client.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
+                    joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
                    
                     Lobby lobby = new Lobby();
                     lobby.Show();
+                    try
+                    {
+                        joinGameClient.Close();
+                        chatClient.Close();
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                     Close();
                 }
                 catch (EndpointNotFoundException)

@@ -22,10 +22,14 @@ namespace View
     public partial class RegisterUser : Window, ServiceReference.IUserRegistrationServiceCallback
     {
         private InstanceContext context;
+        private ServiceReference.PlayerDTO playerDTO;
+        private ServiceReference.UserRegistrationServiceClient client;
         public RegisterUser()
         {
             InitializeComponent();
             context = new InstanceContext(this);
+            client = new ServiceReference.UserRegistrationServiceClient(context);
+            playerDTO = new ServiceReference.PlayerDTO();
         }
 
         public void ResponseRegister(bool status)
@@ -35,6 +39,14 @@ namespace View
                 MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
+                try
+                {
+                    client.Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 Close();
             }
             else
@@ -52,6 +64,14 @@ namespace View
         {
             Login login = new Login();
             login.Show();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
@@ -64,9 +84,6 @@ namespace View
                 goToPopUpWindow.MailSentByThePlayer(emailUser);
                 goToPopUpWindow.ShowDialog();
 
-
-                ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
-                ServiceReference.UserRegistrationServiceClient client = new ServiceReference.UserRegistrationServiceClient(context);
                 Encryption encryption = new Encryption();
 
                 playerDTO.Username = txtUsername.Text;

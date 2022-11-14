@@ -20,10 +20,12 @@ namespace View
     public partial class VE_PasswordChange : Window, ServiceReference.IChangePasswordServiceCallback
     {
         private InstanceContext context;
+        private ServiceReference.ChangePasswordServiceClient client;
         public VE_PasswordChange()
         {
             InitializeComponent();
             context = new InstanceContext(this);
+            client = new ServiceReference.ChangePasswordServiceClient(context);
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
@@ -35,6 +37,14 @@ namespace View
         {
             Login login = new Login();
             login.Show();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
@@ -52,7 +62,6 @@ namespace View
                 changePassword.MailSentByThePlayer(email);
                 changePassword.ShowDialog();          
 
-                ServiceReference.ChangePasswordServiceClient client = new ServiceReference.ChangePasswordServiceClient(context);//new ServiceReference.AuthenticationServiceClient(context);
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
 
@@ -98,6 +107,14 @@ namespace View
                 MessageBox.Show("Correcto", "Se ha actualizado con exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 Login login = new Login();
                 login.Show();
+                try
+                {
+                    client.Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 Close();
             }
             else

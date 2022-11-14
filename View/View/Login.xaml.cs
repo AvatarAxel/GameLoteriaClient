@@ -21,12 +21,14 @@ namespace View
     public partial class Login : Window, ServiceReference.IAuthenticationServiceCallback
     {
         private InstanceContext context;
+        private ServiceReference.AuthenticationServiceClient client;
 
         public Login()
         { 
             InitializeComponent();
             SingletonPlayer.PlayerClient = new SingletonPlayer();
             context = new InstanceContext(this);
+            client = new ServiceReference.AuthenticationServiceClient(context);
         }
 
         public void ResponseAuthenticated(PlayerDTO playerDTO)
@@ -41,6 +43,7 @@ namespace View
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
+                client.Close();
                 Close();
             }
             else
@@ -66,8 +69,7 @@ namespace View
                 MessageBox.Show("Campos vacios, intentelo de nuevo", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else 
-            {
-                ServiceReference.AuthenticationServiceClient client = new ServiceReference.AuthenticationServiceClient(context);
+            {               
                 string username;
                 string hashedPassword;
                 username = txtUser.Text;
@@ -89,6 +91,14 @@ namespace View
             
             RegisterUser registerUser = new RegisterUser();
             registerUser.Show();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
 
         }
@@ -97,6 +107,14 @@ namespace View
         {
             VE_PasswordChange passwordChange = new VE_PasswordChange();
             passwordChange.Show();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
@@ -108,6 +126,14 @@ namespace View
             SingletonPlayer.PlayerClient.Coin = 500;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
             mainWindow.Show();
             MessageBox.Show("Si entras como invitado NO se te guardaran tus monedas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);

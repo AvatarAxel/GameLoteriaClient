@@ -20,12 +20,14 @@ namespace View
     public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
-        ServiceReference.ChatServiceClient client;
-        ServiceReference.JoinGameServiceClient joinGameServiceClient;
+        private ServiceReference.ChatServiceClient chatClient;
+        private ServiceReference.JoinGameServiceClient joinGameServiceClient;
         public Lobby()
         {
             InitializeComponent();
             context = new InstanceContext(this);
+            chatClient = new ServiceReference.ChatServiceClient(context);
+            joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
             ConfigureLobby();
             JoinServices();
             txtChat.IsEnabled = false;
@@ -36,14 +38,11 @@ namespace View
             WindowState = WindowState.Minimized;
         }
 
-        public void JoinServices()        {
-
-            client = new ServiceReference.ChatServiceClient(context);
-            joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
+        public void JoinServices() {
             try
             {
                 joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                client.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
@@ -59,25 +58,23 @@ namespace View
                 try
                 {
                     joinGameServiceClient.EliminateGame(SingletonGameRound.GameRound.CodeGame);
-                    client.DeleteChat(SingletonGameRound.GameRound.CodeGame);
+                    chatClient.DeleteChat(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
             }
             else
             {
                 ExitPlayer();
-
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
             }
+
+            joinGameServiceClient.Close();
+            chatClient.Close();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
 
         }
 
@@ -116,7 +113,7 @@ namespace View
             try
             {
                 joinGameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                client.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
@@ -126,13 +123,12 @@ namespace View
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-            ServiceReference.ChatServiceClient client = new ServiceReference.ChatServiceClient(context);
             string message = txtMessage.Text;
             if (!string.IsNullOrEmpty(message))
             {
                 try
                 {
-                    client.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                    chatClient.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                     txtMessage.Clear();
                 }
                 catch (EndpointNotFoundException)

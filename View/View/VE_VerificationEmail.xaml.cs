@@ -21,11 +21,13 @@ namespace View
     {
         InstanceContext context;
         private string codeVerificationComparation;
+        private ServiceReference.EmailServiceClient client;
 
         public VE_VerificationEmail()
         {
             InitializeComponent();
             context = new InstanceContext(this);
+            client = new ServiceReference.EmailServiceClient(context);
         }
 
         public void MailSentByThePlayer(string emailPlayer)
@@ -34,7 +36,6 @@ namespace View
             try
             {
                 client.ValidationEmail(emailPlayer);
-                client.Close();
             }
             catch (EndpointNotFoundException)
             {
@@ -51,6 +52,14 @@ namespace View
         {
             Login login = new Login();
             login.Show();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
@@ -68,6 +77,14 @@ namespace View
                 if (codeVerificationComparation.Equals(verificarionUser))
                 {
                     MessageBox.Show("Todo chido", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                    try
+                    {
+                        client.Close();
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                     Close();
                 }
                 else

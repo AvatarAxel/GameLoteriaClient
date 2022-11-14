@@ -24,12 +24,12 @@ namespace View
         {
             InitializeComponent();
             context = new InstanceContext(this);
+            client = new ServiceReference.JoinGameServiceClient(context);
         }
 
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
-            client = new ServiceReference.JoinGameServiceClient(context);
             try
             {
                 client.ValidationLobby(codeVerification);
@@ -60,7 +60,14 @@ namespace View
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            //client.Close();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
@@ -74,8 +81,15 @@ namespace View
             {
                 SingletonGameRound.GameRound.CodeGame = txtCode.Text;
                 Lobby lobby = new Lobby();
-                lobby.Show();              
-                client.Close();
+                lobby.Show();
+                try
+                {
+                    client.Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 Close();
             }
 
