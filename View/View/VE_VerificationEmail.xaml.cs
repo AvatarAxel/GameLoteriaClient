@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -17,35 +18,28 @@ using View.ServiceReference;
 namespace View
 {
 
-    public partial class VE_VerificationEmail : Window, ServiceReference.IEmailServiceCallback
+    public partial class VE_VerificationEmail : Window
     {
-        InstanceContext context;
         private string codeVerificationComparation;
         private ServiceReference.EmailServiceClient client;
 
         public VE_VerificationEmail()
         {
             InitializeComponent();
-            context = new InstanceContext(this);
-            client = new ServiceReference.EmailServiceClient(context);
+            client = new ServiceReference.EmailServiceClient();
         }
 
         public void MailSentByThePlayer(string emailPlayer)
         {
-            ServiceReference.EmailServiceClient client = new ServiceReference.EmailServiceClient(context);
+           
             try
             {
-                client.ValidationEmail(emailPlayer);
+                codeVerificationComparation = client.ValidationEmail(emailPlayer);
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        public void ResponseEmail(string verificationCode)
-        {
-            codeVerificationComparation = verificationCode;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -86,12 +80,14 @@ namespace View
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     Close();
+                    SingletonPlayer.PlayerClient.RegisteredUser = true;
                 }
                 else
                 {
                     MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                    SingletonPlayer.PlayerClient.RegisteredUser = false;
                 }
-                
+
             }
 
         }

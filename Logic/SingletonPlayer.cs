@@ -13,6 +13,7 @@ namespace Logic
         public string Username { get; set; }
         public bool RegisteredUser { get; set;}
         public bool PlayerType { get; set; }
+        public bool Verificated { get; set; }
         public static SingletonPlayer PlayerClient { get; set; }
     }
 }

@@ -30,6 +30,7 @@ namespace View
             context = new InstanceContext(this);
             client = new ServiceReference.UserRegistrationServiceClient(context);
             playerDTO = new ServiceReference.PlayerDTO();
+            SingletonPlayer.PlayerClient.Verificated = false;
         }
 
         public void ResponseRegister(bool status)
@@ -81,27 +82,29 @@ namespace View
 
                 string emailUser = txtEmail.Text;
                 VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
-                goToPopUpWindow.MailSentByThePlayer(emailUser);
                 goToPopUpWindow.ShowDialog();
-
-                Encryption encryption = new Encryption();
-
-                playerDTO.Username = txtUsername.Text;
-                playerDTO.Email = txtEmail.Text;
-                string hashedPassword = encryption.HashPassword256(txtPassword.Password);
-                playerDTO.Password = hashedPassword;
-                String Birthday = calendarBirthday.SelectedDate.ToString();
-                DateTime dateTime = DateTime.Parse(Birthday);
-                playerDTO.Birthday = dateTime;
-
-                try
+                goToPopUpWindow.MailSentByThePlayer(emailUser);
+                if(SingletonPlayer.PlayerClient.Verificated) 
                 {
-                    client.RegistrerUserBD(playerDTO);
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                    Encryption encryption = new Encryption();
+
+                    playerDTO.Username = txtUsername.Text;
+                    playerDTO.Email = txtEmail.Text;
+                    string hashedPassword = encryption.HashPassword256(txtPassword.Password);
+                    playerDTO.Password = hashedPassword;
+                    String Birthday = calendarBirthday.SelectedDate.ToString();
+                    DateTime dateTime = DateTime.Parse(Birthday);
+                    playerDTO.Birthday = dateTime;
+
+                    try
+                    {
+                        client.RegistrerUserBD(playerDTO);
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }               
             }    
         }
 
