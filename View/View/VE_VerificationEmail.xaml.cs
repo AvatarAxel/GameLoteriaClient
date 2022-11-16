@@ -18,15 +18,18 @@ using View.ServiceReference;
 namespace View
 {
 
-    public partial class VE_VerificationEmail : Window
+    public partial class VE_VerificationEmail : Window, ServiceReference.IEmailServiceCallback
     {
         private string codeVerificationComparation;
+        private InstanceContext context;
         private ServiceReference.EmailServiceClient client;
+
 
         public VE_VerificationEmail()
         {
             InitializeComponent();
-            client = new ServiceReference.EmailServiceClient();
+            context = new InstanceContext(this);
+            client = new ServiceReference.EmailServiceClient(context);
         }
 
         public void MailSentByThePlayer(string emailPlayer)
@@ -34,7 +37,7 @@ namespace View
            
             try
             {
-                codeVerificationComparation = client.ValidationEmail(emailPlayer);
+                client.ValidationEmail(emailPlayer);
             }
             catch (EndpointNotFoundException)
             {
@@ -90,6 +93,11 @@ namespace View
 
             }
 
+        }
+
+        public void ResponseEmail(string verificationCode)
+        {
+            codeVerificationComparation = verificationCode;
         }
     }
 }

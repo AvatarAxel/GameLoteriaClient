@@ -82,8 +82,8 @@ namespace View
 
                 string emailUser = txtEmail.Text;
                 VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
-                goToPopUpWindow.ShowDialog();
                 goToPopUpWindow.MailSentByThePlayer(emailUser);
+                goToPopUpWindow.ShowDialog();                
                 if(SingletonPlayer.PlayerClient.Verificated) 
                 {
                     Encryption encryption = new Encryption();

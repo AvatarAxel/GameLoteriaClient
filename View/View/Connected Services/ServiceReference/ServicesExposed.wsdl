@@ -88,8 +88,8 @@
   <wsdl:message name="IEmailService_ValidationEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidationEmail" />
   </wsdl:message>
-  <wsdl:message name="IEmailService_ValidationEmail_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ValidationEmailResponse" />
+  <wsdl:message name="IEmailService_ResponseEmail_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseEmail" />
   </wsdl:message>
   <wsdl:message name="IUserRegistrationService_RegistrerUserBD_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrerUserBD" />
@@ -166,7 +166,9 @@
   <wsdl:portType name="IEmailService">
     <wsdl:operation name="ValidationEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmailService/ValidationEmail" message="tns:IEmailService_ValidationEmail_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IEmailService/ValidationEmailResponse" message="tns:IEmailService_ValidationEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEmail">
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmailService/ResponseEmail" message="tns:IEmailService_ResponseEmail_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserRegistrationService">
@@ -289,6 +291,9 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEmail">
+      <soap12:operation soapAction="http://tempuri.org/IEmailService/ResponseEmail" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
