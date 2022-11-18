@@ -57,6 +57,7 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            SingletonPlayer.PlayerClient.RegisteredUser = false;
             Close();
         }
 
@@ -66,7 +67,7 @@ namespace View
             {
                 MessageBox.Show("Pon algo en el campo please uwu", "Asi no >.<", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
+            else if(!codeVerificationComparation.Equals(null))
             {
 
                 string verificarionUser = txtVerification.Text;
@@ -82,13 +83,12 @@ namespace View
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    Close();
                     SingletonPlayer.PlayerClient.RegisteredUser = true;
+                    Close();
                 }
                 else
                 {
-                    MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-                    SingletonPlayer.PlayerClient.RegisteredUser = false;
+                    MessageBox.Show("El codigo de verificación no coincide", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
             }

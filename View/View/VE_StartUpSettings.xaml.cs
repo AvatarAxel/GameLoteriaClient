@@ -111,7 +111,7 @@ namespace View
 
         public void ResponseTotalPlayers(int totalPlayers)
         {
-
+            SingletonGameRound.GameRound.TotalPlayers = totalPlayers;
         }
 
         public void ReciveMessage(string player, string message)

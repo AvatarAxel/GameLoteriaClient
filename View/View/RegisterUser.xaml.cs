@@ -37,7 +37,7 @@ namespace View
         {
             if (status)
             {
-                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OK, MessageBoxImage.Information);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 try
