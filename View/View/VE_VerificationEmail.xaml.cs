@@ -18,26 +18,23 @@ using View.ServiceReference;
 namespace View
 {
 
-    public partial class VE_VerificationEmail : Window, ServiceReference.IEmailServiceCallback
+    public partial class VE_VerificationEmail : Window
     {
         private string codeVerificationComparation;
-        private InstanceContext context;
         private ServiceReference.EmailServiceClient client;
 
 
         public VE_VerificationEmail()
         {
-            InitializeComponent();
-            context = new InstanceContext(this);
-            client = new ServiceReference.EmailServiceClient(context);
+            InitializeComponent();            
+            client = new ServiceReference.EmailServiceClient();
         }
 
         public void MailSentByThePlayer(string emailPlayer)
-        {
-           
+        {  
             try
             {
-                client.ValidationEmail(emailPlayer);
+                codeVerificationComparation = client.ValidationEmail(emailPlayer);
             }
             catch (EndpointNotFoundException)
             {
@@ -57,7 +54,7 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            SingletonPlayer.PlayerClient.RegisteredUser = false;
+            SingletonPlayer.PlayerClient.Verificated = false;
             Close();
         }
 
@@ -69,7 +66,6 @@ namespace View
             }
             else if(!codeVerificationComparation.Equals(null))
             {
-
                 string verificarionUser = txtVerification.Text;
 
                 if (codeVerificationComparation.Equals(verificarionUser))
@@ -83,21 +79,14 @@ namespace View
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    SingletonPlayer.PlayerClient.RegisteredUser = true;
+                    SingletonPlayer.PlayerClient.Verificated = true;
                     Close();
                 }
                 else
                 {
                     MessageBox.Show("El codigo de verificación no coincide", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-
             }
-
-        }
-
-        public void ResponseEmail(string verificationCode)
-        {
-            codeVerificationComparation = verificationCode;
         }
     }
 }

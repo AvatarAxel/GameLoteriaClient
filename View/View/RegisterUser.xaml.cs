@@ -38,6 +38,7 @@ namespace View
             if (status)
             {
                 MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OK, MessageBoxImage.Information);
+                FillSingleton();
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 try
@@ -86,6 +87,7 @@ namespace View
                 goToPopUpWindow.ShowDialog();                
                 if(SingletonPlayer.PlayerClient.Verificated) 
                 {
+                    BtnRegister.IsEnabled = false;
                     Encryption encryption = new Encryption();
 
                     playerDTO.Username = txtUsername.Text;
@@ -139,6 +141,14 @@ namespace View
                 return false;
             }
             return true;
+        }
+
+        private void FillSingleton() 
+        {
+            SingletonPlayer.PlayerClient.Username = txtUsername.Text;
+            SingletonPlayer.PlayerClient.Email = txtEmail.Text;
+            SingletonPlayer.PlayerClient.RegisteredUser = true;
+            SingletonPlayer.PlayerClient.Coin = 500;            
         }
     }
 }

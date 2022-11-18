@@ -360,21 +360,14 @@ namespace View.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IEmailService", CallbackContract=typeof(View.ServiceReference.IEmailServiceCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IEmailService")]
     public interface IEmailService {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IEmailService/ValidationEmail")]
-        void ValidationEmail(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailService/ValidationEmail", ReplyAction="http://tempuri.org/IEmailService/ValidationEmailResponse")]
+        string ValidationEmail(string email);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IEmailService/ValidationEmail")]
-        System.Threading.Tasks.Task ValidationEmailAsync(string email);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IEmailServiceCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IEmailService/ResponseEmail")]
-        void ResponseEmail(string verificationCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailService/ValidationEmail", ReplyAction="http://tempuri.org/IEmailService/ValidationEmailResponse")]
+        System.Threading.Tasks.Task<string> ValidationEmailAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -383,33 +376,32 @@ namespace View.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class EmailServiceClient : System.ServiceModel.DuplexClientBase<View.ServiceReference.IEmailService>, View.ServiceReference.IEmailService {
+    public partial class EmailServiceClient : System.ServiceModel.ClientBase<View.ServiceReference.IEmailService>, View.ServiceReference.IEmailService {
         
-        public EmailServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
+        public EmailServiceClient() {
         }
         
-        public EmailServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
+        public EmailServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
         }
         
-        public EmailServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public EmailServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public EmailServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public EmailServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public EmailServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
+        public EmailServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
-        public void ValidationEmail(string email) {
-            base.Channel.ValidationEmail(email);
+        public string ValidationEmail(string email) {
+            return base.Channel.ValidationEmail(email);
         }
         
-        public System.Threading.Tasks.Task ValidationEmailAsync(string email) {
+        public System.Threading.Tasks.Task<string> ValidationEmailAsync(string email) {
             return base.Channel.ValidationEmailAsync(email);
         }
     }
