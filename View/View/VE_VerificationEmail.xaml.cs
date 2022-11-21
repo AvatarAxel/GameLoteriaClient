@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using View.ServiceReference;
+using Logic;
 
 namespace View
 {
@@ -58,9 +59,11 @@ namespace View
 
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtVerification.Text))
+            FieldValidation largeNumber = new FieldValidation();
+
+            if (string.IsNullOrEmpty(txtVerification.Text) || !largeNumber.HigherNumber(txtVerification.Text))
             {
-                MessageBox.Show("Pon algo en el campo please uwu", "Asi no >.<", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Formato invalido", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if(!codeVerificationComparation.Equals(null))
             {
