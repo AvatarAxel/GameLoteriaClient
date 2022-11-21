@@ -58,8 +58,8 @@
   <wsdl:message name="IAuthenticationService_AuthenticationLogin_InputMessage">
     <wsdl:part name="parameters" element="tns:AuthenticationLogin" />
   </wsdl:message>
-  <wsdl:message name="IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseAuthenticated" />
+  <wsdl:message name="IAuthenticationService_AuthenticationLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticationLoginResponse" />
   </wsdl:message>
   <wsdl:message name="IChatService_JoinChat_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinChat" />
@@ -82,8 +82,8 @@
   <wsdl:message name="IChangePasswordService_ChangePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangePassword" />
   </wsdl:message>
-  <wsdl:message name="IChangePasswordService_ResponseChangePassword_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseChangePassword" />
+  <wsdl:message name="IChangePasswordService_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
   </wsdl:message>
   <wsdl:message name="IEmailService_ValidationEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidationEmail" />
@@ -91,11 +91,23 @@
   <wsdl:message name="IEmailService_ValidationEmail_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidationEmailResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserRegistrationService_RegistrerUserBD_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegistrerUserBD" />
+  <wsdl:message name="IUserRegistrationService_RegistrerUserDataBase_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrerUserDataBase" />
   </wsdl:message>
-  <wsdl:message name="IUserRegistrationService_ResponseRegister_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseRegister" />
+  <wsdl:message name="IUserRegistrationService_RegistrerUserDataBase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrerUserDataBaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserRegistrationService_ValidationEmailDataBase_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidationEmailDataBase" />
+  </wsdl:message>
+  <wsdl:message name="IUserRegistrationService_ValidationEmailDataBase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidationEmailDataBaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserRegistrationService_ValidationUsernameDataBase_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidationUsernameDataBase" />
+  </wsdl:message>
+  <wsdl:message name="IUserRegistrationService_ValidationUsernameDataBase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidationUsernameDataBaseResponse" />
   </wsdl:message>
   <wsdl:message name="IJoinGameService_JoinGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinGame" />
@@ -130,9 +142,7 @@
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLogin" message="tns:IAuthenticationService_AuthenticationLogin_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseAuthenticated">
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" message="tns:IAuthenticationService_ResponseAuthenticated_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLoginResponse" message="tns:IAuthenticationService_AuthenticationLogin_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatService">
@@ -158,9 +168,7 @@
   <wsdl:portType name="IChangePasswordService">
     <wsdl:operation name="ChangePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IChangePasswordService/ChangePassword" message="tns:IChangePasswordService_ChangePassword_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseChangePassword">
-      <wsdl:output wsaw:Action="http://tempuri.org/IChangePasswordService/ResponseChangePassword" message="tns:IChangePasswordService_ResponseChangePassword_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChangePasswordService/ChangePasswordResponse" message="tns:IChangePasswordService_ChangePassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmailService">
@@ -170,11 +178,17 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserRegistrationService">
-    <wsdl:operation name="RegistrerUserBD">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserRegistrationService/RegistrerUserBD" message="tns:IUserRegistrationService_RegistrerUserBD_InputMessage" />
+    <wsdl:operation name="RegistrerUserDataBase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserRegistrationService/RegistrerUserDataBase" message="tns:IUserRegistrationService_RegistrerUserDataBase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserRegistrationService/RegistrerUserDataBaseResponse" message="tns:IUserRegistrationService_RegistrerUserDataBase_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ResponseRegister">
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserRegistrationService/ResponseRegister" message="tns:IUserRegistrationService_ResponseRegister_OutputCallbackMessage" />
+    <wsdl:operation name="ValidationEmailDataBase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserRegistrationService/ValidationEmailDataBase" message="tns:IUserRegistrationService_ValidationEmailDataBase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserRegistrationService/ValidationEmailDataBaseResponse" message="tns:IUserRegistrationService_ValidationEmailDataBase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidationUsernameDataBase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserRegistrationService/ValidationUsernameDataBase" message="tns:IUserRegistrationService_ValidationUsernameDataBase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserRegistrationService/ValidationUsernameDataBaseResponse" message="tns:IUserRegistrationService_ValidationUsernameDataBase_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IJoinGameService">
@@ -217,9 +231,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseAuthenticated">
-      <soap12:operation soapAction="http://tempuri.org/IAuthenticationService/ResponseAuthenticated" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -273,9 +284,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseChangePassword">
-      <soap12:operation soapAction="http://tempuri.org/IChangePasswordService/ResponseChangePassword" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -297,14 +305,29 @@
   <wsdl:binding name="NetTcpBinding_IUserRegistrationService" type="tns:IUserRegistrationService">
     <wsp:PolicyReference URI="#NetTcpBinding_IUserRegistrationService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="RegistrerUserBD">
-      <soap12:operation soapAction="http://tempuri.org/IUserRegistrationService/RegistrerUserBD" style="document" />
+    <wsdl:operation name="RegistrerUserDataBase">
+      <soap12:operation soapAction="http://tempuri.org/IUserRegistrationService/RegistrerUserDataBase" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ResponseRegister">
-      <soap12:operation soapAction="http://tempuri.org/IUserRegistrationService/ResponseRegister" style="document" />
+    <wsdl:operation name="ValidationEmailDataBase">
+      <soap12:operation soapAction="http://tempuri.org/IUserRegistrationService/ValidationEmailDataBase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidationUsernameDataBase">
+      <soap12:operation soapAction="http://tempuri.org/IUserRegistrationService/ValidationUsernameDataBase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

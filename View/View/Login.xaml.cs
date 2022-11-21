@@ -18,20 +18,18 @@ using View.ServiceReference;
 
 namespace View
 {
-    public partial class Login : Window, ServiceReference.IAuthenticationServiceCallback
+    public partial class Login : Window
     {
-        private InstanceContext context;
         private ServiceReference.AuthenticationServiceClient client;
 
         public Login()
         { 
             InitializeComponent();
             SingletonPlayer.PlayerClient = new SingletonPlayer();
-            context = new InstanceContext(this);
-            client = new ServiceReference.AuthenticationServiceClient(context);
+            client = new ServiceReference.AuthenticationServiceClient();
         }
 
-        public void ResponseAuthenticated(PlayerDTO playerDTO)
+        public void AuthenticateLogin(PlayerDTO playerDTO)
         {
             if (playerDTO.IsActive)
             {
@@ -41,9 +39,22 @@ namespace View
                 SingletonPlayer.PlayerClient.RegisteredUser = true;
                 SingletonPlayer.PlayerClient.PlayerType = false;
 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
+                try
+                {
+                    client.Close();
+
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
@@ -76,7 +87,10 @@ namespace View
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
                 try
                 {
-                    client.AuthenticationLogin(username, hashedPassword);
+                    ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
+                    playerDTO= client.AuthenticationLogin(username, hashedPassword);
+                    AuthenticateLogin(playerDTO);
+
                 }
                 catch (EndpointNotFoundException)
                 {

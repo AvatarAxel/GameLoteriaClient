@@ -9,10 +9,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseAuthenticated">
+  <xs:element name="AuthenticationLoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="playerDTO" nillable="true" type="q1:PlayerDTO" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="AuthenticationLoginResult" nillable="true" type="q1:PlayerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -71,10 +71,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseChangePassword">
+  <xs:element name="ChangePasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ChangePasswordResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -92,17 +92,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrerUserBD">
+  <xs:element name="RegistrerUserDataBase">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="player" nillable="true" type="q2:PlayerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseRegister">
+  <xs:element name="RegistrerUserDataBaseResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RegistrerUserDataBaseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidationEmailDataBase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidationEmailDataBaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidationEmailDataBaseResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidationUsernameDataBase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidationUsernameDataBaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidationUsernameDataBaseResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

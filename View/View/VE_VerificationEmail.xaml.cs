@@ -44,8 +44,6 @@ namespace View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Login login = new Login();
-            login.Show();
             try
             {
                 client.Close();

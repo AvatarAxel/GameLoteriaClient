@@ -17,15 +17,14 @@ using View.ServiceReference;
 
 namespace View
 {
-    public partial class VE_PasswordChange : Window, ServiceReference.IChangePasswordServiceCallback
+    public partial class VE_PasswordChange : Window
     {
-        private InstanceContext context;
         private ServiceReference.ChangePasswordServiceClient client;
         public VE_PasswordChange()
         {
             InitializeComponent();
-            context = new InstanceContext(this);
-            client = new ServiceReference.ChangePasswordServiceClient(context);
+            client = new ServiceReference.ChangePasswordServiceClient();
+            SingletonPlayer.PlayerClient.Verificated = false;
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
@@ -48,7 +47,7 @@ namespace View
             Close();
         }
 
-        private void BtnUpdateDat_Click(object sender, RoutedEventArgs e)
+        private void BtnUpdateData_Click(object sender, RoutedEventArgs e)
         {
             if (ValidationFields())
             {
@@ -57,21 +56,28 @@ namespace View
                 email = txtEmail.Text;
                 passwordValidation = txtPasswordValidation.Password;
                 string hashedPassword;
+                BtnUpdateData.IsEnabled = false;
 
                 VE_VerificationEmail changePassword = new VE_VerificationEmail();
                 changePassword.MailSentByThePlayer(email);
                 changePassword.ShowDialog();          
 
                 Encryption encryption = new Encryption();
-                hashedPassword = encryption.HashPassword256(txtPassword.Password);
+                hashedPassword = encryption.HashPassword256(passwordValidation);
 
-                try
+                if (SingletonPlayer.PlayerClient.Verificated)
                 {
-                    client.ChangePassword(email, hashedPassword);
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    try
+                    {
+                        bool status = false;
+                        status = client.ChangePassword(email, hashedPassword);
+                        ResponseChangePassword(status);
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
 
             }
@@ -102,7 +108,7 @@ namespace View
 
         public void ResponseChangePassword(bool status)
         {
-            if (status == true)
+            if (status)
             {
                 MessageBox.Show("Correcto", "Se ha actualizado con exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 Login login = new Login();

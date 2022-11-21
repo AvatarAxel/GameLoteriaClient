@@ -19,16 +19,14 @@ using View.ServiceReference;
 
 namespace View
 {
-    public partial class RegisterUser : Window, ServiceReference.IUserRegistrationServiceCallback
+    public partial class RegisterUser : Window
     {
-        private InstanceContext context;
         private ServiceReference.PlayerDTO playerDTO;
         private ServiceReference.UserRegistrationServiceClient client;
         public RegisterUser()
         {
             InitializeComponent();
-            context = new InstanceContext(this);
-            client = new ServiceReference.UserRegistrationServiceClient(context);
+            client = new ServiceReference.UserRegistrationServiceClient();
             playerDTO = new ServiceReference.PlayerDTO();
             SingletonPlayer.PlayerClient.Verificated = false;
         }
@@ -82,32 +80,60 @@ namespace View
             if (ValidationFields()) {
 
                 string emailUser = txtEmail.Text;
-                VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
-                goToPopUpWindow.MailSentByThePlayer(emailUser);
-                goToPopUpWindow.ShowDialog();                
-                if(SingletonPlayer.PlayerClient.Verificated) 
+                string usernameUser = txtUsername.Text;
+                try
                 {
-                    BtnRegister.IsEnabled = false;
-                    Encryption encryption = new Encryption();
-
-                    playerDTO.Username = txtUsername.Text;
-                    playerDTO.Email = txtEmail.Text;
-                    string hashedPassword = encryption.HashPassword256(txtPassword.Password);
-                    playerDTO.Password = hashedPassword;
-                    String Birthday = calendarBirthday.SelectedDate.ToString();
-                    DateTime dateTime = DateTime.Parse(Birthday);
-                    playerDTO.Birthday = dateTime;
-
-                    try
+                    if (client.ValidationEmailDataBase(emailUser))
                     {
-                        client.RegistrerUserBD(playerDTO);
+                        MessageBox.Show("Correo ya registrado", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
-                    catch (EndpointNotFoundException)
+                    if (client.ValidationUsernameDataBase(usernameUser))
                     {
-                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Apodo ya registrado", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
-                }               
+
+                    RegistreUser(emailUser);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }    
+        }
+
+        private void RegistreUser(string emailUser)
+        {
+            VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
+            goToPopUpWindow.MailSentByThePlayer(emailUser);
+            goToPopUpWindow.ShowDialog();
+
+            if (SingletonPlayer.PlayerClient.Verificated)
+            {
+                BtnRegister.IsEnabled = false;
+                Encryption encryption = new Encryption();
+
+                playerDTO.Username = txtUsername.Text;
+                playerDTO.Email = txtEmail.Text;
+                string hashedPassword = encryption.HashPassword256(txtPassword.Password);
+                playerDTO.Password = hashedPassword;
+                String Birthday = calendarBirthday.SelectedDate.ToString();
+                DateTime dateTime = DateTime.Parse(Birthday);
+                playerDTO.Birthday = dateTime;
+
+                try
+                {
+
+                    bool status = false;
+                    status = client.RegistrerUserDataBase(playerDTO);
+                    ResponseRegister(status);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         public bool ValidationFields() 
