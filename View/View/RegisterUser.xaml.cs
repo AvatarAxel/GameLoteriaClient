@@ -106,8 +106,12 @@ namespace View
         private void RegistreUser(string emailUser)
         {
             VE_VerificationEmail goToPopUpWindow = new VE_VerificationEmail();
-            goToPopUpWindow.MailSentByThePlayer(emailUser);
-            goToPopUpWindow.ShowDialog();
+
+            if (goToPopUpWindow.MailSentByThePlayer(emailUser))
+            {
+                goToPopUpWindow.ShowDialog();
+
+            }       
 
             if (SingletonPlayer.PlayerClient.Verificated)
             {

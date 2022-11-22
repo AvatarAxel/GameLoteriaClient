@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using View.ServiceReference;
+using Logic;
 
 namespace View
 {
@@ -30,16 +31,31 @@ namespace View
             client = new ServiceReference.EmailServiceClient();
         }
 
-        public void MailSentByThePlayer(string emailPlayer)
-        {  
+        public bool MailSentByThePlayer(string emailPlayer)
+        {
+            CodeGame code = new CodeGame();
+            codeVerificationComparation = code.GenerateRandomCode();
+
             try
             {
-                codeVerificationComparation = client.ValidationEmail(emailPlayer);
+                bool status =  client.ValidationEmail(emailPlayer, codeVerificationComparation);
+                if (status)
+                {
+                    MessageBox.Show("Revisa tu correo electornico", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("No pude enviarte el correo :/ ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            return false;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -60,9 +76,9 @@ namespace View
         {
             if (string.IsNullOrEmpty(txtVerification.Text))
             {
-                MessageBox.Show("Pon algo en el campo please uwu", "Asi no >.<", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Formato invalido", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else if(!codeVerificationComparation.Equals(null))
+            else
             {
                 string verificarionUser = txtVerification.Text;
 
@@ -77,6 +93,7 @@ namespace View
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
                     SingletonPlayer.PlayerClient.Verificated = true;
                     Close();
                 }

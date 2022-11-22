@@ -59,8 +59,11 @@ namespace View
                 BtnUpdateData.IsEnabled = false;
 
                 VE_VerificationEmail changePassword = new VE_VerificationEmail();
-                changePassword.MailSentByThePlayer(email);
-                changePassword.ShowDialog();          
+
+                if (changePassword.MailSentByThePlayer(email))
+                {
+                    changePassword.ShowDialog();
+                }
 
                 Encryption encryption = new Encryption();
                 hashedPassword = encryption.HashPassword256(passwordValidation);
