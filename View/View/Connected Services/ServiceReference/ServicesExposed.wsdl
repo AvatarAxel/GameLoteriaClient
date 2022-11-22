@@ -124,20 +124,23 @@
   <wsdl:message name="IJoinGameService_EliminateGame_InputMessage">
     <wsdl:part name="parameters" element="tns:EliminateGame" />
   </wsdl:message>
-  <wsdl:message name="IJoinGameService_ValidationLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:ValidationLobby" />
-  </wsdl:message>
   <wsdl:message name="IJoinGameService_SendNextHostGame_InputMessage">
     <wsdl:part name="parameters" element="tns:SendNextHostGame" />
   </wsdl:message>
-  <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReciveWinner" />
-  </wsdl:message>
-  <wsdl:message name="IJoinGameService_ResponseCodeExist_OutputCallbackMessage">
+  <wsdl:message name="IJoinGameService_ResponseCodeExist_InputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCodeExist" />
   </wsdl:message>
-  <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputCallbackMessage">
+  <wsdl:message name="IJoinGameService_ResponseCodeExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseCodeExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ResponseCompleteLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCompleteLobby" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseCompleteLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
   <wsdl:message name="IJoinGameService_ResponseTotalPlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseTotalPlayers" />
@@ -213,20 +216,19 @@
     <wsdl:operation name="EliminateGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/EliminateGame" message="tns:IJoinGameService_EliminateGame_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ValidationLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidationLobby" message="tns:IJoinGameService_ValidationLobby_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="SendNextHostGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/SendNextHostGame" message="tns:IJoinGameService_SendNextHostGame_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ReciveWinner">
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ResponseCodeExist">
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCodeExist" message="tns:IJoinGameService_ResponseCodeExist_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCodeExist" message="tns:IJoinGameService_ResponseCodeExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCodeExistResponse" message="tns:IJoinGameService_ResponseCodeExist_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseCompleteLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse" message="tns:IJoinGameService_ResponseCompleteLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseTotalPlayers" message="tns:IJoinGameService_ResponseTotalPlayers_OutputCallbackMessage" />
@@ -378,32 +380,32 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="ValidationLobby">
-      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ValidationLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="SendNextHostGame">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/SendNextHostGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="ReciveWinner">
-      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ReciveWinner" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ResponseCodeExist">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCodeExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ResponseCompleteLobby">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveWinner">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ReciveWinner" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

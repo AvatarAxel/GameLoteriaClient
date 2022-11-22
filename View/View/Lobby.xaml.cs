@@ -101,11 +101,6 @@ namespace View
             throw new NotImplementedException();
         }
 
-        public void ResponseCodeExist(bool status)
-        {
-
-        }
-
         private void ExitPlayer()
         {
             try
@@ -140,11 +135,6 @@ namespace View
         public void ReciveMessage(string player, string message)
         {
             txtChat.Text += player + ":  " + message + "\r\n";
-        }
-
-        public void ResponseCompleteLobby(bool status)
-        {
-
         }
 
         public void ResponseTotalPlayers(int totalPlayers)

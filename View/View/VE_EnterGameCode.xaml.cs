@@ -30,20 +30,31 @@ namespace View
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
-            try
-            {
-                client.ValidationLobby(codeVerification);
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+            if (!string.IsNullOrEmpty(codeVerification) ) {
+                try
+                {
+                    if (!client.ResponseCodeExist(codeVerification))
+                    {
+                        MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    if (client.ResponseCompleteLobby(codeVerification))
+                    {
+                        MessageBox.Show("Sala llena uwu", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                    Lobby lobby = new Lobby();
+                    lobby.Show();
 
-        public void ResponseCodeExist(bool status)
-        {
-            if (!status)          
-                MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);            
+                    client.Close();
+                    Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         public void ReciveWinner(string username)
@@ -69,30 +80,6 @@ namespace View
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             Close();
-        }
-
-        public void ResponseCompleteLobby(bool status)
-        {
-            if (status)
-            {
-                MessageBox.Show("Sala llena uwu", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                SingletonGameRound.GameRound.CodeGame = txtCode.Text;
-                Lobby lobby = new Lobby();
-                lobby.Show();
-                try
-                {
-                    client.Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                Close();
-            }
-
         }
 
         public void ResponseTotalPlayers(int totalPlayers)

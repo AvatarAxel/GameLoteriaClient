@@ -99,16 +99,6 @@ namespace View
 
         }
 
-        public void ResponseCodeExist(bool status)
-        {
-
-        }
-
-        public void ResponseCompleteLobby(bool status)
-        {
-
-        }
-
         public void ResponseTotalPlayers(int totalPlayers)
         {
             SingletonGameRound.GameRound.TotalPlayers = totalPlayers;

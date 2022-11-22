@@ -499,17 +499,23 @@ namespace View.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/EliminateGame")]
         System.Threading.Tasks.Task EliminateGameAsync(string verificationCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ValidationLobby")]
-        void ValidationLobby(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ValidationLobby")]
-        System.Threading.Tasks.Task ValidationLobbyAsync(string verificationCode);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGame")]
         void SendNextHostGame(string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGame")]
         System.Threading.Tasks.Task SendNextHostGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCodeExist", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCodeExistResponse")]
+        bool ResponseCodeExist(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCodeExist", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCodeExistResponse")]
+        System.Threading.Tasks.Task<bool> ResponseCodeExistAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
+        bool ResponseCompleteLobby(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
+        System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -517,12 +523,6 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ReciveWinner")]
         void ReciveWinner(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ResponseCodeExist")]
-        void ResponseCodeExist(bool status);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby")]
-        void ResponseCompleteLobby(bool status);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ResponseTotalPlayers")]
         void ResponseTotalPlayers(int totalPlayers);
@@ -599,20 +599,28 @@ namespace View.ServiceReference {
             return base.Channel.EliminateGameAsync(verificationCode);
         }
         
-        public void ValidationLobby(string verificationCode) {
-            base.Channel.ValidationLobby(verificationCode);
-        }
-        
-        public System.Threading.Tasks.Task ValidationLobbyAsync(string verificationCode) {
-            return base.Channel.ValidationLobbyAsync(verificationCode);
-        }
-        
         public void SendNextHostGame(string verificationCode) {
             base.Channel.SendNextHostGame(verificationCode);
         }
         
         public System.Threading.Tasks.Task SendNextHostGameAsync(string verificationCode) {
             return base.Channel.SendNextHostGameAsync(verificationCode);
+        }
+        
+        public bool ResponseCodeExist(string verificationCode) {
+            return base.Channel.ResponseCodeExist(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ResponseCodeExistAsync(string verificationCode) {
+            return base.Channel.ResponseCodeExistAsync(verificationCode);
+        }
+        
+        public bool ResponseCompleteLobby(string verificationCode) {
+            return base.Channel.ResponseCompleteLobby(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
+            return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
         }
     }
 }
