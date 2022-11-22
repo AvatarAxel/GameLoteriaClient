@@ -57,8 +57,7 @@ namespace View
                 ExitPlayer();
                 try
                 {
-                    joinGameServiceClient.EliminateGame(SingletonGameRound.GameRound.CodeGame);
-                    chatClient.DeleteChat(SingletonGameRound.GameRound.CodeGame);
+                    joinGameServiceClient.SendNextHostGame(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
@@ -69,7 +68,6 @@ namespace View
             {
                 ExitPlayer();
             }
-
             joinGameServiceClient.Close();
             chatClient.Close();
             MainWindow mainWindow = new MainWindow();
@@ -119,6 +117,7 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            SingletonPlayer.PlayerClient.PlayerType = false;
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
@@ -150,7 +149,15 @@ namespace View
 
         public void ResponseTotalPlayers(int totalPlayers)
         {
+            SingletonGameRound.GameRound.TotalPlayers = totalPlayers;
+        }
 
+        public void SendNextHostGameResponse(bool status)
+        {
+            SingletonPlayer.PlayerClient.PlayerType = status;
+            lbCodeVerificationTitle.Text = "Code Verification";
+            lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
+            btnPlay.IsEnabled = true;
         }
     }
 }

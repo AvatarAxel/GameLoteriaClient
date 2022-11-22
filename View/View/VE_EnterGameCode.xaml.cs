@@ -99,6 +99,11 @@ namespace View
         {
 
         }
+
+        public void SendNextHostGameResponse(bool status)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

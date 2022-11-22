@@ -118,5 +118,10 @@ namespace View
         {
 
         }
+
+        public void SendNextHostGameResponse(bool status)
+        {
+
+        }
     }
 }

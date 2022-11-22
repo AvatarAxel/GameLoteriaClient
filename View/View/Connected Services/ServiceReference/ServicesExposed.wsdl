@@ -127,6 +127,9 @@
   <wsdl:message name="IJoinGameService_ValidationLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidationLobby" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_SendNextHostGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendNextHostGame" />
+  </wsdl:message>
   <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
@@ -138,6 +141,9 @@
   </wsdl:message>
   <wsdl:message name="IJoinGameService_ResponseTotalPlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseTotalPlayers" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_SendNextHostGameResponse_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendNextHostGameResponse" />
   </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
@@ -210,6 +216,9 @@
     <wsdl:operation name="ValidationLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidationLobby" message="tns:IJoinGameService_ValidationLobby_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendNextHostGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/SendNextHostGame" message="tns:IJoinGameService_SendNextHostGame_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
     </wsdl:operation>
@@ -221,6 +230,9 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseTotalPlayers" message="tns:IJoinGameService_ResponseTotalPlayers_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNextHostGameResponse">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/SendNextHostGameResponse" message="tns:IJoinGameService_SendNextHostGameResponse_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -372,6 +384,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="SendNextHostGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/SendNextHostGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ReciveWinner" style="document" />
       <wsdl:output>
@@ -392,6 +410,12 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseTotalPlayers" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNextHostGameResponse">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/SendNextHostGameResponse" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

@@ -102,7 +102,7 @@
                               Grid.Row="1" 
                               VerticalAlignment="Top" 
                               Width="132">
-                        <ComboBoxItem Content = '2'/>
+                        <ComboBoxItem Content = '3'/>
                         <ComboBoxItem Content = '4'/>
                         <ComboBoxItem Content = '5'/>
                         <ComboBoxItem Content = '6'/>
