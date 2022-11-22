@@ -35,15 +35,5 @@ namespace Logic
             }
             return false;
         }
-
-        public bool HigherNumber(string code)
-        {
-            int numberCode = Int32.Parse(code);
-            if(numberCode >= 0)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }

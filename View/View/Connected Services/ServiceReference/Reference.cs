@@ -348,10 +348,10 @@ namespace View.ServiceReference {
     public interface IEmailService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailService/ValidationEmail", ReplyAction="http://tempuri.org/IEmailService/ValidationEmailResponse")]
-        string ValidationEmail(string email);
+        bool ValidationEmail(string email, string codeVerification);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailService/ValidationEmail", ReplyAction="http://tempuri.org/IEmailService/ValidationEmailResponse")]
-        System.Threading.Tasks.Task<string> ValidationEmailAsync(string email);
+        System.Threading.Tasks.Task<bool> ValidationEmailAsync(string email, string codeVerification);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -381,12 +381,12 @@ namespace View.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string ValidationEmail(string email) {
-            return base.Channel.ValidationEmail(email);
+        public bool ValidationEmail(string email, string codeVerification) {
+            return base.Channel.ValidationEmail(email, codeVerification);
         }
         
-        public System.Threading.Tasks.Task<string> ValidationEmailAsync(string email) {
-            return base.Channel.ValidationEmailAsync(email);
+        public System.Threading.Tasks.Task<bool> ValidationEmailAsync(string email, string codeVerification) {
+            return base.Channel.ValidationEmailAsync(email, codeVerification);
         }
     }
     

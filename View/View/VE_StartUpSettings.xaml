@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Login" Height="350" Width="400"
+        Title="Login" Height="400" Width="400"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -90,15 +90,15 @@
 
                     <TextBlock Text="Number players"
                                Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
+                               FontSize="14"
+                               FontWeight="Bold"
                                FontFamily="Montserrat"                             
-                               Margin="-280,10,0,0" Height="13" Width="97"/>
+                               Margin="-280,20,0,0" Height="17" Width="108"/>
 
 
                     <ComboBox x:Name="cmbxNumberPlayer" 
                               HorizontalAlignment="Left" 
-                              Margin="10,10,0,0" 
+                              Margin="7,10,0,0" 
                               Grid.Row="1" 
                               VerticalAlignment="Top" 
                               Width="132">
@@ -118,10 +118,10 @@
 
                     <TextBlock Text="Speed of the match"
                                Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
+                               FontSize="14"
+                               FontWeight="Bold"
                                FontFamily="Montserrat"                             
-                               Margin="-270,20,0,0" Height="16" Width="114"/>
+                               Margin="-259,20,0,0" Height="16" Width="128"/>
 
                     <RadioButton Content="Slow" 
                                  x:Name="rdbtnSlow" 
@@ -149,14 +149,14 @@
 
                     <TextBlock Text="Amount of money"
                                Foreground="DarkGray"
-                               FontSize="12"
-                               FontWeight="Medium"
+                               FontSize="14"
+                               FontWeight="Bold"
                                FontFamily="Montserrat"                             
-                               Margin="-270,10,0,0" Height="16" Width="114"/>
+                               Margin="-260,10,0,0" Height="16" Width="124"/>
 
                     <ComboBox x:Name="cmbxAmountOfMoney" 
                               HorizontalAlignment="Left" 
-                              Margin="10,0,0,0" 
+                              Margin="7,10,0,0" 
                               Grid.Row="1" 
                               VerticalAlignment="Top" 
                               Width="132">
@@ -173,6 +173,29 @@
                         </ComboBox.Background>
                     </ComboBox>
 
+                    <TextBlock Text="Type of item"
+                               Foreground="DarkGray"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               FontFamily="Montserrat"                             
+                               Margin="-300,20,0,0" Height="16" Width="86"/>
+
+                    <RadioButton Content="Private" 
+                                 x:Name="rdbtPrivate" 
+                                 Foreground="DarkGray"
+                                 HorizontalAlignment="Left" 
+                                 Margin="10,10,0,0" 
+                                 Grid.Row="1" 
+                                 VerticalAlignment="Top"/>
+
+                    <RadioButton Content="Public" 
+                                 x:Name="rdbtPublic" 
+                                 Foreground="DarkGray"
+                                 HorizontalAlignment="Left" 
+                                 Margin="10,10,0,0" 
+                                 Grid.Row="1" 
+                                 VerticalAlignment="Top"/>
+
                     <Button x:Name="btnAccept"                          
                             BorderThickness="0"
                             Content="Accept"
@@ -181,8 +204,8 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Click="BtnAccept_Click" 
-                            Height="39" Width="152"
-                            Margin="200,20,0,0">
+                            Height="40" Width="100"
+                            Margin="240,-20,0,0">
 
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -197,7 +220,7 @@
 
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Width="150" Height="40"
+                                <Border Width="100" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
                                     <ContentPresenter VerticalAlignment="Center"

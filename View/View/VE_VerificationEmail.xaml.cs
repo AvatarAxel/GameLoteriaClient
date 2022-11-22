@@ -31,16 +31,31 @@ namespace View
             client = new ServiceReference.EmailServiceClient();
         }
 
-        public void MailSentByThePlayer(string emailPlayer)
-        {  
+        public bool MailSentByThePlayer(string emailPlayer)
+        {
+            CodeGame code = new CodeGame();
+            codeVerificationComparation = code.GenerateRandomCode();
+
             try
             {
-                codeVerificationComparation = client.ValidationEmail(emailPlayer);
+                bool status =  client.ValidationEmail(emailPlayer, codeVerificationComparation);
+                if (status)
+                {
+                    MessageBox.Show("Revisa tu correo electornico", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("No pude enviarte el correo :/ ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            return false;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -59,13 +74,11 @@ namespace View
 
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
-            FieldValidation largeNumber = new FieldValidation();
-
-            if (string.IsNullOrEmpty(txtVerification.Text) || !largeNumber.HigherNumber(txtVerification.Text))
+            if (string.IsNullOrEmpty(txtVerification.Text))
             {
                 MessageBox.Show("Formato invalido", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else if(!codeVerificationComparation.Equals(null))
+            else
             {
                 string verificarionUser = txtVerification.Text;
 
@@ -80,6 +93,7 @@ namespace View
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
                     SingletonPlayer.PlayerClient.Verificated = true;
                     Close();
                 }
