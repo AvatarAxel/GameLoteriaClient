@@ -127,6 +127,9 @@
   <wsdl:message name="IJoinGameService_SendNextHostGame_InputMessage">
     <wsdl:part name="parameters" element="tns:SendNextHostGame" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_GoToGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoToGame" />
+  </wsdl:message>
   <wsdl:message name="IJoinGameService_ResponseCodeExist_InputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCodeExist" />
   </wsdl:message>
@@ -138,12 +141,6 @@
   </wsdl:message>
   <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCompleteLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IJoinGameService_GoToGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:GoToGame" />
-  </wsdl:message>
-  <wsdl:message name="IJoinGameService_GoToGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GoToGameResponse" />
   </wsdl:message>
   <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveWinner" />
@@ -228,6 +225,9 @@
     <wsdl:operation name="SendNextHostGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/SendNextHostGame" message="tns:IJoinGameService_SendNextHostGame_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GoToGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/GoToGame" message="tns:IJoinGameService_GoToGame_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ResponseCodeExist">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCodeExist" message="tns:IJoinGameService_ResponseCodeExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCodeExistResponse" message="tns:IJoinGameService_ResponseCodeExist_OutputMessage" />
@@ -235,10 +235,6 @@
     <wsdl:operation name="ResponseCompleteLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse" message="tns:IJoinGameService_ResponseCompleteLobby_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GoToGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/GoToGame" message="tns:IJoinGameService_GoToGame_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/GoToGameResponse" message="tns:IJoinGameService_GoToGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
@@ -402,6 +398,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GoToGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/GoToGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ResponseCodeExist">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCodeExist" style="document" />
       <wsdl:input>
@@ -413,15 +415,6 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseCompleteLobby">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GoToGame">
-      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/GoToGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

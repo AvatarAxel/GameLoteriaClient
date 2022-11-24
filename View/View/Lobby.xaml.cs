@@ -78,10 +78,15 @@ namespace View
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-            joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-            Game game = new Game();
-            game.Show();
-            
+            try
+            {
+                joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+            }
+            catch(TimeoutException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+  
         }
 
         private void ConfigureLobby()
@@ -111,6 +116,10 @@ namespace View
                 chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -154,7 +163,16 @@ namespace View
 
         public void GoToPlay(bool status)
         {
-            MessageBox.Show("Todos pudismos ver esto", "UwU", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (status)
+            {
+                Game game = new Game();
+                game.Show();
+            }
+        }
+
+        public void SendCard(int idCard)
+        {
+            throw new NotImplementedException();
         }
     }
 }

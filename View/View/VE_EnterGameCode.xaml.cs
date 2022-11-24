@@ -96,6 +96,11 @@ namespace View
         {
             throw new NotImplementedException();
         }
+
+        public void SendCard(int idCard)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

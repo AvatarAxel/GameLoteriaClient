@@ -505,6 +505,12 @@ namespace View.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGame")]
         System.Threading.Tasks.Task SendNextHostGameAsync(string verificationCode);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/GoToGame")]
+        void GoToGame(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/GoToGame")]
+        System.Threading.Tasks.Task GoToGameAsync(string verificationCode);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCodeExist", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCodeExistResponse")]
         bool ResponseCodeExist(string verificationCode);
         
@@ -516,12 +522,6 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/GoToGame", ReplyAction="http://tempuri.org/IJoinGameService/GoToGameResponse")]
-        void GoToGame(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/GoToGame", ReplyAction="http://tempuri.org/IJoinGameService/GoToGameResponse")]
-        System.Threading.Tasks.Task GoToGameAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -616,6 +616,14 @@ namespace View.ServiceReference {
             return base.Channel.SendNextHostGameAsync(verificationCode);
         }
         
+        public void GoToGame(string verificationCode) {
+            base.Channel.GoToGame(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task GoToGameAsync(string verificationCode) {
+            return base.Channel.GoToGameAsync(verificationCode);
+        }
+        
         public bool ResponseCodeExist(string verificationCode) {
             return base.Channel.ResponseCodeExist(verificationCode);
         }
@@ -630,14 +638,6 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
             return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
-        }
-        
-        public void GoToGame(string verificationCode) {
-            base.Channel.GoToGame(verificationCode);
-        }
-        
-        public System.Threading.Tasks.Task GoToGameAsync(string verificationCode) {
-            return base.Channel.GoToGameAsync(verificationCode);
         }
     }
 }

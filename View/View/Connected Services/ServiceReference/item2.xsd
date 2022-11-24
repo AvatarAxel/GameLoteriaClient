@@ -181,6 +181,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GoToGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ResponseCodeExist">
     <xs:complexType>
       <xs:sequence>
@@ -207,18 +214,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="ResponseCompleteLobbyResult" type="xs:boolean" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GoToGame">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GoToGameResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ReciveWinner">
