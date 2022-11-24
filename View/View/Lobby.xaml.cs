@@ -78,8 +78,10 @@ namespace View
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBox.Show("UwU", "Verificar", MessageBoxButton.OK, MessageBoxImage.Information);
+            joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+            Game game = new Game();
+            game.Show();
+            
         }
 
         private void ConfigureLobby()
@@ -148,6 +150,11 @@ namespace View
             lbCodeVerificationTitle.Text = "Code Verification";
             lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             btnPlay.IsEnabled = true;
+        }
+
+        public void GoToPlay(bool status)
+        {
+            MessageBox.Show("Todos pudismos ver esto", "UwU", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

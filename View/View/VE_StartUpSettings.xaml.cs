@@ -113,5 +113,10 @@ namespace View
         {
 
         }
+
+        public void GoToPlay(bool status)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
