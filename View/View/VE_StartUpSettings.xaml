@@ -122,6 +122,8 @@
                                FontWeight="Bold"
                                FontFamily="Montserrat"                             
                                Margin="-259,20,0,0" Height="16" Width="128"/>
+                    
+                    
 
                     <RadioButton Content="Slow" 
                                  x:Name="rdbtnSlow" 
@@ -129,7 +131,8 @@
                                  HorizontalAlignment="Left" 
                                  Margin="10,8,0,0" 
                                  Grid.Row="1" 
-                                 VerticalAlignment="Top"/>
+                                 VerticalAlignment="Top"
+                                 GroupName="Speed"/>
 
                     <RadioButton Content="Standard" 
                                  x:Name="rdbtnStandard" 
@@ -137,7 +140,8 @@
                                  HorizontalAlignment="Left" 
                                  Margin="10,0,0,0" 
                                  Grid.Row="1" 
-                                 VerticalAlignment="Top"/>
+                                 VerticalAlignment="Top"
+                                 GroupName="Speed"/>
 
                     <RadioButton Content="Quickly" 
                                  x:Name="rdbtQuickly" 
@@ -145,7 +149,8 @@
                                  HorizontalAlignment="Left" 
                                  Margin="10,0,0,0" 
                                  Grid.Row="1" 
-                                 VerticalAlignment="Top"/>
+                                 VerticalAlignment="Top"
+                                 GroupName="Speed"/>
 
                     <TextBlock Text="Amount of money"
                                Foreground="DarkGray"
@@ -186,7 +191,8 @@
                                  HorizontalAlignment="Left" 
                                  Margin="10,10,0,0" 
                                  Grid.Row="1" 
-                                 VerticalAlignment="Top"/>
+                                 VerticalAlignment="Top"
+                                 GroupName="Type"/>
 
                     <RadioButton Content="Public" 
                                  x:Name="rdbtPublic" 
@@ -194,7 +200,8 @@
                                  HorizontalAlignment="Left" 
                                  Margin="10,10,0,0" 
                                  Grid.Row="1" 
-                                 VerticalAlignment="Top"/>
+                                 VerticalAlignment="Top"
+                                 GroupName="Type"/>
 
                     <Button x:Name="btnAccept"                          
                             BorderThickness="0"

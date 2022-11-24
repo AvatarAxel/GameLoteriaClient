@@ -91,6 +91,16 @@ namespace View
         {
             throw new NotImplementedException();
         }
+
+        public void GoToPlay(bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendCard(int idCard)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

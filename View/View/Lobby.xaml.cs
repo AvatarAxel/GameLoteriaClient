@@ -78,8 +78,15 @@ namespace View
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBox.Show("UwU", "Verificar", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+            }
+            catch(TimeoutException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+  
         }
 
         private void ConfigureLobby()
@@ -109,6 +116,10 @@ namespace View
                 chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -148,6 +159,20 @@ namespace View
             lbCodeVerificationTitle.Text = "Code Verification";
             lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             btnPlay.IsEnabled = true;
+        }
+
+        public void GoToPlay(bool status)
+        {
+            if (status)
+            {
+                Game game = new Game();
+                game.Show();
+            }
+        }
+
+        public void SendCard(int idCard)
+        {
+            throw new NotImplementedException();
         }
     }
 }

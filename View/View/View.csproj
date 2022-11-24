@@ -63,6 +63,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lobby.xaml.cs">
       <DependentUpon>Lobby.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
     <Compile Include="VE_VerificationEmail.xaml.cs">
       <DependentUpon>VE_VerificationEmail.xaml</DependentUpon>
     </Compile>
+    <Page Include="Game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lobby.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,7 +231,69 @@
     <Resource Include="Images\ResourseImage\Exit.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Cards\WhiteTabs.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cards\Frame 1.jpg" />
+    <Resource Include="Images\Cards\Frame 10.jpg" />
+    <Resource Include="Images\Cards\Frame 11.jpg" />
+    <Resource Include="Images\Cards\Frame 12.jpg" />
+    <Resource Include="Images\Cards\Frame 13.jpg" />
+    <Resource Include="Images\Cards\Frame 14.jpg" />
+    <Resource Include="Images\Cards\Frame 15.jpg" />
+    <Resource Include="Images\Cards\Frame 16.jpg" />
+    <Resource Include="Images\Cards\Frame 17.jpg" />
+    <Resource Include="Images\Cards\Frame 18.jpg" />
+    <Resource Include="Images\Cards\Frame 19.jpg" />
+    <Resource Include="Images\Cards\Frame 2.jpg" />
+    <Resource Include="Images\Cards\Frame 20.jpg" />
+    <Resource Include="Images\Cards\Frame 21.jpg" />
+    <Resource Include="Images\Cards\Frame 22.jpg" />
+    <Resource Include="Images\Cards\Frame 23.jpg" />
+    <Resource Include="Images\Cards\Frame 24.jpg" />
+    <Resource Include="Images\Cards\Frame 25.jpg" />
+    <Resource Include="Images\Cards\Frame 26.jpg" />
+    <Resource Include="Images\Cards\Frame 27.jpg" />
+    <Resource Include="Images\Cards\Frame 28.jpg" />
+    <Resource Include="Images\Cards\Frame 29.jpg" />
+    <Resource Include="Images\Cards\Frame 3.jpg" />
+    <Resource Include="Images\Cards\Frame 30.jpg" />
+    <Resource Include="Images\Cards\Frame 31.jpg" />
+    <Resource Include="Images\Cards\Frame 32.jpg" />
+    <Resource Include="Images\Cards\Frame 33.jpg" />
+    <Resource Include="Images\Cards\Frame 34.jpg" />
+    <Resource Include="Images\Cards\Frame 35.jpg" />
+    <Resource Include="Images\Cards\Frame 36.jpg" />
+    <Resource Include="Images\Cards\Frame 37.jpg" />
+    <Resource Include="Images\Cards\Frame 38.jpg" />
+    <Resource Include="Images\Cards\Frame 39.jpg" />
+    <Resource Include="Images\Cards\Frame 4.jpg" />
+    <Resource Include="Images\Cards\Frame 40.jpg" />
+    <Resource Include="Images\Cards\Frame 41.jpg" />
+    <Resource Include="Images\Cards\Frame 42.jpg" />
+    <Resource Include="Images\Cards\Frame 43.jpg" />
+    <Resource Include="Images\Cards\Frame 44.jpg" />
+    <Resource Include="Images\Cards\Frame 45.jpg" />
+    <Resource Include="Images\Cards\Frame 46.jpg" />
+    <Resource Include="Images\Cards\Frame 47.jpg" />
+    <Resource Include="Images\Cards\Frame 48.jpg" />
+    <Resource Include="Images\Cards\Frame 49.jpg" />
+    <Resource Include="Images\Cards\Frame 5.jpg" />
+    <Resource Include="Images\Cards\Frame 50.jpg" />
+    <Resource Include="Images\Cards\Frame 51.jpg" />
+    <Resource Include="Images\Cards\Frame 52.jpg" />
+    <Resource Include="Images\Cards\Frame 53.jpg" />
+    <Resource Include="Images\Cards\Frame 54.jpg" />
+    <Resource Include="Images\Cards\Frame 6.jpg" />
+    <Resource Include="Images\Cards\Frame 7.jpg" />
+    <Resource Include="Images\Cards\Frame 8.jpg" />
+    <Resource Include="Images\Cards\Frame 9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
@@ -237,9 +306,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference\item.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

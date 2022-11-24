@@ -1,0 +1,103 @@
+﻿<Window x:Class="View.Game"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="Game" Height="700" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border CornerRadius="12">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/ResourseImage/back.jpg"
+                        Stretch="Fill"/>
+        </Border.Background>
+        <Border CornerRadius="10"
+                BorderThickness="2"
+                Opacity=".95">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#DA34AE" Offset="0.75"/>
+                    <GradientStop Color="#8A16C1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="LOTERIA"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="BtnMinimize_Click"
+                            >
+                        <StackPanel>
+                            <Image Source="/Images/ResourseImage/minimize.png"
+                                   Stretch="UniformToFill" Height="24" Width="24"
+/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="BtnClose_Click">
+                        <StackPanel>
+                            <Image Source="/Images/ResourseImage/close.png"
+                                   Stretch="UniformToFill" Height="24" Width="24"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+
+                <StackPanel Width="800"
+                            Height="800"
+                            Grid.Row="2"
+                            Orientation="Vertical"
+                            Margin="0,20,0,0"/>
+                <Button Content="Button" 
+                        HorizontalAlignment="Left" 
+                        Margin="48,482,0,0" 
+                        Grid.Row="1" 
+                        VerticalAlignment="Top" Click="Button_Click"/>
+                <Image Name="Position1" Source="/Images/Cards/WhiteTabs.jpg" HorizontalAlignment="Left" Height="233" Margin="357,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155"/>
+                <Image Name="Position2" Source="/Images/Cards/WhiteTabs.jpg" HorizontalAlignment="Left" Height="137" Margin="552,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+                <Image Name="Position3" Source="/Images/Cards/WhiteTabs.jpg" HorizontalAlignment="Left" Height="137" Margin="680,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+
+            </Grid>
+
+        </Border>
+    </Border>
+</Window>
