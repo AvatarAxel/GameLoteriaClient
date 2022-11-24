@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Game" Height="800" Width="900">
+        Title="Game" Height="800" Width="900"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
     <Border CornerRadius="12">
         <Border.Background>
             <ImageBrush ImageSource="/Images/ResourseImage/back.jpg"
