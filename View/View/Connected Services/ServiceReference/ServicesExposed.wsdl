@@ -50,9 +50,9 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://192.168.36.131:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.36.131:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.36.131:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthenticationService_AuthenticationLogin_InputMessage">
@@ -142,6 +142,9 @@
   <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCompleteLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
   <wsdl:message name="IJoinGameService_ReciveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
@@ -150,6 +153,9 @@
   </wsdl:message>
   <wsdl:message name="IJoinGameService_SendNextHostGameResponse_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendNextHostGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_SendCard_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendCard" />
   </wsdl:message>
   <wsdl:message name="IJoinGameService_GoToPlay_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GoToPlay" />
@@ -236,6 +242,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse" message="tns:IJoinGameService_ResponseCompleteLobby_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/StartGame" message="tns:IJoinGameService_StartGame_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ReciveWinner" message="tns:IJoinGameService_ReciveWinner_OutputCallbackMessage" />
     </wsdl:operation>
@@ -244,6 +253,9 @@
     </wsdl:operation>
     <wsdl:operation name="SendNextHostGameResponse">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/SendNextHostGameResponse" message="tns:IJoinGameService_SendNextHostGameResponse_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCard">
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/SendCard" message="tns:IJoinGameService_SendCard_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/GoToPlay" message="tns:IJoinGameService_GoToPlay_OutputCallbackMessage" />
@@ -422,6 +434,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/StartGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ReciveWinner" style="document" />
       <wsdl:output>
@@ -440,6 +458,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendCard">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/SendCard" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/GoToPlay" style="document" />
       <wsdl:output>
@@ -449,39 +473,39 @@
   </wsdl:binding>
   <wsdl:service name="ServicesExposed">
     <wsdl:port name="NetTcpBinding_IAuthenticationService" binding="tns:NetTcpBinding_IAuthenticationService">
-      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <soap12:address location="net.tcp://192.168.36.131:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.36.131:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChatService" binding="tns:NetTcpBinding_IChatService">
-      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <soap12:address location="net.tcp://192.168.36.131:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.36.131:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChangePasswordService" binding="tns:NetTcpBinding_IChangePasswordService">
-      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <soap12:address location="net.tcp://192.168.36.131:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.36.131:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IEmailService" binding="tns:NetTcpBinding_IEmailService">
-      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <soap12:address location="net.tcp://192.168.36.131:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.36.131:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserRegistrationService" binding="tns:NetTcpBinding_IUserRegistrationService">
-      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <soap12:address location="net.tcp://192.168.36.131:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.36.131:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IJoinGameService" binding="tns:NetTcpBinding_IJoinGameService">
-      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <soap12:address location="net.tcp://192.168.36.131:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.36.131:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

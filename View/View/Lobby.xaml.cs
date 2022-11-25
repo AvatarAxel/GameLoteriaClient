@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +23,7 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.JoinGameServiceClient joinGameServiceClient;
+        private Game game = new Game();
         public Lobby()
         {
             InitializeComponent();
@@ -81,6 +83,7 @@ namespace View
             try
             {
                 joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame);
             }
             catch(TimeoutException)
             {
@@ -98,7 +101,7 @@ namespace View
             }
             else
             {
-                btnPlay.IsEnabled = false;
+                btnPlay.Visibility = Visibility.Collapsed;
             }
 
         }
@@ -158,21 +161,21 @@ namespace View
             SingletonPlayer.PlayerClient.PlayerType = status;
             lbCodeVerificationTitle.Text = "Code Verification";
             lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
-            btnPlay.IsEnabled = true;
+            btnPlay.Visibility = Visibility.Visible;
         }
 
         public void GoToPlay(bool status)
         {
             if (status)
             {
-                Game game = new Game();
                 game.Show();
             }
         }
 
         public void SendCard(int idCard)
         {
-            throw new NotImplementedException();
+            game.SendCard(idCard);
+
         }
     }
 }

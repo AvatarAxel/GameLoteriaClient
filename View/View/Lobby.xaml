@@ -111,6 +111,7 @@
                                   VerticalScrollBarVisibility="Auto"
                                   Height="300"
                                   Width="300">
+                        
                         <TextBox x:Name="txtChat"
                              FontSize="13"
                              FontWeight="Medium"

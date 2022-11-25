@@ -522,6 +522,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/StartGame")]
+        void StartGame(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -535,6 +541,9 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGameResponse")]
         void SendNextHostGameResponse(bool status);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendCard")]
+        void SendCard(int idCard);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/GoToPlay")]
         void GoToPlay(bool status);
@@ -638,6 +647,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
             return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
+        }
+        
+        public void StartGame(string verificationCode) {
+            base.Channel.StartGame(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task StartGameAsync(string verificationCode) {
+            return base.Channel.StartGameAsync(verificationCode);
         }
     }
 }

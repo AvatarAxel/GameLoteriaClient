@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,38 +36,77 @@ namespace View
             Application.Current.Shutdown();
         }
 
-        int numberPhoto = 0;
+        private int counter = 0;
+        private List<int> photoListIndex = new List<int>();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
             string relativeTabs = @"../../Images/Cards/";
             string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
 
-            numberPhoto += 1;
-
+            photoListIndex.Add(counter);
             try
             {         
-                string path = System.IO.Path.GetFullPath(photo[numberPhoto].ToString());
+                string path = System.IO.Path.GetFullPath(photo[photoListIndex[counter]].ToString());
                 Uri uri = new Uri(path, UriKind.Absolute);
 
                 Position1.Stretch = Stretch.Fill;
                 Position1.Source = new BitmapImage(uri);
 
-                if (numberPhoto > 1)
+                if (counter >= 1)
                 {
-                    string otro = System.IO.Path.GetFullPath(photo[numberPhoto - 1].ToString());
+                    string otro = System.IO.Path.GetFullPath(photo[photoListIndex[counter - 1]].ToString());
                     Uri urin = new Uri(otro, UriKind.Absolute);
                     Position2.Stretch = Stretch.Fill;
                     Position2.Source = new BitmapImage(urin);
                 }
 
-                if (numberPhoto > 2)
+                if (counter >= 2)
                 {
-                    string otro1 = System.IO.Path.GetFullPath(photo[numberPhoto - 2].ToString());
+                    string otro1 = System.IO.Path.GetFullPath(photo[photoListIndex[counter - 2]].ToString());
                     Uri urin1 = new Uri(otro1, UriKind.Absolute);
                     Position3.Stretch = Stretch.Fill;
                     Position3.Source = new BitmapImage(urin1);
                 }
+                counter++;
+
+            }
+            catch (IndexOutOfRangeException E)
+            {
+                MessageBox.Show("No hay más archivos para mostrar", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+        }
+        public void SendCard(int idCard) 
+        {
+            string relativeTabs = @"../../Images/Cards/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
+
+            photoListIndex.Add(idCard);
+            try
+            {
+                string path = System.IO.Path.GetFullPath(photo[photoListIndex[counter]].ToString());
+                Uri uri = new Uri(path, UriKind.Absolute);
+
+                Position1.Stretch = Stretch.Fill;
+                Position1.Source = new BitmapImage(uri);
+
+                if (counter >= 1)
+                {
+                    string otro = System.IO.Path.GetFullPath(photo[photoListIndex[counter - 1]].ToString());
+                    Uri urin = new Uri(otro, UriKind.Absolute);
+                    Position2.Stretch = Stretch.Fill;
+                    Position2.Source = new BitmapImage(urin);
+                }
+
+                if (counter >= 2)
+                {
+                    string otro1 = System.IO.Path.GetFullPath(photo[photoListIndex[counter - 2]].ToString());
+                    Uri urin1 = new Uri(otro1, UriKind.Absolute);
+                    Position3.Stretch = Stretch.Fill;
+                    Position3.Source = new BitmapImage(urin1);
+                }
+                counter++;
 
             }
             catch (IndexOutOfRangeException E)
