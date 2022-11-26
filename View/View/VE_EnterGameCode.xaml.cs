@@ -57,11 +57,6 @@ namespace View
             }
         }
 
-        public void ReciveWinner(string username)
-        {
-            throw new NotImplementedException();
-        }
-
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -82,9 +77,14 @@ namespace View
             Close();
         }
 
+        public void ReciveWinner(string username)
+        {
+            throw new NotImplementedException();
+        }
+
         public void ResponseTotalPlayers(int totalPlayers)
         {
-
+            throw new NotImplementedException();
         }
 
         public void SendNextHostGameResponse(bool status)
@@ -92,12 +92,12 @@ namespace View
             throw new NotImplementedException();
         }
 
-        public void GoToPlay(bool status)
+        public void SendCard(int idCard)
         {
             throw new NotImplementedException();
         }
 
-        public void SendCard(int idCard)
+        public void GoToPlay(bool status)
         {
             throw new NotImplementedException();
         }
