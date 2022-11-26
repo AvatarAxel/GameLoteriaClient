@@ -50,6 +50,8 @@ namespace View
             Close();
         }
 
+        
+
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
             if (ValidationField())
@@ -61,11 +63,15 @@ namespace View
 
                 try
                 {
+                
                     joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
-                   
+
+                    SendSpeed();
+
                     Lobby lobby = new Lobby();
                     lobby.Show();
+
                     try
                     {
                         joinGameClient.Close();
@@ -91,7 +97,15 @@ namespace View
                 MessageBox.Show("Rectifique los campos uwu", "Atencion :3", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
-            return true;
+            if (rdbtnSlow.IsChecked == true  || rdbtnStandard.IsChecked == true || rdbtQuickly.IsChecked == true)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Rectifique los campos", "Atencion", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
         }
 
         public void ReciveWinner(string username)
@@ -123,5 +137,22 @@ namespace View
         {
             throw new NotImplementedException();
         }
+
+        public void SendSpeed()
+        {
+            if (rdbtnSlow.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.SpeedGame = 3000;
+            }
+            else if (rdbtnStandard.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.SpeedGame = 2000;
+            }
+            else if (rdbtQuickly.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.SpeedGame = 1000;
+            }
+        }
+
     }
 }

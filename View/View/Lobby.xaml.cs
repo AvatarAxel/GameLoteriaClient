@@ -23,7 +23,8 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.JoinGameServiceClient joinGameServiceClient;
-        private Game game = new Game();
+        private Game game = new Game();  
+
         public Lobby()
         {
             InitializeComponent();
@@ -82,8 +83,9 @@ namespace View
         {
             try
             {
+               
                 joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame);
+                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
             }
             catch(TimeoutException)
             {
@@ -148,6 +150,7 @@ namespace View
 
         public void ReciveMessage(string player, string message)
         {
+            //Se suma y se va a caer
             txtChat.Text += player + ":  " + message + "\r\n";
         }
 
@@ -174,8 +177,11 @@ namespace View
 
         public void SendCard(int idCard)
         {
+
             game.SendCard(idCard);
 
         }
+
+       
     }
 }

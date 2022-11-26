@@ -524,10 +524,10 @@ namespace View.ServiceReference {
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/StartGame")]
-        void StartGame(string verificationCode);
+        void StartGame(string verificationCode, int speed);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/StartGame")]
-        System.Threading.Tasks.Task StartGameAsync(string verificationCode);
+        System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -649,12 +649,12 @@ namespace View.ServiceReference {
             return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
         }
         
-        public void StartGame(string verificationCode) {
-            base.Channel.StartGame(verificationCode);
+        public void StartGame(string verificationCode, int speed) {
+            base.Channel.StartGame(verificationCode, speed);
         }
         
-        public System.Threading.Tasks.Task StartGameAsync(string verificationCode) {
-            return base.Channel.StartGameAsync(verificationCode);
+        public System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed) {
+            return base.Channel.StartGameAsync(verificationCode, speed);
         }
     }
 }
