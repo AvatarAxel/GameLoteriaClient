@@ -71,7 +71,7 @@ namespace View
                 counter++;
 
             }
-            catch (IndexOutOfRangeException E)
+            catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("No hay más archivos para mostrar", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -109,7 +109,7 @@ namespace View
                 counter++;
 
             }
-            catch (IndexOutOfRangeException E)
+            catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("No hay más archivos para mostrar", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
 
