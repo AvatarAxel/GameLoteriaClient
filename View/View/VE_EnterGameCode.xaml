@@ -105,7 +105,8 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0">
+                             Padding="20,0,0,0"
+                             MaxLength="5">
                         <TextBox.Background>
                             <ImageBrush 
                                         Stretch="None"

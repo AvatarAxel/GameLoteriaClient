@@ -27,36 +27,6 @@ namespace View
             client = new ServiceReference.JoinGameServiceClient(context);
         }
 
-        public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
-        {
-            string codeVerification = txtCode.Text;
-            if (!string.IsNullOrEmpty(codeVerification) ) {
-                try
-                {
-                    if (!client.ResponseCodeExist(codeVerification))
-                    {
-                        MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                    if (client.ResponseCompleteLobby(codeVerification))
-                    {
-                        MessageBox.Show("Sala llena uwu", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                    SingletonGameRound.GameRound.CodeGame = txtCode.Text;
-                    Lobby lobby = new Lobby();
-                    lobby.Show();
-
-                    client.Close();
-                    Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
-
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -75,6 +45,36 @@ namespace View
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             Close();
+        }
+
+        public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
+        {
+            string codeVerification = txtCode.Text;
+            if (!string.IsNullOrEmpty(codeVerification) ) {
+                try
+                {
+                    if (!client.ResponseCodeExist(codeVerification))
+                    {
+                        MessageBox.Show("This room does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    if (client.ResponseCompleteLobby(codeVerification))
+                    {
+                        MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
+                    SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                    Lobby lobby = new Lobby();
+                    lobby.Show();
+
+                    client.Close();
+                    Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         public void ReciveWinner(string username)

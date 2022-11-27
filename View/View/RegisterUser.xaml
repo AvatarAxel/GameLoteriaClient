@@ -88,12 +88,15 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
+                    
                     <TextBlock Text="{x:Static l:Resources.Email}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
-                               Margin="0,20,0,0"/>
+                               Margin="0,20,0,0"
+                               />
+                    
                     <TextBox x:Name="txtEmail"
                              FontSize="13"
                              FontWeight="Medium"
@@ -103,13 +106,15 @@
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
-                             />
+                             MaxLength="320"/>
+                    
                     <TextBlock Text="{x:Static l:Resources.Username}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
                                Margin="0,20,0,0"/>
+                    
                     <TextBox x:Name="txtUsername"
                              FontSize="13"
                              FontWeight="Medium"
@@ -119,13 +124,15 @@
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
-                             />
+                             MaxLength="20"/>
+                    
                     <TextBlock Text="{x:Static l:Resources.Password}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
                                Margin="0,20,0,0"/>
+                    
                     <PasswordBox x:Name="txtPassword"
                              FontSize="13"
                              FontWeight="Medium"
@@ -135,13 +142,15 @@
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
-                             />
+                             MaxLength="25"/>
+                    
                     <TextBlock Text="{x:Static l:Resources.PasswordConfirm}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Monserrat"
                                Margin="0,20,0,0"/>
+                    
                     <PasswordBox x:Name="txtPasswordValidation"
                              FontSize="13"
                              FontWeight="Medium"
@@ -150,7 +159,9 @@
                              Foreground="White"
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,1"/>
+                             BorderThickness="0,0,0,1"
+                             MaxLength="25"/>
+                    
                     <TextBlock Text="{x:Static l:Resources.DateOfBirth}"
                                Foreground="DarkGray"
                                FontSize="12"

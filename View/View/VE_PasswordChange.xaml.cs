@@ -91,21 +91,21 @@ namespace View
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPasswordValidation.Password))
             {
-                MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             FieldValidation fieldValidation = new FieldValidation();
             if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
-                MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Passwords do not match", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
             {
-                MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Invalid mail format", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
-  
+
             return true;
         }
 
@@ -113,7 +113,7 @@ namespace View
         {
             if (status)
             {
-                MessageBox.Show("Correcto", "Se ha actualizado con exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 Login login = new Login();
                 login.Show();
                 try
@@ -128,7 +128,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("No se pudo actualizar correctamente", "Upsi", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Could not update successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

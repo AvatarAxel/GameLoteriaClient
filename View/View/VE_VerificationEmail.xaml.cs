@@ -1,6 +1,15 @@
 ﻿using Logic;
 using System.ServiceModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using View.ServiceReference;
+
 
 namespace View
 {
@@ -27,12 +36,12 @@ namespace View
                 bool status =  client.ValidationEmail(emailPlayer, codeVerificationComparation);
                 if (status)
                 {
-                    MessageBox.Show("Revisa tu correo electornico", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Check your email", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("No pude enviarte el correo :/ ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Could not send email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
             }
@@ -62,7 +71,7 @@ namespace View
         {
             if (string.IsNullOrEmpty(txtVerification.Text))
             {
-                MessageBox.Show("Formato invalido", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Invalid format", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -70,7 +79,7 @@ namespace View
 
                 if (codeVerificationComparation.Equals(verificarionUser))
                 {
-                    MessageBox.Show("Todo chido", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Correct code", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                     try
                     {
                         client.Close();
@@ -85,7 +94,7 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("El codigo de verificación no coincide", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Verification code does not match", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }

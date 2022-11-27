@@ -25,25 +25,6 @@ namespace View
             joinGameClient = new ServiceReference.JoinGameServiceClient(context);
             chatClient = new ChatServiceClient(context);
         }
-        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-        private void BtnClose_Click(Object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            try
-            {
-                joinGameClient.Close();
-                chatClient.Close();
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            Close();
-        }
 
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
@@ -58,9 +39,11 @@ namespace View
                 {
                     joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
-                   
+
+                    SendSpeed();
                     Lobby lobby = new Lobby();
                     lobby.Show();
+
                     try
                     {
                         joinGameClient.Close();
@@ -79,14 +62,44 @@ namespace View
             }
         }
 
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            try
+            {
+                joinGameClient.Close();
+                chatClient.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Close();
+        }
+
         private bool ValidationField()
         {
             if (cmbxNumberPlayer.SelectedIndex == -1 || cmbxAmountOfMoney.SelectedIndex == -1)
             {
-                MessageBox.Show("Rectifique los campos uwu", "Atencion :3", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
-            return true;
+            if (rdbtPrivate.IsChecked == true || rdbtPublic.IsChecked == true || rdbtnSlow.IsChecked == true  || rdbtnStandard.IsChecked == true || rdbtQuickly.IsChecked == true)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
         }
 
         public void ReciveWinner(string username)
@@ -118,5 +131,22 @@ namespace View
         {
             throw new NotImplementedException();
         }
+
+        public void SendSpeed()
+        {
+            if (rdbtnSlow.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.SpeedGame = 3000;
+            }
+            else if (rdbtnStandard.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.SpeedGame = 2000;
+            }
+            else if (rdbtQuickly.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.SpeedGame = 1000;
+            }
+        }
+
     }
 }

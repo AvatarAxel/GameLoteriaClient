@@ -31,30 +31,6 @@ namespace View
             SingletonPlayer.PlayerClient.Verificated = false;
         }
 
-        public void ResponseRegister(bool status)
-        {
-            if (status)
-            {
-                MessageBox.Show("Registro exitoso", "Bienvenido(a)", MessageBoxButton.OK, MessageBoxImage.Information);
-                FillSingleton();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                try
-                {
-                    client.Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Por el momento no hay conexión con el servidor de la base de datos, inténtelo de nuevo más tarde", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-            }
-        }
-
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -85,12 +61,12 @@ namespace View
                 {
                     if (client.ValidationEmailDataBase(emailUser))
                     {
-                        MessageBox.Show("Correo ya registrado", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Mail already registered", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
                     if (client.ValidationUsernameDataBase(usernameUser))
                     {
-                        MessageBox.Show("Apodo ya registrado", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Nickname already registered", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
 
@@ -101,6 +77,30 @@ namespace View
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }    
+        }
+
+        public void ResponseRegister(bool status)
+        {
+            if (status)
+            {
+                MessageBox.Show("Registration successful", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
+                FillSingleton();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                try
+                {
+                    client.Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void RegistreUser(string emailUser)
@@ -145,29 +145,34 @@ namespace View
             if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtUsername.Text)
                 || string.IsNullOrEmpty(txtPassword.Password) || string.IsNullOrEmpty(txtPasswordValidation.Password))
             {
-                MessageBox.Show("Campos invalidos", "Campos vacios", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             FieldValidation fieldValidation = new FieldValidation();
             if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
-                MessageBox.Show("Las contraseñas no coinciden", "Las contraseñas no coinciden", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Passwords do not match", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
             {
-                MessageBox.Show("Formato de correo invalido", "formato de correo invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Invalid mail format", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             if (!fieldValidation.ValidationUsernameFormat(txtUsername.Text))
             {
-                MessageBox.Show("Formato de username invalido", "formato de username invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Invalid nickname", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             String Birthday = calendarBirthday.SelectedDate.ToString();
             if (string.IsNullOrEmpty(Birthday))
             {
-                MessageBox.Show("Por favor elija su fecha de nacimiento", "formato invalido", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Incomplete date of birth", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            if (!fieldValidation.PasswordSecure(txtPassword.Password))
+            {
+                MessageBox.Show("Deficient password", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             return true;

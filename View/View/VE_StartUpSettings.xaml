@@ -150,7 +150,8 @@
                                  Margin="10,0,0,0" 
                                  Grid.Row="1" 
                                  VerticalAlignment="Top"
-                                 GroupName="Speed"/>
+                                 GroupName="Speed"
+                                 />
 
                     <TextBlock Text="Amount of money"
                                Foreground="DarkGray"

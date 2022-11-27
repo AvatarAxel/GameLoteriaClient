@@ -23,7 +23,8 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.JoinGameServiceClient joinGameServiceClient;
-        private Game game = new Game();
+        private Game game = new Game();  
+
         public Lobby()
         {
             InitializeComponent();
@@ -38,18 +39,6 @@ namespace View
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
-        }
-
-        public void JoinServices() {
-            try
-            {
-                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
@@ -82,14 +71,45 @@ namespace View
         {
             try
             {
+               
                 joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame);
+                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
             }
             catch(TimeoutException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
   
+        }
+
+        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        {
+            string message = txtMessage.Text;
+            if (!string.IsNullOrEmpty(message))
+            {
+                try
+                {
+                    chatClient.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                    txtMessage.Clear();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void JoinServices()
+        {
+            try
+            {
+                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ConfigureLobby()
@@ -129,25 +149,9 @@ namespace View
             SingletonPlayer.PlayerClient.PlayerType = false;
         }
 
-        private void BtnSend_Click(object sender, RoutedEventArgs e)
-        {
-            string message = txtMessage.Text;
-            if (!string.IsNullOrEmpty(message))
-            {
-                try
-                {
-                    chatClient.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                    txtMessage.Clear();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
-
         public void ReciveMessage(string player, string message)
         {
+            //Se suma y se va a caer
             txtChat.Text += player + ":  " + message + "\r\n";
         }
 
@@ -175,7 +179,8 @@ namespace View
         public void SendCard(int idCard)
         {
             game.SendCard(idCard);
-
         }
+
+       
     }
 }
