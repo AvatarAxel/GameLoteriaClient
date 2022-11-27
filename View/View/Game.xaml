@@ -92,9 +92,9 @@
                         Margin="48,482,0,0" 
                         Grid.Row="1" 
                         VerticalAlignment="Top" Click="Button_Click"/>
-                <Image Name="Position1" Source="/Images/Cards/WhiteTabs.jpg" HorizontalAlignment="Left" Height="233" Margin="357,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155"/>
-                <Image Name="Position2" Source="/Images/Cards/WhiteTabs.jpg" HorizontalAlignment="Left" Height="137" Margin="552,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
-                <Image Name="Position3" Source="/Images/Cards/WhiteTabs.jpg" HorizontalAlignment="Left" Height="137" Margin="680,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+                <Image Name="Position1" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="233" Margin="357,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155"/>
+                <Image Name="Position2" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="137" Margin="552,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+                <Image Name="Position3" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="137" Margin="680,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
 
             </Grid>
 

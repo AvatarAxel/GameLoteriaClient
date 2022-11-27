@@ -231,7 +231,7 @@
     <Resource Include="Images\ResourseImage\Exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Cards\WhiteTabs.jpg" />
+    <Resource Include="Images\Cards\Frame 0.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cards\Frame 1.jpg" />
