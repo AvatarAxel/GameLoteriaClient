@@ -35,5 +35,44 @@ namespace Logic
             }
             return false;
         }
+
+        public bool PasswordSecure(string password)
+        {
+            Regex numbers = new Regex(@"[0-9]");
+            bool normals = false;
+            bool number = false;
+            bool mayus = false;
+            if (numbers.IsMatch(password))
+            {
+                number = true;
+            }
+            if (password.Length > 8)
+            {
+                for (int i = 0; i < password.Length; i++)
+                {
+                    if (Char.IsLower(password, i))
+                    {
+                        normals = true;
+                    }
+                    else if (Char.IsUpper(password, i))
+                    {
+                        mayus = true;
+                    }
+
+                }
+                if (normals && mayus && number)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -58,7 +58,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("El username y/o password que ingreso no se encuentra(n) registrados, verifique que sean los datos correctos o regístrese", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("The username and/or password you entered are not registered.", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -76,7 +76,7 @@ namespace View
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtUser.Text))
             {
-                MessageBox.Show("Campos vacios, intentelo de nuevo", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else 
             {               
@@ -143,7 +143,7 @@ namespace View
         {
             var random = new Random();
             var value = random.Next(0, 10000);
-            SingletonPlayer.PlayerClient.Username = "Invitado" + value;
+            SingletonPlayer.PlayerClient.Username = "Guest" + value; //AQUI VA A TRONAR POR EL "INVITADO" LA PALABRA
             SingletonPlayer.PlayerClient.Coin = 500;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
@@ -157,15 +157,15 @@ namespace View
             }
             Close();
             mainWindow.Show();
-            MessageBox.Show("Si entras como invitado NO se te guardaran tus monedas", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Your earned coins will not be saved", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbLanguage.SelectedIndex == 0)
-                Properties.Settings.Default.languageCode = "en";
+                Properties.Settings.Default.languageCode = "EN";
             else 
-                Properties.Settings.Default.languageCode = "es";
+                Properties.Settings.Default.languageCode = "SP";
            
             Properties.Settings.Default.Save();
         }

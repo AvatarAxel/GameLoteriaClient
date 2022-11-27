@@ -57,7 +57,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("No estas registrado, regustrate!", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You are NOT registered yet, REGISTER NOW", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -70,8 +70,15 @@ namespace View
 
         }
 
+        private void BtnConfigureProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Function in maintenance", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Function in maintenance", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+
 
         }
     }

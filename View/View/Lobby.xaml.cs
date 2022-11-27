@@ -41,18 +41,6 @@ namespace View
             WindowState = WindowState.Minimized;
         }
 
-        public void JoinServices() {
-            try
-            {
-                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
@@ -94,6 +82,36 @@ namespace View
   
         }
 
+        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        {
+            string message = txtMessage.Text;
+            if (!string.IsNullOrEmpty(message))
+            {
+                try
+                {
+                    chatClient.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                    txtMessage.Clear();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void JoinServices()
+        {
+            try
+            {
+                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void ConfigureLobby()
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
@@ -131,23 +149,6 @@ namespace View
             SingletonPlayer.PlayerClient.PlayerType = false;
         }
 
-        private void BtnSend_Click(object sender, RoutedEventArgs e)
-        {
-            string message = txtMessage.Text;
-            if (!string.IsNullOrEmpty(message))
-            {
-                try
-                {
-                    chatClient.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                    txtMessage.Clear();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
-
         public void ReciveMessage(string player, string message)
         {
             //Se suma y se va a caer
@@ -177,9 +178,7 @@ namespace View
 
         public void SendCard(int idCard)
         {
-
             game.SendCard(idCard);
-
         }
 
        

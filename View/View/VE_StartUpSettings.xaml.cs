@@ -29,28 +29,6 @@ namespace View
             joinGameClient = new ServiceReference.JoinGameServiceClient(context);
             chatClient = new ChatServiceClient(context);
         }
-        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-        private void BtnClose_Click(Object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            try
-            {
-                joinGameClient.Close();
-                chatClient.Close();
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            Close();
-        }
-
-        
 
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
@@ -63,12 +41,10 @@ namespace View
 
                 try
                 {
-                
                     joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
 
                     SendSpeed();
-
                     Lobby lobby = new Lobby();
                     lobby.Show();
 
@@ -90,20 +66,42 @@ namespace View
             }
         }
 
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            try
+            {
+                joinGameClient.Close();
+                chatClient.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Close();
+        }
+
         private bool ValidationField()
         {
             if (cmbxNumberPlayer.SelectedIndex == -1 || cmbxAmountOfMoney.SelectedIndex == -1)
             {
-                MessageBox.Show("Rectifique los campos uwu", "Atencion :3", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
-            if (rdbtnSlow.IsChecked == true  || rdbtnStandard.IsChecked == true || rdbtQuickly.IsChecked == true)
+            if (rdbtPrivate.IsChecked == true || rdbtPublic.IsChecked == true || rdbtnSlow.IsChecked == true  || rdbtnStandard.IsChecked == true || rdbtQuickly.IsChecked == true)
             {
                 return true;
             }
             else
             {
-                MessageBox.Show("Rectifique los campos", "Atencion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
         }

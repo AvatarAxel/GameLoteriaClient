@@ -40,42 +40,8 @@ namespace View
         private List<int> photoListIndex = new List<int>();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
-            string relativeTabs = @"../../Images/Cards/";
-            string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
+            MessageBox.Show("LOTERIA", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            photoListIndex.Add(counter);
-            try
-            {         
-                string path = System.IO.Path.GetFullPath(photo[photoListIndex[counter]].ToString());
-                Uri uri = new Uri(path, UriKind.Absolute);
-
-                Position1.Stretch = Stretch.Fill;
-                Position1.Source = new BitmapImage(uri);
-
-                if (counter >= 1)
-                {
-                    string otro = System.IO.Path.GetFullPath(photo[photoListIndex[counter - 1]].ToString());
-                    Uri urin = new Uri(otro, UriKind.Absolute);
-                    Position2.Stretch = Stretch.Fill;
-                    Position2.Source = new BitmapImage(urin);
-                }
-
-                if (counter >= 2)
-                {
-                    string otro1 = System.IO.Path.GetFullPath(photo[photoListIndex[counter - 2]].ToString());
-                    Uri urin1 = new Uri(otro1, UriKind.Absolute);
-                    Position3.Stretch = Stretch.Fill;
-                    Position3.Source = new BitmapImage(urin1);
-                }
-                counter++;
-
-            }
-            catch (IndexOutOfRangeException E)
-            {
-                MessageBox.Show("No hay más archivos para mostrar", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            }
         }
         public void SendCard(int idCard) 
         {
@@ -109,9 +75,9 @@ namespace View
                 counter++;
 
             }
-            catch (IndexOutOfRangeException E)
+            catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("No hay más archivos para mostrar", "Atención", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("There are no more files to display", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
         }

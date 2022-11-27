@@ -129,7 +129,8 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0">
+                             Padding="20,0,0,0"
+                             MaxLength="20">
 
                         <TextBox.Background>
                             <!--ImageSource="/Images/user-incon.png"-->
@@ -157,7 +158,8 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0">
+                             Padding="20,0,0,0"
+                             MaxLength="25">
 
                         <PasswordBox.Background>
                             <!--ImageSource="/Images/logo.png"-->

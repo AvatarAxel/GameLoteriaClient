@@ -210,15 +210,16 @@
                         BorderThickness="0"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Margin="-690,120,0,0" Click="BtnConfigureProfile_Click" 
+                        Margin="700,-900,0,0" 
+                        Click="BtnConfigureProfile_Click" 
                         Width="50" 
                         Height="50">
                         <StackPanel>
-                            <Image Source="/Images/ResourseImage/Exit.png"
+                            <Image Source="/Images/ResourseImage/Gear.png"
                                    Stretch="UniformToFill" Height="24" Width="24"/>
                         </StackPanel>
-
                     </Button>
+                    
                 </StackPanel>
             </Grid> 
         </Border>

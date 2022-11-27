@@ -27,6 +27,26 @@ namespace View
             client = new ServiceReference.JoinGameServiceClient(context);
         }
 
+        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(Object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            try
+            {
+                client.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            Close();
+        }
+
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
@@ -35,12 +55,12 @@ namespace View
                 {
                     if (!client.ResponseCodeExist(codeVerification))
                     {
-                        MessageBox.Show("No existe esa sala", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("This room does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                     if (client.ResponseCompleteLobby(codeVerification))
                     {
-                        MessageBox.Show("Sala llena uwu", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
                     SingletonGameRound.GameRound.CodeGame = txtCode.Text;
@@ -60,26 +80,6 @@ namespace View
         public void ReciveWinner(string username)
         {
             throw new NotImplementedException();
-        }
-
-        private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void BtnClose_Click(Object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            try
-            {
-                client.Close();
-            }
-            catch (EndpointNotFoundException)
-            {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            Close();
         }
 
         public void ResponseTotalPlayers(int totalPlayers)

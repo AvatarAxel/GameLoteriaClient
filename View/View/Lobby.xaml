@@ -125,7 +125,8 @@
                                      Margin="0,20,0,0" 
                                      TextWrapping="Wrap" 
                                      VerticalAlignment="Top" 
-                                     Width="300"/>
+                                     Width="300"
+                                      MaxLength="30"/>
 
 
                     <Button x:Name="btnSend"                          
