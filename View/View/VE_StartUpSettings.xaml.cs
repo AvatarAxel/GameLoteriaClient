@@ -1,28 +1,21 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Logic;
 using View.ServiceReference;
 
 namespace View
 {
-    public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
+    public partial class VE_StartUpSettings : Window, ServiceReference.IGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
-        private ServiceReference.JoinGameServiceClient joinGameClient;
-        private ServiceReference.ChatServiceClient chatClient;
+        private GameServiceClient gameClient;
+        private ChatServiceClient chatClient;
         public VE_StartUpSettings()
         {
             InitializeComponent();
             context = new InstanceContext(this);
-            joinGameClient = new ServiceReference.JoinGameServiceClient(context);
+            gameClient = new GameServiceClient(context);
             chatClient = new ChatServiceClient(context);
         }
 
@@ -37,7 +30,7 @@ namespace View
 
                 try
                 {
-                    joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
+                    gameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
 
                     SendSpeed();
@@ -46,7 +39,7 @@ namespace View
 
                     try
                     {
-                        joinGameClient.Close();
+                        gameClient.Close();
                         chatClient.Close();
                     }
                     catch (EndpointNotFoundException)
@@ -69,12 +62,11 @@ namespace View
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             try
             {
-                joinGameClient.Close();
+                gameClient.Close();
                 chatClient.Close();
             }
             catch (EndpointNotFoundException)

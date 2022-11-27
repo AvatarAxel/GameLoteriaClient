@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    public partial class VE_EnterGameCode : Window, ServiceReference.IJoinGameServiceCallback
+    public partial class VE_EnterGameCode : Window
     {
-        private InstanceContext context;
         private ServiceReference.JoinGameServiceClient client;
         public VE_EnterGameCode()
         {
             InitializeComponent();
-            context = new InstanceContext(this);
-            client = new ServiceReference.JoinGameServiceClient(context);
+            client = new ServiceReference.JoinGameServiceClient();
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -77,30 +75,6 @@ namespace View
             }
         }
 
-        public void ReciveWinner(string username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResponseTotalPlayers(int totalPlayers)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SendNextHostGameResponse(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SendCard(int idCard)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GoToPlay(bool status)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }

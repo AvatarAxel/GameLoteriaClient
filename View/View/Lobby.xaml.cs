@@ -18,11 +18,11 @@ using System.Windows.Shapes;
 namespace View
 {
 
-    public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
+    public partial class Lobby : Window, ServiceReference.IGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
-        private ServiceReference.JoinGameServiceClient joinGameServiceClient;
+        private ServiceReference.GameServiceClient GameServiceClient;
         private Game game = new Game();  
 
         public Lobby()
@@ -30,7 +30,7 @@ namespace View
             InitializeComponent();
             context = new InstanceContext(this);
             chatClient = new ServiceReference.ChatServiceClient(context);
-            joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
+            GameServiceClient = new ServiceReference.GameServiceClient(context);
             ConfigureLobby();
             JoinServices();
             txtChat.IsEnabled = false;
@@ -48,7 +48,7 @@ namespace View
                 ExitPlayer();
                 try
                 {
-                    joinGameServiceClient.SendNextHostGame(SingletonGameRound.GameRound.CodeGame);
+                    GameServiceClient.SendNextHostGame(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
@@ -59,7 +59,7 @@ namespace View
             {
                 ExitPlayer();
             }
-            joinGameServiceClient.Close();
+            GameServiceClient.Close();
             chatClient.Close();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -71,9 +71,9 @@ namespace View
         {
             try
             {
-               
-                joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
+
+                GameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+                GameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
             }
             catch(TimeoutException)
             {
@@ -103,7 +103,7 @@ namespace View
         {
             try
             {
-                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                GameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
@@ -135,7 +135,7 @@ namespace View
         {
             try
             {
-                joinGameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                GameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
@@ -151,7 +151,6 @@ namespace View
 
         public void ReciveMessage(string player, string message)
         {
-            //Se suma y se va a caer
             txtChat.Text += player + ":  " + message + "\r\n";
         }
 
@@ -178,7 +177,7 @@ namespace View
 
         public void SendCard(int idCard)
         {
-            game.SendCard(idCard);
+            game.ReciveCard(idCard);
         }
 
        

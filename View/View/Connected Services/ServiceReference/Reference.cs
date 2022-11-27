@@ -466,50 +466,8 @@ namespace View.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IJoinGameService", CallbackContract=typeof(View.ServiceReference.IJoinGameServiceCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IJoinGameService")]
     public interface IJoinGameService {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/JoinGame")]
-        void JoinGame(string username, string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/JoinGame")]
-        System.Threading.Tasks.Task JoinGameAsync(string username, string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendWinner")]
-        void SendWinner(string username, string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendWinner")]
-        System.Threading.Tasks.Task SendWinnerAsync(string username, string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ExitGame")]
-        void ExitGame(string userName, string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ExitGame")]
-        System.Threading.Tasks.Task ExitGameAsync(string userName, string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/CreateGame")]
-        void CreateGame(string verificationCode, int limitPlayers);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/CreateGame")]
-        System.Threading.Tasks.Task CreateGameAsync(string verificationCode, int limitPlayers);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/EliminateGame")]
-        void EliminateGame(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/EliminateGame")]
-        System.Threading.Tasks.Task EliminateGameAsync(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGame")]
-        void SendNextHostGame(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGame")]
-        System.Threading.Tasks.Task SendNextHostGameAsync(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/GoToGame")]
-        void GoToGame(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/GoToGame")]
-        System.Threading.Tasks.Task GoToGameAsync(string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCodeExist", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCodeExistResponse")]
         bool ResponseCodeExist(string verificationCode);
@@ -522,31 +480,6 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/StartGame")]
-        void StartGame(string verificationCode, int speed);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/StartGame")]
-        System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IJoinGameServiceCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ReciveWinner")]
-        void ReciveWinner(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/ResponseTotalPlayers")]
-        void ResponseTotalPlayers(int totalPlayers);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendNextHostGameResponse")]
-        void SendNextHostGameResponse(bool status);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/SendCard")]
-        void SendCard(int idCard);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IJoinGameService/GoToPlay")]
-        void GoToPlay(bool status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -555,25 +488,141 @@ namespace View.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class JoinGameServiceClient : System.ServiceModel.DuplexClientBase<View.ServiceReference.IJoinGameService>, View.ServiceReference.IJoinGameService {
+    public partial class JoinGameServiceClient : System.ServiceModel.ClientBase<View.ServiceReference.IJoinGameService>, View.ServiceReference.IJoinGameService {
         
-        public JoinGameServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public JoinGameServiceClient() {
+        }
+        
+        public JoinGameServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public JoinGameServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public JoinGameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public JoinGameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool ResponseCodeExist(string verificationCode) {
+            return base.Channel.ResponseCodeExist(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ResponseCodeExistAsync(string verificationCode) {
+            return base.Channel.ResponseCodeExistAsync(verificationCode);
+        }
+        
+        public bool ResponseCompleteLobby(string verificationCode) {
+            return base.Channel.ResponseCompleteLobby(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
+            return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IGameService", CallbackContract=typeof(View.ServiceReference.IGameServiceCallback))]
+    public interface IGameService {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/JoinGame")]
+        void JoinGame(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/JoinGame")]
+        System.Threading.Tasks.Task JoinGameAsync(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SendWinner")]
+        void SendWinner(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SendWinner")]
+        System.Threading.Tasks.Task SendWinnerAsync(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ExitGame")]
+        void ExitGame(string userName, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ExitGame")]
+        System.Threading.Tasks.Task ExitGameAsync(string userName, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CreateGame")]
+        void CreateGame(string verificationCode, int limitPlayers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CreateGame")]
+        System.Threading.Tasks.Task CreateGameAsync(string verificationCode, int limitPlayers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/EliminateGame")]
+        void EliminateGame(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/EliminateGame")]
+        System.Threading.Tasks.Task EliminateGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SendNextHostGame")]
+        void SendNextHostGame(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SendNextHostGame")]
+        System.Threading.Tasks.Task SendNextHostGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToGame")]
+        void GoToGame(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToGame")]
+        System.Threading.Tasks.Task GoToGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/StartGame")]
+        void StartGame(string verificationCode, int speed);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ReciveWinner")]
+        void ReciveWinner(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ResponseTotalPlayers")]
+        void ResponseTotalPlayers(int totalPlayers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SendNextHostGameResponse")]
+        void SendNextHostGameResponse(bool status);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SendCard")]
+        void SendCard(int idCard);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToPlay")]
+        void GoToPlay(bool status);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServiceChannel : View.ServiceReference.IGameService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<View.ServiceReference.IGameService>, View.ServiceReference.IGameService {
+        
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public JoinGameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public JoinGameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public JoinGameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public JoinGameServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
@@ -633,28 +682,73 @@ namespace View.ServiceReference {
             return base.Channel.GoToGameAsync(verificationCode);
         }
         
-        public bool ResponseCodeExist(string verificationCode) {
-            return base.Channel.ResponseCodeExist(verificationCode);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ResponseCodeExistAsync(string verificationCode) {
-            return base.Channel.ResponseCodeExistAsync(verificationCode);
-        }
-        
-        public bool ResponseCompleteLobby(string verificationCode) {
-            return base.Channel.ResponseCompleteLobby(verificationCode);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
-            return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
-        }
-        
         public void StartGame(string verificationCode, int speed) {
             base.Channel.StartGame(verificationCode, speed);
         }
         
         public System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed) {
             return base.Channel.StartGameAsync(verificationCode, speed);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IChangeUsernameService")]
+    public interface IChangeUsernameService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangeUsernameService/ChangeUsername", ReplyAction="http://tempuri.org/IChangeUsernameService/ChangeUsernameResponse")]
+        bool ChangeUsername(string email, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangeUsernameService/ChangeUsername", ReplyAction="http://tempuri.org/IChangeUsernameService/ChangeUsernameResponse")]
+        System.Threading.Tasks.Task<bool> ChangeUsernameAsync(string email, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangeUsernameService/ValidateAvailabilityUsername", ReplyAction="http://tempuri.org/IChangeUsernameService/ValidateAvailabilityUsernameResponse")]
+        bool ValidateAvailabilityUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangeUsernameService/ValidateAvailabilityUsername", ReplyAction="http://tempuri.org/IChangeUsernameService/ValidateAvailabilityUsernameResponse")]
+        System.Threading.Tasks.Task<bool> ValidateAvailabilityUsernameAsync(string username);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChangeUsernameServiceChannel : View.ServiceReference.IChangeUsernameService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChangeUsernameServiceClient : System.ServiceModel.ClientBase<View.ServiceReference.IChangeUsernameService>, View.ServiceReference.IChangeUsernameService {
+        
+        public ChangeUsernameServiceClient() {
+        }
+        
+        public ChangeUsernameServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ChangeUsernameServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChangeUsernameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChangeUsernameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool ChangeUsername(string email, string username) {
+            return base.Channel.ChangeUsername(email, username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangeUsernameAsync(string email, string username) {
+            return base.Channel.ChangeUsernameAsync(email, username);
+        }
+        
+        public bool ValidateAvailabilityUsername(string username) {
+            return base.Channel.ValidateAvailabilityUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidateAvailabilityUsernameAsync(string username) {
+            return base.Channel.ValidateAvailabilityUsernameAsync(username);
         }
     }
 }
