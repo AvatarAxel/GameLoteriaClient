@@ -9,11 +9,10 @@ namespace Logic
     public class SingletonGameRound
     {
         public string CodeGame { get; set; }
-
         public int TotalPlayers { get; set; }
-
         public int SpeedGame { get; set; }
-        public static SingletonGameRound GameRound { get; set; } 
+        public static SingletonGameRound GameRound { get; set; }
+        public bool PrivateGame { get; set; }
     }
 
 

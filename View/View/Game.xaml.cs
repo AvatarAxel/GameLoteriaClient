@@ -56,7 +56,7 @@ namespace View
             MessageBox.Show("LOTERIA", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
-        public void SendCard(int idCard) 
+        public void ReciveCard(int idCard) 
         {
             string relativeTabs = @"../../Images/Cards/";
             string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
