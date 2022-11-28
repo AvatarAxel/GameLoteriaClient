@@ -28,6 +28,7 @@ namespace View
     {
         private FillingOutTheLetter DeckCardRandom = new FillingOutTheLetter();
         private List<int> DeckOfCards;
+        private List<Uri> uriList = new List<Uri>();
         public Game()
         {
             InitializeComponent();
@@ -48,12 +49,11 @@ namespace View
         {
 
             string relativeTabs = @"../../Images/CardsBeans/";
-            string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
 
-            string path = System.IO.Path.GetFullPath(photo[52].ToString());
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[0]].ToString());
             Uri uri = new Uri(path, UriKind.Absolute);
 
-            Position1Cards.Stretch = Stretch.Fill;
             Position1Cards.Source = new BitmapImage(uri);
 
             Position1Cards.IsEnabled = false;
@@ -178,15 +178,11 @@ namespace View
         {
             DeckOfCards = DeckCardRandom.FillDeck();
 
-            List<Uri> uriList = new List<Uri>();
-            List<int> photoListIndexFilling = new List<int>();
-
             string relativeTabs = @"../../Images/Cards/";
             string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
 
             for (int i = 0; i < DeckOfCards.Count; i++)
             {
-                photoListIndexFilling.Add(i);
                 string path = System.IO.Path.GetFullPath(photo[DeckOfCards[i]].ToString());
                 
                 Uri uri = new Uri(path, UriKind.Absolute);
