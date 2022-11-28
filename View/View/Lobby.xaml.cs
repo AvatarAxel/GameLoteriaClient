@@ -73,7 +73,7 @@ namespace View
             {
 
                 GameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                GameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
+                GameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame);
             }
             catch(TimeoutException)
             {

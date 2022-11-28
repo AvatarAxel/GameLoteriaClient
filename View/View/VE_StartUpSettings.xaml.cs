@@ -23,17 +23,21 @@ namespace View
         {
             if (ValidationField())
             {
-                int limitPlayer = int.Parse( cmbxNumberPlayer.Text);
-
+                GameRoundDTO gameRoundDTO = new GameRoundDTO();
                 CodeGame codeGame = new CodeGame();
+                SendSpeed();
+                SendTypeGame();
                 SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
+                gameRoundDTO.VerificationCode = SingletonGameRound.GameRound.CodeGame;
+                gameRoundDTO.LimitPlayer = int.Parse(cmbxNumberPlayer.Text);
+                gameRoundDTO.Speed = SingletonGameRound.GameRound.SpeedGame;
+                gameRoundDTO.PrivateGame = SingletonGameRound.GameRound.PrivateGame;
 
                 try
                 {
-                    gameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
+                    gameClient.CreateGame(gameRoundDTO);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
 
-                    SendSpeed();
                     Lobby lobby = new Lobby();
                     lobby.Show();
 
@@ -137,6 +141,18 @@ namespace View
             else if (rdbtQuickly.IsChecked == true)
             {
                 SingletonGameRound.GameRound.SpeedGame = 1000;
+            }
+        }
+
+        public void SendTypeGame()
+        {
+            if (rdbtPrivate.IsChecked == true)
+            {
+                SingletonGameRound.GameRound.PrivateGame = true;
+            }
+            else
+            {
+                SingletonGameRound.GameRound.PrivateGame = false;
             }
         }
 

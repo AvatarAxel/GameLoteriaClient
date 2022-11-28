@@ -138,6 +138,99 @@ namespace View.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameRoundDTO", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class GameRoundDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LimitPlayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool PrivateGameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SpeedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VerificationCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LimitPlayer {
+            get {
+                return this.LimitPlayerField;
+            }
+            set {
+                if ((this.LimitPlayerField.Equals(value) != true)) {
+                    this.LimitPlayerField = value;
+                    this.RaisePropertyChanged("LimitPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool PrivateGame {
+            get {
+                return this.PrivateGameField;
+            }
+            set {
+                if ((this.PrivateGameField.Equals(value) != true)) {
+                    this.PrivateGameField = value;
+                    this.RaisePropertyChanged("PrivateGame");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Speed {
+            get {
+                return this.SpeedField;
+            }
+            set {
+                if ((this.SpeedField.Equals(value) != true)) {
+                    this.SpeedField = value;
+                    this.RaisePropertyChanged("Speed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VerificationCode {
+            get {
+                return this.VerificationCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VerificationCodeField, value) != true)) {
+                    this.VerificationCodeField = value;
+                    this.RaisePropertyChanged("VerificationCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IAuthenticationService")]
     public interface IAuthenticationService {
@@ -549,10 +642,10 @@ namespace View.ServiceReference {
         System.Threading.Tasks.Task ExitGameAsync(string userName, string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CreateGame")]
-        void CreateGame(string verificationCode, int limitPlayers);
+        void CreateGame(View.ServiceReference.GameRoundDTO game);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CreateGame")]
-        System.Threading.Tasks.Task CreateGameAsync(string verificationCode, int limitPlayers);
+        System.Threading.Tasks.Task CreateGameAsync(View.ServiceReference.GameRoundDTO game);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/EliminateGame")]
         void EliminateGame(string verificationCode);
@@ -573,10 +666,10 @@ namespace View.ServiceReference {
         System.Threading.Tasks.Task GoToGameAsync(string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/StartGame")]
-        void StartGame(string verificationCode, int speed);
+        void StartGame(string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/StartGame")]
-        System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed);
+        System.Threading.Tasks.Task StartGameAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -650,12 +743,12 @@ namespace View.ServiceReference {
             return base.Channel.ExitGameAsync(userName, verificationCode);
         }
         
-        public void CreateGame(string verificationCode, int limitPlayers) {
-            base.Channel.CreateGame(verificationCode, limitPlayers);
+        public void CreateGame(View.ServiceReference.GameRoundDTO game) {
+            base.Channel.CreateGame(game);
         }
         
-        public System.Threading.Tasks.Task CreateGameAsync(string verificationCode, int limitPlayers) {
-            return base.Channel.CreateGameAsync(verificationCode, limitPlayers);
+        public System.Threading.Tasks.Task CreateGameAsync(View.ServiceReference.GameRoundDTO game) {
+            return base.Channel.CreateGameAsync(game);
         }
         
         public void EliminateGame(string verificationCode) {
@@ -682,12 +775,12 @@ namespace View.ServiceReference {
             return base.Channel.GoToGameAsync(verificationCode);
         }
         
-        public void StartGame(string verificationCode, int speed) {
-            base.Channel.StartGame(verificationCode, speed);
+        public void StartGame(string verificationCode) {
+            base.Channel.StartGame(verificationCode);
         }
         
-        public System.Threading.Tasks.Task StartGameAsync(string verificationCode, int speed) {
-            return base.Channel.StartGameAsync(verificationCode, speed);
+        public System.Threading.Tasks.Task StartGameAsync(string verificationCode) {
+            return base.Channel.StartGameAsync(verificationCode);
         }
     }
     

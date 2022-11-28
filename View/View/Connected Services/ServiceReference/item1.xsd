@@ -190,8 +190,7 @@
   <xs:element name="CreateGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="limitPlayers" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="game" nillable="true" type="q3:GameRoundDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -220,7 +219,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="speed" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
