@@ -22,6 +22,7 @@ namespace View
         {
             InitializeComponent();
             SingletonGameRound.GameRound = new SingletonGameRound();
+            lbUsername.Text = SingletonPlayer.PlayerClient.Username;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -72,10 +73,19 @@ namespace View
 
         private void BtnConfigureProfile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Function in maintenance", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (SingletonPlayer.PlayerClient.RegisteredUser)
+            {
+                ConfigureProfile configureProfile = new ConfigureProfile();    
+                configureProfile.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("You are NOT registered yet, REGISTER NOW", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
-        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+            private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Function in maintenance", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
 

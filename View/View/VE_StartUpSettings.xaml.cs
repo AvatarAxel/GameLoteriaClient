@@ -17,7 +17,7 @@ using View.ServiceReference;
 
 namespace View
 {
-    public partial class VE_StartUpSettings : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
+    public partial class VE_StartUpSettings : Window, ServiceReference.IGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
         private ServiceReference.JoinGameServiceClient joinGameClient;
@@ -26,7 +26,7 @@ namespace View
         {
             InitializeComponent();
             context = new InstanceContext(this);
-            joinGameClient = new ServiceReference.JoinGameServiceClient(context);
+            joinGameClient = new ServiceReference.JoinGameServiceClient();
             chatClient = new ChatServiceClient(context);
         }
 
@@ -41,7 +41,7 @@ namespace View
 
                 try
                 {
-                    joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
+                    //joinGameClient.CreateGame(SingletonGameRound.GameRound.CodeGame, limitPlayer);
                     chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
 
                     SendSpeed();

@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfigureProfile.xaml.cs">
+      <DependentUpon>ConfigureProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +102,10 @@
     <Compile Include="VE_VerificationEmail.xaml.cs">
       <DependentUpon>VE_VerificationEmail.xaml</DependentUpon>
     </Compile>
+    <Page Include="ConfigureProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -288,6 +295,9 @@
     <Resource Include="Images\Cards\Frame 7.jpg" />
     <Resource Include="Images\Cards\Frame 8.jpg" />
     <Resource Include="Images\Cards\Frame 9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ResourseImage\update.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />

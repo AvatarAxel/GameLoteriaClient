@@ -11,15 +11,17 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True">
+
     <Border CornerRadius="12">
         <Border.Background>
             <ImageBrush ImageSource="/Images/ResourseImage/back.jpg"
-                        Stretch="Fill"/>
+                        Stretch="None"/>
         </Border.Background>
-        <Border CornerRadius="10"
+        
+        <Border CornerRadius="10"                    
                 BorderThickness="2"
-                Opacity=".95">
-
+                Opacity="0.95">
+            
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#462AD8" Offset="0"/>
@@ -36,12 +38,14 @@
             </Border.Background>
 
             <Grid>
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Grid>
+                <Grid Grid.Row="0">
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="25"/>
@@ -61,12 +65,11 @@
                             BorderThickness="0"
                             Cursor="Hand"
                             Grid.Column="1"
-                            Click="BtnMinimize_Click"
-                            >
+                            Click="BtnMinimize_Click">
                         <StackPanel>
                             <Image Source="/Images/ResourseImage/minimize.png"
-                                   Stretch="UniformToFill" Height="24" Width="24"
-/>
+                                   Stretch="UniformToFill"
+                            />
                         </StackPanel>
                     </Button>
 
@@ -77,27 +80,71 @@
                             Click="BtnClose_Click">
                         <StackPanel>
                             <Image Source="/Images/ResourseImage/close.png"
-                                   Stretch="UniformToFill" Height="24" Width="24"/>
+                                   Stretch="UniformToFill"/>
                         </StackPanel>
                     </Button>
                 </Grid>
-
                 <StackPanel Width="800"
-                            Height="800"
-                            Grid.Row="2"
+                            Height="700"
+                            Grid.Row="1"
                             Orientation="Vertical"
-                            Margin="0,20,0,0"/>
-                <Button Content="Button" 
-                        HorizontalAlignment="Left" 
-                        Margin="48,482,0,0" 
-                        Grid.Row="1" 
-                        VerticalAlignment="Top" Click="Button_Click"/>
-                <Image Name="Position1" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="233" Margin="357,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155"/>
-                <Image Name="Position2" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="137" Margin="552,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
-                <Image Name="Position3" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="137" Margin="680,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+                            Margin="0,0,0,0">
 
+                    <Image Name="Position1" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="233" Margin="357,39,0,0"  VerticalAlignment="Top" Width="155"/>
+                    <Image Name="Position2" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="137" Margin="550,-230,0,0"  VerticalAlignment="Top" Width="90"/>
+                    <Image Name="Position3" Source="/Images/Cards/Frame 0.jpg" HorizontalAlignment="Left" Height="137" Margin="680,-230,0,0"  VerticalAlignment="Top" Width="90"/>
+
+                    <Button Name="Position1Cards"                          
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="BtnPosition1Cards_Click"
+                            Grid.Row="1"
+                            Width="60" Margin="0,40,368,276">
+                        <StackPanel>
+                            <Image Source="/Images/Cards/Frame 0.jpg"
+                                   Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Position2Cards"                          
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="BtnPosition2Cards_Click"
+                            Grid.Row="1"
+                            Width="60" Margin="180,-368,420,276" Height="90">
+                        <StackPanel>
+                            <Image Source="/Images/Cards/Frame 0.jpg"
+                               Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Position3Cards"                          
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="BtnPosition3Cards_Click"
+                            Grid.Row="1"
+                            Width="60" Margin="180,-368,290,276" Height="90">
+                        <StackPanel>
+                            <Image Source="/Images/Cards/Frame 0.jpg"
+                               Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="Position4Cards"                          
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="BtnPosition4Cards_Click"
+                            Grid.Row="1"
+                            Width="60" Margin="180,-369,159,276" Height="91">
+                        <StackPanel>
+                            <Image Source="/Images/Cards/Frame 0.jpg"
+                               Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
             </Grid>
-
         </Border>
     </Border>
+
 </Window>

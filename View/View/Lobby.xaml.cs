@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace View
 {
 
-    public partial class Lobby : Window, ServiceReference.IJoinGameServiceCallback, ServiceReference.IChatServiceCallback
+    public partial class Lobby : Window, ServiceReference.IGameServiceCallback, ServiceReference.IChatServiceCallback
     {
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
@@ -30,7 +30,7 @@ namespace View
             InitializeComponent();
             context = new InstanceContext(this);
             chatClient = new ServiceReference.ChatServiceClient(context);
-            joinGameServiceClient = new ServiceReference.JoinGameServiceClient(context);
+            joinGameServiceClient = new ServiceReference.JoinGameServiceClient();
             ConfigureLobby();
             JoinServices();
             txtChat.IsEnabled = false;
@@ -48,7 +48,7 @@ namespace View
                 ExitPlayer();
                 try
                 {
-                    joinGameServiceClient.SendNextHostGame(SingletonGameRound.GameRound.CodeGame);
+                    //joinGameServiceClient.SendNextHostGame(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
@@ -72,8 +72,8 @@ namespace View
             try
             {
                
-                joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
+                //joinGameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+                //joinGameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame , SingletonGameRound.GameRound.SpeedGame);
             }
             catch(TimeoutException)
             {
@@ -103,7 +103,7 @@ namespace View
         {
             try
             {
-                joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                //joinGameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
@@ -135,7 +135,7 @@ namespace View
         {
             try
             {
-                joinGameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                //joinGameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)

@@ -36,6 +36,19 @@ namespace View
             Application.Current.Shutdown();
         }
 
+        private void BtnPosition1Cards_Click(Object sender, RoutedEventArgs e)
+        {
+            Position1Cards.IsEnabled = false;
+        }
+        private void BtnPosition2Cards_Click(Object sender, RoutedEventArgs e)
+        {
+            Position2Cards.IsEnabled = false;
+        }
+        private void BtnPosition3Cards_Click(Object sender, RoutedEventArgs e)
+        {
+            Position3Cards.IsEnabled = false;
+        }
+
         private int counter = 0;
         private List<int> photoListIndex = new List<int>();
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -80,6 +93,7 @@ namespace View
                 MessageBox.Show("There are no more files to display", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
+            
         }
     }
 }

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    public partial class VE_EnterGameCode : Window, ServiceReference.IJoinGameServiceCallback
+    public partial class VE_EnterGameCode : Window, ServiceReference.IGameServiceCallback
     {
         private InstanceContext context;
         private ServiceReference.JoinGameServiceClient client;
@@ -24,7 +24,7 @@ namespace View
         {
             InitializeComponent();
             context = new InstanceContext(this);
-            client = new ServiceReference.JoinGameServiceClient(context);
+            client = new ServiceReference.JoinGameServiceClient();
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
