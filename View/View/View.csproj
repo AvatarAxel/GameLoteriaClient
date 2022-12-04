@@ -261,7 +261,6 @@
     <Resource Include="Images\Cards\Frame 25.jpg" />
     <Resource Include="Images\Cards\Frame 26.jpg" />
     <Resource Include="Images\Cards\Frame 27.jpg" />
-    <Resource Include="Images\Cards\Frame 28.jpg" />
     <Resource Include="Images\Cards\Frame 29.jpg" />
     <Resource Include="Images\Cards\Frame 3.jpg" />
     <Resource Include="Images\Cards\Frame 30.jpg" />
@@ -316,6 +315,68 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cards\Frame 28.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CardsBeans\Frame 1.png" />
+    <Resource Include="Images\CardsBeans\Frame 10.png" />
+    <Resource Include="Images\CardsBeans\Frame 11.png" />
+    <Resource Include="Images\CardsBeans\Frame 12.png" />
+    <Resource Include="Images\CardsBeans\Frame 13.png" />
+    <Resource Include="Images\CardsBeans\Frame 14.png" />
+    <Resource Include="Images\CardsBeans\Frame 15.png" />
+    <Resource Include="Images\CardsBeans\Frame 16.png" />
+    <Resource Include="Images\CardsBeans\Frame 17.png" />
+    <Resource Include="Images\CardsBeans\Frame 18.png" />
+    <Resource Include="Images\CardsBeans\Frame 19.png" />
+    <Resource Include="Images\CardsBeans\Frame 2.png" />
+    <Resource Include="Images\CardsBeans\Frame 20.png" />
+    <Resource Include="Images\CardsBeans\Frame 21.png" />
+    <Resource Include="Images\CardsBeans\Frame 22.png" />
+    <Resource Include="Images\CardsBeans\Frame 23.png" />
+    <Resource Include="Images\CardsBeans\Frame 24.png" />
+    <Resource Include="Images\CardsBeans\Frame 25.png" />
+    <Resource Include="Images\CardsBeans\Frame 26.png" />
+    <Resource Include="Images\CardsBeans\Frame 27.png" />
+    <Resource Include="Images\CardsBeans\Frame 28.png" />
+    <Resource Include="Images\CardsBeans\Frame 29.png" />
+    <Resource Include="Images\CardsBeans\Frame 3.png" />
+    <Resource Include="Images\CardsBeans\Frame 30.png" />
+    <Resource Include="Images\CardsBeans\Frame 31.png" />
+    <Resource Include="Images\CardsBeans\Frame 32.png" />
+    <Resource Include="Images\CardsBeans\Frame 33.png" />
+    <Resource Include="Images\CardsBeans\Frame 34.png" />
+    <Resource Include="Images\CardsBeans\Frame 35.png" />
+    <Resource Include="Images\CardsBeans\Frame 36.png" />
+    <Resource Include="Images\CardsBeans\Frame 37.png" />
+    <Resource Include="Images\CardsBeans\Frame 38.png" />
+    <Resource Include="Images\CardsBeans\Frame 39.png" />
+    <Resource Include="Images\CardsBeans\Frame 4.png" />
+    <Resource Include="Images\CardsBeans\Frame 40.png" />
+    <Resource Include="Images\CardsBeans\Frame 41.png" />
+    <Resource Include="Images\CardsBeans\Frame 42.png" />
+    <Resource Include="Images\CardsBeans\Frame 43.png" />
+    <Resource Include="Images\CardsBeans\Frame 44.png" />
+    <Resource Include="Images\CardsBeans\Frame 45.png" />
+    <Resource Include="Images\CardsBeans\Frame 46.png" />
+    <Resource Include="Images\CardsBeans\Frame 47.png" />
+    <Resource Include="Images\CardsBeans\Frame 48.png" />
+    <Resource Include="Images\CardsBeans\Frame 49.png" />
+    <Resource Include="Images\CardsBeans\Frame 5.png" />
+    <Resource Include="Images\CardsBeans\Frame 50.png" />
+    <Resource Include="Images\CardsBeans\Frame 51.png" />
+    <Resource Include="Images\CardsBeans\Frame 52.png" />
+    <Resource Include="Images\CardsBeans\Frame 53.png" />
+    <Resource Include="Images\CardsBeans\Frame 54.png" />
+    <Resource Include="Images\CardsBeans\Frame 6.png" />
+    <Resource Include="Images\CardsBeans\Frame 7.png" />
+    <Resource Include="Images\CardsBeans\Frame 8.png" />
+    <Resource Include="Images\CardsBeans\Frame 9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CardsBeans\Frame 0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

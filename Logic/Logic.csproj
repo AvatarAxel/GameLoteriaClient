@@ -49,6 +49,7 @@
     <Compile Include="CodeGame.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="FieldValidation.cs" />
+    <Compile Include="FillingOutTheLetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonGameRound.cs" />
     <Compile Include="SingletonPlayer.cs" />

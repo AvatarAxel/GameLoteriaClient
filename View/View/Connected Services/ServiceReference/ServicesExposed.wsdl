@@ -66,9 +66,9 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://192.168.0.195:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://192.168.0.195:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://192.168.0.195:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthenticationService_AuthenticationLogin_InputMessage">
@@ -539,51 +539,51 @@
   </wsdl:binding>
   <wsdl:service name="ServicesExposed">
     <wsdl:port name="NetTcpBinding_IAuthenticationService" binding="tns:NetTcpBinding_IAuthenticationService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChatService" binding="tns:NetTcpBinding_IChatService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChangePasswordService" binding="tns:NetTcpBinding_IChangePasswordService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IEmailService" binding="tns:NetTcpBinding_IEmailService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserRegistrationService" binding="tns:NetTcpBinding_IUserRegistrationService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IJoinGameService" binding="tns:NetTcpBinding_IJoinGameService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameService" binding="tns:NetTcpBinding_IGameService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChangeUsernameService" binding="tns:NetTcpBinding_IChangeUsernameService">
-      <soap12:address location="net.tcp://192.168.0.195:8090/Comunication" />
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.0.195:8090/Comunication</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
