@@ -143,7 +143,7 @@ namespace View
         {
             var random = new Random();
             var value = random.Next(0, 10000);
-            SingletonPlayer.PlayerClient.Username = "Guest" + value; //AQUI VA A TRONAR POR EL "INVITADO" LA PALABRA
+            SingletonPlayer.PlayerClient.Username = "Guest" + value;
             SingletonPlayer.PlayerClient.Coin = 500;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
