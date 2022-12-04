@@ -1,6 +1,7 @@
 ﻿using Logic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -23,7 +24,8 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
-        private Game game = new Game();  
+        private Game game;  
+        private int counter;
 
         public Lobby()
         {
@@ -34,6 +36,7 @@ namespace View
             ConfigureLobby();
             JoinServices();
             txtChat.IsEnabled = false;
+            counter = 0;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -59,8 +62,15 @@ namespace View
             {
                 ExitPlayer();
             }
-            GameServiceClient.Close();
-            chatClient.Close();
+            try
+            {
+                GameServiceClient.Close();
+                chatClient.Close();
+            }
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
@@ -170,16 +180,26 @@ namespace View
         public void GoToPlay(bool status)
         {
             if (status)
-            {
-                game.Show();
+            {                
+                game = new Game();
+                game.Show();      
+                Hide();
+                btnPlay.IsEnabled = false;                                
             }
         }
 
         public void SendCard(int idCard)
         {
             game.ReciveCard(idCard);
+            counter++;
+            if (counter == 54) 
+            {
+                this.Show();
+                btnPlay.IsEnabled = true;
+                counter = 0;
+            }    
         }
 
-       
+
     }
 }
