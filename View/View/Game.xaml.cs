@@ -60,75 +60,180 @@ namespace View
         }
         private void BtnPosition2Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[1]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position2Cards.Source = new BitmapImage(uri);
             Position2Cards.IsEnabled = false;
         }
         private void BtnPosition3Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[2]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position3Cards.Source = new BitmapImage(uri);
             Position3Cards.IsEnabled = false;
         }
 
         private void BtnPosition4Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[3]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position4Cards.Source = new BitmapImage(uri);
             Position4Cards.IsEnabled = false;
         }
 
         private void BtnPosition5Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[4]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position5Cards.Source = new BitmapImage(uri);
             Position5Cards.IsEnabled = false;
         }
 
         private void BtnPosition6Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[5]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position6Cards.Source = new BitmapImage(uri);
             Position6Cards.IsEnabled = false;
         }
 
         private void BtnPosition7Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[6]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position7Cards.Source = new BitmapImage(uri);
             Position7Cards.IsEnabled = false;
         }
 
         private void BtnPosition8Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[7]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position8Cards.Source = new BitmapImage(uri);
             Position8Cards.IsEnabled = false;
         }
 
         private void BtnPosition9Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[8]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position9Cards.Source = new BitmapImage(uri);
             Position9Cards.IsEnabled = false;
         }
 
         private void BtnPosition10Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[9]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position10Cards.Source = new BitmapImage(uri);
             Position10Cards.IsEnabled = false;
         }
 
         private void BtnPosition11Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[10]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position11Cards.Source = new BitmapImage(uri);
             Position11Cards.IsEnabled = false;
         }
 
         private void BtnPosition12Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[11]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position12Cards.Source = new BitmapImage(uri);
             Position12Cards.IsEnabled = false;
         }
 
         private void BtnPosition13Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[12]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position13Cards.Source = new BitmapImage(uri);
             Position13Cards.IsEnabled = false;
         }
 
         private void BtnPosition14Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[13]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position14Cards.Source = new BitmapImage(uri);
             Position14Cards.IsEnabled = false;
         }
 
         private void BtnPosition15Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[14]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position15Cards.Source = new BitmapImage(uri);
             Position15Cards.IsEnabled = false;
         }
 
         private void BtnPosition16Cards_Click(Object sender, RoutedEventArgs e)
         {
+            string relativeTabs = @"../../Images/CardsBeans/";
+            string[] photo = Directory.GetFiles(relativeTabs, "*.png");
+
+            string path = System.IO.Path.GetFullPath(photo[DeckOfCards[15]].ToString());
+            Uri uri = new Uri(path, UriKind.Absolute);
+
+            Position16Cards.Source = new BitmapImage(uri);
             Position16Cards.IsEnabled = false;
         }
 
