@@ -100,7 +100,7 @@ namespace View
 
         public void ReciveWinner(string username)
         {
-
+            throw new NotImplementedException();
         }
 
         public void ResponseTotalPlayers(int totalPlayers)
@@ -110,12 +110,12 @@ namespace View
 
         public void ReciveMessage(string player, string message)
         {
-
+            throw new NotImplementedException();
         }
 
         public void SendNextHostGameResponse(bool status)
         {
-
+            throw new NotImplementedException();
         }
 
         public void GoToPlay(bool status)

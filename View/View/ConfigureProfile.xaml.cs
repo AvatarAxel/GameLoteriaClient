@@ -46,10 +46,10 @@ namespace View
 
         private void BtnUpdateUsername_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidationFields() == true)
+            if (ValidationFields())
             {
                 bool changeUsername = client.ChangeUsername(SingletonPlayer.PlayerClient.Email, lbUsername.Text);
-                if (changeUsername == true)
+                if (changeUsername)
                 {
                     MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -70,7 +70,7 @@ namespace View
             bool exitUsername = client.ValidateAvailabilityUsername(lbUsername.Text);
             FieldValidation fieldValidation = new FieldValidation();
 
-            if (SingletonPlayer.PlayerClient.Username != lbUsername.Text && exitUsername != true && lbUsername.Text != null && fieldValidation.ValidationUsernameFormat(lbUsername.Text) == true)
+            if (SingletonPlayer.PlayerClient.Username != lbUsername.Text && !exitUsername && lbUsername.Text != null && fieldValidation.ValidationUsernameFormat(lbUsername.Text))
             {
                 return true;
             }
