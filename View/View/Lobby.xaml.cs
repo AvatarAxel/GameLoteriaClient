@@ -197,7 +197,7 @@ namespace View
                 this.Show();
                 btnPlay.IsEnabled = true;
                 counter = 0;
-            }    
+            }
         }
 
 
