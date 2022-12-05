@@ -1,0 +1,8 @@
+﻿C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\CodeGame.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\Encryption.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\FieldValidation.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\FillingOutTheLetter.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\Properties\AssemblyInfo.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\SingletonGameRound.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\SingletonPlayer.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\App.config

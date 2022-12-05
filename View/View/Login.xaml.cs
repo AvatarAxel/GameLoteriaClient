@@ -87,7 +87,7 @@ namespace View
                 hashedPassword = encryption.HashPassword256(txtPassword.Password);
                 try
                 {
-                    ServiceReference.PlayerDTO playerDTO = new ServiceReference.PlayerDTO();
+                    PlayerDTO playerDTO;
                     playerDTO= client.AuthenticationLogin(username, hashedPassword);
                     AuthenticateLogin(playerDTO);
 

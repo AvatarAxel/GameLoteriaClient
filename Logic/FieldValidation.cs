@@ -60,7 +60,7 @@ namespace Logic
                     }
 
                 }
-                if (normals && mayus && number)
+                if (normals || mayus || number)
                 {
                     return true;
                 }
