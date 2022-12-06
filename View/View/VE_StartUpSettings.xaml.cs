@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows;
+using System.Windows.Controls;
 using Logic;
 using View.ServiceReference;
 
@@ -30,6 +31,7 @@ namespace View
                 SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
                 gameRoundDTO.VerificationCode = SingletonGameRound.GameRound.CodeGame;
                 gameRoundDTO.LimitPlayer = int.Parse(cmbxNumberPlayer.Text);
+                gameRoundDTO.Bet = int.Parse(cmbxAmountOfMoney.Text.Substring(1));
                 gameRoundDTO.Speed = SingletonGameRound.GameRound.SpeedGame;
                 gameRoundDTO.PrivateGame = SingletonGameRound.GameRound.PrivateGame;
 

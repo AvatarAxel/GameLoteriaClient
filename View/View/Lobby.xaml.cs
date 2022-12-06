@@ -81,9 +81,7 @@ namespace View
         {
             try
             {
-
                 GameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                GameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame);
             }
             catch(TimeoutException)
             {
@@ -182,24 +180,9 @@ namespace View
             if (status)
             {                
                 game = new Game();
-                game.Show();      
-                Hide();
-                btnPlay.IsEnabled = false;                                
+                game.ShowDialog();                
             }
         }
-
-        public void SendCard(int idCard)
-        {
-            game.ReciveCard(idCard);
-            counter++;
-            if (counter == 54) 
-            {
-                this.Show();
-                btnPlay.IsEnabled = true;
-                counter = 0;
-            }
-        }
-
 
     }
 }

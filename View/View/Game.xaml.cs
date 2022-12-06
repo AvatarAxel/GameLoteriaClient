@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.Text;
@@ -25,8 +26,10 @@ using Path = System.Windows.Shapes.Path;
 namespace View
 {
 
-    public partial class Game : Window
+    public partial class Game : Window, ILoteriaServiceCallback
     {
+        private InstanceContext context;
+        private LoteriaServiceClient client;
         private FillingOutTheLetter DeckCardRandom;
         private List<int> DeckOfCards;
         private List<Uri> uriList;
@@ -38,10 +41,14 @@ namespace View
             InitializeComponent();
             InitiatingVariables();
             FillingOutLetter();
+            CreateLoteriaGame();
+            JoinServices();
         }
 
         private void InitiatingVariables() 
         {
+            context = new InstanceContext(this);
+            client = new LoteriaServiceClient(context);
             DeckCardRandom = new FillingOutTheLetter();
             uriList = new List<Uri>();
             counter = 0;
@@ -303,7 +310,7 @@ namespace View
             }
         }
         
-        public void ReciveCard(int idCard) 
+        public void SendCard(int idCard) 
         {
             string relativeTabs = @"../../Images/Cards/";
             string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
@@ -408,9 +415,55 @@ namespace View
             Position16Cards.Source = new BitmapImage(uriList[15]);
         }
 
+        private void CreateLoteriaGame()
+        {
+            if (SingletonPlayer.PlayerClient.PlayerType)
+            {
+                try
+                {
+                    client.CreateLoteria(SingletonGameRound.GameRound.CodeGame);
+                    client.StartGameLoteria(SingletonGameRound.GameRound.CodeGame);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void JoinServices()
+        {
+            try
+            {
+                client.JoinLoteria(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(CommunicationException) 
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void UpdateQueue(int idCard) {                        
             displayedTail.Enqueue(idCard);
             displayedTail.Dequeue();
+        }
+
+        public void SendWinner(string username)
+        {
+            MessageBox.Show("The winner is: " + username, "We have a winner", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public void StopGame(bool status)
+        {
+            throw new NotImplementedException();
         }
     }
 }

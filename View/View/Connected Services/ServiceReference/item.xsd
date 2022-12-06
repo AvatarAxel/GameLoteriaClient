@@ -13,6 +13,7 @@
   <xs:element name="PlayerDTO" nillable="true" type="tns:PlayerDTO" />
   <xs:complexType name="GameRoundDTO">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Bet" type="xs:int" />
       <xs:element minOccurs="0" name="LimitPlayer" type="xs:int" />
       <xs:element minOccurs="0" name="PrivateGame" type="xs:boolean" />
       <xs:element minOccurs="0" name="Speed" type="xs:int" />

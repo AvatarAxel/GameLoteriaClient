@@ -169,8 +169,6 @@
                         <ComboBoxItem Content = "$100"/>
                         <ComboBoxItem Content = "$200"/>
                         <ComboBoxItem Content = "$300"/>
-                        <ComboBoxItem Content = "$400"/>
-                        <ComboBoxItem Content = "$500"/>
                         <ComboBox.Background>
                             <LinearGradientBrush EndPoint="0,1">
                                 <GradientStop Color="#FFF0F0F0"/>
