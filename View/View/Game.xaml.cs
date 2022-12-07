@@ -1,27 +1,13 @@
 ﻿using Logic;
-using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using View.ServiceReference;
-using Path = System.Windows.Shapes.Path;
 
 namespace View
 {
@@ -36,6 +22,7 @@ namespace View
         private Queue displayedTail;
         private int counter;
         private List<int> photoListIndex;
+        private int totalPlayers;
         public Game()
         {
             InitializeComponent();
@@ -52,11 +39,17 @@ namespace View
             DeckCardRandom = new FillingOutTheLetter();
             uriList = new List<Uri>();
             counter = 0;
+            totalPlayers = 0;
             photoListIndex = new List<int>();
             displayedTail = new Queue();
             displayedTail.Enqueue(0);
             displayedTail.Enqueue(0);
             displayedTail.Enqueue(0);
+        }
+
+        public void RecieveTotalPlayersLoteria(int totalPlayer) 
+        {
+            this.totalPlayers = totalPlayer;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -82,6 +75,7 @@ namespace View
                 Position1Cards.Source = new BitmapImage(uri);
 
                 Position1Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -97,6 +91,7 @@ namespace View
 
                 Position2Cards.Source = new BitmapImage(uri);
                 Position2Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -112,6 +107,7 @@ namespace View
 
                 Position3Cards.Source = new BitmapImage(uri);
                 Position3Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -127,6 +123,7 @@ namespace View
 
                 Position4Cards.Source = new BitmapImage(uri);
                 Position4Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -142,6 +139,7 @@ namespace View
 
                 Position5Cards.Source = new BitmapImage(uri);
                 Position5Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -157,6 +155,7 @@ namespace View
 
                 Position6Cards.Source = new BitmapImage(uri);
                 Position6Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -172,6 +171,7 @@ namespace View
 
                 Position7Cards.Source = new BitmapImage(uri);
                 Position7Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -187,6 +187,7 @@ namespace View
 
                 Position8Cards.Source = new BitmapImage(uri);
                 Position8Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -202,6 +203,7 @@ namespace View
 
                 Position9Cards.Source = new BitmapImage(uri);
                 Position9Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -217,6 +219,7 @@ namespace View
 
                 Position10Cards.Source = new BitmapImage(uri);
                 Position10Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -232,6 +235,7 @@ namespace View
 
                 Position11Cards.Source = new BitmapImage(uri);
                 Position11Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -247,6 +251,7 @@ namespace View
 
                 Position12Cards.Source = new BitmapImage(uri);
                 Position12Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -262,6 +267,7 @@ namespace View
 
                 Position13Cards.Source = new BitmapImage(uri);
                 Position13Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -277,6 +283,7 @@ namespace View
 
                 Position14Cards.Source = new BitmapImage(uri);
                 Position14Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -292,6 +299,7 @@ namespace View
 
                 Position15Cards.Source = new BitmapImage(uri);
                 Position15Cards.IsEnabled = false;
+                counter++;
             }
         }
 
@@ -307,6 +315,7 @@ namespace View
 
                 Position16Cards.Source = new BitmapImage(uri);
                 Position16Cards.IsEnabled = false;
+                counter++;
             }
         }
         
@@ -464,6 +473,18 @@ namespace View
         public void StopGame(bool status)
         {
             throw new NotImplementedException();
+        }
+
+        private void btnLoteria_Click(object sender, RoutedEventArgs e)
+        {
+            int bet = CalculateBet();
+            client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
+        }
+
+        private int CalculateBet()
+        {
+            int totalBet = SingletonGameRound.GameRound.Bet * totalPlayers;
+            return totalBet;
         }
     }
 }

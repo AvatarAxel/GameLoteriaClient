@@ -674,6 +674,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToGame")]
         System.Threading.Tasks.Task GoToGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UpdateTotalPlayers")]
+        void UpdateTotalPlayers(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UpdateTotalPlayers")]
+        System.Threading.Tasks.Task UpdateTotalPlayersAsync(string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -763,6 +769,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task GoToGameAsync(string verificationCode) {
             return base.Channel.GoToGameAsync(verificationCode);
+        }
+        
+        public void UpdateTotalPlayers(string verificationCode) {
+            base.Channel.UpdateTotalPlayers(verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task UpdateTotalPlayersAsync(string verificationCode) {
+            return base.Channel.UpdateTotalPlayersAsync(verificationCode);
         }
     }
     
@@ -856,10 +870,10 @@ namespace View.ServiceReference {
         System.Threading.Tasks.Task ExitLoteriaAsync(string username, string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoteriaService/ReciveWinner")]
-        void ReciveWinner(string username, string verificationCode);
+        void ReciveWinner(string username, string verificationCode, int totalCoins);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoteriaService/ReciveWinner")]
-        System.Threading.Tasks.Task ReciveWinnerAsync(string username, string verificationCode);
+        System.Threading.Tasks.Task ReciveWinnerAsync(string username, string verificationCode, int totalCoins);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoteriaService/StartGameLoteria")]
         void StartGameLoteria(string verificationCode);
@@ -941,12 +955,12 @@ namespace View.ServiceReference {
             return base.Channel.ExitLoteriaAsync(username, verificationCode);
         }
         
-        public void ReciveWinner(string username, string verificationCode) {
-            base.Channel.ReciveWinner(username, verificationCode);
+        public void ReciveWinner(string username, string verificationCode, int totalCoins) {
+            base.Channel.ReciveWinner(username, verificationCode, totalCoins);
         }
         
-        public System.Threading.Tasks.Task ReciveWinnerAsync(string username, string verificationCode) {
-            return base.Channel.ReciveWinnerAsync(username, verificationCode);
+        public System.Threading.Tasks.Task ReciveWinnerAsync(string username, string verificationCode, int totalCoins) {
+            return base.Channel.ReciveWinnerAsync(username, verificationCode, totalCoins);
         }
         
         public void StartGameLoteria(string verificationCode) {

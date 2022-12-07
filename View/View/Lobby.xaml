@@ -195,6 +195,7 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
+                <TextBlock x:Name="lbTotalPlayers" HorizontalAlignment="Left" Margin="648,86,0,0" Grid.Row="1" VerticalAlignment="Top"/>
             </Grid>
         </Border>
     </Border>

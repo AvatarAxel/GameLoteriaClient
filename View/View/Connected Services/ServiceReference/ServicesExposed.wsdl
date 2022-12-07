@@ -163,6 +163,9 @@
   <wsdl:message name="IGameService_GoToGame_InputMessage">
     <wsdl:part name="parameters" element="tns:GoToGame" />
   </wsdl:message>
+  <wsdl:message name="IGameService_UpdateTotalPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTotalPlayers" />
+  </wsdl:message>
   <wsdl:message name="IGameService_ResponseTotalPlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseTotalPlayers" />
   </wsdl:message>
@@ -291,6 +294,9 @@
     </wsdl:operation>
     <wsdl:operation name="GoToGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GoToGame" message="tns:IGameService_GoToGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTotalPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/UpdateTotalPlayers" message="tns:IGameService_UpdateTotalPlayers_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseTotalPlayers" message="tns:IGameService_ResponseTotalPlayers_OutputCallbackMessage" />
@@ -508,6 +514,12 @@
     </wsdl:operation>
     <wsdl:operation name="GoToGame">
       <soap12:operation soapAction="http://tempuri.org/IGameService/GoToGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTotalPlayers">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateTotalPlayers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

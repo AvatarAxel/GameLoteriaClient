@@ -25,7 +25,6 @@ namespace View
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
         private Game game;  
-        private int counter;
 
         public Lobby()
         {
@@ -36,7 +35,6 @@ namespace View
             ConfigureLobby();
             JoinServices();
             txtChat.IsEnabled = false;
-            counter = 0;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -134,11 +132,6 @@ namespace View
 
         }
 
-        public void ReciveWinner(string username)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ExitPlayer()
         {
             try
@@ -165,6 +158,7 @@ namespace View
         public void ResponseTotalPlayers(int totalPlayers)
         {
             SingletonGameRound.GameRound.TotalPlayers = totalPlayers;
+            lbTotalPlayers.Text = SingletonGameRound.GameRound.TotalPlayers.ToString();
         }
 
         public void SendNextHostGameResponse(bool status)
@@ -180,7 +174,8 @@ namespace View
             if (status)
             {                
                 game = new Game();
-                game.ShowDialog();                
+                game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
+                game.ShowDialog();
             }
         }
 
