@@ -23,7 +23,8 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
-        private Game game = new Game();  
+        private Game game = new Game();
+        private Encryption encryption = new Encryption();
 
         public Lobby()
         {
@@ -83,13 +84,16 @@ namespace View
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
-        {
-            string message = txtMessage.Text;
+        {          
+            string message = txtMessage.Text;       
+
             if (!string.IsNullOrEmpty(message))
             {
                 try
                 {
-                    chatClient.SendMessage(message, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                    string algo = encryption.EncryptionMessage(message);
+
+                    chatClient.SendMessage(algo, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                     txtMessage.Clear();
                 }
                 catch (EndpointNotFoundException)
@@ -146,12 +150,18 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            catch (CommunicationObjectAbortedException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             SingletonPlayer.PlayerClient.PlayerType = false;
         }
 
         public void ReciveMessage(string player, string message)
         {
-            txtChat.Text += player + ":  " + message + "\r\n";
+           string messageDescryption = encryption.DescryptionMessage(message);
+
+            txtChat.Text += player + ":  " + messageDescryption + "\r\n";
         }
 
         public void ResponseTotalPlayers(int totalPlayers)

@@ -1,4 +1,5 @@
 ﻿using Logic;
+using System;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,6 +47,14 @@ namespace View
                 }
             }
             catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(TimeoutException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
