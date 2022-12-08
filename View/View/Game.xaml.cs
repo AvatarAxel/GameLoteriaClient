@@ -431,7 +431,6 @@ namespace View
                 try
                 {
                     client.CreateLoteria(SingletonGameRound.GameRound.CodeGame);
-                    client.StartGameLoteria(SingletonGameRound.GameRound.CodeGame);
                 }
                 catch (EndpointNotFoundException)
                 {
@@ -477,8 +476,11 @@ namespace View
 
         private void btnLoteria_Click(object sender, RoutedEventArgs e)
         {
-            int bet = CalculateBet();
-            client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
+            if (counter==16) 
+            {
+                int bet = CalculateBet();
+                client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
+            }            
         }
 
         private int CalculateBet()
@@ -486,5 +488,25 @@ namespace View
             int totalBet = SingletonGameRound.GameRound.Bet * totalPlayers;
             return totalBet;
         }
+
+        public void StartGame() 
+        {
+            if (SingletonPlayer.PlayerClient.PlayerType)
+            {
+                try
+                {
+                    client.StartGameLoteria(SingletonGameRound.GameRound.CodeGame);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
     }
 }

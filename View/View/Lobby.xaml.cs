@@ -55,6 +55,10 @@ namespace View
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                catch (CommunicationObjectFaultedException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
@@ -72,7 +76,6 @@ namespace View
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
-
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -85,8 +88,7 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-  
-        }
+        } 
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -99,6 +101,10 @@ namespace View
                     txtMessage.Clear();
                 }
                 catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (CommunicationObjectFaultedException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -116,6 +122,10 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            catch (CommunicationObjectFaultedException) 
+            { 
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
+            }
         }
 
         private void ConfigureLobby()
@@ -129,7 +139,6 @@ namespace View
             {
                 btnPlay.Visibility = Visibility.Collapsed;
             }
-
         }
 
         private void ExitPlayer()
@@ -147,7 +156,10 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            SingletonPlayer.PlayerClient.PlayerType = false;
+            finally 
+            {
+                SingletonPlayer.PlayerClient.PlayerType = false;
+            }
         }
 
         public void ReciveMessage(string player, string message)
@@ -172,10 +184,19 @@ namespace View
         public void GoToPlay(bool status)
         {
             if (status)
-            {                
+            {
                 game = new Game();
                 game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
+                game.StartGame();
                 game.ShowDialog();
+            }
+            else 
+            {
+                MessageBox.Show("You don't have enough coins", "Sorry :(", MessageBoxButton.OK, MessageBoxImage.Error);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                ExitPlayer();
+                Close();
             }
         }
 
