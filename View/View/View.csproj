@@ -378,5 +378,8 @@
   <ItemGroup>
     <Resource Include="Images\CardsBeans\Frame 0.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ResourseImage\VE_back.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

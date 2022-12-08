@@ -7,7 +7,7 @@
         xmlns:p="clr-namespace:View.Properties"
         mc:Ignorable="d"
         xmlns:l="clr-namespace:View.Properties"
-        Title="Login" Height="550" Width="800"
+        Title="{x:Static l:Resources.GameLoteria}" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
