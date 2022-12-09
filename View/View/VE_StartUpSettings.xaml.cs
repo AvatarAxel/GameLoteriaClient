@@ -24,39 +24,37 @@ namespace View
         {
             if (ValidationField())
             {
-                GameRoundDTO gameRoundDTO = new GameRoundDTO();
-                CodeGame codeGame = new CodeGame();
-                SendSpeed();
-                SendTypeGame();
-                SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
-                gameRoundDTO.VerificationCode = SingletonGameRound.GameRound.CodeGame;
-                gameRoundDTO.LimitPlayer = int.Parse(cmbxNumberPlayer.Text);
-                gameRoundDTO.Bet = int.Parse(cmbxAmountOfMoney.Text.Substring(1));
-                gameRoundDTO.Speed = SingletonGameRound.GameRound.SpeedGame;
-                gameRoundDTO.PrivateGame = SingletonGameRound.GameRound.PrivateGame;
-
-                try
+                if (SingletonPlayer.PlayerClient.Coin < int.Parse(cmbxAmountOfMoney.Text.Substring(1)))
                 {
-                    gameClient.CreateGame(gameRoundDTO);
-                    chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
-
-                    Lobby lobby = new Lobby();
-                    lobby.Show();
+                    MessageBox.Show("You don't have enough coins", "Sorry :(", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    GameRoundDTO gameRoundDTO = new GameRoundDTO();
+                    CodeGame codeGame = new CodeGame();
+                    SendSpeed();
+                    SendTypeGame();
+                    SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
+                    gameRoundDTO.VerificationCode = SingletonGameRound.GameRound.CodeGame;
+                    gameRoundDTO.LimitPlayer = int.Parse(cmbxNumberPlayer.Text);
+                    gameRoundDTO.Bet = int.Parse(cmbxAmountOfMoney.Text.Substring(1));
+                    gameRoundDTO.Speed = SingletonGameRound.GameRound.SpeedGame;
+                    gameRoundDTO.PrivateGame = SingletonGameRound.GameRound.PrivateGame;
 
                     try
                     {
+                        gameClient.CreateGame(gameRoundDTO);
+                        chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
+                        Lobby lobby = new Lobby();
+                        lobby.Show();
                         gameClient.Close();
                         chatClient.Close();
+                        Close();
                     }
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

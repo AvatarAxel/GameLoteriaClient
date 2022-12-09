@@ -23,6 +23,7 @@ namespace View
         private int counter;
         private List<int> photoListIndex;
         private int totalPlayers;
+        private int counterCells;
         public Game()
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace View
             DeckCardRandom = new FillingOutTheLetter();
             uriList = new List<Uri>();
             counter = 0;
+            counterCells = 0;
             totalPlayers = 0;
             photoListIndex = new List<int>();
             displayedTail = new Queue();
@@ -75,7 +77,7 @@ namespace View
                 Position1Cards.Source = new BitmapImage(uri);
 
                 Position1Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -91,7 +93,7 @@ namespace View
 
                 Position2Cards.Source = new BitmapImage(uri);
                 Position2Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -107,7 +109,7 @@ namespace View
 
                 Position3Cards.Source = new BitmapImage(uri);
                 Position3Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -123,7 +125,7 @@ namespace View
 
                 Position4Cards.Source = new BitmapImage(uri);
                 Position4Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -139,7 +141,7 @@ namespace View
 
                 Position5Cards.Source = new BitmapImage(uri);
                 Position5Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -155,7 +157,7 @@ namespace View
 
                 Position6Cards.Source = new BitmapImage(uri);
                 Position6Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -171,7 +173,7 @@ namespace View
 
                 Position7Cards.Source = new BitmapImage(uri);
                 Position7Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -187,7 +189,7 @@ namespace View
 
                 Position8Cards.Source = new BitmapImage(uri);
                 Position8Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -203,7 +205,7 @@ namespace View
 
                 Position9Cards.Source = new BitmapImage(uri);
                 Position9Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -219,7 +221,7 @@ namespace View
 
                 Position10Cards.Source = new BitmapImage(uri);
                 Position10Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -235,7 +237,7 @@ namespace View
 
                 Position11Cards.Source = new BitmapImage(uri);
                 Position11Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -251,7 +253,7 @@ namespace View
 
                 Position12Cards.Source = new BitmapImage(uri);
                 Position12Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -267,7 +269,7 @@ namespace View
 
                 Position13Cards.Source = new BitmapImage(uri);
                 Position13Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -283,7 +285,7 @@ namespace View
 
                 Position14Cards.Source = new BitmapImage(uri);
                 Position14Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -299,7 +301,7 @@ namespace View
 
                 Position15Cards.Source = new BitmapImage(uri);
                 Position15Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
 
@@ -315,7 +317,7 @@ namespace View
 
                 Position16Cards.Source = new BitmapImage(uri);
                 Position16Cards.IsEnabled = false;
-                counter++;
+                counterCells++;
             }
         }
         
@@ -355,7 +357,6 @@ namespace View
             catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("There are no more files to display", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-
             }
             
         }
@@ -467,20 +468,20 @@ namespace View
         public void SendWinner(string username)
         {
             MessageBox.Show("The winner is: " + username, "We have a winner", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        public void StopGame(bool status)
-        {
-            throw new NotImplementedException();
+            Close();
         }
 
         private void btnLoteria_Click(object sender, RoutedEventArgs e)
         {
-            if (counter==16) 
+            if (counterCells == 16)
             {
                 int bet = CalculateBet();
                 client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
-            }            
+                if (!SingletonPlayer.PlayerClient.RegisteredUser) 
+                {
+                    SingletonPlayer.PlayerClient.Coin = bet;
+                }
+            }
         }
 
         private int CalculateBet()

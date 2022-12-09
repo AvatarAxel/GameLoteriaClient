@@ -589,6 +589,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoins", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsResponse")]
+        bool ValidateCoins(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoins", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsResponse")]
+        System.Threading.Tasks.Task<bool> ValidateCoinsAsync(string username, string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -632,6 +638,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
             return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
+        }
+        
+        public bool ValidateCoins(string username, string verificationCode) {
+            return base.Channel.ValidateCoins(username, verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidateCoinsAsync(string username, string verificationCode) {
+            return base.Channel.ValidateCoinsAsync(username, verificationCode);
         }
     }
     
@@ -890,9 +904,6 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoteriaService/SendWinner")]
         void SendWinner(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoteriaService/StopGame")]
-        void StopGame(bool status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

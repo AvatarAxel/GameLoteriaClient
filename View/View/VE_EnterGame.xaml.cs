@@ -61,6 +61,11 @@ namespace View
                         MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
+                    if (client.ValidateCoins(SingletonPlayer.PlayerClient.Username, codeVerification))
+                    {
+                        MessageBox.Show("Insufficient coins", "Sorry", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;                 
+                    }
                     SingletonGameRound.GameRound.CodeGame = txtCode.Text;
                     Lobby lobby = new Lobby();
                     lobby.Show();

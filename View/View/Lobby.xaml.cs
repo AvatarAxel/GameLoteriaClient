@@ -24,17 +24,13 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
-        private Game game;  
+        private Game game;
 
         public Lobby()
         {
             InitializeComponent();
-            context = new InstanceContext(this);
-            chatClient = new ServiceReference.ChatServiceClient(context);
-            GameServiceClient = new ServiceReference.GameServiceClient(context);
             ConfigureLobby();
             JoinServices();
-            txtChat.IsEnabled = false;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -88,7 +84,7 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        } 
+        }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -134,6 +130,10 @@ namespace View
             {
                 lbCodeVerificationTitle.Text = "Code Verification";
                 lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
+                txtChat.IsEnabled = false;
+                context = new InstanceContext(this);
+                chatClient = new ServiceReference.ChatServiceClient(context);
+                GameServiceClient = new ServiceReference.GameServiceClient(context);
             }
             else
             {
@@ -192,7 +192,7 @@ namespace View
             }
             else 
             {
-                MessageBox.Show("You don't have enough coins", "Sorry :(", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("You don't have enough coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 ExitPlayer();
