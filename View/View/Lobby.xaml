@@ -116,9 +116,12 @@
                              VerticalContentAlignment="Top"
                              HorizontalContentAlignment="Left"
                              Width="300"/>
-                   
-                    
 
+                    <ListBox x:Name="ListPlayers"
+                             Height="167"
+                             d:ItemsSource="{d:SampleData ItemCount=8}" 
+                             Width="190"
+                             Margin="0,-300,550,0"/>
 
                     <TextBox x:Name="txtMessage" 
                                      HorizontalAlignment="Center" 
@@ -137,7 +140,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Click="BtnSend_Click" Height="50" Width="52"
-                            Margin="-370,-30,0,0">
+                            Margin="380,-30,0,0">
 
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -194,6 +197,31 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                    
+                    <Button
+                        x:Name="BtnAddFriend"                        
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Margin="-120,-200,590,0" Click="BtnAddFriend_Click" Width="30" Height="30">
+                        <StackPanel>
+                            <Image Source="/Images/ResourseImage/addFriend.png"
+                                   Stretch="UniformToFill" Height="24" Width="24"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        x:Name="btnSignOutPlayer"                        
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Margin="-130,-200,500,0" Click="BtnSignOutPlayer_Click" Width="30" Height="30">
+                        <StackPanel>
+                            <Image Source="/Images/ResourseImage/sigOutPlayer.png"
+                                   Stretch="UniformToFill" Height="24" Width="24"/>
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
             </Grid>
         </Border>

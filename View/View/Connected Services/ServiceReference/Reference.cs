@@ -670,6 +670,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/StartGame")]
         System.Threading.Tasks.Task StartGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/BanPlayer")]
+        void BanPlayer(string verificationCode, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/BanPlayer")]
+        System.Threading.Tasks.Task BanPlayerAsync(string verificationCode, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -689,6 +695,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToPlay")]
         void GoToPlay(bool status);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetListPlayer")]
+        void GetListPlayer(string[] PlayerLobby);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/BanPlayerResponse")]
+        void BanPlayerResponse(bool status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -781,6 +793,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task StartGameAsync(string verificationCode) {
             return base.Channel.StartGameAsync(verificationCode);
+        }
+        
+        public void BanPlayer(string verificationCode, string username) {
+            base.Channel.BanPlayer(verificationCode, username);
+        }
+        
+        public System.Threading.Tasks.Task BanPlayerAsync(string verificationCode, string username) {
+            return base.Channel.BanPlayerAsync(verificationCode, username);
         }
     }
     

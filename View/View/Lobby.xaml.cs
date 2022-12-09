@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
@@ -60,12 +61,19 @@ namespace View
             {
                 ExitPlayer();
             }
-            GameServiceClient.Close();
-            chatClient.Close();
+
+            try
+            {
+                GameServiceClient.Close();
+                chatClient.Close();
+            }
+            catch(CommunicationObjectAbortedException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
-
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -91,9 +99,9 @@ namespace View
             {
                 try
                 {
-                    string algo = encryption.EncryptionMessage(message);
+                    string messageEncryptation = encryption.EncryptionMessage(message);
 
-                    chatClient.SendMessage(algo, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                    chatClient.SendMessage(messageEncryptation, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                     txtMessage.Clear();
                 }
                 catch (EndpointNotFoundException)
@@ -126,6 +134,7 @@ namespace View
             else
             {
                 btnPlay.Visibility = Visibility.Collapsed;
+                btnSignOutPlayer.Visibility = Visibility.Collapsed;
             }
 
         }
@@ -190,6 +199,48 @@ namespace View
             game.ReciveCard(idCard);
         }
 
-       
+        public void GetListPlayer(string[] PlayerLobby)
+        {
+            ListPlayers.Items.Clear();
+            for (int i = 0; i < PlayerLobby.Length; i++)
+            {
+                ListPlayers.Items.Add(PlayerLobby[i]);
+            }
+        }
+
+        private void BtnAddFriend_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Hola");
+        }
+
+        private void BtnSignOutPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            if(ListPlayers.SelectedIndex > 0)
+            {
+                string username = ListPlayers.SelectedItem.ToString();
+                if (username != SingletonPlayer.PlayerClient.Username)
+                {
+                    GameServiceClient.BanPlayer(SingletonGameRound.GameRound.CodeGame, username);
+                }
+                else
+                {
+                    MessageBox.Show("No te puedes autobanear", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }   
+        }
+
+        public void BanPlayerResponse(bool status)
+        {
+            if (status)
+            {
+                GameServiceClient.Close();
+                chatClient.Close();
+                MessageBox.Show("You have been expelled", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            
+            }
+        }
     }
 }

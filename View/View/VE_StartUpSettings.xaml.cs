@@ -156,5 +156,14 @@ namespace View
             }
         }
 
+        public void GetListPlayer(string[] PlayerLobby)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BanPlayerResponse(bool status)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

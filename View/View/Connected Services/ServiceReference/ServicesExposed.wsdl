@@ -69,6 +69,7 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthenticationService_AuthenticationLogin_InputMessage">
@@ -161,6 +162,9 @@
   <wsdl:message name="IGameService_StartGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
+  <wsdl:message name="IGameService_BanPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:BanPlayer" />
+  </wsdl:message>
   <wsdl:message name="IGameService_ReciveWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
@@ -175,6 +179,12 @@
   </wsdl:message>
   <wsdl:message name="IGameService_GoToPlay_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GoToPlay" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetListPlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetListPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_BanPlayerResponse_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:BanPlayerResponse" />
   </wsdl:message>
   <wsdl:message name="IChangeUsernameService_ChangeUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangeUsername" />
@@ -275,6 +285,9 @@
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/StartGame" message="tns:IGameService_StartGame_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BanPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/BanPlayer" message="tns:IGameService_BanPlayer_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ReciveWinner" message="tns:IGameService_ReciveWinner_OutputCallbackMessage" />
     </wsdl:operation>
@@ -289,6 +302,12 @@
     </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GoToPlay" message="tns:IGameService_GoToPlay_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListPlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetListPlayer" message="tns:IGameService_GetListPlayer_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BanPlayerResponse">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/BanPlayerResponse" message="tns:IGameService_BanPlayerResponse_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChangeUsernameService">
@@ -484,6 +503,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="BanPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/BanPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ReciveWinner">
       <soap12:operation soapAction="http://tempuri.org/IGameService/ReciveWinner" style="document" />
       <wsdl:output>
@@ -510,6 +535,18 @@
     </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <soap12:operation soapAction="http://tempuri.org/IGameService/GoToPlay" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/GetListPlayer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BanPlayerResponse">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/BanPlayerResponse" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

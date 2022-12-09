@@ -184,6 +184,9 @@
     <None Include="Connected Services\ServiceReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\ServicesExposed.wsdl" />
     <None Include="Connected Services\ServiceReference\View.ServiceReference.PlayerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -380,6 +383,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ResourseImage\VE_back.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ResourseImage\addFriend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ResourseImage\sigOutPlayer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
