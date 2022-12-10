@@ -60,12 +60,6 @@ namespace View
                     }
                     Close();
                 }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
-                    Close();
-                }
             }
         }
 
