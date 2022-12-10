@@ -40,7 +40,7 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             Close();
@@ -77,7 +77,7 @@ namespace View
                     }
                     catch (EndpointNotFoundException)
                     {
-                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                         Close();
                     }
                 }
@@ -85,7 +85,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("This email does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.thisEmailDoesNotExist, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -94,18 +94,18 @@ namespace View
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPasswordValidation.Password))
             {
-                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.rectifyTheFields, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             FieldValidation fieldValidation = new FieldValidation();
             if (!fieldValidation.PasswordValidation(txtPassword.Password, txtPasswordValidation.Password))
             {
-                MessageBox.Show("Passwords do not match", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.passwordsDoNotMatch, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             if (!fieldValidation.ValidationEmailFormat(txtEmail.Text))
             {
-                MessageBox.Show("Invalid mail format", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.invalidMailFormat, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
@@ -116,21 +116,21 @@ namespace View
         {
             if (status)
             {
-                MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.youHaveSuccessfullyUpdated, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 try
                 {
                     client.Close();
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
                 Close();
             }
             else
             {
-                MessageBox.Show("Could not update successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.couldNotUpdateSuccessfully, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

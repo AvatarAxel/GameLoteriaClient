@@ -126,6 +126,9 @@
   <data name="changeThePassword" xml:space="preserve">
     <value>Cambiar contraseña</value>
   </data>
+  <data name="checkYourEmail" xml:space="preserve">
+    <value>Revisa tu correo</value>
+  </data>
   <data name="codePlay" xml:space="preserve">
     <value>Código del juego</value>
   </data>
@@ -141,11 +144,26 @@
   <data name="confirmPassword" xml:space="preserve">
     <value>Confirmar Contraseña</value>
   </data>
+  <data name="correctCode" xml:space="preserve">
+    <value>Codigo correcti</value>
+  </data>
+  <data name="couldNotSendEmail" xml:space="preserve">
+    <value>No se pudo enviar el correo</value>
+  </data>
+  <data name="couldNotUpdateSuccessfully" xml:space="preserve">
+    <value>No se ha podido actualizar correctamente</value>
+  </data>
   <data name="createGame" xml:space="preserve">
     <value>Crear Juego</value>
   </data>
   <data name="dateOfBirth" xml:space="preserve">
     <value>Fecha de nacimiento</value>
+  </data>
+  <data name="deficientPassword" xml:space="preserve">
+    <value>Contraseña debil</value>
+  </data>
+  <data name="doNotRemoveYourself" xml:space="preserve">
+    <value>No te autoquites</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>Correo Electronico</value>
@@ -162,11 +180,26 @@
   <data name="enterTheEmail" xml:space="preserve">
     <value>Ingresa el correo</value>
   </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="forgotYourPassword" xml:space="preserve">
     <value>¿Olvidaste tu contraseña?</value>
   </data>
   <data name="gameLoteria" xml:space="preserve">
     <value>Juego "Loteria"</value>
+  </data>
+  <data name="incompleteDateOfBirth" xml:space="preserve">
+    <value>Fecha de nacimiento incompleta</value>
+  </data>
+  <data name="invalidFormat" xml:space="preserve">
+    <value>Formato no valido</value>
+  </data>
+  <data name="invalidMailFormat" xml:space="preserve">
+    <value>Formato de correo invalido</value>
+  </data>
+  <data name="invalidNickname" xml:space="preserve">
+    <value>Apodo no valido</value>
   </data>
   <data name="joinGame" xml:space="preserve">
     <value>Entrar a la Partida</value>
@@ -183,14 +216,29 @@
   <data name="loteria" xml:space="preserve">
     <value>Loteria</value>
   </data>
+  <data name="mailAlreadyRegistered" xml:space="preserve">
+    <value>Correo existente</value>
+  </data>
   <data name="mainMenu" xml:space="preserve">
     <value>Ménu</value>
+  </data>
+  <data name="nameIsInvalid" xml:space="preserve">
+    <value>El nombre es invalido</value>
+  </data>
+  <data name="nicknameAlreadyRegistered" xml:space="preserve">
+    <value>Apodo existente</value>
   </data>
   <data name="numberPlayer" xml:space="preserve">
     <value>Numero de jugadores</value>
   </data>
+  <data name="offlinePleaseTryAgainLater" xml:space="preserve">
+    <value>Desconectado, intentelo más tarde</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>Contraseña</value>
+  </data>
+  <data name="passwordsDoNotMatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
   </data>
   <data name="play" xml:space="preserve">
     <value>Jugar</value>
@@ -207,11 +255,20 @@
   <data name="quickly" xml:space="preserve">
     <value>Rápido</value>
   </data>
+  <data name="rectifyTheFields" xml:space="preserve">
+    <value>Retifica los campos</value>
+  </data>
   <data name="register" xml:space="preserve">
     <value>Resgitrate</value>
   </data>
   <data name="registerAt" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="registrationSuccessful" xml:space="preserve">
+    <value>Registro Exitoso</value>
+  </data>
+  <data name="roomFull" xml:space="preserve">
+    <value>Sala llena</value>
   </data>
   <data name="send" xml:space="preserve">
     <value>Enviar</value>
@@ -225,6 +282,15 @@
   <data name="standard" xml:space="preserve">
     <value>Normal</value>
   </data>
+  <data name="theUsernamePasswordYouEnteredAreNotRegistered" xml:space="preserve">
+    <value>El apodo y/o la contraseña no existe</value>
+  </data>
+  <data name="thisEmailDoesNotExist" xml:space="preserve">
+    <value>Este correo electrónico no existe</value>
+  </data>
+  <data name="thisRoomDoesNotExist" xml:space="preserve">
+    <value>Esta sala no existe</value>
+  </data>
   <data name="typeOfItem" xml:space="preserve">
     <value>Tipo de partida</value>
   </data>
@@ -234,10 +300,34 @@
   <data name="username" xml:space="preserve">
     <value>Apodo</value>
   </data>
+  <data name="verificationCodeDoesNotMatch" xml:space="preserve">
+    <value>El codigó no es el correcto</value>
+  </data>
   <data name="verificationEmail" xml:space="preserve">
     <value>Revisar tu coreeo</value>
   </data>
+  <data name="warning" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
   <data name="welcomeTo" xml:space="preserve">
     <value>Bienvenidos</value>
+  </data>
+  <data name="youAreNOTRegisteredYet" xml:space="preserve">
+    <value>Aun NO estás registrado, REGISTRASE AHORA</value>
+  </data>
+  <data name="youCannotLogInTwice" xml:space="preserve">
+    <value>No puedes conectarte más de una vez</value>
+  </data>
+  <data name="youCantBeYourOwnFriend" xml:space="preserve">
+    <value>No puedes ser tu propio amigo</value>
+  </data>
+  <data name="youHaveBeenExpelled" xml:space="preserve">
+    <value>Has sido expulsado</value>
+  </data>
+  <data name="youHaveSuccessfullyUpdated" xml:space="preserve">
+    <value>Ha actualizado correctamente</value>
+  </data>
+  <data name="yourEarnedCoinsWillNotBeSaved" xml:space="preserve">
+    <value>Las monedas ganadas no se guardarán</value>
   </data>
 </root>

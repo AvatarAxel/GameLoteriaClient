@@ -51,16 +51,16 @@ namespace View
                 bool changeUsername = client.ChangeUsername(SingletonPlayer.PlayerClient.Email, lbUsername.Text);
                 if (changeUsername)
                 {
-                    MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Langs.Lang.youHaveSuccessfullyUpdated, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Could not update successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.couldNotUpdateSuccessfully, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Name is invalid", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.nameIsInvalid, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

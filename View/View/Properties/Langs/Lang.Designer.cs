@@ -106,6 +106,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check your email.
+        /// </summary>
+        public static string checkYourEmail {
+            get {
+                return ResourceManager.GetString("checkYourEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code Play.
         /// </summary>
         public static string codePlay {
@@ -151,6 +160,33 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Correct code.
+        /// </summary>
+        public static string correctCode {
+            get {
+                return ResourceManager.GetString("correctCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not send email.
+        /// </summary>
+        public static string couldNotSendEmail {
+            get {
+                return ResourceManager.GetString("couldNotSendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not update successfully.
+        /// </summary>
+        public static string couldNotUpdateSuccessfully {
+            get {
+                return ResourceManager.GetString("couldNotUpdateSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Game.
         /// </summary>
         public static string createGame {
@@ -165,6 +201,24 @@ namespace View.Properties.Langs {
         public static string dateOfBirth {
             get {
                 return ResourceManager.GetString("dateOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deficient password.
+        /// </summary>
+        public static string deficientPassword {
+            get {
+                return ResourceManager.GetString("deficientPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not remove yourself.
+        /// </summary>
+        public static string doNotRemoveYourself {
+            get {
+                return ResourceManager.GetString("doNotRemoveYourself", resourceCulture);
             }
         }
         
@@ -223,6 +277,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot Your Password.
         /// </summary>
         public static string forgotYourPassword {
@@ -237,6 +300,42 @@ namespace View.Properties.Langs {
         public static string gameLoteria {
             get {
                 return ResourceManager.GetString("gameLoteria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incomplete date of birth.
+        /// </summary>
+        public static string incompleteDateOfBirth {
+            get {
+                return ResourceManager.GetString("incompleteDateOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format.
+        /// </summary>
+        public static string invalidFormat {
+            get {
+                return ResourceManager.GetString("invalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid mail format.
+        /// </summary>
+        public static string invalidMailFormat {
+            get {
+                return ResourceManager.GetString("invalidMailFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid nickname.
+        /// </summary>
+        public static string invalidNickname {
+            get {
+                return ResourceManager.GetString("invalidNickname", resourceCulture);
             }
         }
         
@@ -286,11 +385,38 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail already registered.
+        /// </summary>
+        public static string mailAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("mailAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main Menu.
         /// </summary>
         public static string mainMenu {
             get {
                 return ResourceManager.GetString("mainMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name is invalid.
+        /// </summary>
+        public static string nameIsInvalid {
+            get {
+                return ResourceManager.GetString("nameIsInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nickname already registered.
+        /// </summary>
+        public static string nicknameAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("nicknameAlreadyRegistered", resourceCulture);
             }
         }
         
@@ -304,11 +430,29 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offline, please try again later.
+        /// </summary>
+        public static string offlinePleaseTryAgainLater {
+            get {
+                return ResourceManager.GetString("offlinePleaseTryAgainLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string password {
             get {
                 return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match.
+        /// </summary>
+        public static string passwordsDoNotMatch {
+            get {
+                return ResourceManager.GetString("passwordsDoNotMatch", resourceCulture);
             }
         }
         
@@ -340,6 +484,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rectify the fields.
+        /// </summary>
+        public static string rectifyTheFields {
+            get {
+                return ResourceManager.GetString("rectifyTheFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string register {
@@ -354,6 +507,24 @@ namespace View.Properties.Langs {
         public static string registerAt {
             get {
                 return ResourceManager.GetString("registerAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration successful.
+        /// </summary>
+        public static string registrationSuccessful {
+            get {
+                return ResourceManager.GetString("registrationSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room full.
+        /// </summary>
+        public static string roomFull {
+            get {
+                return ResourceManager.GetString("roomFull", resourceCulture);
             }
         }
         
@@ -403,6 +574,33 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The username and/or password you entered are not registered.
+        /// </summary>
+        public static string theUsernamePasswordYouEnteredAreNotRegistered {
+            get {
+                return ResourceManager.GetString("theUsernamePasswordYouEnteredAreNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This email does not exist.
+        /// </summary>
+        public static string thisEmailDoesNotExist {
+            get {
+                return ResourceManager.GetString("thisEmailDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This room does not exist.
+        /// </summary>
+        public static string thisRoomDoesNotExist {
+            get {
+                return ResourceManager.GetString("thisRoomDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type Of Item.
         /// </summary>
         public static string typeOfItem {
@@ -430,6 +628,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verification code does not match.
+        /// </summary>
+        public static string verificationCodeDoesNotMatch {
+            get {
+                return ResourceManager.GetString("verificationCodeDoesNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verification Email.
         /// </summary>
         public static string verificationEmail {
@@ -439,11 +646,74 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome To!!.
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string warning {
+            get {
+                return ResourceManager.GetString("warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
         /// </summary>
         public static string welcomeTo {
             get {
                 return ResourceManager.GetString("welcomeTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are NOT registered yet, REGISTER NOW&quot;.
+        /// </summary>
+        public static string youAreNOTRegisteredYet {
+            get {
+                return ResourceManager.GetString("youAreNOTRegisteredYet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot log in twice.
+        /// </summary>
+        public static string youCannotLogInTwice {
+            get {
+                return ResourceManager.GetString("youCannotLogInTwice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t be your own friend.
+        /// </summary>
+        public static string youCantBeYourOwnFriend {
+            get {
+                return ResourceManager.GetString("youCantBeYourOwnFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have been expelled.
+        /// </summary>
+        public static string youHaveBeenExpelled {
+            get {
+                return ResourceManager.GetString("youHaveBeenExpelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully updated.
+        /// </summary>
+        public static string youHaveSuccessfullyUpdated {
+            get {
+                return ResourceManager.GetString("youHaveSuccessfullyUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your earned coins will not be saved.
+        /// </summary>
+        public static string yourEarnedCoinsWillNotBeSaved {
+            get {
+                return ResourceManager.GetString("yourEarnedCoinsWillNotBeSaved", resourceCulture);
             }
         }
     }

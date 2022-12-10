@@ -56,7 +56,7 @@ namespace View
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
             }
@@ -72,12 +72,12 @@ namespace View
             }
             catch(CommunicationObjectAbortedException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             catch (CommunicationException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             MainWindow mainWindow = new MainWindow();
@@ -95,7 +95,7 @@ namespace View
             }
             catch(TimeoutException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
   
@@ -116,7 +116,7 @@ namespace View
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
             }
@@ -131,7 +131,7 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
         }
@@ -165,17 +165,17 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             catch (CommunicationObjectFaultedException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             catch (CommunicationObjectAbortedException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             SingletonPlayer.PlayerClient.PlayerType = false;
@@ -251,7 +251,7 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("You can't be your own friend", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.youCantBeYourOwnFriend, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -267,7 +267,7 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("Do not remove yourself", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.doNotRemoveYourself, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }   
         }
@@ -278,11 +278,10 @@ namespace View
             {
                 GameServiceClient.Close();
                 chatClient.Close();
-                MessageBox.Show("You have been expelled", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.youHaveBeenExpelled, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Close();
-            
             }
         }
     }

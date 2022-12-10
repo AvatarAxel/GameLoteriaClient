@@ -55,7 +55,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("You are NOT registered yet, REGISTER NOW", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.youAreNOTRegisteredYet, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -76,7 +76,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("You are NOT registered yet, REGISTER NOW", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.youAreNOTRegisteredYet, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

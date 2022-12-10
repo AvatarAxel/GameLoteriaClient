@@ -48,18 +48,18 @@ namespace View
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
                 catch (CommunicationException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
             }
             else
             {
-                MessageBox.Show("The username and/or password you entered are not registered.", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.theUsernamePasswordYouEnteredAreNotRegistered, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -77,7 +77,7 @@ namespace View
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Password) || string.IsNullOrWhiteSpace(txtUser.Text))
             {
-                MessageBox.Show("Rectify the fields", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.rectifyTheFields, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else 
             {               
@@ -95,17 +95,17 @@ namespace View
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
                 catch (CommunicationException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
                 catch (TimeoutException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
             }    
@@ -122,7 +122,7 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             Close();
@@ -139,7 +139,7 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             Close();
@@ -159,12 +159,12 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             Close();
             mainWindow.Show();
-            MessageBox.Show("Your earned coins will not be saved", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(Properties.Langs.Lang.yourEarnedCoinsWillNotBeSaved, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

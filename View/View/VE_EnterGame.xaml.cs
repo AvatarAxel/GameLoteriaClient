@@ -41,7 +41,7 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 login.Show();
                 Close();
             }
@@ -56,17 +56,17 @@ namespace View
                 {
                     if (!client.ResponseCodeExist(codeVerification))
                     {
-                        MessageBox.Show("This room does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(Properties.Langs.Lang.thisRoomDoesNotExist, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                     if (client.ResponseCompleteLobby(codeVerification))
                     {
-                        MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Langs.Lang.roomFull, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                     if (client.ResponseUsernameExist(codeVerification, SingletonPlayer.PlayerClient.Username))
                     {
-                        MessageBox.Show("You cannot log in twice", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Langs.Lang.youCannotLogInTwice, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
                     SingletonGameRound.GameRound.CodeGame = txtCode.Text;
@@ -78,7 +78,7 @@ namespace View
                 }
                 catch (EndpointNotFoundException)
                 {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     login.Show();
                     Close();
                 }

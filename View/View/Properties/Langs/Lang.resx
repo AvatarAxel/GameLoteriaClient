@@ -126,6 +126,9 @@
   <data name="changeThePassword" xml:space="preserve">
     <value>Change The Password</value>
   </data>
+  <data name="checkYourEmail" xml:space="preserve">
+    <value>Check your email</value>
+  </data>
   <data name="codePlay" xml:space="preserve">
     <value>Code Play</value>
   </data>
@@ -141,11 +144,26 @@
   <data name="confirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
+  <data name="correctCode" xml:space="preserve">
+    <value>Correct code</value>
+  </data>
+  <data name="couldNotSendEmail" xml:space="preserve">
+    <value>Could not send email</value>
+  </data>
+  <data name="couldNotUpdateSuccessfully" xml:space="preserve">
+    <value>Could not update successfully</value>
+  </data>
   <data name="createGame" xml:space="preserve">
     <value>Create Game</value>
   </data>
   <data name="dateOfBirth" xml:space="preserve">
     <value>Date Of Birth</value>
+  </data>
+  <data name="deficientPassword" xml:space="preserve">
+    <value>Deficient password</value>
+  </data>
+  <data name="doNotRemoveYourself" xml:space="preserve">
+    <value>Do not remove yourself</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>Email</value>
@@ -165,11 +183,26 @@
   <data name="enterTheEmail" xml:space="preserve">
     <value>Enter The Email</value>
   </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="forgotYourPassword" xml:space="preserve">
     <value>Forgot Your Password</value>
   </data>
   <data name="gameLoteria" xml:space="preserve">
     <value>Game Loteria</value>
+  </data>
+  <data name="incompleteDateOfBirth" xml:space="preserve">
+    <value>Incomplete date of birth</value>
+  </data>
+  <data name="invalidFormat" xml:space="preserve">
+    <value>Invalid format</value>
+  </data>
+  <data name="invalidMailFormat" xml:space="preserve">
+    <value>Invalid mail format</value>
+  </data>
+  <data name="invalidNickname" xml:space="preserve">
+    <value>Invalid nickname</value>
   </data>
   <data name="joinGame" xml:space="preserve">
     <value>Join Game</value>
@@ -186,14 +219,29 @@
   <data name="loteria" xml:space="preserve">
     <value>Loteria</value>
   </data>
+  <data name="mailAlreadyRegistered" xml:space="preserve">
+    <value>Mail already registered</value>
+  </data>
   <data name="mainMenu" xml:space="preserve">
     <value>Main Menu</value>
+  </data>
+  <data name="nameIsInvalid" xml:space="preserve">
+    <value>Name is invalid</value>
+  </data>
+  <data name="nicknameAlreadyRegistered" xml:space="preserve">
+    <value>Nickname already registered</value>
   </data>
   <data name="numberPlayer" xml:space="preserve">
     <value>Number of Players</value>
   </data>
+  <data name="offlinePleaseTryAgainLater" xml:space="preserve">
+    <value>Offline, please try again later</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="passwordsDoNotMatch" xml:space="preserve">
+    <value>Passwords do not match</value>
   </data>
   <data name="play" xml:space="preserve">
     <value>Play</value>
@@ -210,11 +258,20 @@
   <data name="quickly" xml:space="preserve">
     <value>Quickly</value>
   </data>
+  <data name="rectifyTheFields" xml:space="preserve">
+    <value>Rectify the fields</value>
+  </data>
   <data name="register" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="registerAt" xml:space="preserve">
     <value>Register At</value>
+  </data>
+  <data name="registrationSuccessful" xml:space="preserve">
+    <value>Registration successful</value>
+  </data>
+  <data name="roomFull" xml:space="preserve">
+    <value>Room full</value>
   </data>
   <data name="send" xml:space="preserve">
     <value>Send</value>
@@ -231,6 +288,15 @@
   <data name="standard" xml:space="preserve">
     <value>Standard</value>
   </data>
+  <data name="theUsernamePasswordYouEnteredAreNotRegistered" xml:space="preserve">
+    <value>The username and/or password you entered are not registered</value>
+  </data>
+  <data name="thisEmailDoesNotExist" xml:space="preserve">
+    <value>This email does not exist</value>
+  </data>
+  <data name="thisRoomDoesNotExist" xml:space="preserve">
+    <value>This room does not exist</value>
+  </data>
   <data name="typeOfItem" xml:space="preserve">
     <value>Type Of Item</value>
   </data>
@@ -240,10 +306,34 @@
   <data name="username" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="verificationCodeDoesNotMatch" xml:space="preserve">
+    <value>Verification code does not match</value>
+  </data>
   <data name="verificationEmail" xml:space="preserve">
     <value>Verification Email</value>
   </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
   <data name="welcomeTo" xml:space="preserve">
-    <value>Welcome To!!</value>
+    <value>Welcome</value>
+  </data>
+  <data name="youAreNOTRegisteredYet" xml:space="preserve">
+    <value>You are NOT registered yet, REGISTER NOW"</value>
+  </data>
+  <data name="youCannotLogInTwice" xml:space="preserve">
+    <value>You cannot log in twice</value>
+  </data>
+  <data name="youCantBeYourOwnFriend" xml:space="preserve">
+    <value>You can't be your own friend</value>
+  </data>
+  <data name="youHaveBeenExpelled" xml:space="preserve">
+    <value>You have been expelled</value>
+  </data>
+  <data name="youHaveSuccessfullyUpdated" xml:space="preserve">
+    <value>You have successfully updated</value>
+  </data>
+  <data name="yourEarnedCoinsWillNotBeSaved" xml:space="preserve">
+    <value>Your earned coins will not be saved</value>
   </data>
 </root>
