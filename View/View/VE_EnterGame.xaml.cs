@@ -8,6 +8,7 @@ namespace View
     public partial class VE_EnterGameCode : Window
     {
         private ServiceReference.JoinGameServiceClient client;
+        private Login login = new Login();
         public VE_EnterGameCode()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             catch (CommunicationObjectFaultedException)
             {

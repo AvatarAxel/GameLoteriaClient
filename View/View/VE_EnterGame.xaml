@@ -14,7 +14,7 @@
     
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/ResourseImage/back.jpg"
+            <ImageBrush ImageSource="/Images/ResourseImage/VE_back.jpeg"
                         Stretch="None"/>
         </Border.Background>
         <Border CornerRadius="10"                    

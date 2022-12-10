@@ -127,7 +127,7 @@
     <value>Add</value>
   </data>
   <data name="amount_of_money_bet" xml:space="preserve">
-    <value>amount of money bet</value>
+    <value>Amount of money bet</value>
   </data>
   <data name="bet_amount" xml:space="preserve">
     <value>Bet amount</value>
@@ -189,6 +189,9 @@
   <data name="friend_list" xml:space="preserve">
     <value>Friend list</value>
   </data>
+  <data name="game_loteria" xml:space="preserve">
+    <value>Game Loteria</value>
+  </data>
   <data name="game_type" xml:space="preserve">
     <value>Game type</value>
   </data>
@@ -211,7 +214,7 @@
     <value>Orbed</value>
   </data>
   <data name="passwords" xml:space="preserve">
-    <value>Passwords</value>
+    <value>Password</value>
   </data>
   <data name="play_as_a_guest" xml:space="preserve">
     <value>Play as a guest</value>
@@ -225,17 +228,14 @@
   <data name="recent_people" xml:space="preserve">
     <value>Recent people</value>
   </data>
-  <data name="red" xml:space="preserve">
-    <value>Red</value>
-  </data>
   <data name="register_user" xml:space="preserve">
-    <value>Register user</value>
-  </data>
-  <data name="regular" xml:space="preserve">
-    <value>regular</value>
+    <value>Register new user</value>
   </data>
   <data name="remove_Friend" xml:space="preserve">
     <value>Remove</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>Reset</value>
   </data>
   <data name="select_a_card" xml:space="preserve">
     <value>Select a card</value>
@@ -290,5 +290,8 @@
   </data>
   <data name="username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="welcome_to_the_game" xml:space="preserve">
+    <value>Welcome To The Game</value>
   </data>
 </root>

@@ -184,6 +184,9 @@
     <None Include="Connected Services\ServiceReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\ServicesExposed.wsdl" />
     <None Include="Connected Services\ServiceReference\View.ServiceReference.PlayerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -361,22 +364,13 @@
     <Resource Include="Images\CardsBeans\Frame 0.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
+    <Resource Include="Images\ResourseImage\VE_back.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\item.disco" />
+    <Resource Include="Images\ResourseImage\addFriend.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Resource Include="Images\ResourseImage\sigOutPlayer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

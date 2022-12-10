@@ -23,5 +23,38 @@ namespace Logic
                 return hashedPassword;
             }
         }
+        public string EncryptionMessage(string message)
+        {
+            string hash = "414v3rG4unpi@ns h1Ham_terxd xdddd 2wxv54t78 fu2jnkml<";
+            byte[] bytes = UTF8Encoding.UTF8.GetBytes(message);
+
+            MD5 md5 = MD5.Create();
+            TripleDES tripledes = TripleDES.Create();
+
+            tripledes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+            tripledes.Mode = CipherMode.ECB;
+
+            ICryptoTransform transform = tripledes.CreateEncryptor();
+            byte[] result = transform.TransformFinalBlock(bytes, 0, bytes.Length);
+
+            return Convert.ToBase64String(result);
+        }
+
+        public string DescryptionMessage(string messageEncryptation)
+        {
+            string hash = "414v3rG4unpi@ns h1Ham_terxd xdddd 2wxv54t78 fu2jnkml<";
+            byte[] bytes = Convert.FromBase64String(messageEncryptation);
+
+            MD5 md5 = MD5.Create();
+            TripleDES tripledes = TripleDES.Create();
+
+            tripledes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+            tripledes.Mode = CipherMode.ECB;
+
+            ICryptoTransform transform = tripledes.CreateDecryptor();
+            byte[] result = transform.TransformFinalBlock(bytes, 0, bytes.Length);
+
+            return UTF8Encoding.UTF8.GetString(result);
+        }
     }
 }
