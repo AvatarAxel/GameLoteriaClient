@@ -31,6 +31,7 @@ namespace View
             InitializeComponent();
             ConfigureLobby();
             JoinServices();
+            txtChat.IsEnabled = false;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -113,27 +114,31 @@ namespace View
             {
                 GameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (CommunicationObjectFaultedException) 
-            { 
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
+            catch (CommunicationObjectFaultedException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void ConfigureLobby()
         {
+            context = new InstanceContext(this);
+            chatClient = new ServiceReference.ChatServiceClient(context);
+            GameServiceClient = new ServiceReference.GameServiceClient(context);
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
                 lbCodeVerificationTitle.Text = "Code Verification";
                 lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
-                txtChat.IsEnabled = false;
-                context = new InstanceContext(this);
-                chatClient = new ServiceReference.ChatServiceClient(context);
-                GameServiceClient = new ServiceReference.GameServiceClient(context);
             }
             else
             {
@@ -189,6 +194,7 @@ namespace View
                 game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
                 game.StartGame();
                 game.ShowDialog();
+                GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             else 
             {
@@ -200,5 +206,11 @@ namespace View
             }
         }
 
+        public void UpdateBetCoinsResponse(int coins, int bet)
+        {
+            SingletonPlayer.PlayerClient.Coin = coins;
+            SingletonGameRound.GameRound.Bet = bet;
+            lbCoins.Text = SingletonPlayer.PlayerClient.Coin.ToString();
+        }
     }
 }

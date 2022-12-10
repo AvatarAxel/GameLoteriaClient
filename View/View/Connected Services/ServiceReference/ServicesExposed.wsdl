@@ -145,11 +145,17 @@
   <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCompleteLobbyResponse" />
   </wsdl:message>
-  <wsdl:message name="IJoinGameService_ValidateCoins_InputMessage">
-    <wsdl:part name="parameters" element="tns:ValidateCoins" />
+  <wsdl:message name="IJoinGameService_ValidateCoinsUnregistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsUnregistered" />
   </wsdl:message>
-  <wsdl:message name="IJoinGameService_ValidateCoins_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ValidateCoinsResponse" />
+  <wsdl:message name="IJoinGameService_ValidateCoinsUnregistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsUnregisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ValidateCoinsRegistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ValidateCoinsRegistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsRegisteredResponse" />
   </wsdl:message>
   <wsdl:message name="IGameService_JoinGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinGame" />
@@ -172,6 +178,9 @@
   <wsdl:message name="IGameService_UpdateTotalPlayers_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateTotalPlayers" />
   </wsdl:message>
+  <wsdl:message name="IGameService_UpdateBetCoins_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBetCoins" />
+  </wsdl:message>
   <wsdl:message name="IGameService_ResponseTotalPlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseTotalPlayers" />
   </wsdl:message>
@@ -180,6 +189,9 @@
   </wsdl:message>
   <wsdl:message name="IGameService_GoToPlay_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GoToPlay" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_UpdateBetCoinsResponse_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBetCoinsResponse" />
   </wsdl:message>
   <wsdl:message name="IChangeUsernameService_ChangeUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangeUsername" />
@@ -278,9 +290,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse" message="tns:IJoinGameService_ResponseCompleteLobby_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ValidateCoins">
-      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoins" message="tns:IJoinGameService_ValidateCoins_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsResponse" message="tns:IJoinGameService_ValidateCoins_OutputMessage" />
+    <wsdl:operation name="ValidateCoinsUnregistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsUnregistered" message="tns:IJoinGameService_ValidateCoinsUnregistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsUnregisteredResponse" message="tns:IJoinGameService_ValidateCoinsUnregistered_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoinsRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsRegistered" message="tns:IJoinGameService_ValidateCoinsRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsRegisteredResponse" message="tns:IJoinGameService_ValidateCoinsRegistered_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGameService">
@@ -305,6 +321,9 @@
     <wsdl:operation name="UpdateTotalPlayers">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/UpdateTotalPlayers" message="tns:IGameService_UpdateTotalPlayers_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/UpdateBetCoins" message="tns:IGameService_UpdateBetCoins_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseTotalPlayers" message="tns:IGameService_ResponseTotalPlayers_OutputCallbackMessage" />
     </wsdl:operation>
@@ -313,6 +332,9 @@
     </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GoToPlay" message="tns:IGameService_GoToPlay_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoinsResponse">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/UpdateBetCoinsResponse" message="tns:IGameService_UpdateBetCoinsResponse_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChangeUsernameService">
@@ -482,8 +504,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ValidateCoins">
-      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ValidateCoins" style="document" />
+    <wsdl:operation name="ValidateCoinsUnregistered">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ValidateCoinsUnregistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoinsRegistered">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ValidateCoinsRegistered" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -537,6 +568,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoins">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateBetCoins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseTotalPlayers" style="document" />
       <wsdl:output>
@@ -551,6 +588,12 @@
     </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <soap12:operation soapAction="http://tempuri.org/IGameService/GoToPlay" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoinsResponse">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateBetCoinsResponse" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

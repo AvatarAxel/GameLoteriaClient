@@ -163,7 +163,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ValidateCoins">
+  <xs:element name="ValidateCoinsUnregistered">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="coins" type="xs:int" />
+        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateCoinsUnregisteredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateCoinsUnregisteredResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateCoinsRegistered">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
@@ -171,10 +186,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ValidateCoinsResponse">
+  <xs:element name="ValidateCoinsRegisteredResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidateCoinsResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ValidateCoinsRegisteredResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -189,7 +204,7 @@
   <xs:element name="ExitGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -229,6 +244,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateBetCoins">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ResponseTotalPlayers">
     <xs:complexType>
       <xs:sequence>
@@ -247,6 +270,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetCoinsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="coins" type="xs:int" />
+        <xs:element minOccurs="0" name="bet" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

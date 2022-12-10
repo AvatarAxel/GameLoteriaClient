@@ -1,18 +1,7 @@
 ﻿using Logic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace View
 {
@@ -42,42 +31,81 @@ namespace View
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            catch (CommunicationObjectFaultedException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
 
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
-            if (!string.IsNullOrEmpty(codeVerification) ) {
-                try
+            if (!string.IsNullOrEmpty(codeVerification) )
+            {
+                if (ValidationLobby(codeVerification))
                 {
-                    if (!client.ResponseCodeExist(codeVerification))
+                    try
                     {
-                        MessageBox.Show("This room does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
+                        SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                        Lobby lobby = new Lobby();
+                        lobby.Show();
+                        client.Close();
+                        Close();
                     }
-                    if (client.ResponseCompleteLobby(codeVerification))
+                    catch (EndpointNotFoundException)
                     {
-                        MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-                        return;
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    if (client.ValidateCoins(SingletonPlayer.PlayerClient.Username, codeVerification))
+                    catch (CommunicationException)
                     {
-                        MessageBox.Show("Insufficient coins", "Sorry", MessageBoxButton.OK, MessageBoxImage.Information);
-                        return;                 
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    SingletonGameRound.GameRound.CodeGame = txtCode.Text;
-                    Lobby lobby = new Lobby();
-                    lobby.Show();
-
-                    client.Close();
-                    Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private bool ValidationLobby(string codeVerification) 
+        {
+            try
+            {
+                if (!client.ResponseCodeExist(codeVerification))
+                {
+                    MessageBox.Show("This room does not exist", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+                if (client.ResponseCompleteLobby(codeVerification))
+                {
+                    MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+                if (SingletonPlayer.PlayerClient.RegisteredUser)
+                {
+                    if (!client.ValidateCoinsRegistered(SingletonPlayer.PlayerClient.Username, codeVerification))
+                    {
+                        MessageBox.Show("Insufficient coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!client.ValidateCoinsUnregistered(SingletonPlayer.PlayerClient.Coin, codeVerification))
+                    {
+                        MessageBox.Show("Insufficient coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return false;
         }
 
     }

@@ -144,7 +144,7 @@ namespace View
             var random = new Random();
             var value = random.Next(0, 10000);
             SingletonPlayer.PlayerClient.Username = "Guest" + value;
-            SingletonPlayer.PlayerClient.Coin = 500;
+            SingletonPlayer.PlayerClient.Coin = 100;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
             try

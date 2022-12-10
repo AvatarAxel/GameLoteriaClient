@@ -156,5 +156,9 @@ namespace View
             }
         }
 
+        public void UpdateBetCoinsResponse(int coins, int bet)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

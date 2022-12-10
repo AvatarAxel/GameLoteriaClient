@@ -467,6 +467,7 @@ namespace View
 
         public void SendWinner(string username)
         {
+            btnLoteria.IsEnabled = false;
             MessageBox.Show("The winner is: " + username, "We have a winner", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();
         }
@@ -475,11 +476,12 @@ namespace View
         {
             if (counterCells == 16)
             {
+                btnLoteria.IsEnabled = false;
                 int bet = CalculateBet();
                 client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
                 if (!SingletonPlayer.PlayerClient.RegisteredUser) 
                 {
-                    SingletonPlayer.PlayerClient.Coin = bet;
+                    SingletonPlayer.PlayerClient.Coin = bet;                    
                 }
             }
         }

@@ -590,11 +590,17 @@ namespace View.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoins", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsResponse")]
-        bool ValidateCoins(string username, string verificationCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoinsUnregistered", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsUnregisteredResponse")]
+        bool ValidateCoinsUnregistered(int coins, string verificationCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoins", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsResponse")]
-        System.Threading.Tasks.Task<bool> ValidateCoinsAsync(string username, string verificationCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoinsUnregistered", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsUnregisteredResponse")]
+        System.Threading.Tasks.Task<bool> ValidateCoinsUnregisteredAsync(int coins, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoinsRegistered", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsRegisteredResponse")]
+        bool ValidateCoinsRegistered(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ValidateCoinsRegistered", ReplyAction="http://tempuri.org/IJoinGameService/ValidateCoinsRegisteredResponse")]
+        System.Threading.Tasks.Task<bool> ValidateCoinsRegisteredAsync(string username, string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -640,12 +646,20 @@ namespace View.ServiceReference {
             return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
         }
         
-        public bool ValidateCoins(string username, string verificationCode) {
-            return base.Channel.ValidateCoins(username, verificationCode);
+        public bool ValidateCoinsUnregistered(int coins, string verificationCode) {
+            return base.Channel.ValidateCoinsUnregistered(coins, verificationCode);
         }
         
-        public System.Threading.Tasks.Task<bool> ValidateCoinsAsync(string username, string verificationCode) {
-            return base.Channel.ValidateCoinsAsync(username, verificationCode);
+        public System.Threading.Tasks.Task<bool> ValidateCoinsUnregisteredAsync(int coins, string verificationCode) {
+            return base.Channel.ValidateCoinsUnregisteredAsync(coins, verificationCode);
+        }
+        
+        public bool ValidateCoinsRegistered(string username, string verificationCode) {
+            return base.Channel.ValidateCoinsRegistered(username, verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidateCoinsRegisteredAsync(string username, string verificationCode) {
+            return base.Channel.ValidateCoinsRegisteredAsync(username, verificationCode);
         }
     }
     
@@ -660,10 +674,10 @@ namespace View.ServiceReference {
         System.Threading.Tasks.Task JoinGameAsync(string username, string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ExitGame")]
-        void ExitGame(string userName, string verificationCode);
+        void ExitGame(string username, string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ExitGame")]
-        System.Threading.Tasks.Task ExitGameAsync(string userName, string verificationCode);
+        System.Threading.Tasks.Task ExitGameAsync(string username, string verificationCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CreateGame")]
         void CreateGame(View.ServiceReference.GameRoundDTO game);
@@ -694,6 +708,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UpdateTotalPlayers")]
         System.Threading.Tasks.Task UpdateTotalPlayersAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UpdateBetCoins")]
+        void UpdateBetCoins(string username, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UpdateBetCoins")]
+        System.Threading.Tasks.Task UpdateBetCoinsAsync(string username, string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -707,6 +727,9 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToPlay")]
         void GoToPlay(bool status);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UpdateBetCoinsResponse")]
+        void UpdateBetCoinsResponse(int coins, int bet);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -745,12 +768,12 @@ namespace View.ServiceReference {
             return base.Channel.JoinGameAsync(username, verificationCode);
         }
         
-        public void ExitGame(string userName, string verificationCode) {
-            base.Channel.ExitGame(userName, verificationCode);
+        public void ExitGame(string username, string verificationCode) {
+            base.Channel.ExitGame(username, verificationCode);
         }
         
-        public System.Threading.Tasks.Task ExitGameAsync(string userName, string verificationCode) {
-            return base.Channel.ExitGameAsync(userName, verificationCode);
+        public System.Threading.Tasks.Task ExitGameAsync(string username, string verificationCode) {
+            return base.Channel.ExitGameAsync(username, verificationCode);
         }
         
         public void CreateGame(View.ServiceReference.GameRoundDTO game) {
@@ -791,6 +814,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task UpdateTotalPlayersAsync(string verificationCode) {
             return base.Channel.UpdateTotalPlayersAsync(verificationCode);
+        }
+        
+        public void UpdateBetCoins(string username, string verificationCode) {
+            base.Channel.UpdateBetCoins(username, verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task UpdateBetCoinsAsync(string username, string verificationCode) {
+            return base.Channel.UpdateBetCoinsAsync(username, verificationCode);
         }
     }
     
