@@ -26,6 +26,7 @@ namespace View
         private ServiceReference.GameServiceClient GameServiceClient;
         private Game game = new Game();
         private Encryption encryption = new Encryption();
+        private Login login = new Login();
 
         public Lobby()
         {
@@ -55,6 +56,8 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
             }
             else
@@ -70,6 +73,14 @@ namespace View
             catch(CommunicationObjectAbortedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
+            }
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -87,6 +98,8 @@ namespace View
             catch(TimeoutException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
   
         }
@@ -107,6 +120,8 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
             }
         }
@@ -121,6 +136,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
         }
 
@@ -154,14 +171,20 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             catch (CommunicationObjectAbortedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             SingletonPlayer.PlayerClient.PlayerType = false;
         }
@@ -210,7 +233,25 @@ namespace View
 
         private void BtnAddFriend_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Hola");
+            if (ListPlayers.SelectedIndex > 0)
+            {
+                string username = ListPlayers.SelectedItem.ToString();
+                if (username != SingletonPlayer.PlayerClient.Username)
+                {
+                    /* Validar cuantos amigos tiene en total
+                     * Dependiendo de la cantidad realizar
+                     * if <30
+                     *  Enviarle la solicutud al men y decirle al otro men que ya se envio
+                     *  El men debe de aceptarla o denegarla
+                     *  Aceptar : Se actualiza la lista de amigos de ambos
+                     *  Denegar : Pues no hace nada
+                     */
+                }
+                else
+                {
+                    MessageBox.Show("You can't be your own friend", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void BtnSignOutPlayer_Click(object sender, RoutedEventArgs e)
@@ -224,7 +265,7 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("No te puedes autobanear", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Do not remove yourself", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }   
         }

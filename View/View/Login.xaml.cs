@@ -21,7 +21,7 @@ namespace View
     public partial class Login : Window
     {
         private ServiceReference.AuthenticationServiceClient client;
-
+        private Login login = new Login();
         public Login()
         { 
             InitializeComponent();
@@ -50,10 +50,14 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
                 catch (CommunicationException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
             }
             else
@@ -95,14 +99,20 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
                 catch (CommunicationException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
                 catch (TimeoutException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
             }    
         }
@@ -119,6 +129,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             Close();
 
@@ -135,6 +147,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             Close();
         }
@@ -143,7 +157,7 @@ namespace View
         {
             var random = new Random();
             var value = random.Next(0, 10000);
-            SingletonPlayer.PlayerClient.Username = "Guest" + value; //AQUI VA A TRONAR POR EL "INVITADO" LA PALABRA
+            SingletonPlayer.PlayerClient.Username = "Guest" + value; 
             SingletonPlayer.PlayerClient.Coin = 500;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
             MainWindow mainWindow = new MainWindow();
@@ -154,6 +168,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             Close();
             mainWindow.Show();

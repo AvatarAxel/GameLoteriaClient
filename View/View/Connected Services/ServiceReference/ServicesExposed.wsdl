@@ -138,6 +138,12 @@
   <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCompleteLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_ResponseUsernameExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseUsernameExist" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ResponseUsernameExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseUsernameExistResponse" />
+  </wsdl:message>
   <wsdl:message name="IGameService_JoinGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinGame" />
   </wsdl:message>
@@ -258,6 +264,10 @@
     <wsdl:operation name="ResponseCompleteLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse" message="tns:IJoinGameService_ResponseCompleteLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseUsernameExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseUsernameExist" message="tns:IJoinGameService_ResponseUsernameExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseUsernameExistResponse" message="tns:IJoinGameService_ResponseUsernameExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGameService">
@@ -444,6 +454,15 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseCompleteLobby">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseUsernameExist">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseUsernameExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

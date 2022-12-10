@@ -160,40 +160,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-
-                    <Button
-                        x:Name="BtnSettings"                        
-                        BorderThickness="0"
-                        Content="Game Settings"
-                        Foreground="White"
-                        FontSize="16"
-                        FontFamily="Monserrat"
-                        Cursor="Hand"
-                        Grid.Column="2"
-                        Margin="0,50,0,0" Click="BtnSettings_Click" Width="152">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#462AD8"/>
-                                <Style.Triggers>
-                                    <Trigger  Property="IsMouseOver" Value ="True">
-                                        <Setter Property="Background" Value="#28AEED"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
+                    
                     <Button
                         x:Name="BtnSignOut"                        
                         BorderThickness="0"
