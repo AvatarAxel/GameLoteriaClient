@@ -19,7 +19,6 @@ namespace View
     {
         private string codeVerificationComparation;
         private ServiceReference.EmailServiceClient client;
-        private Login login = new Login();
 
         public VE_VerificationEmail()
         {
@@ -49,20 +48,17 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (TimeoutException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
 
             return false;
@@ -77,8 +73,7 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             SingletonPlayer.PlayerClient.Verificated = false;
             Close();
@@ -104,8 +99,7 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        login.Show();
-                        Close();
+                        GoLogin();
                     }
 
                     SingletonPlayer.PlayerClient.Verificated = true;
@@ -116,6 +110,13 @@ namespace View
                     MessageBox.Show("Verification code does not match", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+        }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

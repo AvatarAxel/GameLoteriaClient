@@ -8,7 +8,6 @@ namespace View
     public partial class VE_EnterGameCode : Window
     {
         private ServiceReference.JoinGameServiceClient client;
-        private Login login = new Login();
         public VE_EnterGameCode()
         {
             InitializeComponent();
@@ -31,12 +30,12 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
             Close();
         }
@@ -53,16 +52,17 @@ namespace View
                         SingletonGameRound.GameRound.CodeGame = txtCode.Text;
                         Lobby lobby = new Lobby();
                         lobby.Show();
-                        client.Close();
-                        Close();
+                        GoLogin();
                     }
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        GoLogin();
                     }
                     catch (CommunicationException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        GoLogin();
                     }
                 }
             }
@@ -103,14 +103,22 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
             catch (CommunicationException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
             return false;
         }
 
-    }
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
 
+    }
 }

@@ -12,7 +12,6 @@ namespace View
         private InstanceContext context;
         private GameServiceClient gameClient;
         private ChatServiceClient chatClient;
-        private Login login = new Login();
         public VE_StartUpSettings()
         {
             InitializeComponent();
@@ -55,8 +54,7 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        login.Show();
-                        Close();
+                        GoLogin();
                     }
                     Close();
                 }
@@ -80,8 +78,7 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             Close();
         }
@@ -104,11 +101,6 @@ namespace View
             }
         }
 
-        public void ReciveWinner(string username)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ResponseTotalPlayers(int totalPlayers)
         {
             SingletonGameRound.GameRound.TotalPlayers = totalPlayers;
@@ -125,11 +117,6 @@ namespace View
         }
 
         public void GoToPlay(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SendCard(int idCard)
         {
             throw new NotImplementedException();
         }
@@ -174,6 +161,12 @@ namespace View
         public void BanPlayerResponse(bool status)
         {
             throw new NotImplementedException();
+        }
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

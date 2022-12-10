@@ -20,7 +20,6 @@ namespace View
     public partial class VE_PasswordChange : Window
     {
         private ServiceReference.ChangePasswordServiceClient client;
-        private Login login = new Login();
 
         public VE_PasswordChange()
         {
@@ -36,7 +35,6 @@ namespace View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            login.Show();
             try
             {
                 client.Close();
@@ -44,10 +42,9 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
-            Close();
+            GoLogin();
         }
 
         private void BtnUpdateData_Click(object sender, RoutedEventArgs e)
@@ -83,8 +80,7 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        login.Show();
-                        Close();
+                        GoLogin();
                     }
                 }
 
@@ -119,7 +115,6 @@ namespace View
             if (status)
             {
                 MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-                login.Show();
                 try
                 {
                     client.Close();
@@ -127,15 +122,22 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
-                    Close();
+                    GoLogin();
                 }
-                Close();
+                GoLogin();
             }
             else
             {
                 MessageBox.Show("Could not update successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
+        }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }
