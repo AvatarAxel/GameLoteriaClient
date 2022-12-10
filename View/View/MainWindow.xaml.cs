@@ -18,7 +18,6 @@ namespace View
 {
     public partial class MainWindow : Window
     {
-        private Login login = new Login();
         public MainWindow()
         {
             InitializeComponent();
@@ -42,10 +41,7 @@ namespace View
             SingletonPlayer.PlayerClient.Coin = 0;
             SingletonPlayer.PlayerClient.Email = null;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
-
-            login.Show();
-            Close();
-
+            GoLogin();
         }
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +77,12 @@ namespace View
             {
                 MessageBox.Show("You are NOT registered yet, REGISTER NOW", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void GoLogin() {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

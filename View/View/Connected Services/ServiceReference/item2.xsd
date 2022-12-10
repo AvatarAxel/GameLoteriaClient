@@ -164,22 +164,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseUsernameExist">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ResponseUsernameExistResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ResponseUsernameExistResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="JoinGame">
+  <xs:element name="ValidateCoinsUnregistered">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="coins" type="xs:int" />
@@ -206,6 +191,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ValidateCoinsRegisteredResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResponseUsernameExist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResponseUsernameExistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ResponseUsernameExistResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -260,19 +260,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BanPlayer">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="UpdateBetCoins">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BanPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
