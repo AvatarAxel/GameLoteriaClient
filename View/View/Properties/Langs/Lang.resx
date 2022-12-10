@@ -120,47 +120,32 @@
   <data name="accept" xml:space="preserve">
     <value>Accept</value>
   </data>
-  <data name="accept_setting" xml:space="preserve">
-    <value>Accept setting</value>
+  <data name="amountOfMoney" xml:space="preserve">
+    <value>Amount Of Money</value>
   </data>
-  <data name="add_Friend" xml:space="preserve">
-    <value>Add</value>
+  <data name="changeThePassword" xml:space="preserve">
+    <value>Change The Password</value>
   </data>
-  <data name="amount_of_money_bet" xml:space="preserve">
-    <value>Amount of money bet</value>
+  <data name="codePlay" xml:space="preserve">
+    <value>Code Play</value>
   </data>
-  <data name="bet_amount" xml:space="preserve">
-    <value>Bet amount</value>
+  <data name="configureGame" xml:space="preserve">
+    <value>Configure Game</value>
   </data>
-  <data name="black" xml:space="preserve">
-    <value>Black</value>
+  <data name="configureProfile" xml:space="preserve">
+    <value>Configurar Perfil</value>
   </data>
-  <data name="brown" xml:space="preserve">
-    <value>Brown</value>
+  <data name="confirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
   </data>
-  <data name="cancel" xml:space="preserve">
-    <value>Title lobby</value>
+  <data name="confirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
   </data>
-  <data name="change_bean_color" xml:space="preserve">
-    <value>Change bean color</value>
+  <data name="createGame" xml:space="preserve">
+    <value>Create Game</value>
   </data>
-  <data name="change_card_border" xml:space="preserve">
-    <value>change card border</value>
-  </data>
-  <data name="change_password" xml:space="preserve">
-    <value>Change password</value>
-  </data>
-  <data name="check_the_code" xml:space="preserve">
-    <value>Check the code</value>
-  </data>
-  <data name="check_your_email" xml:space="preserve">
-    <value>Check your email or spam folder</value>
-  </data>
-  <data name="create_game" xml:space="preserve">
-    <value>Create game</value>
-  </data>
-  <data name="date_of_birth" xml:space="preserve">
-    <value>Date of birth</value>
+  <data name="date of birth" xml:space="preserve">
+    <value>Date Of Birth</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>Email</value>
@@ -168,130 +153,70 @@
   <data name="english" xml:space="preserve">
     <value>English</value>
   </data>
-  <data name="enter_new_password" xml:space="preserve">
-    <value>Enter new password</value>
+  <data name="enterNewPassword" xml:space="preserve">
+    <value>Enter New Passsword</value>
   </data>
-  <data name="enter_password" xml:space="preserve">
-    <value>Enter password</value>
+  <data name="enterTheEmail" xml:space="preserve">
+    <value>Enter The Email</value>
   </data>
-  <data name="enter_the_code" xml:space="preserve">
-    <value>Enter the code</value>
+  <data name="forgotYourPassword" xml:space="preserve">
+    <value>Forgot Your Password</value>
   </data>
-  <data name="fast" xml:space="preserve">
-    <value>Fast</value>
-  </data>
-  <data name="forget_the_password" xml:space="preserve">
-    <value>Forget the password?</value>
-  </data>
-  <data name="friend" xml:space="preserve">
-    <value>Friend</value>
-  </data>
-  <data name="friend_list" xml:space="preserve">
-    <value>Friend list</value>
-  </data>
-  <data name="game_loteria" xml:space="preserve">
+  <data name="gameLoteria" xml:space="preserve">
     <value>Game Loteria</value>
   </data>
-  <data name="game_type" xml:space="preserve">
-    <value>Game type</value>
+  <data name="joinGame" xml:space="preserve">
+    <value>Join Game</value>
   </data>
-  <data name="idiom" xml:space="preserve">
-    <value>Idiom</value>
-  </data>
-  <data name="join_a_game" xml:space="preserve">
-    <value>Join a game</value>
+  <data name="language" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="login" xml:space="preserve">
     <value>Login</value>
   </data>
-  <data name="log_out" xml:space="preserve">
-    <value>Log out</value>
+  <data name="loteria" xml:space="preserve">
+    <value>Loteria</value>
   </data>
-  <data name="number_of_players" xml:space="preserve">
-    <value>Number of players</value>
+  <data name="mainMenu" xml:space="preserve">
+    <value>Main Menu</value>
   </data>
-  <data name="orbed" xml:space="preserve">
-    <value>Orbed</value>
+  <data name="numberPlayer" xml:space="preserve">
+    <value>Number of Players</value>
   </data>
-  <data name="passwords" xml:space="preserve">
+  <data name="password" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="play_as_a_guest" xml:space="preserve">
-    <value>Play as a guest</value>
+  <data name="play" xml:space="preserve">
+    <value>Play</value>
   </data>
-  <data name="private" xml:space="preserve">
-    <value>Private</value>
+  <data name="playAsAGuest" xml:space="preserve">
+    <value>Play As A Guest</value>
   </data>
-  <data name="public" xml:space="preserve">
-    <value>Public</value>
+  <data name="register" xml:space="preserve">
+    <value>Register</value>
   </data>
-  <data name="recent_people" xml:space="preserve">
-    <value>Recent people</value>
+  <data name="registerAt" xml:space="preserve">
+    <value>Register At</value>
   </data>
-  <data name="register_user" xml:space="preserve">
-    <value>Register new user</value>
-  </data>
-  <data name="remove_Friend" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="reset" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="select_a_card" xml:space="preserve">
-    <value>Select a card</value>
-  </data>
-  <data name="send_verification_code" xml:space="preserve">
-    <value>Send verification code</value>
-  </data>
-  <data name="setting" xml:space="preserve">
-    <value>Setting</value>
-  </data>
-  <data name="sign_in" xml:space="preserve">
-    <value>Sign In</value>
-  </data>
-  <data name="slow" xml:space="preserve">
-    <value>Slow</value>
-  </data>
-  <data name="sound" xml:space="preserve">
-    <value>Sound</value>
-  </data>
-  <data name="sound_of_voices" xml:space="preserve">
-    <value>Sound of voices</value>
+  <data name="send" xml:space="preserve">
+    <value>Send</value>
   </data>
   <data name="spanish" xml:space="preserve">
     <value>Spanish</value>
   </data>
-  <data name="speed_game" xml:space="preserve">
-    <value>Speed game</value>
+  <data name="speedOfTheMatch" xml:space="preserve">
+    <value>Speed Of The Match</value>
   </data>
-  <data name="square" xml:space="preserve">
-    <value>Square</value>
+  <data name="typeOfItem" xml:space="preserve">
+    <value>Type Of Item</value>
   </data>
-  <data name="start_game" xml:space="preserve">
-    <value>Start game</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>Loteria</value>
-  </data>
-  <data name="titleMain" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="title_email_verification" xml:space="preserve">
-    <value>Email verification</value>
-  </data>
-  <data name="title_modify_profile" xml:space="preserve">
-    <value>Modify profile</value>
-  </data>
-  <data name="title_setting_game" xml:space="preserve">
-    <value>Setting game</value>
-  </data>
-  <data name="title_synchronizing" xml:space="preserve">
-    <value>Synchronizing</value>
+  <data name="updateData" xml:space="preserve">
+    <value>Update Data</value>
   </data>
   <data name="username" xml:space="preserve">
     <value>Username</value>
   </data>
-  <data name="welcome_to_the_game" xml:space="preserve">
-    <value>Welcome To The Game</value>
+  <data name="welcomeTo" xml:space="preserve">
+    <value>Welcome To!!</value>
   </data>
 </root>

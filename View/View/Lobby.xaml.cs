@@ -28,7 +28,7 @@ namespace View
         private Game game = new Game();
         private Encryption encryption = new Encryption();
         private Login login = new Login();
-
+        private int counter;
         public Lobby()
         {
             InitializeComponent();

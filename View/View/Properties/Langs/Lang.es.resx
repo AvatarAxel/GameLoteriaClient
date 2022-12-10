@@ -117,193 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Accept" xml:space="preserve">
+  <data name="accept" xml:space="preserve">
     <value>Aceptar</value>
   </data>
-  <data name="AcceptSetting" xml:space="preserve">
-    <value>Aceptar configuraciones</value>
+  <data name="amountOfMoney" xml:space="preserve">
+    <value>Apuesta</value>
   </data>
-  <data name="AddFriend" xml:space="preserve">
-    <value>Agregar</value>
+  <data name="changeThePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
   </data>
-  <data name="AmountOfMoneyBet" xml:space="preserve">
-    <value>Cantidad del dinero de apuesta</value>
+  <data name="codePlay" xml:space="preserve">
+    <value>Código del juego</value>
   </data>
-  <data name="BetAmount" xml:space="preserve">
-    <value>Monto de apuesta</value>
+  <data name="configureGame" xml:space="preserve">
+    <value>Configurar Partida</value>
   </data>
-  <data name="Black" xml:space="preserve">
-    <value>Negro</value>
+  <data name="configureProfile" xml:space="preserve">
+    <value>Configurar Perfil</value>
   </data>
-  <data name="Brown" xml:space="preserve">
-    <value>Café</value>
+  <data name="confirmNewPassword" xml:space="preserve">
+    <value>Confirma la contraseña</value>
   </data>
-  <data name="ChangeBeanColor" xml:space="preserve">
-    <value>Cambiar color de frijol</value>
+  <data name="confirmPassword" xml:space="preserve">
+    <value>Confirmar Contraseña</value>
   </data>
-  <data name="ChangeCardBorder" xml:space="preserve">
-    <value>Cambiar borde de carta</value>
+  <data name="createGame" xml:space="preserve">
+    <value>Crear Juego</value>
   </data>
-  <data name="ChangePassword" xml:space="preserve">
-    <value>Cambiar contraseña </value>
-  </data>
-  <data name="CheckTheCode" xml:space="preserve">
-    <value>Verificar código</value>
-  </data>
-  <data name="CheckYourEmail" xml:space="preserve">
-    <value>Validar correo electrónico</value>
-  </data>
-  <data name="CreateGame" xml:space="preserve">
-    <value>Crear juego</value>
-  </data>
-  <data name="DateOfBirth" xml:space="preserve">
+  <data name="date of birth" xml:space="preserve">
     <value>Fecha de nacimiento</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Correo electrónico</value>
+  <data name="email" xml:space="preserve">
+    <value>Correo Electronico</value>
   </data>
-  <data name="English" xml:space="preserve">
-    <value>Inglés</value>
+  <data name="enterNewPassword" xml:space="preserve">
+    <value>Ingresa la nueva contrase</value>
   </data>
-  <data name="EnterNewPassword" xml:space="preserve">
-    <value>Introducir nueva contraseña</value>
+  <data name="enterTheEmail" xml:space="preserve">
+    <value>Ingresa el correo</value>
   </data>
-  <data name="EnterPassword" xml:space="preserve">
-    <value>Introducir contraseña</value>
+  <data name="forgotYourPassword" xml:space="preserve">
+    <value>¿Olvidaste tu contraseña?</value>
   </data>
-  <data name="EnterTheCode" xml:space="preserve">
-    <value>Introducir el código</value>
+  <data name="gameLoteria" xml:space="preserve">
+    <value>Juego "Loteria"</value>
   </data>
-  <data name="Fast" xml:space="preserve">
-    <value>Rapido</value>
+  <data name="joinGame" xml:space="preserve">
+    <value>Entrar a la Partida</value>
   </data>
-  <data name="ForgetThePassword" xml:space="preserve">
-    <value>¿Cambiar la contraseña?</value>
+  <data name="language" xml:space="preserve">
+    <value>Lenguaje</value>
   </data>
-  <data name="Friend" xml:space="preserve">
-    <value>Amigo</value>
+  <data name="login" xml:space="preserve">
+    <value>Iniciar Sesión</value>
   </data>
-  <data name="FriendList" xml:space="preserve">
-    <value>Lista de amigos</value>
-  </data>
-  <data name="GameLoteria" xml:space="preserve">
-    <value>Juego de la lotería</value>
-  </data>
-  <data name="GameType" xml:space="preserve">
-    <value>Tipo de juego</value>
-  </data>
-  <data name="Idiom" xml:space="preserve">
-    <value>Idioma</value>
-  </data>
-  <data name="JoinAGame" xml:space="preserve">
-    <value>Uniser al juego </value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Iniciar sesión</value>
-  </data>
-  <data name="LogOut" xml:space="preserve">
-    <value>Registrarse</value>
-  </data>
-  <data name="NumberOfPlayers" xml:space="preserve">
-    <value>Número de jugadores</value>
-  </data>
-  <data name="Orbed" xml:space="preserve">
-    <value>Redondeado</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Contraseña</value>
-  </data>
-  <data name="PasswordConfirm" xml:space="preserve">
-    <value>Confirmar contraseña</value>
-  </data>
-  <data name="Passwords" xml:space="preserve">
-    <value>Contraseñas</value>
-  </data>
-  <data name="PlayAsAGuest" xml:space="preserve">
-    <value>Jugar como invitado</value>
-  </data>
-  <data name="Private" xml:space="preserve">
-    <value>Privada</value>
-  </data>
-  <data name="Public" xml:space="preserve">
-    <value>Publica</value>
-  </data>
-  <data name="RecentPeople" xml:space="preserve">
-    <value>Personas recientes</value>
-  </data>
-  <data name="Red" xml:space="preserve">
-    <value>Rojo</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>Registrar</value>
-  </data>
-  <data name="RegistersUser" xml:space="preserve">
-    <value>Registrar usuario</value>
-  </data>
-  <data name="Regular" xml:space="preserve">
-    <value>Regular</value>
-  </data>
-  <data name="RemoveFriend" xml:space="preserve">
-    <value>Remover</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Reinicar</value>
-  </data>
-  <data name="SelectACard" xml:space="preserve">
-    <value>Seleccionar una carta</value>
-  </data>
-  <data name="SendVerificationCode" xml:space="preserve">
-    <value>Mandar código de verificación</value>
-  </data>
-  <data name="Setting" xml:space="preserve">
-    <value>Configuración</value>
-  </data>
-  <data name="SignIn" xml:space="preserve">
-    <value>Iniciar sesión </value>
-  </data>
-  <data name="Slow" xml:space="preserve">
-    <value>Lento</value>
-  </data>
-  <data name="Sound" xml:space="preserve">
-    <value>Sonido</value>
-  </data>
-  <data name="SoundOfVoices" xml:space="preserve">
-    <value>Sonido de voces</value>
-  </data>
-  <data name="Spanish" xml:space="preserve">
-    <value>Español</value>
-  </data>
-  <data name="SpeedGame" xml:space="preserve">
-    <value>Velocidad del juego </value>
-  </data>
-  <data name="Square" xml:space="preserve">
-    <value>Cuadrada</value>
-  </data>
-  <data name="StartGame" xml:space="preserve">
-    <value>Empezar juego</value>
-  </data>
-  <data name="Title" xml:space="preserve">
+  <data name="loteria" xml:space="preserve">
     <value>Loteria</value>
   </data>
-  <data name="TitleEmailVerification" xml:space="preserve">
-    <value>Verificar correo electrónico</value>
+  <data name="mainMenu" xml:space="preserve">
+    <value>Ménu</value>
   </data>
-  <data name="TitleMain" xml:space="preserve">
-    <value>Principal</value>
+  <data name="numberPlayer" xml:space="preserve">
+    <value>Numero de jugadores</value>
   </data>
-  <data name="TitleModifyProfile" xml:space="preserve">
-    <value>Modificar perfil</value>
+  <data name="password" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
-  <data name="TitleSettingGame" xml:space="preserve">
-    <value>Condiguración del juego</value>
+  <data name="play" xml:space="preserve">
+    <value>Jugar</value>
   </data>
-  <data name="TitleSynchronizing" xml:space="preserve">
-    <value>Sincronización</value>
+  <data name="playAsAGuest" xml:space="preserve">
+    <value>Juega como Invitador</value>
   </data>
-  <data name="Username" xml:space="preserve">
-    <value>Nombre de usuario</value>
+  <data name="register" xml:space="preserve">
+    <value>Resgitrate</value>
   </data>
-  <data name="WelcomeToTheGame" xml:space="preserve">
-    <value>Bienvenido al juego</value>
+  <data name="registerAt" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="speedOfTheMatch" xml:space="preserve">
+    <value>Velocidad</value>
+  </data>
+  <data name="typeOfItem" xml:space="preserve">
+    <value>Tipo de partida</value>
+  </data>
+  <data name="updateData" xml:space="preserve">
+    <value>Actulizar datos</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Apodo</value>
+  </data>
+  <data name="welcomeTo" xml:space="preserve">
+    <value>Bienvenidos</value>
   </data>
 </root>

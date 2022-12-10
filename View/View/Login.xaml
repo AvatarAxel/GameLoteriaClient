@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
-        xmlns:p="clr-namespace:View.Properties"
         mc:Ignorable="d"
-        xmlns:l="clr-namespace:View.Properties"
-        Title="{x:Static l:Resources.GameLoteria}" Height="550" Width="800"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title= "Game Loteria" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -53,7 +52,7 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="{x:Static l:Resources.Login}"
+                    <TextBlock Text="{x:Static language:Lang.login}"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -94,14 +93,14 @@
                     <Image Source="/Images/ResourseImage/Logo.png"
                            Width="100" Height="100"/>
 
-                    <TextBlock Text="{x:Static l:Resources.GameLoteria}"
+                    <TextBlock Text="{x:Static language:Lang.gameLoteria}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="{x:Static l:Resources.WelcomeToTheGame}"
+                    <TextBlock Text="{x:Static language:Lang.welcomeTo}"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -111,7 +110,7 @@
                                Margin="0,5,0,0"/>
 
 
-                    <TextBlock Text="{x:Static l:Resources.Username}"
+                    <TextBlock Text="{x:Static language:Lang.username}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -140,7 +139,7 @@
                         </TextBox.Background>
                     </TextBox>
 
-                    <TextBlock Text="{x:Static l:Resources.Password}"
+                    <TextBlock Text="{x:Static language:Lang.forgotYourPassword}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -170,7 +169,7 @@
                     </PasswordBox>
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"
-                            Content="{x:Static l:Resources.Login}"
+                            Content="{x:Static language:Lang.login}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
@@ -201,7 +200,7 @@
                     </Button>
                     <Button x:Name="btnRegister"                          
                         BorderThickness="0"
-                        Content="{x:Static l:Resources.Register}"
+                        Content="{x:Static language:Lang.register}"
                         Foreground="White"
                         FontSize="12"
                         FontFamily="Montserrat"
@@ -235,14 +234,8 @@
                                 HorizontalAlignment="Center"
                                 Margin="0,10,0,0" Width="214" Height="51">
 
-                        <TextBlock Text="{x:Static l:Resources.ForgetThePassword}"
-                               Foreground="DarkGray"
-                               FontSize="13"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat" Width="142" Height="16"
-                               Margin="10,-30,0,0"/>
-
-                        <TextBlock x:Name="LbReset" Text="{x:Static l:Resources.Reset}"
+                        <TextBlock x:Name="LbReset" 
+                                   Text="{x:Static language:Lang.password}"
                                Foreground="White"
                                FontSize="13"
                                FontWeight="Medium"
@@ -264,8 +257,8 @@
 
                 </StackPanel>
                 <ComboBox Name="cbLanguage" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="91" SelectionChanged="ComboBox_SelectionChanged" Height="19">
-                    <ComboBoxItem Content="{x:Static l:Resources.English}"/>
-                    <ComboBoxItem Content="{x:Static l:Resources.Spanish}"/>
+                    <ComboBoxItem Content="{x:Static language:Lang.english}"/>
+                    <ComboBoxItem Content="{x:Static language:Lang.spanish}"/>
                 </ComboBox>
 
             </Grid>

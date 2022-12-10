@@ -21,7 +21,6 @@ namespace View
     public partial class Login : Window
     {
         private ServiceReference.AuthenticationServiceClient client;
-        private Login login = new Login();
         public Login()
         { 
             InitializeComponent();
@@ -50,13 +49,11 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
                 catch (CommunicationException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
             }
@@ -99,19 +96,16 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
                 catch (CommunicationException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
                 catch (TimeoutException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
             }    
@@ -129,7 +123,6 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             Close();
@@ -147,7 +140,6 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             Close();
@@ -168,7 +160,6 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             Close();
@@ -179,10 +170,9 @@ namespace View
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbLanguage.SelectedIndex == 0)
-                Properties.Settings.Default.languageCode = "EN";
-            else 
-                Properties.Settings.Default.languageCode = "SP";
-           
+                Properties.Settings.Default.languageCode = "en-US";
+            else
+                Properties.Settings.Default.languageCode = "es-MX";
             Properties.Settings.Default.Save();
         }
     }

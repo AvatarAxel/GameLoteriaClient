@@ -20,7 +20,7 @@ namespace View
         {
             var langCode = View.Properties.Settings.Default.languageCode;
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(langCode);
-            base.OnStartup(e);
+            base.OnActivated(e);
         }
     }
 }
