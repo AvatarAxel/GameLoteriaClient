@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title= "{x:Static language:Lang.mainMenu}"
+        Height="550" 
+        Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -49,7 +52,7 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Nombre Jugador"
+                    <TextBlock 
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -88,7 +91,7 @@
                             Grid.Row="2"
                             Orientation="Vertical"
                             Margin="0,20,0,0">
-                    <TextBlock Text="Main menu"
+                    <TextBlock Text= "{x:Static language:Lang.mainMenu}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
@@ -98,7 +101,7 @@
                     <Button
                         x:Name="BtnCreateGame"                        
                         BorderThickness="0"
-                        Content="Create game"
+                        Content="{x:Static language:Lang.createGame}"
                         Foreground="White"
                         FontSize="16"
                         FontFamily="Monserrat"
@@ -131,7 +134,7 @@
                     <Button
                         x:Name="BtnJoinGame"                        
                         BorderThickness="0"
-                        Content="Join Game"
+                        Content="{x:Static language:Lang.joinGame}"
                         Foreground="White"
                         FontSize="16"
                         FontFamily="Monserrat"

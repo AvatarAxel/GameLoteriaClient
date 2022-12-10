@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d" 
         xmlns:l="clr-namespace:View.Properties"
-        Title="RegisterUser" Height="550" Width="800"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title= "{x:Static language:Lang.register}"
+        Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -47,13 +49,14 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="REGISTER"
+                    <TextBlock Text="{x:Static language:Lang.register}"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                Margin="10,0,0,0"/>
+                    
                     <Button x:Name="btnMinimize"                           
                             BorderThickness="0"
                             Cursor="Hand"
@@ -82,14 +85,15 @@
                             Grid.Row="2"
                             Orientation="Vertical"
                             Margin="0,20,0,0">
-                    <TextBlock Text="{x:Static l:Resources.RegistersUser}"
+                    
+                    <TextBlock Text="{x:Static language:Lang.register}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    
-                    <TextBlock Text="{x:Static l:Resources.Email}"
+
+                    <TextBlock Text="{x:Static language:Lang.email}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -107,8 +111,8 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              MaxLength="320"/>
-                    
-                    <TextBlock Text="{x:Static l:Resources.Username}"
+
+                    <TextBlock Text= "{x:Static language:Lang.username}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -125,8 +129,8 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              MaxLength="20"/>
-                    
-                    <TextBlock Text="{x:Static l:Resources.Password}"
+
+                    <TextBlock Text="{x:Static language:Lang.password}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -143,8 +147,8 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              MaxLength="25"/>
-                    
-                    <TextBlock Text="{x:Static l:Resources.PasswordConfirm}"
+
+                    <TextBlock Text="{x:Static language:Lang.confirmPassword}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -161,8 +165,8 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,1"
                              MaxLength="25"/>
-                    
-                    <TextBlock Text="{x:Static l:Resources.DateOfBirth}"
+
+                    <TextBlock Text="{x:Static language:Lang.dateOfBirth}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -179,7 +183,7 @@
                     <Button
                         x:Name="BtnRegister"                        
                         BorderThickness="0"
-                        Content="{x:Static l:Resources.Register}"
+                        Content="{x:Static language:Lang.registerAt}"
                         Foreground="White"
                         FontSize="16"
                         FontFamily="Monserrat"

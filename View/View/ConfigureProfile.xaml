@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Configure Profile" Height="500" Width="500"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title="{x:Static language:Lang.configureProfile}" Height="500" Width="500"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -50,7 +51,7 @@
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Confiure profile"
+                    <TextBlock Text="{x:Static language:Lang.configureProfile}"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -88,7 +89,7 @@
                             Orientation="Vertical"
                             Margin="0,20,-4,0">
 
-                    <TextBlock Text="Configure you Profile"
+                    <TextBlock Text="{x:Static language:Lang.configureProfile}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
@@ -124,7 +125,7 @@
                     <Button
                         x:Name="BtnChangePassword"                        
                         BorderThickness="0"
-                        Content="Change the assword"
+                        Content="{x:Static language:Lang.changeThePassword}"
                         Foreground="White"
                         FontSize="16"
                         FontFamily="Monserrat"

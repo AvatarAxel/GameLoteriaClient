@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Login" Height="400" Width="400"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title= "{x:Static language:Lang.configureGame}"
+         Height="400" Width="400"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -45,7 +47,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Start up settings"
+                    <TextBlock Text="{x:Static language:Lang.configureGame}"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -81,14 +83,14 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,0,0,0">
-                    <TextBlock Text="Start up settings"
+                    <TextBlock Text="{x:Static language:Lang.configureGame}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Number players"
+                    <TextBlock Text="{x:Static language:Lang.numberPlayer}"
                                Foreground="DarkGray"
                                FontSize="14"
                                FontWeight="Bold"
@@ -116,16 +118,16 @@
                         </ComboBox.Background>
                     </ComboBox>
 
-                    <TextBlock Text="Speed of the match"
+                    <TextBlock Text="{x:Static language:Lang.speedOfTheMatch}"
                                Foreground="DarkGray"
                                FontSize="14"
                                FontWeight="Bold"
                                FontFamily="Montserrat"                             
                                Margin="-259,20,0,0" Height="16" Width="128"/>
-                    
-                    
 
-                    <RadioButton Content="Slow" 
+
+
+                    <RadioButton Content="{x:Static language:Lang.slow}" 
                                  x:Name="rdbtnSlow" 
                                  Foreground="DarkGray"
                                  HorizontalAlignment="Left" 
@@ -134,7 +136,7 @@
                                  VerticalAlignment="Top"
                                  GroupName="Speed"/>
 
-                    <RadioButton Content="Standard" 
+                    <RadioButton Content="{x:Static language:Lang.standard}"
                                  x:Name="rdbtnStandard" 
                                  Foreground="DarkGray"
                                  HorizontalAlignment="Left" 
@@ -143,7 +145,7 @@
                                  VerticalAlignment="Top"
                                  GroupName="Speed"/>
 
-                    <RadioButton Content="Quickly" 
+                    <RadioButton Content="{x:Static language:Lang.quickly}" 
                                  x:Name="rdbtQuickly" 
                                  Foreground="DarkGray"
                                  HorizontalAlignment="Left" 
@@ -153,7 +155,7 @@
                                  GroupName="Speed"
                                  />
 
-                    <TextBlock Text="Amount of money"
+                    <TextBlock Text="{x:Static language:Lang.amountOfMoney}"
                                Foreground="DarkGray"
                                FontSize="14"
                                FontWeight="Bold"
@@ -179,14 +181,14 @@
                         </ComboBox.Background>
                     </ComboBox>
 
-                    <TextBlock Text="Type of item"
+                    <TextBlock Text="{x:Static language:Lang.typeOfItem}"
                                Foreground="DarkGray"
                                FontSize="14"
                                FontWeight="Bold"
                                FontFamily="Montserrat"                             
                                Margin="-300,20,0,0" Height="16" Width="86"/>
 
-                    <RadioButton Content="Private" 
+                    <RadioButton Content="{x:Static language:Lang._private}" 
                                  x:Name="rdbtPrivate" 
                                  Foreground="DarkGray"
                                  HorizontalAlignment="Left" 
@@ -195,7 +197,7 @@
                                  VerticalAlignment="Top"
                                  GroupName="Type"/>
 
-                    <RadioButton Content="Public" 
+                    <RadioButton Content="{x:Static language:Lang._public}"
                                  x:Name="rdbtPublic" 
                                  Foreground="DarkGray"
                                  HorizontalAlignment="Left" 
@@ -206,7 +208,7 @@
 
                     <Button x:Name="btnAccept"                          
                             BorderThickness="0"
-                            Content="Accept"
+                            Content="{x:Static language:Lang.accept}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"

@@ -61,6 +61,24 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Private.
+        /// </summary>
+        public static string _private {
+            get {
+                return ResourceManager.GetString("private", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public.
+        /// </summary>
+        public static string _public {
+            get {
+                return ResourceManager.GetString("public", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accept.
         /// </summary>
         public static string accept {
@@ -144,9 +162,9 @@ namespace View.Properties.Langs {
         /// <summary>
         ///   Looks up a localized string similar to Date Of Birth.
         /// </summary>
-        public static string date_of_birth {
+        public static string dateOfBirth {
             get {
-                return ResourceManager.GetString("date of birth", resourceCulture);
+                return ResourceManager.GetString("dateOfBirth", resourceCulture);
             }
         }
         
@@ -165,6 +183,24 @@ namespace View.Properties.Langs {
         public static string english {
             get {
                 return ResourceManager.GetString("english", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Code.
+        /// </summary>
+        public static string enterCode {
+            get {
+                return ResourceManager.GetString("enterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Game Code.
+        /// </summary>
+        public static string enterGameCode {
+            get {
+                return ResourceManager.GetString("enterGameCode", resourceCulture);
             }
         }
         
@@ -219,6 +255,15 @@ namespace View.Properties.Langs {
         public static string language {
             get {
                 return ResourceManager.GetString("language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lobby.
+        /// </summary>
+        public static string lobby {
+            get {
+                return ResourceManager.GetString("lobby", resourceCulture);
             }
         }
         
@@ -286,6 +331,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quickly.
+        /// </summary>
+        public static string quickly {
+            get {
+                return ResourceManager.GetString("quickly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string register {
@@ -313,6 +367,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Slow.
+        /// </summary>
+        public static string slow {
+            get {
+                return ResourceManager.GetString("slow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Spanish.
         /// </summary>
         public static string spanish {
@@ -327,6 +390,15 @@ namespace View.Properties.Langs {
         public static string speedOfTheMatch {
             get {
                 return ResourceManager.GetString("speedOfTheMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard.
+        /// </summary>
+        public static string standard {
+            get {
+                return ResourceManager.GetString("standard", resourceCulture);
             }
         }
         
@@ -354,6 +426,15 @@ namespace View.Properties.Langs {
         public static string username {
             get {
                 return ResourceManager.GetString("username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification Email.
+        /// </summary>
+        public static string verificationEmail {
+            get {
+                return ResourceManager.GetString("verificationEmail", resourceCulture);
             }
         }
         

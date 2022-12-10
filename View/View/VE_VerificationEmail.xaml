@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Verificatio nEmail" Height="330" Width="330"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title= "{x:Static language:Lang.verificationEmail}"
+        Height="330" Width="330"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -75,15 +77,15 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    
-                    <TextBlock Text="Verification Email"
+
+                    <TextBlock Text="{x:Static language:Lang.verificationEmail}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Enter the verification code"
+                    <TextBlock Text="{x:Static language:Lang.enterCode}"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -113,7 +115,7 @@
                     </TextBox>
                     <Button x:Name="btnAccept"                          
                             BorderThickness="0"
-                            Content="Accept"
+                            Content="{x:Static language:Lang.accept}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"

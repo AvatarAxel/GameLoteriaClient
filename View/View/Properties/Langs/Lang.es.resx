@@ -144,11 +144,17 @@
   <data name="createGame" xml:space="preserve">
     <value>Crear Juego</value>
   </data>
-  <data name="date of birth" xml:space="preserve">
+  <data name="dateOfBirth" xml:space="preserve">
     <value>Fecha de nacimiento</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>Correo Electronico</value>
+  </data>
+  <data name="enterCode" xml:space="preserve">
+    <value>Ingresa el codigo</value>
+  </data>
+  <data name="enterGameCode" xml:space="preserve">
+    <value>Ingresa el codigo</value>
   </data>
   <data name="enterNewPassword" xml:space="preserve">
     <value>Ingresa la nueva contrase</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="language" xml:space="preserve">
     <value>Lenguaje</value>
+  </data>
+  <data name="lobby" xml:space="preserve">
+    <value>Sala de espera</value>
   </data>
   <data name="login" xml:space="preserve">
     <value>Iniciar Sesión</value>
@@ -189,6 +198,15 @@
   <data name="playAsAGuest" xml:space="preserve">
     <value>Juega como Invitador</value>
   </data>
+  <data name="private" xml:space="preserve">
+    <value>Privada</value>
+  </data>
+  <data name="public" xml:space="preserve">
+    <value>Publica</value>
+  </data>
+  <data name="quickly" xml:space="preserve">
+    <value>Rápido</value>
+  </data>
   <data name="register" xml:space="preserve">
     <value>Resgitrate</value>
   </data>
@@ -198,8 +216,14 @@
   <data name="send" xml:space="preserve">
     <value>Enviar</value>
   </data>
+  <data name="slow" xml:space="preserve">
+    <value>Lento</value>
+  </data>
   <data name="speedOfTheMatch" xml:space="preserve">
     <value>Velocidad</value>
+  </data>
+  <data name="standard" xml:space="preserve">
+    <value>Normal</value>
   </data>
   <data name="typeOfItem" xml:space="preserve">
     <value>Tipo de partida</value>
@@ -209,6 +233,9 @@
   </data>
   <data name="username" xml:space="preserve">
     <value>Apodo</value>
+  </data>
+  <data name="verificationEmail" xml:space="preserve">
+    <value>Revisar tu coreeo</value>
   </data>
   <data name="welcomeTo" xml:space="preserve">
     <value>Bienvenidos</value>

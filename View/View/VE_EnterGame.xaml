@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-       Title="Enter Game Code" Height="300" Width="300"
+        xmlns:language="clr-namespace:View.Properties.Langs"
+        Title= "{x:Static language:Lang.enterGameCode}"
+        Height="300" Width="300"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -45,7 +47,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Enter Game Code"
+                    <TextBlock Text="{x:Static language:Lang.enterGameCode}"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -80,14 +82,14 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <TextBlock Text="Enter Game Code"
+                    <TextBlock Text="{x:Static language:Lang.enterGameCode}"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Enter the code"
+                    <TextBlock Text="{x:Static language:Lang.enterGameCode}"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -115,7 +117,7 @@
                     </TextBox>
                     <Button x:Name="btnJoinLobby"                          
                             BorderThickness="0"
-                            Content="Enter"
+                            Content="{x:Static language:Lang.accept}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
