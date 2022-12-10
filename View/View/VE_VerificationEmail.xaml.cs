@@ -1,4 +1,5 @@
 ﻿using Logic;
+using System;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,7 +19,7 @@ namespace View
     {
         private string codeVerificationComparation;
         private ServiceReference.EmailServiceClient client;
-
+        private Login login = new Login();
 
         public VE_VerificationEmail()
         {
@@ -48,6 +49,20 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
+            }
+            catch (TimeoutException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
+            }
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
 
             return false;
@@ -62,6 +77,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             SingletonPlayer.PlayerClient.Verificated = false;
             Close();
@@ -87,6 +104,8 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        login.Show();
+                        Close();
                     }
 
                     SingletonPlayer.PlayerClient.Verificated = true;

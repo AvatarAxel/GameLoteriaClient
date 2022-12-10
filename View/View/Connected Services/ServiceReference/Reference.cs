@@ -573,6 +573,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby", ReplyAction="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse")]
         System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseUsernameExist", ReplyAction="http://tempuri.org/IJoinGameService/ResponseUsernameExistResponse")]
+        bool ResponseUsernameExist(string verificationCode, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJoinGameService/ResponseUsernameExist", ReplyAction="http://tempuri.org/IJoinGameService/ResponseUsernameExistResponse")]
+        System.Threading.Tasks.Task<bool> ResponseUsernameExistAsync(string verificationCode, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -616,6 +622,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> ResponseCompleteLobbyAsync(string verificationCode) {
             return base.Channel.ResponseCompleteLobbyAsync(verificationCode);
+        }
+        
+        public bool ResponseUsernameExist(string verificationCode, string username) {
+            return base.Channel.ResponseUsernameExist(verificationCode, username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ResponseUsernameExistAsync(string verificationCode, string username) {
+            return base.Channel.ResponseUsernameExistAsync(verificationCode, username);
         }
     }
     
@@ -670,6 +684,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/StartGame")]
         System.Threading.Tasks.Task StartGameAsync(string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/BanPlayer")]
+        void BanPlayer(string verificationCode, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/BanPlayer")]
+        System.Threading.Tasks.Task BanPlayerAsync(string verificationCode, string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -689,6 +709,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GoToPlay")]
         void GoToPlay(bool status);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetListPlayer")]
+        void GetListPlayer(string[] PlayerLobby);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/BanPlayerResponse")]
+        void BanPlayerResponse(bool status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -781,6 +807,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task StartGameAsync(string verificationCode) {
             return base.Channel.StartGameAsync(verificationCode);
+        }
+        
+        public void BanPlayer(string verificationCode, string username) {
+            base.Channel.BanPlayer(verificationCode, username);
+        }
+        
+        public System.Threading.Tasks.Task BanPlayerAsync(string verificationCode, string username) {
+            return base.Channel.BanPlayerAsync(verificationCode, username);
         }
     }
     

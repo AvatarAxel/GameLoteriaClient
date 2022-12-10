@@ -19,6 +19,7 @@ namespace View
     public partial class VE_EnterGameCode : Window
     {
         private ServiceReference.JoinGameServiceClient client;
+        private Login login = new Login();
         public VE_EnterGameCode()
         {
             InitializeComponent();
@@ -41,6 +42,8 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                login.Show();
+                Close();
             }
             Close();
         }
@@ -61,6 +64,11 @@ namespace View
                         MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                         return;
                     }
+                    if (client.ResponseUsernameExist(codeVerification, SingletonPlayer.PlayerClient.Username))
+                    {
+                        MessageBox.Show("You cannot log in twice", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
                     SingletonGameRound.GameRound.CodeGame = txtCode.Text;
                     Lobby lobby = new Lobby();
                     lobby.Show();
@@ -71,6 +79,8 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    login.Show();
+                    Close();
                 }
             }
         }
