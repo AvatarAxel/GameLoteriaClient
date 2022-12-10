@@ -398,6 +398,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangePasswordService/ChangePassword", ReplyAction="http://tempuri.org/IChangePasswordService/ChangePasswordResponse")]
         System.Threading.Tasks.Task<bool> ChangePasswordAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangePasswordService/ExistEmail", ReplyAction="http://tempuri.org/IChangePasswordService/ExistEmailResponse")]
+        bool ExistEmail(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChangePasswordService/ExistEmail", ReplyAction="http://tempuri.org/IChangePasswordService/ExistEmailResponse")]
+        System.Threading.Tasks.Task<bool> ExistEmailAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -433,6 +439,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string email, string password) {
             return base.Channel.ChangePasswordAsync(email, password);
+        }
+        
+        public bool ExistEmail(string email) {
+            return base.Channel.ExistEmail(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExistEmailAsync(string email) {
+            return base.Channel.ExistEmailAsync(email);
         }
     }
     

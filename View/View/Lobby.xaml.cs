@@ -27,7 +27,6 @@ namespace View
         private ServiceReference.GameServiceClient GameServiceClient;
         private Game game = new Game();
         private Encryption encryption = new Encryption();
-        private Login login = new Login();
         private int counter;
         public Lobby()
         {
@@ -58,7 +57,6 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
             }
@@ -75,13 +73,11 @@ namespace View
             catch(CommunicationObjectAbortedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             catch (CommunicationException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             MainWindow mainWindow = new MainWindow();
@@ -100,7 +96,6 @@ namespace View
             catch(TimeoutException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
   
@@ -122,7 +117,6 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
             }
@@ -138,7 +132,6 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
         }
@@ -173,19 +166,16 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             catch (CommunicationObjectAbortedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             SingletonPlayer.PlayerClient.PlayerType = false;

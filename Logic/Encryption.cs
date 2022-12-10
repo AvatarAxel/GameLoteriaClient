@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Configuration;
 
 namespace Logic
 {
@@ -25,7 +26,7 @@ namespace Logic
         }
         public string EncryptionMessage(string message)
         {
-            string hash = "414v3rG4unpi@ns h1Ham_terxd xdddd 2wxv54t78 fu2jnkml<";
+            string hash = (Properties.Settings.Default.HASH);
             byte[] bytes = UTF8Encoding.UTF8.GetBytes(message);
 
             MD5 md5 = MD5.Create();
@@ -42,7 +43,7 @@ namespace Logic
 
         public string DescryptionMessage(string messageEncryptation)
         {
-            string hash = "414v3rG4unpi@ns h1Ham_terxd xdddd 2wxv54t78 fu2jnkml<";
+            string hash = (Properties.Settings.Default.HASH);
             byte[] bytes = Convert.FromBase64String(messageEncryptation);
 
             MD5 md5 = MD5.Create();

@@ -8,6 +8,8 @@ namespace Testing
     public class UnitTest1
     {
         private FieldValidation fieldValidation = new FieldValidation();
+        private Encryption encryption = new Encryption();
+
         [TestMethod]
         public void PasswordValidation_Successful()
         {
@@ -110,6 +112,32 @@ namespace Testing
             string password = "AlYUBw32e987";
 
             actualResult = fieldValidation.PasswordSecure(password);
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void MessageEncryptation_Successful()
+        {
+            string expectedResult = "wvJmX5Ze58WJyfiGZIJtcQ==";
+            string actualResult;
+
+            string message = "AlYUBw32e987";
+
+            actualResult = encryption.EncryptionMessage(message);
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void MessageDescryptation_Successful()
+        {
+            string expectedResult = "AlYUBw32e987";
+            string actualResult;
+
+            string message = "wvJmX5Ze58WJyfiGZIJtcQ==";
+
+            actualResult = encryption.DescryptionMessage(message);
 
             Assert.AreEqual(expectedResult, actualResult);
         }

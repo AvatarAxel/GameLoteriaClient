@@ -102,6 +102,12 @@
   <wsdl:message name="IChangePasswordService_ChangePassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
   </wsdl:message>
+  <wsdl:message name="IChangePasswordService_ExistEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistEmail" />
+  </wsdl:message>
+  <wsdl:message name="IChangePasswordService_ExistEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistEmailResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmailService_ValidationEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidationEmail" />
   </wsdl:message>
@@ -234,6 +240,10 @@
     <wsdl:operation name="ChangePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IChangePasswordService/ChangePassword" message="tns:IChangePasswordService_ChangePassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChangePasswordService/ChangePasswordResponse" message="tns:IChangePasswordService_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChangePasswordService/ExistEmail" message="tns:IChangePasswordService_ExistEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChangePasswordService/ExistEmailResponse" message="tns:IChangePasswordService_ExistEmail_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmailService">
@@ -388,6 +398,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="ChangePassword">
       <soap12:operation soapAction="http://tempuri.org/IChangePasswordService/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistEmail">
+      <soap12:operation soapAction="http://tempuri.org/IChangePasswordService/ExistEmail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

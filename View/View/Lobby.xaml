@@ -137,7 +137,7 @@
 
                     <Button x:Name="btnSend"                          
                             BorderThickness="0"
-                            Content="Enviar"
+                            Content="{x:Static language:Lang.send}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
@@ -170,7 +170,7 @@
 
                     <Button x:Name="btnPlay"                          
                             BorderThickness="0"
-                            Content="Play"
+                            Content="{x:Static language:Lang.play}"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"

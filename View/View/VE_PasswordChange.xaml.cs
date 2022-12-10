@@ -20,8 +20,6 @@ namespace View
     public partial class VE_PasswordChange : Window
     {
         private ServiceReference.ChangePasswordServiceClient client;
-        private Login login = new Login();
-
         public VE_PasswordChange()
         {
             InitializeComponent();
@@ -36,7 +34,6 @@ namespace View
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            login.Show();
             try
             {
                 client.Close();
@@ -44,7 +41,6 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
                 Close();
             }
             Close();
@@ -52,15 +48,14 @@ namespace View
 
         private void BtnUpdateData_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidationFields())
+            string email;
+            string passwordValidation;
+            email = txtEmail.Text;
+            passwordValidation = txtPasswordValidation.Password;
+            string hashedPassword;
+            if (ValidationFields() && client.ExistEmail(email))
             {
-                string email;
-                string passwordValidation;
-                email = txtEmail.Text;
-                passwordValidation = txtPasswordValidation.Password;
-                string hashedPassword;
                 BtnUpdateData.IsEnabled = false;
-
                 VE_VerificationEmail changePassword = new VE_VerificationEmail();
 
                 if (changePassword.MailSentByThePlayer(email))
@@ -83,11 +78,14 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        login.Show();
                         Close();
                     }
                 }
 
+            }
+            else
+            {
+                MessageBox.Show("This email does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -119,7 +117,6 @@ namespace View
             if (status)
             {
                 MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-                login.Show();
                 try
                 {
                     client.Close();
@@ -127,7 +124,6 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
                 Close();

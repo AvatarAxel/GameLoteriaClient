@@ -18,7 +18,6 @@ namespace View
 {
     public partial class MainWindow : Window
     {
-        private Login login = new Login();
         public MainWindow()
         {
             InitializeComponent();
@@ -42,8 +41,6 @@ namespace View
             SingletonPlayer.PlayerClient.Coin = 0;
             SingletonPlayer.PlayerClient.Email = null;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
-
-            login.Show();
             Close();
 
         }
