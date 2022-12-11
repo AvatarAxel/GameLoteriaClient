@@ -453,7 +453,7 @@ namespace View
             try
             {
                 client.JoinLoteria(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                if (!SingletonPlayer.PlayerClient.RegisteredUser)
+                if (!SingletonPlayer.PlayerClient.RegisteredUser) 
                 {
                     SingletonPlayer.PlayerClient.Coin = SingletonPlayer.PlayerClient.Coin - SingletonGameRound.GameRound.Bet;
                 }

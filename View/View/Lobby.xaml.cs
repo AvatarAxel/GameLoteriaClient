@@ -90,7 +90,7 @@ namespace View
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-            if (SingletonGameRound.GameRound.TotalPlayers >= 3)
+            if(SingletonGameRound.GameRound.TotalPlayers >= 3)
             {
                 try
                 {
@@ -101,6 +101,7 @@ namespace View
                     MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     GoLogin();
                 }
+
             }
             else
             {
@@ -158,7 +159,7 @@ namespace View
                 GoLogin();
             }
         }
-
+        
         private void ConfigureLobby()
         {
             context = new InstanceContext(this);
@@ -296,6 +297,8 @@ namespace View
                          *  El men debe de aceptarla o denegarla
                          *  Aceptar : Se actualiza la lista de amigos de ambos
                          *  Denegar : Pues no hace nada
+                         *  NR NO PUEDE JUGAR LA PRIMERA VES
+                         *  
                          */
                     }
                     else
