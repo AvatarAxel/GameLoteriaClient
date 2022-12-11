@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{23C595A1-6CFF-400A-8C4F-607476684884}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "..\Logic\Logic.csproj", "{79A6BE37-D0F7-4598-89CA-5E9A1DA06B7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "..\Testing\Testing.csproj", "{6ADEB203-BE60-4D91-919C-157A2ACA778B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{23C595A1-6CFF-400A-8C4F-607476684884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{23C595A1-6CFF-400A-8C4F-607476684884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23C595A1-6CFF-400A-8C4F-607476684884}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23C595A1-6CFF-400A-8C4F-607476684884}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23C595A1-6CFF-400A-8C4F-607476684884}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79A6BE37-D0F7-4598-89CA-5E9A1DA06B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79A6BE37-D0F7-4598-89CA-5E9A1DA06B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A6BE37-D0F7-4598-89CA-5E9A1DA06B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{6ADEB203-BE60-4D91-919C-157A2ACA778B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ADEB203-BE60-4D91-919C-157A2ACA778B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ADEB203-BE60-4D91-919C-157A2ACA778B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C595A1-6CFF-400A-8C4F-607476684884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C595A1-6CFF-400A-8C4F-607476684884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C595A1-6CFF-400A-8C4F-607476684884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C595A1-6CFF-400A-8C4F-607476684884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

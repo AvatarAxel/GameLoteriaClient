@@ -26,7 +26,7 @@ namespace View
             {
                 if (SingletonPlayer.PlayerClient.Coin < int.Parse(cmbxAmountOfMoney.Text.Substring(1)))
                 {
-                    MessageBox.Show("You don't have enough coins", "Sorry :(", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.insufficientCoins, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -56,12 +56,6 @@ namespace View
                         MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                         GoLogin();
                     }
-                    Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
                     Close();
                 }
             }

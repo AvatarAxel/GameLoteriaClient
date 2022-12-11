@@ -201,6 +201,9 @@
   <data name="incompleteDateOfBirth" xml:space="preserve">
     <value>Incomplete date of birth</value>
   </data>
+  <data name="insufficientCoins" xml:space="preserve">
+    <value>Insufficient Coins</value>
+  </data>
   <data name="invalidFormat" xml:space="preserve">
     <value>Invalid format</value>
   </data>
@@ -321,8 +324,14 @@
   <data name="warning" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="weHaveWinner" xml:space="preserve">
+    <value>We Have Winner</value>
+  </data>
   <data name="welcomeTo" xml:space="preserve">
     <value>Welcome</value>
+  </data>
+  <data name="winner" xml:space="preserve">
+    <value>winner</value>
   </data>
   <data name="youAreNOTRegisteredYet" xml:space="preserve">
     <value>You are NOT registered yet, REGISTER NOW"</value>

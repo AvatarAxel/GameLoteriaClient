@@ -34,7 +34,7 @@ namespace View
             }
             catch (CommunicationObjectFaultedException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 GoLogin();
             }
             Close();
@@ -56,12 +56,12 @@ namespace View
                     }
                     catch (EndpointNotFoundException)
                     {
-                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                         GoLogin();
                     }
                     catch (CommunicationException)
                     {
-                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                         GoLogin();
                     }
                 }
@@ -91,7 +91,7 @@ namespace View
                 {
                     if (!client.ValidateCoinsRegistered(SingletonPlayer.PlayerClient.Username, codeVerification))
                     {
-                        MessageBox.Show("Insufficient coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Langs.Lang.insufficientCoins, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                         return false;
                     }
                 }
@@ -99,7 +99,7 @@ namespace View
                 {
                     if (!client.ValidateCoinsUnregistered(SingletonPlayer.PlayerClient.Coin, codeVerification))
                     {
-                        MessageBox.Show("Insufficient coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Langs.Lang.insufficientCoins, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                         return false;
                     }
                 }
@@ -107,12 +107,12 @@ namespace View
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 GoLogin();
             }
             catch (CommunicationException)
             {
-                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 GoLogin();
             }
             return false;
