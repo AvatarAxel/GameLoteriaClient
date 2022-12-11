@@ -61,7 +61,10 @@ namespace View
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
-            Close();
+            if (counter >= 54) 
+            {
+                Close();
+            }
         }
 
         private void BtnPosition1Cards_Click(Object sender, RoutedEventArgs e)
@@ -436,10 +439,12 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
                 catch (CommunicationException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
         }
@@ -449,6 +454,10 @@ namespace View
             try
             {
                 client.JoinLoteria(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                if (SingletonPlayer.PlayerClient.RegisteredUser) 
+                {
+                    SingletonPlayer.PlayerClient.Coin = SingletonPlayer.PlayerClient.Coin - SingletonGameRound.GameRound.Bet;
+                }
             }
             catch (EndpointNotFoundException)
             {
@@ -460,7 +469,8 @@ namespace View
             }
         }
 
-        private void UpdateQueue(int idCard) {                        
+        private void UpdateQueue(int idCard) 
+        {                        
             displayedTail.Enqueue(idCard);
             displayedTail.Dequeue();
         }
@@ -476,12 +486,25 @@ namespace View
         {
             if (counterCells == 16)
             {
-                btnLoteria.IsEnabled = false;
-                int bet = CalculateBet();
-                client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
-                if (!SingletonPlayer.PlayerClient.RegisteredUser) 
+                try
                 {
-                    SingletonPlayer.PlayerClient.Coin = bet;                    
+                    btnLoteria.IsEnabled = false;
+                    int bet = CalculateBet();
+                    client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
+                    if (!SingletonPlayer.PlayerClient.RegisteredUser)
+                    {
+                        SingletonPlayer.PlayerClient.Coin += bet;
+                    }
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
         }
@@ -503,12 +526,21 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
                 catch (CommunicationException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
+        }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
 
     }

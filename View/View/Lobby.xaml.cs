@@ -7,6 +7,7 @@ using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.ServiceReference;
 
 namespace View
 {
@@ -25,9 +27,8 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
-        private Game game = new Game();
+        private Game game;
         private Encryption encryption = new Encryption();
-        private Login login = new Login();
 
         public Lobby()
         {
@@ -54,8 +55,7 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
-                    Close();
+                    GoLogin();
                 }
                 catch (CommunicationObjectFaultedException)
                 {
@@ -75,14 +75,12 @@ namespace View
             catch(CommunicationObjectAbortedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -98,8 +96,7 @@ namespace View
             catch(TimeoutException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
         }
 
@@ -119,8 +116,7 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
-                    Close();
+                    GoLogin();
                 }
                 catch (CommunicationObjectFaultedException)
                 {
@@ -140,8 +136,7 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationObjectFaultedException)
             {
@@ -180,20 +175,17 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationObjectAbortedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             finally 
             {
@@ -204,7 +196,6 @@ namespace View
         public void ReciveMessage(string player, string message)
         {
            string messageDescryption = encryption.DescryptionMessage(message);
-
             txtChat.Text += player + ":  " + messageDescryption + "\r\n";
         }
 
@@ -220,32 +211,51 @@ namespace View
             lbCodeVerificationTitle.Text = "Code Verification";
             lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             btnPlay.Visibility = Visibility.Visible;
+            btnSignOutPlayer.Visibility = Visibility.Visible;
         }
 
         public void GoToPlay(bool status)
         {
             if (status)
             {
-                game = new Game();
-                game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
-                game.StartGame();
-                game.ShowDialog();
+                if (SingletonPlayer.PlayerClient.Coin >= SingletonGameRound.GameRound.Bet)
+                {
+                    EnterGame();
+                }
+                else
+                {
+                    MessageBox.Show("You don't have enough coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    ExitPlayer();
+                    Close();
+                }         
+            }
+        }
+
+        private void EnterGame() 
+        {
+            game = new Game();
+            game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
+            game.StartGame();
+            game.ShowDialog();
+            try
+            {
                 GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
-            else 
+            catch
             {
-                MessageBox.Show("You don't have enough coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                ExitPlayer();
                 Close();
             }
         }
 
         public void UpdateBetCoinsResponse(int coins, int bet)
         {
-            SingletonPlayer.PlayerClient.Coin = coins;
             SingletonGameRound.GameRound.Bet = bet;
+            if (SingletonPlayer.PlayerClient.RegisteredUser)
+            {
+                SingletonPlayer.PlayerClient.Coin = coins;
+            }
             lbCoins.Text = SingletonPlayer.PlayerClient.Coin.ToString();
         }
 
@@ -260,7 +270,7 @@ namespace View
 
         private void BtnAddFriend_Click(object sender, RoutedEventArgs e)
         {
-            if (ListPlayers.SelectedIndex > 0)
+            if (ListPlayers.SelectedIndex >= 0)
             {
                 string username = ListPlayers.SelectedItem.ToString();
                 if (username != SingletonPlayer.PlayerClient.Username)
@@ -283,7 +293,7 @@ namespace View
 
         private void BtnSignOutPlayer_Click(object sender, RoutedEventArgs e)
         {
-            if(ListPlayers.SelectedIndex > 0)
+            if(ListPlayers.SelectedIndex >= 0)
             {
                 string username = ListPlayers.SelectedItem.ToString();
                 if (username != SingletonPlayer.PlayerClient.Username)
@@ -310,5 +320,13 @@ namespace View
             
             }
         }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+    
     }
 }

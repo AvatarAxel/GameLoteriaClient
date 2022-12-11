@@ -52,7 +52,7 @@ namespace View
                         SingletonGameRound.GameRound.CodeGame = txtCode.Text;
                         Lobby lobby = new Lobby();
                         lobby.Show();
-                        GoLogin();
+                        Close();
                     }
                     catch (EndpointNotFoundException)
                     {
@@ -80,6 +80,11 @@ namespace View
                 if (client.ResponseCompleteLobby(codeVerification))
                 {
                     MessageBox.Show("Room full", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+                if (client.ResponseUsernameExist(codeVerification, SingletonPlayer.PlayerClient.Username))
+                {
+                    MessageBox.Show("You cannot log in twice", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
                 if (SingletonPlayer.PlayerClient.RegisteredUser)

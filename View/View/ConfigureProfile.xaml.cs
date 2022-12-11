@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,23 +47,35 @@ namespace View
 
         private void BtnUpdateUsername_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidationFields())
+            try
             {
-                bool changeUsername = client.ChangeUsername(SingletonPlayer.PlayerClient.Email, lbUsername.Text);
-                if (changeUsername)
+                if (ValidationFields())
                 {
-                    MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    bool changeUsername = client.ChangeUsername(SingletonPlayer.PlayerClient.Email, lbUsername.Text);
+                    if (changeUsername)
+                    {
+                        MessageBox.Show("You have successfully updated", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Could not update successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Could not update successfully", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Name is invalid", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            catch (EndpointNotFoundException)
             {
-                MessageBox.Show("Name is invalid", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
-
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
+            }
         }
 
         public bool ValidationFields()
@@ -74,8 +87,15 @@ namespace View
             {
                 return true;
             }
-
             return false;
         }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
     }
 }
