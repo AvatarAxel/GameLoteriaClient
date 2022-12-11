@@ -96,6 +96,9 @@
     <Compile Include="VE_PasswordChange.xaml.cs">
       <DependentUpon>VE_PasswordChange.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VE_SendInvitationFriend.xaml.cs">
+      <DependentUpon>VE_SendInvitationFriend.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VE_StartUpSettings.xaml.cs">
       <DependentUpon>VE_StartUpSettings.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VE_PasswordChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VE_SendInvitationFriend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

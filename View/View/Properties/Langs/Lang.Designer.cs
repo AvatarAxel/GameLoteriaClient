@@ -97,6 +97,33 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application rejected.
+        /// </summary>
+        public static string applicationRejected {
+            get {
+                return ResourceManager.GetString("applicationRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application submitted.
+        /// </summary>
+        public static string applicationSubmitted {
+            get {
+                return ResourceManager.GetString("applicationSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempts Exhausted.
+        /// </summary>
+        public static string attemptsExhausted {
+            get {
+                return ResourceManager.GetString("attemptsExhausted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change The Password.
         /// </summary>
         public static string changeThePassword {
@@ -214,6 +241,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Decline.
+        /// </summary>
+        public static string decline {
+            get {
+                return ResourceManager.GetString("decline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deficient password.
         /// </summary>
         public static string deficientPassword {
@@ -300,6 +336,24 @@ namespace View.Properties.Langs {
         public static string forgotYourPassword {
             get {
                 return ResourceManager.GetString("forgotYourPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend request.
+        /// </summary>
+        public static string friendRequest {
+            get {
+                return ResourceManager.GetString("friendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friendship request from.
+        /// </summary>
+        public static string friendshipRequestFrom {
+            get {
+                return ResourceManager.GetString("friendshipRequestFrom", resourceCulture);
             }
         }
         
@@ -444,6 +498,15 @@ namespace View.Properties.Langs {
         public static string nicknameAlreadyRegistered {
             get {
                 return ResourceManager.GetString("nicknameAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of attempts exhausted.
+        /// </summary>
+        public static string numberOfAttemptsExhausted {
+            get {
+                return ResourceManager.GetString("numberOfAttemptsExhausted", resourceCulture);
             }
         }
         
@@ -754,6 +817,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have a new friend.
+        /// </summary>
+        public static string youHaveNewFriend {
+            get {
+                return ResourceManager.GetString("youHaveNewFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have successfully updated.
         /// </summary>
         public static string youHaveSuccessfullyUpdated {
@@ -768,6 +840,15 @@ namespace View.Properties.Langs {
         public static string yourEarnedCoinsWillNotBeSaved {
             get {
                 return ResourceManager.GetString("yourEarnedCoinsWillNotBeSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your friends list is full.
+        /// </summary>
+        public static string yourFriendsListIsFull {
+            get {
+                return ResourceManager.GetString("yourFriendsListIsFull", resourceCulture);
             }
         }
     }

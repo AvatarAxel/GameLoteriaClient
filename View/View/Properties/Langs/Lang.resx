@@ -123,6 +123,15 @@
   <data name="amountOfMoney" xml:space="preserve">
     <value>Amount Of Money</value>
   </data>
+  <data name="applicationRejected" xml:space="preserve">
+    <value>Application rejected</value>
+  </data>
+  <data name="applicationSubmitted" xml:space="preserve">
+    <value>Application submitted</value>
+  </data>
+  <data name="attemptsExhausted" xml:space="preserve">
+    <value>Attempts Exhausted</value>
+  </data>
   <data name="changeThePassword" xml:space="preserve">
     <value>Change The Password</value>
   </data>
@@ -162,6 +171,9 @@
   <data name="dateOfBirth" xml:space="preserve">
     <value>Date Of Birth</value>
   </data>
+  <data name="decline" xml:space="preserve">
+    <value>Decline</value>
+  </data>
   <data name="deficientPassword" xml:space="preserve">
     <value>Deficient password</value>
   </data>
@@ -191,6 +203,12 @@
   </data>
   <data name="forgotYourPassword" xml:space="preserve">
     <value>Forgot Your Password</value>
+  </data>
+  <data name="friendRequest" xml:space="preserve">
+    <value>Friend request</value>
+  </data>
+  <data name="friendshipRequestFrom" xml:space="preserve">
+    <value>Friendship request from</value>
   </data>
   <data name="gameLoteria" xml:space="preserve">
     <value>Game Loteria</value>
@@ -239,6 +257,9 @@
   </data>
   <data name="nicknameAlreadyRegistered" xml:space="preserve">
     <value>Nickname already registered</value>
+  </data>
+  <data name="numberOfAttemptsExhausted" xml:space="preserve">
+    <value>Number of attempts exhausted</value>
   </data>
   <data name="numberPlayer" xml:space="preserve">
     <value>Number of Players</value>
@@ -348,10 +369,16 @@
   <data name="youHaveBeenExpelled" xml:space="preserve">
     <value>You have been expelled</value>
   </data>
+  <data name="youHaveNewFriend" xml:space="preserve">
+    <value>You have a new friend</value>
+  </data>
   <data name="youHaveSuccessfullyUpdated" xml:space="preserve">
     <value>You have successfully updated</value>
   </data>
   <data name="yourEarnedCoinsWillNotBeSaved" xml:space="preserve">
     <value>Your earned coins will not be saved</value>
+  </data>
+  <data name="yourFriendsListIsFull" xml:space="preserve">
+    <value>Your friends list is full</value>
   </data>
 </root>
