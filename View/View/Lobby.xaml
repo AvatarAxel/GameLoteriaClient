@@ -226,6 +226,8 @@
                     </Button>
 
                 </StackPanel>
+                <TextBlock x:Name="lbTotalPlayers" HorizontalAlignment="Left" Margin="648,86,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                <TextBlock x:Name="lbCoins" HorizontalAlignment="Left" Height="25" Margin="610,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98"/>
             </Grid>
         </Border>
     </Border>

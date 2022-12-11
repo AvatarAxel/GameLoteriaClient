@@ -64,6 +64,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILoteriaService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -144,6 +152,18 @@
   <wsdl:message name="IJoinGameService_ResponseCompleteLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:ResponseCompleteLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="IJoinGameService_ValidateCoinsUnregistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsUnregistered" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ValidateCoinsUnregistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsUnregisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ValidateCoinsRegistered_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IJoinGameService_ValidateCoinsRegistered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateCoinsRegisteredResponse" />
+  </wsdl:message>
   <wsdl:message name="IJoinGameService_ResponseUsernameExist_InputMessage">
     <wsdl:part name="parameters" element="tns:ResponseUsernameExist" />
   </wsdl:message>
@@ -152,9 +172,6 @@
   </wsdl:message>
   <wsdl:message name="IGameService_JoinGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinGame" />
-  </wsdl:message>
-  <wsdl:message name="IGameService_SendWinner_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendWinner" />
   </wsdl:message>
   <wsdl:message name="IGameService_ExitGame_InputMessage">
     <wsdl:part name="parameters" element="tns:ExitGame" />
@@ -171,14 +188,14 @@
   <wsdl:message name="IGameService_GoToGame_InputMessage">
     <wsdl:part name="parameters" element="tns:GoToGame" />
   </wsdl:message>
-  <wsdl:message name="IGameService_StartGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:StartGame" />
+  <wsdl:message name="IGameService_UpdateTotalPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTotalPlayers" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_UpdateBetCoins_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBetCoins" />
   </wsdl:message>
   <wsdl:message name="IGameService_BanPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:BanPlayer" />
-  </wsdl:message>
-  <wsdl:message name="IGameService_ReciveWinner_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReciveWinner" />
   </wsdl:message>
   <wsdl:message name="IGameService_ResponseTotalPlayers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseTotalPlayers" />
@@ -186,11 +203,11 @@
   <wsdl:message name="IGameService_SendNextHostGameResponse_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendNextHostGameResponse" />
   </wsdl:message>
-  <wsdl:message name="IGameService_SendCard_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:SendCard" />
-  </wsdl:message>
   <wsdl:message name="IGameService_GoToPlay_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GoToPlay" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_UpdateBetCoinsResponse_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBetCoinsResponse" />
   </wsdl:message>
   <wsdl:message name="IGameService_GetListPlayer_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetListPlayer" />
@@ -209,6 +226,30 @@
   </wsdl:message>
   <wsdl:message name="IChangeUsernameService_ValidateAvailabilityUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateAvailabilityUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_CreateLoteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLoteria" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_DeleteLoteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLoteria" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_JoinLoteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLoteria" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_ExitLoteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitLoteria" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_ReciveWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReciveWinner" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_StartGameLoteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGameLoteria" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_SendCard_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendCard" />
+  </wsdl:message>
+  <wsdl:message name="ILoteriaService_SendWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendWinner" />
   </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
@@ -275,6 +316,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobby" message="tns:IJoinGameService_ResponseCompleteLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseCompleteLobbyResponse" message="tns:IJoinGameService_ResponseCompleteLobby_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ValidateCoinsUnregistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsUnregistered" message="tns:IJoinGameService_ValidateCoinsUnregistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsUnregisteredResponse" message="tns:IJoinGameService_ValidateCoinsUnregistered_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoinsRegistered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsRegistered" message="tns:IJoinGameService_ValidateCoinsRegistered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ValidateCoinsRegisteredResponse" message="tns:IJoinGameService_ValidateCoinsRegistered_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ResponseUsernameExist">
       <wsdl:input wsaw:Action="http://tempuri.org/IJoinGameService/ResponseUsernameExist" message="tns:IJoinGameService_ResponseUsernameExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IJoinGameService/ResponseUsernameExistResponse" message="tns:IJoinGameService_ResponseUsernameExist_OutputMessage" />
@@ -283,9 +332,6 @@
   <wsdl:portType name="IGameService">
     <wsdl:operation name="JoinGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/JoinGame" message="tns:IGameService_JoinGame_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendWinner">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/SendWinner" message="tns:IGameService_SendWinner_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ExitGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/ExitGame" message="tns:IGameService_ExitGame_InputMessage" />
@@ -302,14 +348,14 @@
     <wsdl:operation name="GoToGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GoToGame" message="tns:IGameService_GoToGame_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="StartGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/StartGame" message="tns:IGameService_StartGame_InputMessage" />
+    <wsdl:operation name="UpdateTotalPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/UpdateTotalPlayers" message="tns:IGameService_UpdateTotalPlayers_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/UpdateBetCoins" message="tns:IGameService_UpdateBetCoins_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BanPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/BanPlayer" message="tns:IGameService_BanPlayer_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReciveWinner">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ReciveWinner" message="tns:IGameService_ReciveWinner_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseTotalPlayers" message="tns:IGameService_ResponseTotalPlayers_OutputCallbackMessage" />
@@ -317,11 +363,11 @@
     <wsdl:operation name="SendNextHostGameResponse">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/SendNextHostGameResponse" message="tns:IGameService_SendNextHostGameResponse_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SendCard">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/SendCard" message="tns:IGameService_SendCard_OutputCallbackMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GoToPlay">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GoToPlay" message="tns:IGameService_GoToPlay_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoinsResponse">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/UpdateBetCoinsResponse" message="tns:IGameService_UpdateBetCoinsResponse_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetListPlayer">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetListPlayer" message="tns:IGameService_GetListPlayer_OutputCallbackMessage" />
@@ -338,6 +384,32 @@
     <wsdl:operation name="ValidateAvailabilityUsername">
       <wsdl:input wsaw:Action="http://tempuri.org/IChangeUsernameService/ValidateAvailabilityUsername" message="tns:IChangeUsernameService_ValidateAvailabilityUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChangeUsernameService/ValidateAvailabilityUsernameResponse" message="tns:IChangeUsernameService_ValidateAvailabilityUsername_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILoteriaService">
+    <wsdl:operation name="CreateLoteria">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoteriaService/CreateLoteria" message="tns:ILoteriaService_CreateLoteria_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLoteria">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoteriaService/DeleteLoteria" message="tns:ILoteriaService_DeleteLoteria_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinLoteria">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoteriaService/JoinLoteria" message="tns:ILoteriaService_JoinLoteria_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExitLoteria">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoteriaService/ExitLoteria" message="tns:ILoteriaService_ExitLoteria_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoteriaService/ReciveWinner" message="tns:ILoteriaService_ReciveWinner_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGameLoteria">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoteriaService/StartGameLoteria" message="tns:ILoteriaService_StartGameLoteria_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCard">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoteriaService/SendCard" message="tns:ILoteriaService_SendCard_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoteriaService/SendWinner" message="tns:ILoteriaService_SendWinner_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -480,6 +552,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ValidateCoinsUnregistered">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ValidateCoinsUnregistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCoinsRegistered">
+      <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ValidateCoinsRegistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ResponseUsernameExist">
       <soap12:operation soapAction="http://tempuri.org/IJoinGameService/ResponseUsernameExist" style="document" />
       <wsdl:input>
@@ -495,12 +585,6 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="JoinGame">
       <soap12:operation soapAction="http://tempuri.org/IGameService/JoinGame" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SendWinner">
-      <soap12:operation soapAction="http://tempuri.org/IGameService/SendWinner" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -535,8 +619,14 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="StartGame">
-      <soap12:operation soapAction="http://tempuri.org/IGameService/StartGame" style="document" />
+    <wsdl:operation name="UpdateTotalPlayers">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateTotalPlayers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBetCoins">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateBetCoins" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -546,12 +636,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ReciveWinner">
-      <soap12:operation soapAction="http://tempuri.org/IGameService/ReciveWinner" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ResponseTotalPlayers">
       <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseTotalPlayers" style="document" />
@@ -565,14 +649,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SendCard">
-      <soap12:operation soapAction="http://tempuri.org/IGameService/SendCard" style="document" />
+    <wsdl:operation name="GoToPlay">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/GoToPlay" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GoToPlay">
-      <soap12:operation soapAction="http://tempuri.org/IGameService/GoToPlay" style="document" />
+    <wsdl:operation name="UpdateBetCoinsResponse">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateBetCoinsResponse" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -607,6 +691,58 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILoteriaService" type="tns:ILoteriaService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILoteriaService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateLoteria">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/CreateLoteria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLoteria">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/DeleteLoteria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="JoinLoteria">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/JoinLoteria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExitLoteria">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/ExitLoteria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveWinner">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/ReciveWinner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartGameLoteria">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/StartGameLoteria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendCard">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/SendCard" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWinner">
+      <soap12:operation soapAction="http://tempuri.org/ILoteriaService/SendWinner" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -656,6 +792,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChangeUsernameService" binding="tns:NetTcpBinding_IChangeUsernameService">
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILoteriaService" binding="tns:NetTcpBinding_ILoteriaService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>

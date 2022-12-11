@@ -19,7 +19,6 @@ namespace View
     {
         private string codeVerificationComparation;
         private ServiceReference.EmailServiceClient client;
-        private Login login = new Login();
 
         public VE_VerificationEmail()
         {
@@ -49,20 +48,17 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (TimeoutException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             catch (CommunicationException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
 
             return false;
@@ -77,8 +73,7 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             SingletonPlayer.PlayerClient.Verificated = false;
             Close();
@@ -104,8 +99,7 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                        login.Show();
-                        Close();
+                        GoLogin();
                     }
 
                     SingletonPlayer.PlayerClient.Verificated = true;
@@ -117,5 +111,13 @@ namespace View
                 }
             }
         }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
     }
 }

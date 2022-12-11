@@ -20,6 +20,7 @@ namespace View
     public partial class VE_PasswordChange : Window
     {
         private ServiceReference.ChangePasswordServiceClient client;
+
         public VE_PasswordChange()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
             Close();
         }
@@ -78,7 +79,7 @@ namespace View
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                        Close();
+                        GoLogin();
                     }
                 }
 
@@ -124,14 +125,22 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                    Close();
+                    GoLogin();
                 }
                 Close();
             }
             else
             {
                 MessageBox.Show(Properties.Langs.Lang.couldNotUpdateSuccessfully, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
+        }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

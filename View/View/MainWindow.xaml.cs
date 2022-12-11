@@ -41,8 +41,7 @@ namespace View
             SingletonPlayer.PlayerClient.Coin = 0;
             SingletonPlayer.PlayerClient.Email = null;
             SingletonPlayer.PlayerClient.RegisteredUser = false;
-            Close();
-
+            GoLogin();
         }
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
@@ -78,6 +77,12 @@ namespace View
             {
                 MessageBox.Show(Properties.Langs.Lang.youAreNOTRegisteredYet, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void GoLogin() {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

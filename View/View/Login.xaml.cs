@@ -28,7 +28,7 @@ namespace View
             client = new ServiceReference.AuthenticationServiceClient();
         }
 
-        public void AuthenticateLogin(PlayerDTO playerDTO)
+        private void AuthenticateLogin(PlayerDTO playerDTO)
         {
             if (playerDTO.IsActive)
             {
@@ -89,9 +89,8 @@ namespace View
                 try
                 {
                     PlayerDTO playerDTO;
-                    playerDTO= client.AuthenticationLogin(username, hashedPassword);
+                    playerDTO = client.AuthenticationLogin(username, hashedPassword);
                     AuthenticateLogin(playerDTO);
-
                 }
                 catch (EndpointNotFoundException)
                 {

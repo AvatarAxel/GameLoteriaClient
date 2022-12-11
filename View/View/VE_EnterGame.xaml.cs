@@ -1,25 +1,13 @@
 ﻿using Logic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace View
 {
     public partial class VE_EnterGameCode : Window
     {
         private ServiceReference.JoinGameServiceClient client;
-        private Login login = new Login();
         public VE_EnterGameCode()
         {
             InitializeComponent();
@@ -42,8 +30,12 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
+            }
+            catch (CommunicationObjectFaultedException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
             Close();
         }
@@ -51,40 +43,87 @@ namespace View
         public void BtnJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             string codeVerification = txtCode.Text;
-            if (!string.IsNullOrEmpty(codeVerification) ) {
-                try
+            if (!string.IsNullOrEmpty(codeVerification) )
+            {
+                if (ValidationLobby(codeVerification))
                 {
-                    if (!client.ResponseCodeExist(codeVerification))
+                    try
                     {
-                        MessageBox.Show(Properties.Langs.Lang.thisRoomDoesNotExist, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
+                        SingletonGameRound.GameRound.CodeGame = txtCode.Text;
+                        Lobby lobby = new Lobby();
+                        lobby.Show();
+                        Close();
                     }
-                    if (client.ResponseCompleteLobby(codeVerification))
+                    catch (EndpointNotFoundException)
                     {
-                        MessageBox.Show(Properties.Langs.Lang.roomFull, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        GoLogin();
                     }
-                    if (client.ResponseUsernameExist(codeVerification, SingletonPlayer.PlayerClient.Username))
+                    catch (CommunicationException)
                     {
-                        MessageBox.Show(Properties.Langs.Lang.youCannotLogInTwice, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
+                        MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        GoLogin();
                     }
-                    SingletonGameRound.GameRound.CodeGame = txtCode.Text;
-                    Lobby lobby = new Lobby();
-                    lobby.Show();
-
-                    client.Close();
-                    Close();
-                }
-                catch (EndpointNotFoundException)
-                {
-                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                    login.Show();
-                    Close();
                 }
             }
         }
 
-    }
+        private bool ValidationLobby(string codeVerification) 
+        {
+            try
+            {
+                if (!client.ResponseCodeExist(codeVerification))
+                {
+                    MessageBox.Show(Properties.Langs.Lang.thisRoomDoesNotExist, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                if (client.ResponseCompleteLobby(codeVerification))
+                {
+                    MessageBox.Show(Properties.Langs.Lang.roomFull, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                if (client.ResponseUsernameExist(codeVerification, SingletonPlayer.PlayerClient.Username))
+                {
+                    MessageBox.Show(Properties.Langs.Lang.youCannotLogInTwice, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                if (SingletonPlayer.PlayerClient.RegisteredUser)
+                {
+                    if (!client.ValidateCoinsRegistered(SingletonPlayer.PlayerClient.Username, codeVerification))
+                    {
+                        MessageBox.Show("Insufficient coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!client.ValidateCoinsUnregistered(SingletonPlayer.PlayerClient.Coin, codeVerification))
+                    {
+                        MessageBox.Show("Insufficient coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
+            }
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
+            }
+            return false;
+        }
 
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
+    }
 }

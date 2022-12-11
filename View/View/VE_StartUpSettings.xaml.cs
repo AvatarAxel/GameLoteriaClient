@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Windows;
+using System.Windows.Controls;
 using Logic;
 using View.ServiceReference;
 
@@ -11,7 +12,6 @@ namespace View
         private InstanceContext context;
         private GameServiceClient gameClient;
         private ChatServiceClient chatClient;
-        private Login login = new Login();
         public VE_StartUpSettings()
         {
             InitializeComponent();
@@ -24,34 +24,37 @@ namespace View
         {
             if (ValidationField())
             {
-                GameRoundDTO gameRoundDTO = new GameRoundDTO();
-                CodeGame codeGame = new CodeGame();
-                SendSpeed();
-                SendTypeGame();
-                SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
-                gameRoundDTO.VerificationCode = SingletonGameRound.GameRound.CodeGame;
-                gameRoundDTO.LimitPlayer = int.Parse(cmbxNumberPlayer.Text);
-                gameRoundDTO.Speed = SingletonGameRound.GameRound.SpeedGame;
-                gameRoundDTO.PrivateGame = SingletonGameRound.GameRound.PrivateGame;
-
-                try
+                if (SingletonPlayer.PlayerClient.Coin < int.Parse(cmbxAmountOfMoney.Text.Substring(1)))
                 {
-                    gameClient.CreateGame(gameRoundDTO);
-                    chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
-
-                    Lobby lobby = new Lobby();
-                    lobby.Show();
+                    MessageBox.Show("You don't have enough coins", "Sorry :(", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    GameRoundDTO gameRoundDTO = new GameRoundDTO();
+                    CodeGame codeGame = new CodeGame();
+                    SendSpeed();
+                    SendTypeGame();
+                    SingletonGameRound.GameRound.CodeGame = codeGame.GenerateRandomCode();
+                    gameRoundDTO.VerificationCode = SingletonGameRound.GameRound.CodeGame;
+                    gameRoundDTO.LimitPlayer = int.Parse(cmbxNumberPlayer.Text);
+                    gameRoundDTO.Bet = int.Parse(cmbxAmountOfMoney.Text.Substring(1));
+                    gameRoundDTO.Speed = SingletonGameRound.GameRound.SpeedGame;
+                    gameRoundDTO.PrivateGame = SingletonGameRound.GameRound.PrivateGame;
 
                     try
                     {
+                        gameClient.CreateGame(gameRoundDTO);
+                        chatClient.CreateChat(SingletonGameRound.GameRound.CodeGame);
+                        Lobby lobby = new Lobby();
+                        lobby.Show();
                         gameClient.Close();
                         chatClient.Close();
+                        Close();
                     }
                     catch (EndpointNotFoundException)
                     {
                         MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                        login.Show();
-                        Close();
+                        GoLogin();
                     }
                     Close();
                 }
@@ -81,8 +84,7 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                login.Show();
-                Close();
+                GoLogin();
             }
             Close();
         }
@@ -105,11 +107,6 @@ namespace View
             }
         }
 
-        public void ReciveWinner(string username)
-        {
-            throw new NotImplementedException();
-        }
-
         public void ResponseTotalPlayers(int totalPlayers)
         {
             SingletonGameRound.GameRound.TotalPlayers = totalPlayers;
@@ -126,11 +123,6 @@ namespace View
         }
 
         public void GoToPlay(bool status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SendCard(int idCard)
         {
             throw new NotImplementedException();
         }
@@ -168,9 +160,19 @@ namespace View
             throw new NotImplementedException();
         }
 
+        public void UpdateBetCoinsResponse(int coins, int bet)
+        {
+            throw new NotImplementedException();
+        }
         public void BanPlayerResponse(bool status)
         {
             throw new NotImplementedException();
+        }
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
         }
     }
 }

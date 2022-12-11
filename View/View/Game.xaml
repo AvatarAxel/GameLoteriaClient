@@ -225,6 +225,7 @@
                             Source="/Images/Cards/Frame 0.jpg"
                             Stretch="UniformToFill"/>
                 </StackPanel>
+                <Button x:Name="btnLoteria" Content="Loteria" HorizontalAlignment="Left" Margin="618,612,0,0" Grid.Row="1" VerticalAlignment="Top" Width="56" Click="btnLoteria_Click"/>
             </Grid>
         </Border>
     </Border>

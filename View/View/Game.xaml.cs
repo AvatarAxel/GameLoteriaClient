@@ -1,55 +1,57 @@
 ﻿using Logic;
-using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using View.ServiceReference;
-using Path = System.Windows.Shapes.Path;
 
 namespace View
 {
 
-    public partial class Game : Window
+    public partial class Game : Window, ILoteriaServiceCallback
     {
+        private InstanceContext context;
+        private LoteriaServiceClient client;
         private FillingOutTheLetter DeckCardRandom;
         private List<int> DeckOfCards;
         private List<Uri> uriList;
         private Queue displayedTail;
         private int counter;
         private List<int> photoListIndex;
+        private int totalPlayers;
+        private int counterCells;
         public Game()
         {
             InitializeComponent();
             InitiatingVariables();
             FillingOutLetter();
+            CreateLoteriaGame();
+            JoinServices();
         }
 
         private void InitiatingVariables() 
         {
+            context = new InstanceContext(this);
+            client = new LoteriaServiceClient(context);
             DeckCardRandom = new FillingOutTheLetter();
             uriList = new List<Uri>();
             counter = 0;
+            counterCells = 0;
+            totalPlayers = 0;
             photoListIndex = new List<int>();
             displayedTail = new Queue();
             displayedTail.Enqueue(0);
             displayedTail.Enqueue(0);
             displayedTail.Enqueue(0);
+        }
+
+        public void RecieveTotalPlayersLoteria(int totalPlayer) 
+        {
+            this.totalPlayers = totalPlayer;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -59,7 +61,10 @@ namespace View
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
-            Close();
+            if (counter >= 54) 
+            {
+                Close();
+            }
         }
 
         private void BtnPosition1Cards_Click(Object sender, RoutedEventArgs e)
@@ -75,6 +80,7 @@ namespace View
                 Position1Cards.Source = new BitmapImage(uri);
 
                 Position1Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -90,6 +96,7 @@ namespace View
 
                 Position2Cards.Source = new BitmapImage(uri);
                 Position2Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -105,6 +112,7 @@ namespace View
 
                 Position3Cards.Source = new BitmapImage(uri);
                 Position3Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -120,6 +128,7 @@ namespace View
 
                 Position4Cards.Source = new BitmapImage(uri);
                 Position4Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -135,6 +144,7 @@ namespace View
 
                 Position5Cards.Source = new BitmapImage(uri);
                 Position5Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -150,6 +160,7 @@ namespace View
 
                 Position6Cards.Source = new BitmapImage(uri);
                 Position6Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -165,6 +176,7 @@ namespace View
 
                 Position7Cards.Source = new BitmapImage(uri);
                 Position7Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -180,6 +192,7 @@ namespace View
 
                 Position8Cards.Source = new BitmapImage(uri);
                 Position8Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -195,6 +208,7 @@ namespace View
 
                 Position9Cards.Source = new BitmapImage(uri);
                 Position9Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -210,6 +224,7 @@ namespace View
 
                 Position10Cards.Source = new BitmapImage(uri);
                 Position10Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -225,6 +240,7 @@ namespace View
 
                 Position11Cards.Source = new BitmapImage(uri);
                 Position11Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -240,6 +256,7 @@ namespace View
 
                 Position12Cards.Source = new BitmapImage(uri);
                 Position12Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -255,6 +272,7 @@ namespace View
 
                 Position13Cards.Source = new BitmapImage(uri);
                 Position13Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -270,6 +288,7 @@ namespace View
 
                 Position14Cards.Source = new BitmapImage(uri);
                 Position14Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -285,6 +304,7 @@ namespace View
 
                 Position15Cards.Source = new BitmapImage(uri);
                 Position15Cards.IsEnabled = false;
+                counterCells++;
             }
         }
 
@@ -300,10 +320,11 @@ namespace View
 
                 Position16Cards.Source = new BitmapImage(uri);
                 Position16Cards.IsEnabled = false;
+                counterCells++;
             }
         }
         
-        public void ReciveCard(int idCard) 
+        public void SendCard(int idCard) 
         {
             string relativeTabs = @"../../Images/Cards/";
             string[] photo = Directory.GetFiles(relativeTabs, "*.jpg");
@@ -339,7 +360,6 @@ namespace View
             catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("There are no more files to display", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-
             }
             
         }
@@ -408,9 +428,120 @@ namespace View
             Position16Cards.Source = new BitmapImage(uriList[15]);
         }
 
-        private void UpdateQueue(int idCard) {                        
+        private void CreateLoteriaGame()
+        {
+            if (SingletonPlayer.PlayerClient.PlayerType)
+            {
+                try
+                {
+                    client.CreateLoteria(SingletonGameRound.GameRound.CodeGame);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+            }
+        }
+
+        private void JoinServices()
+        {
+            try
+            {
+                client.JoinLoteria(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                if (SingletonPlayer.PlayerClient.RegisteredUser) 
+                {
+                    SingletonPlayer.PlayerClient.Coin = SingletonPlayer.PlayerClient.Coin - SingletonGameRound.GameRound.Bet;
+                }
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(CommunicationException) 
+            {
+                MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void UpdateQueue(int idCard) 
+        {                        
             displayedTail.Enqueue(idCard);
             displayedTail.Dequeue();
         }
+
+        public void SendWinner(string username)
+        {
+            btnLoteria.IsEnabled = false;
+            MessageBox.Show("The winner is: " + username, "We have a winner", MessageBoxButton.OK, MessageBoxImage.Information);
+            Close();
+        }
+
+        private void btnLoteria_Click(object sender, RoutedEventArgs e)
+        {
+            if (counterCells == 16)
+            {
+                try
+                {
+                    btnLoteria.IsEnabled = false;
+                    int bet = CalculateBet();
+                    client.ReciveWinner(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame, bet);
+                    if (!SingletonPlayer.PlayerClient.RegisteredUser)
+                    {
+                        SingletonPlayer.PlayerClient.Coin += bet;
+                    }
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+            }
+        }
+
+        private int CalculateBet()
+        {
+            int totalBet = SingletonGameRound.GameRound.Bet * totalPlayers;
+            return totalBet;
+        }
+
+        public void StartGame() 
+        {
+            if (SingletonPlayer.PlayerClient.PlayerType)
+            {
+                try
+                {
+                    client.StartGameLoteria(SingletonGameRound.GameRound.CodeGame);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+            }
+        }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+
     }
 }

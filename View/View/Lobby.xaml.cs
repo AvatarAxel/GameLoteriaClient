@@ -7,6 +7,7 @@ using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.ServiceReference;
 
 namespace View
 {
@@ -25,19 +27,15 @@ namespace View
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
-        private Game game = new Game();
+        private Game game;
         private Encryption encryption = new Encryption();
-        private int counter;
+
         public Lobby()
         {
             InitializeComponent();
-            context = new InstanceContext(this);
-            chatClient = new ServiceReference.ChatServiceClient(context);
-            GameServiceClient = new ServiceReference.GameServiceClient(context);
             ConfigureLobby();
             JoinServices();
             txtChat.IsEnabled = false;
-            counter = 0;
         }
 
         private void BtnMinimize_Click(Object sender, RoutedEventArgs e)
@@ -57,7 +55,12 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                    Close();
+                    GoLogin();
+                }
+                catch (CommunicationObjectFaultedException)
+                {
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
             else
@@ -73,12 +76,12 @@ namespace View
             catch(CommunicationObjectAbortedException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
             catch (CommunicationException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
@@ -89,16 +92,13 @@ namespace View
         {
             try
             {
-
                 GameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
-                GameServiceClient.StartGame(SingletonGameRound.GameRound.CodeGame);
             }
             catch(TimeoutException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
-  
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
@@ -117,7 +117,12 @@ namespace View
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                    Close();
+                    GoLogin();
+                }
+                catch (CommunicationObjectFaultedException)
+                {
+                    MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
         }
@@ -128,16 +133,30 @@ namespace View
             {
                 GameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
+            }
+            catch (CommunicationObjectFaultedException)
+            {
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
+            }
+            catch (TimeoutException)
+            {
+                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
         }
 
         private void ConfigureLobby()
         {
+            context = new InstanceContext(this);
+            chatClient = new ServiceReference.ChatServiceClient(context);
+            GameServiceClient = new ServiceReference.GameServiceClient(context);
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
                 lbCodeVerificationTitle.Text = Properties.Langs.Lang.codeVerification;
@@ -148,12 +167,6 @@ namespace View
                 btnPlay.Visibility = Visibility.Collapsed;
                 btnSignOutPlayer.Visibility = Visibility.Collapsed;
             }
-
-        }
-
-        public void ReciveWinner(string username)
-        {
-            throw new NotImplementedException();
         }
 
         private void ExitPlayer()
@@ -166,31 +179,34 @@ namespace View
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
             catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
             catch (CommunicationObjectAbortedException)
             {
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                GoLogin();
             }
-            SingletonPlayer.PlayerClient.PlayerType = false;
+            finally 
+            {
+                SingletonPlayer.PlayerClient.PlayerType = false;
+            }
         }
 
         public void ReciveMessage(string player, string message)
         {
            string messageDescryption = encryption.DescryptionMessage(message);
-
             txtChat.Text += player + ":  " + messageDescryption + "\r\n";
         }
 
         public void ResponseTotalPlayers(int totalPlayers)
         {
             SingletonGameRound.GameRound.TotalPlayers = totalPlayers;
+            lbTotalPlayers.Text = SingletonGameRound.GameRound.TotalPlayers.ToString();
         }
 
         public void SendNextHostGameResponse(bool status)
@@ -199,29 +215,52 @@ namespace View
             lbCodeVerificationTitle.Text = Properties.Langs.Lang.codeVerification;
             lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             btnPlay.Visibility = Visibility.Visible;
+            btnSignOutPlayer.Visibility = Visibility.Visible;
         }
 
         public void GoToPlay(bool status)
         {
             if (status)
-            {                
-                game = new Game();
-                game.Show();      
-                Hide();
-                btnPlay.IsEnabled = false;                                
+            {
+                if (SingletonPlayer.PlayerClient.Coin >= SingletonGameRound.GameRound.Bet)
+                {
+                    EnterGame();
+                }
+                else
+                {
+                    MessageBox.Show("You don't have enough coins", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    ExitPlayer();
+                    Close();
+                }         
             }
         }
 
-        public void SendCard(int idCard)
+        private void EnterGame() 
         {
-            game.ReciveCard(idCard);
-            counter++;
-            if (counter == 54) 
+            game = new Game();
+            game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
+            game.StartGame();
+            game.ShowDialog();
+            try
             {
-                this.Show();
-                btnPlay.IsEnabled = true;
-                counter = 0;
+                GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
+            catch
+            {
+                Close();
+            }
+        }
+
+        public void UpdateBetCoinsResponse(int coins, int bet)
+        {
+            SingletonGameRound.GameRound.Bet = bet;
+            if (SingletonPlayer.PlayerClient.RegisteredUser)
+            {
+                SingletonPlayer.PlayerClient.Coin = coins;
+            }
+            lbCoins.Text = SingletonPlayer.PlayerClient.Coin.ToString();
         }
 
         public void GetListPlayer(string[] PlayerLobby)
@@ -284,5 +323,13 @@ namespace View
                 Close();
             }
         }
+
+        private void GoLogin()
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
+    
     }
 }
