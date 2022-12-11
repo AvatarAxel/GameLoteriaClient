@@ -297,6 +297,9 @@
   <data name="standard" xml:space="preserve">
     <value>Standard</value>
   </data>
+  <data name="theMinimumNumberOfPlayers" xml:space="preserve">
+    <value>The minimum number of players is 3</value>
+  </data>
   <data name="theUsernamePasswordYouEnteredAreNotRegistered" xml:space="preserve">
     <value>The username and/or password you entered are not registered</value>
   </data>

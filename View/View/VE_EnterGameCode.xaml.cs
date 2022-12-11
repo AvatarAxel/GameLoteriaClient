@@ -65,6 +65,7 @@ namespace View
                         GoLogin();
                     }
                 }
+                MessageBox.Show(Properties.Langs.Lang.rectifyTheFields, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

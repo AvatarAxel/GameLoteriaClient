@@ -30,7 +30,6 @@ namespace View
             InitiatingVariables();
             FillingOutLetter();
             CreateLoteriaGame();
-            JoinServices();
         }
 
         private void InitiatingVariables() 
@@ -449,12 +448,12 @@ namespace View
             }
         }
 
-        private void JoinServices()
+        public void JoinServices()
         {
             try
             {
                 client.JoinLoteria(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                if (SingletonPlayer.PlayerClient.RegisteredUser) 
+                if (!SingletonPlayer.PlayerClient.RegisteredUser)
                 {
                     SingletonPlayer.PlayerClient.Coin = SingletonPlayer.PlayerClient.Coin - SingletonGameRound.GameRound.Bet;
                 }

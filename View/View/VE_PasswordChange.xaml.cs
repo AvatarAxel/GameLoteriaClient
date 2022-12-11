@@ -44,7 +44,7 @@ namespace View
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 GoLogin();
             }
-            Close();
+            GoLogin();
         }
 
         private void BtnUpdateData_Click(object sender, RoutedEventArgs e)

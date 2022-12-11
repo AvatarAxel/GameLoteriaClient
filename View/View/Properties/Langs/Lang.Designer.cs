@@ -601,6 +601,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The minimum number of players is 3.
+        /// </summary>
+        public static string theMinimumNumberOfPlayers {
+            get {
+                return ResourceManager.GetString("theMinimumNumberOfPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The username and/or password you entered are not registered.
         /// </summary>
         public static string theUsernamePasswordYouEnteredAreNotRegistered {
