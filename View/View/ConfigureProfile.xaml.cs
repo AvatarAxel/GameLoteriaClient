@@ -53,6 +53,7 @@ namespace View
                 if (changeUsername)
                 {
                     MessageBox.Show(Properties.Langs.Lang.youHaveSuccessfullyUpdated, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
+                    SingletonPlayer.PlayerClient.Username = lbUsername.Text;
                 }
                 else
                 {

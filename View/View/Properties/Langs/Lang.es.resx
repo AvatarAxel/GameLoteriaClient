@@ -291,6 +291,9 @@
   <data name="standard" xml:space="preserve">
     <value>Normal</value>
   </data>
+  <data name="theMinimumNumberOfPlayers" xml:space="preserve">
+    <value>Se nececitan 3 para jugar</value>
+  </data>
   <data name="theUsernamePasswordYouEnteredAreNotRegistered" xml:space="preserve">
     <value>El apodo y/o la contraseña no existe</value>
   </data>

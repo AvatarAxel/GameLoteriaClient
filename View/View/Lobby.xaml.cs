@@ -90,14 +90,22 @@ namespace View
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if(SingletonGameRound.GameRound.TotalPlayers >= 3)
             {
-                GameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+                try
+                {
+                    GameServiceClient.GoToGame(SingletonGameRound.GameRound.CodeGame);
+                }
+                catch (TimeoutException)
+                {
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+
             }
-            catch(TimeoutException)
+            else
             {
-                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                GoLogin();
+                MessageBox.Show(Properties.Langs.Lang.theMinimumNumberOfPlayers, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -151,7 +159,7 @@ namespace View
                 GoLogin();
             }
         }
-
+        
         private void ConfigureLobby()
         {
             context = new InstanceContext(this);
@@ -241,6 +249,7 @@ namespace View
         {
             game = new Game();
             game.RecieveTotalPlayersLoteria(SingletonGameRound.GameRound.TotalPlayers);
+            game.JoinServices();
             game.StartGame();
             game.ShowDialog();
             try
@@ -276,21 +285,30 @@ namespace View
         {
             if (ListPlayers.SelectedIndex >= 0)
             {
-                string username = ListPlayers.SelectedItem.ToString();
-                if (username != SingletonPlayer.PlayerClient.Username)
+                if (SingletonPlayer.PlayerClient.RegisteredUser)
                 {
-                    /* Validar cuantos amigos tiene en total
-                     * Dependiendo de la cantidad realizar
-                     * if <30
-                     *  Enviarle la solicutud al men y decirle al otro men que ya se envio
-                     *  El men debe de aceptarla o denegarla
-                     *  Aceptar : Se actualiza la lista de amigos de ambos
-                     *  Denegar : Pues no hace nada
-                     */
+                    string username = ListPlayers.SelectedItem.ToString();
+                    if (username != SingletonPlayer.PlayerClient.Username)
+                    {
+                        /* Validar cuantos amigos tiene en total
+                         * Dependiendo de la cantidad realizar
+                         * if <30
+                         *  Enviarle la solicutud al men y decirle al otro men que ya se envio
+                         *  El men debe de aceptarla o denegarla
+                         *  Aceptar : Se actualiza la lista de amigos de ambos
+                         *  Denegar : Pues no hace nada
+                         *  NR NO PUEDE JUGAR LA PRIMERA VES
+                         *  
+                         */
+                    }
+                    else
+                    {
+                        MessageBox.Show(Properties.Langs.Lang.youCantBeYourOwnFriend, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Langs.Lang.youCantBeYourOwnFriend, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Properties.Langs.Lang.youAreNOTRegisteredYet, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
