@@ -60,6 +60,7 @@ namespace View
                 catch (CommunicationObjectFaultedException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
             else
@@ -121,6 +122,7 @@ namespace View
                 catch (CommunicationObjectFaultedException)
                 {
                     MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
                 }
             }
         }
@@ -141,10 +143,12 @@ namespace View
             catch (CommunicationObjectFaultedException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
             catch (TimeoutException)
             {
                 MessageBox.Show("Offline, please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                GoLogin();
             }
         }
 
