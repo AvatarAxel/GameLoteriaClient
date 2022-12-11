@@ -369,6 +369,18 @@ namespace View
                 VE_SendInvitationFriend invitation = new VE_SendInvitationFriend();
                 invitation.NameOfSender(usernameSender);
                 invitation.Show();
+                if (SingletonPlayer.PlayerClient.Verificated)
+                {
+                    client.AddFriends(SingletonPlayer.PlayerClient.Email, usernameSender, SingletonGameRound.GameRound.CodeGame);
+                }
+            }
+        }
+
+        public void AddFriendResponse(bool status)
+        {
+            if (status)
+            {
+                MessageBox.Show(Properties.Langs.Lang.youHaveNewFriend, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
     }

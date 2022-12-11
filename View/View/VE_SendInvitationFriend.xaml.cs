@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -19,6 +20,8 @@ namespace View
     public partial class VE_SendInvitationFriend : Window
     {
         private string submitter;
+        private bool responseInvitation = false;
+
         public VE_SendInvitationFriend()
         {
             InitializeComponent();
@@ -37,16 +40,19 @@ namespace View
 
         private void BtnClose_Click(Object sender, RoutedEventArgs e)
         {
+            SingletonPlayer.PlayerClient.Verificated = false;
             Close();
         }
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
+            SingletonPlayer.PlayerClient.Verificated = true;
             MessageBox.Show(Properties.Langs.Lang.youHaveNewFriend, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             Close();
         }
         private void BtnDecline_Click(Object sender, RoutedEventArgs e)
         {
             MessageBox.Show(Properties.Langs.Lang.applicationRejected, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
+            SingletonPlayer.PlayerClient.Verificated = false;
             Close();
         }
     }
