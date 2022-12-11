@@ -132,6 +132,9 @@
   <data name="codePlay" xml:space="preserve">
     <value>Code Play</value>
   </data>
+  <data name="codeVerification" xml:space="preserve">
+    <value>Code Verification</value>
+  </data>
   <data name="configureGame" xml:space="preserve">
     <value>Configure Game</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="gameLoteria" xml:space="preserve">
     <value>Game Loteria</value>
+  </data>
+  <data name="guest" xml:space="preserve">
+    <value>Guest</value>
   </data>
   <data name="incompleteDateOfBirth" xml:space="preserve">
     <value>Incomplete date of birth</value>

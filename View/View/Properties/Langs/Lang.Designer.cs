@@ -124,6 +124,15 @@ namespace View.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code Verification.
+        /// </summary>
+        public static string codeVerification {
+            get {
+                return ResourceManager.GetString("codeVerification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configure Game.
         /// </summary>
         public static string configureGame {
@@ -300,6 +309,15 @@ namespace View.Properties.Langs {
         public static string gameLoteria {
             get {
                 return ResourceManager.GetString("gameLoteria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guest.
+        /// </summary>
+        public static string guest {
+            get {
+                return ResourceManager.GetString("guest", resourceCulture);
             }
         }
         

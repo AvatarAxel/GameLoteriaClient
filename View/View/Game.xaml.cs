@@ -358,7 +358,7 @@ namespace View
                 Uri uri = new Uri(path, UriKind.Absolute);
                 uriList.Add(uri);
             }
-
+            
             Position1Cards.Stretch = Stretch.Fill;
             Position1Cards.Source = new BitmapImage(uriList[0]);
 

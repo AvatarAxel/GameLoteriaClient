@@ -140,7 +140,7 @@ namespace View
         {
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
-                lbCodeVerificationTitle.Text = "Code Verification";
+                lbCodeVerificationTitle.Text = Properties.Langs.Lang.codeVerification;
                 lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             }
             else
@@ -196,7 +196,7 @@ namespace View
         public void SendNextHostGameResponse(bool status)
         {
             SingletonPlayer.PlayerClient.PlayerType = status;
-            lbCodeVerificationTitle.Text = "Code Verification";
+            lbCodeVerificationTitle.Text = Properties.Langs.Lang.codeVerification;
             lbCodeVerification.Text = SingletonGameRound.GameRound.CodeGame;
             btnPlay.Visibility = Visibility.Visible;
         }
@@ -235,7 +235,7 @@ namespace View
 
         private void BtnAddFriend_Click(object sender, RoutedEventArgs e)
         {
-            if (ListPlayers.SelectedIndex > 0)
+            if (ListPlayers.SelectedIndex >= 0)
             {
                 string username = ListPlayers.SelectedItem.ToString();
                 if (username != SingletonPlayer.PlayerClient.Username)
@@ -258,7 +258,7 @@ namespace View
 
         private void BtnSignOutPlayer_Click(object sender, RoutedEventArgs e)
         {
-            if(ListPlayers.SelectedIndex > 0)
+            if(ListPlayers.SelectedIndex >= 0)
             {
                 string username = ListPlayers.SelectedItem.ToString();
                 if (username != SingletonPlayer.PlayerClient.Username)

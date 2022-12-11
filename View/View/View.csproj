@@ -219,16 +219,6 @@
     <Resource Include="Images\ResourseImage\Gear.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\PlayingCards\1.png" />
-    <Resource Include="Images\PlayingCards\2.png" />
-    <Resource Include="Images\PlayingCards\3.png" />
-    <Resource Include="Images\PlayingCards\4.png" />
-    <Resource Include="Images\PlayingCards\5.png" />
-    <Resource Include="Images\PlayingCards\6.png" />
-    <Resource Include="Images\PlayingCards\7.png" />
-    <Resource Include="Images\PlayingCards\8.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\ResourseImage\minimize.png" />
   </ItemGroup>
   <ItemGroup>
