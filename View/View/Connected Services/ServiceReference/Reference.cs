@@ -1083,6 +1083,12 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/JoinFriend", ReplyAction="http://tempuri.org/IFriendListService/JoinFriendResponse")]
         System.Threading.Tasks.Task JoinFriendAsync(string verificationCode, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/AddFriends", ReplyAction="http://tempuri.org/IFriendListService/AddFriendsResponse")]
+        void AddFriends(string userEmail, string emailNewFriend, string verificationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/AddFriends", ReplyAction="http://tempuri.org/IFriendListService/AddFriendsResponse")]
+        System.Threading.Tasks.Task AddFriendsAsync(string userEmail, string emailNewFriend, string verificationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1090,6 +1096,9 @@ namespace View.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendListService/ReciveInvitation")]
         void ReciveInvitation(bool status, string usernameSender);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendListService/AddFriendResponse")]
+        void AddFriendResponse(bool status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1142,6 +1151,14 @@ namespace View.ServiceReference {
         
         public System.Threading.Tasks.Task JoinFriendAsync(string verificationCode, string username) {
             return base.Channel.JoinFriendAsync(verificationCode, username);
+        }
+        
+        public void AddFriends(string userEmail, string emailNewFriend, string verificationCode) {
+            base.Channel.AddFriends(userEmail, emailNewFriend, verificationCode);
+        }
+        
+        public System.Threading.Tasks.Task AddFriendsAsync(string userEmail, string emailNewFriend, string verificationCode) {
+            return base.Channel.AddFriendsAsync(userEmail, emailNewFriend, verificationCode);
         }
     }
 }
