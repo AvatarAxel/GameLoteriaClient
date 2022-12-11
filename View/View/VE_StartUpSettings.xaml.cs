@@ -72,6 +72,7 @@ namespace View
             mainWindow.Show();
             try
             {
+                SingletonPlayer.PlayerClient.PlayerType = false;
                 gameClient.Close();
                 chatClient.Close();
             }

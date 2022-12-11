@@ -22,13 +22,14 @@ using View.ServiceReference;
 namespace View
 {
 
-    public partial class Lobby : Window, ServiceReference.IGameServiceCallback, ServiceReference.IChatServiceCallback
+    public partial class Lobby : Window, ServiceReference.IGameServiceCallback, ServiceReference.IChatServiceCallback, ServiceReference.IFriendListServiceCallback
     {
         private InstanceContext context;
         private ServiceReference.ChatServiceClient chatClient;
         private ServiceReference.GameServiceClient GameServiceClient;
         private Game game;
         private Encryption encryption = new Encryption();
+        private ServiceReference.FriendListServiceClient client;
 
         public Lobby()
         {
@@ -141,6 +142,7 @@ namespace View
             {
                 GameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                client.JoinFriend(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
@@ -165,6 +167,7 @@ namespace View
             context = new InstanceContext(this);
             chatClient = new ServiceReference.ChatServiceClient(context);
             GameServiceClient = new ServiceReference.GameServiceClient(context);
+            client = new ServiceReference.FriendListServiceClient(context);
             if (SingletonPlayer.PlayerClient.PlayerType)
             {
                 lbCodeVerificationTitle.Text = Properties.Langs.Lang.codeVerification;
@@ -181,6 +184,7 @@ namespace View
         {
             try
             {
+                SingletonPlayer.PlayerClient.PlayerType = false;
                 GameServiceClient.ExitGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.ExitChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
@@ -290,16 +294,25 @@ namespace View
                     string username = ListPlayers.SelectedItem.ToString();
                     if (username != SingletonPlayer.PlayerClient.Username)
                     {
-                        /* Validar cuantos amigos tiene en total
-                         * Dependiendo de la cantidad realizar
-                         * if <30
-                         *  Enviarle la solicutud al men y decirle al otro men que ya se envio
-                         *  El men debe de aceptarla o denegarla
-                         *  Aceptar : Se actualiza la lista de amigos de ambos
-                         *  Denegar : Pues no hace nada
-                         *  NR NO PUEDE JUGAR LA PRIMERA VES
-                         *  
-                         */
+                        if(client.CheckNumberFriends(SingletonPlayer.PlayerClient.Email) <= 30)
+                        {
+                            try
+                            { 
+                                client.SendInvitation(SingletonGameRound.GameRound.CodeGame, SingletonPlayer.PlayerClient.Username, username);
+                            }
+                            catch (CommunicationException)
+                            {
+                                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                            catch(TimeoutException)
+                            {
+                                MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(Properties.Langs.Lang.yourFriendsListIsFull, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {
@@ -348,6 +361,15 @@ namespace View
             login.Show();
             Close();
         }
-    
+
+        public void ReciveInvitation(bool status, string usernameSender)
+        {
+            if (status && usernameSender != null)
+            {
+                VE_SendInvitationFriend invitation = new VE_SendInvitationFriend();
+                invitation.NameOfSender(usernameSender);
+                invitation.Show();
+            }
+        }
     }
 }

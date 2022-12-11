@@ -20,6 +20,7 @@ namespace View
     public partial class VE_PasswordChange : Window
     {
         private ServiceReference.ChangePasswordServiceClient client;
+        private int counter;
 
         public VE_PasswordChange()
         {
@@ -54,8 +55,10 @@ namespace View
             email = txtEmail.Text;
             passwordValidation = txtPasswordValidation.Password;
             string hashedPassword;
+
             if (ValidationFields() && client.ExistEmail(email))
             {
+
                 BtnUpdateData.IsEnabled = false;
                 VE_VerificationEmail changePassword = new VE_VerificationEmail();
 
@@ -69,7 +72,6 @@ namespace View
 
                 if (SingletonPlayer.PlayerClient.Verificated)
                 {
-
                     try
                     {
                         bool status = false;
@@ -144,3 +146,4 @@ namespace View
         }
     }
 }
+

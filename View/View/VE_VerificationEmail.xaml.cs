@@ -1,5 +1,6 @@
 ﻿using Logic;
 using System;
+using System.Reflection;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,7 @@ namespace View
     {
         private string codeVerificationComparation;
         private ServiceReference.EmailServiceClient client;
+        private int counter;
 
         public VE_VerificationEmail()
         {
@@ -81,35 +83,42 @@ namespace View
 
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtVerification.Text))
+            string verificarionUser = txtVerification.Text;
+            if (ValidationCode(verificarionUser) && counter <= 3)
             {
-                MessageBox.Show(Properties.Langs.Lang.invalidFormat, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Langs.Lang.correctCode, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
+                try 
+                { 
+                    client.Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
+                SingletonPlayer.PlayerClient.Verificated = true;
+                Close();
             }
             else
             {
-                string verificarionUser = txtVerification.Text;
-
-                if (codeVerificationComparation.Equals(verificarionUser))
-                {
-                    MessageBox.Show(Properties.Langs.Lang.correctCode, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
-                    try
-                    {
-                        client.Close();
-                    }
-                    catch (EndpointNotFoundException)
-                    {
-                        MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
-                        GoLogin();
-                    }
-
-                    SingletonPlayer.PlayerClient.Verificated = true;
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show(Properties.Langs.Lang.verificationCodeDoesNotMatch,Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                NumberOfAttempts();
             }
+        }
+
+        private bool ValidationCode(string verificarionUser)
+        {
+            if (verificarionUser == null)
+            {
+                MessageBox.Show(Properties.Langs.Lang.invalidFormat, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            if (!codeVerificationComparation.Equals(verificarionUser))
+            {
+                MessageBox.Show(Properties.Langs.Lang.verificationCodeDoesNotMatch, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Information);
+                counter++;
+                return false;
+            }
+            return true;
         }
 
         private void GoLogin()
@@ -119,5 +128,16 @@ namespace View
             Close();
         }
 
+        private void NumberOfAttempts()
+        {
+            if (counter == 3)
+            {
+                MessageBox.Show(Properties.Langs.Lang.numberOfAttemptsExhausted, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                Login login = new Login();
+                login.Show();
+                Close();
+            }
+        }
     }
+
 }

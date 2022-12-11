@@ -72,6 +72,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendListService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -251,6 +259,27 @@
   <wsdl:message name="ILoteriaService_SendWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendWinner" />
   </wsdl:message>
+  <wsdl:message name="IFriendListService_CheckNumberFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckNumberFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_CheckNumberFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckNumberFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_SendInvitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitation" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_SendInvitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvitationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_JoinFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinFriend" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_JoinFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_ReciveInvitation_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveInvitation" />
+  </wsdl:message>
   <wsdl:portType name="IAuthenticationService">
     <wsdl:operation name="AuthenticationLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthenticationService/AuthenticationLogin" message="tns:IAuthenticationService_AuthenticationLogin_InputMessage" />
@@ -410,6 +439,23 @@
     </wsdl:operation>
     <wsdl:operation name="SendWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/ILoteriaService/SendWinner" message="tns:ILoteriaService_SendWinner_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFriendListService">
+    <wsdl:operation name="CheckNumberFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/CheckNumberFriends" message="tns:IFriendListService_CheckNumberFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/CheckNumberFriendsResponse" message="tns:IFriendListService_CheckNumberFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/SendInvitation" message="tns:IFriendListService_SendInvitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/SendInvitationResponse" message="tns:IFriendListService_SendInvitation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/JoinFriend" message="tns:IFriendListService_JoinFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/JoinFriendResponse" message="tns:IFriendListService_JoinFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveInvitation">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/ReciveInvitation" message="tns:IFriendListService_ReciveInvitation_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthenticationService" type="tns:IAuthenticationService">
@@ -748,6 +794,43 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IFriendListService" type="tns:IFriendListService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendListService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CheckNumberFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendListService/CheckNumberFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendInvitation">
+      <soap12:operation soapAction="http://tempuri.org/IFriendListService/SendInvitation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinFriend">
+      <soap12:operation soapAction="http://tempuri.org/IFriendListService/JoinFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveInvitation">
+      <soap12:operation soapAction="http://tempuri.org/IFriendListService/ReciveInvitation" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServicesExposed">
     <wsdl:port name="NetTcpBinding_IAuthenticationService" binding="tns:NetTcpBinding_IAuthenticationService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
@@ -798,6 +881,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILoteriaService" binding="tns:NetTcpBinding_ILoteriaService">
+      <soap12:address location="net.tcp://localhost:8090/Comunication" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IFriendListService" binding="tns:NetTcpBinding_IFriendListService">
       <soap12:address location="net.tcp://localhost:8090/Comunication" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Comunication</wsa10:Address>
