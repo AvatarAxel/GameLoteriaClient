@@ -422,6 +422,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="VerificationAreFriends">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usernameSender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="usernameDestiner" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerificationAreFriendsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VerificationAreFriendsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CheckNumberFriends">
     <xs:complexType>
       <xs:sequence>
@@ -445,11 +460,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendInvitationResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="JoinFriend">
     <xs:complexType>
       <xs:sequence>
@@ -458,23 +468,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="JoinFriendResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="AddFriends">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="emailNewFriend" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="usernameSender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="usernameDestination" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="verificationCode" nillable="true" type="xs:string" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddFriendsResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ReciveInvitation">

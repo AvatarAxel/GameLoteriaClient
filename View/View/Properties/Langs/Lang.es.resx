@@ -327,6 +327,9 @@
   <data name="typeOfItem" xml:space="preserve">
     <value>Tipo de partida</value>
   </data>
+  <data name="unableToPerformThisAction" xml:space="preserve">
+    <value>No se puede realizar esta acción</value>
+  </data>
   <data name="updateData" xml:space="preserve">
     <value>Actulizar datos</value>
   </data>

@@ -63,6 +63,11 @@ namespace View
                     MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                     GoLogin();
                 }
+                catch (CommunicationObjectAbortedException)
+                {
+                    MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    GoLogin();
+                }
             }
             else
             {
@@ -298,7 +303,7 @@ namespace View
                     string username = ListPlayers.SelectedItem.ToString();
                     if (username != SingletonPlayer.PlayerClient.Username)
                     {
-                        if(client.CheckNumberFriends(SingletonPlayer.PlayerClient.Email) <= 30)
+                        if(client.CheckNumberFriends(SingletonPlayer.PlayerClient.Email) <= 30 && !client.VerificationAreFriends(SingletonPlayer.PlayerClient.Username, username))
                         {
                             try
                             { 
@@ -315,7 +320,7 @@ namespace View
                         }
                         else
                         {
-                            MessageBox.Show(Properties.Langs.Lang.yourFriendsListIsFull, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(Properties.Langs.Lang.unableToPerformThisAction, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
@@ -375,7 +380,7 @@ namespace View
                 invitation.ShowDialog();
                 if (SingletonPlayer.PlayerClient.Verificated)
                 {
-                    client.AddFriends(SingletonPlayer.PlayerClient.Email, usernameSender, SingletonGameRound.GameRound.CodeGame);
+                    client.AddFriends(usernameSender, SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 }
             }
         }

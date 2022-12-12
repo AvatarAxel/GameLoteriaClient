@@ -259,6 +259,12 @@
   <wsdl:message name="ILoteriaService_SendWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendWinner" />
   </wsdl:message>
+  <wsdl:message name="IFriendListService_VerificationAreFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificationAreFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendListService_VerificationAreFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificationAreFriendsResponse" />
+  </wsdl:message>
   <wsdl:message name="IFriendListService_CheckNumberFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:CheckNumberFriends" />
   </wsdl:message>
@@ -268,20 +274,11 @@
   <wsdl:message name="IFriendListService_SendInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:SendInvitation" />
   </wsdl:message>
-  <wsdl:message name="IFriendListService_SendInvitation_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendInvitationResponse" />
-  </wsdl:message>
   <wsdl:message name="IFriendListService_JoinFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinFriend" />
   </wsdl:message>
-  <wsdl:message name="IFriendListService_JoinFriend_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinFriendResponse" />
-  </wsdl:message>
   <wsdl:message name="IFriendListService_AddFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:AddFriends" />
-  </wsdl:message>
-  <wsdl:message name="IFriendListService_AddFriends_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddFriendsResponse" />
   </wsdl:message>
   <wsdl:message name="IFriendListService_ReciveInvitation_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveInvitation" />
@@ -451,21 +448,22 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendListService">
+    <wsdl:operation name="VerificationAreFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/VerificationAreFriends" message="tns:IFriendListService_VerificationAreFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/VerificationAreFriendsResponse" message="tns:IFriendListService_VerificationAreFriends_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CheckNumberFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/CheckNumberFriends" message="tns:IFriendListService_CheckNumberFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/CheckNumberFriendsResponse" message="tns:IFriendListService_CheckNumberFriends_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendInvitation">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/SendInvitation" message="tns:IFriendListService_SendInvitation_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/SendInvitationResponse" message="tns:IFriendListService_SendInvitation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="JoinFriend">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/JoinFriend" message="tns:IFriendListService_JoinFriend_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/JoinFriendResponse" message="tns:IFriendListService_JoinFriend_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/AddFriends" message="tns:IFriendListService_AddFriends_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/AddFriendsResponse" message="tns:IFriendListService_AddFriends_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReciveInvitation">
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/ReciveInvitation" message="tns:IFriendListService_ReciveInvitation_OutputCallbackMessage" />
@@ -813,6 +811,15 @@
   <wsdl:binding name="NetTcpBinding_IFriendListService" type="tns:IFriendListService">
     <wsp:PolicyReference URI="#NetTcpBinding_IFriendListService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="VerificationAreFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendListService/VerificationAreFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CheckNumberFriends">
       <soap12:operation soapAction="http://tempuri.org/IFriendListService/CheckNumberFriends" style="document" />
       <wsdl:input>
@@ -827,27 +834,18 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="JoinFriend">
       <soap12:operation soapAction="http://tempuri.org/IFriendListService/JoinFriend" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddFriends">
       <soap12:operation soapAction="http://tempuri.org/IFriendListService/AddFriends" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReciveInvitation">
       <soap12:operation soapAction="http://tempuri.org/IFriendListService/ReciveInvitation" style="document" />

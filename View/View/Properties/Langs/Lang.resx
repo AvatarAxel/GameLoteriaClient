@@ -333,6 +333,9 @@
   <data name="typeOfItem" xml:space="preserve">
     <value>Type Of Item</value>
   </data>
+  <data name="unableToPerformThisAction" xml:space="preserve">
+    <value>Unable To Perform This Action</value>
+  </data>
   <data name="updateData" xml:space="preserve">
     <value>Update Data</value>
   </data>

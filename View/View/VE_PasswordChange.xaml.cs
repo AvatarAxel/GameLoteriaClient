@@ -20,7 +20,6 @@ namespace View
     public partial class VE_PasswordChange : Window
     {
         private ServiceReference.ChangePasswordServiceClient client;
-        private int counter;
 
         public VE_PasswordChange()
         {

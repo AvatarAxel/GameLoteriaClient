@@ -19,7 +19,6 @@ namespace View
 {
     public partial class VE_SendInvitationFriend : Window
     {
-        private string submitter;
 
         public VE_SendInvitationFriend()
         {
@@ -44,8 +43,7 @@ namespace View
         }
         private void BtnAccept_Click(Object sender, RoutedEventArgs e)
         {
-            SingletonPlayer.PlayerClient.Verificated = true;
-            MessageBox.Show(Properties.Langs.Lang.youHaveNewFriend, Properties.Langs.Lang.warning, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            SingletonPlayer.PlayerClient.Verificated = true;            
             Close();
         }
         private void BtnDecline_Click(Object sender, RoutedEventArgs e)
