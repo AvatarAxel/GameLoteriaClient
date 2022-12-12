@@ -6,3 +6,4 @@ C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\Properties\As
 C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\SingletonGameRound.cs
 C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\SingletonPlayer.cs
 C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\App.config
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Logic\Properties\Settings.settings

@@ -20,7 +20,6 @@ namespace View
     public partial class VE_SendInvitationFriend : Window
     {
         private string submitter;
-        private bool responseInvitation = false;
 
         public VE_SendInvitationFriend()
         {

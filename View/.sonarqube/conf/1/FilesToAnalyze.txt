@@ -1,26 +1,13 @@
-﻿C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\ConfigureProfile.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Game.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Lobby.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\RegisterUser.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\VE_EnterGameCode.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\VE_PasswordChange.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\VE_StartUpSettings.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\VE_VerificationEmail.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\App.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Login.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\MainWindow.xaml.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Properties\AssemblyInfo.cs
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Properties\Resources.resx
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Properties\Resources.es.resx
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Resources.en.resx
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\item.xsd
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\item1.xsd
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\item2.xsd
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\ServicesExposed.wsdl
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\View.ServiceReference.PlayerDTO.datasource
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Properties\Settings.settings
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\App.config
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\item.disco
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\configuration91.svcinfo
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\configuration.svcinfo
-C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\View\Connected Services\ServiceReference\Reference.svcmap
+﻿C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Testing\UnitTest1.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Testing\Properties\AssemblyInfo.cs
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\View\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\aavp0\Desktop\GameLoteria\Cliente\GameLoteriaClient\Testing\packages.config

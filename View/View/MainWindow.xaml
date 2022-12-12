@@ -192,6 +192,9 @@
                     </Button>
                     
                 </StackPanel>
+                <ListBox Grid.Row="1" 
+                         d:ItemsSource="{d:SampleData ItemCount=30}" 
+                         Margin="488,258,36,10"/>
             </Grid> 
         </Border>
     </Border>

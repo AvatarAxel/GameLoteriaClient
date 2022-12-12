@@ -84,9 +84,13 @@ namespace View
                 MessageBox.Show(Properties.Langs.Lang.offlinePleaseTryAgainLater, Properties.Langs.Lang.error, MessageBoxButton.OK, MessageBoxImage.Error);
                 GoLogin();
             }
+            catch (TimeoutException)
+            {
+
+            }
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            Close();
+            Close(); 
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -142,7 +146,7 @@ namespace View
             {
                 GameServiceClient.JoinGame(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
                 chatClient.JoinChat(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
-                client.JoinFriend(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
+                client.JoinFriend(SingletonGameRound.GameRound.CodeGame, SingletonPlayer.PlayerClient.Username);
                 GameServiceClient.UpdateBetCoins(SingletonPlayer.PlayerClient.Username, SingletonGameRound.GameRound.CodeGame);
             }
             catch (EndpointNotFoundException)
@@ -368,7 +372,7 @@ namespace View
             {
                 VE_SendInvitationFriend invitation = new VE_SendInvitationFriend();
                 invitation.NameOfSender(usernameSender);
-                invitation.Show();
+                invitation.ShowDialog();
                 if (SingletonPlayer.PlayerClient.Verificated)
                 {
                     client.AddFriends(SingletonPlayer.PlayerClient.Email, usernameSender, SingletonGameRound.GameRound.CodeGame);
